@@ -1,0 +1,5 @@
+typeset -U path
+path=(~/.paps/bin $path)
+export PATH
+export PAGER="/bin/sh -c \"unset PAGER; col -b -x | vim -R -c 'set ft=man nomod nolist' - \""
+export EDITOR="vim"

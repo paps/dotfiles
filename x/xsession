@@ -1,0 +1,17 @@
+if [ -f ~/.paps/x/do_not_lock ] ; then
+    xrdb -load -DLOCK=false ~/.Xresources
+else
+    xrdb -load -DLOCK=true ~/.Xresources
+fi
+
+~/.paps/fonts/update.sh
+
+if [ -f ~/.paps/x/display_order ]
+then
+    one=`cat ~/.paps/x/display_order | cut -d' ' -f1`
+    two=`cat ~/.paps/x/display_order | cut -d' ' -f2`
+    DISPLAY=$one openbox --config-file ~/.paps/openbox/rc_nomargin.xml &
+    DISPLAY=$two exec openbox-session
+else
+    exec openbox-session
+fi

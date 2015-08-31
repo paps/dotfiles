@@ -1,0 +1,32 @@
+"hg6817
+
+loadplugins '\.(js|penta)$'
+group user
+map -b <C-q> <Nop>
+map -count -modes=n,v , <count><Leader>
+map -count -modes=n,v <Down> -builtin <count>5<Down>
+map -count -modes=n,v <Up> -builtin <count>5<Up>
+map -count -modes=n,v gr <count>gT
+map -count -modes=n,v gy <count>d
+map -count -modes=n,v j -builtin <count>8j
+map -count -modes=n,v k -builtin <count>8k
+map -count -modes=n,v <Leader>j <count>:set<Space>hlfind!<Return>
+imap -builtin <Leader>p <C-z>
+imap -builtin <C-c> <C-v><C-c>
+imap -builtin <C-v> <C-v><C-v>
+imap -builtin <C-x> <C-v><C-x>
+imap -builtin <C-z> <C-v><C-z>
+nmap -builtin <Leader>p <C-z>
+nmap -builtin <C-c> <C-v><C-c>
+nmap -builtin <C-v> <C-v><C-v>
+nmap -builtin <C-x> <C-v><C-x>
+nmap -builtin <C-z> <C-v><C-z>
+set defsearch=g
+set guioptions=bCrs
+set scrollsteps=1
+set! general.smoothScroll=false
+set! nglayout.enable_drag_images=false
+set! middlemouse.contentLoadURL=false
+set! browser.download.useDownloadDir=false
+hi FontFixed -a font: 12px "Monaco" !important;
+set titlestring=""

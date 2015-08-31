@@ -1,0 +1,4 @@
+#define message_width 8
+#define message_height 8
+static unsigned char message_bits[] = {
+   0x7e, 0x81, 0x81, 0xbd, 0x81, 0x5e, 0x60, 0x40 };

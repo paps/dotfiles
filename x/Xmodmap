@@ -1,0 +1,17 @@
+! caps lock is control
+remove Lock = Caps_Lock
+keycode 66 = Control_L
+add Control = Control_L
+
+! win + hjkl = arrows
+keycode 133 = Mode_switch
+keysym h = h H Left
+keysym j = j J Down
+keysym k = k K Up
+keysym l = l L Right
+
+! <> is shift (FR keyboard layout)
+keycode 94 = Shift_L
+
+! print screen is insert
+keysym Print = Insert

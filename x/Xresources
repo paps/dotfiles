@@ -1,0 +1,112 @@
+!!xscreensaver
+xscreensaver.lock: LOCK
+xscreensaver.splash: false
+xscreensaver.mode: blank
+xscreensaver.timeout: 0:10:00
+xscreensaver.dpmsEnabled: true
+xscreensaver.dpmsStandby: 0:15:00
+xscreensaver.dpmsSuspend: 0
+xscreensaver.dpmsOff: 0
+xscreensaver.dpmsQuickOff: false
+xscreensaver.lockTimeout: 0:00:15
+xscreensaver.fade: false
+xscreensaver.unfade: false
+xscreensaver.captureStderr: false
+xscreensaver.newLoginCommand:
+xscreensaver.Dialog.headingFont: -xos4-terminus-bold-r-normal-*-18-*-*-*-*-*-*-*
+xscreensaver.Dialog.bodyFont: -misc-termsyn-medium-*-*-*-12-*-*-*-*-*-*-*
+xscreensaver.Dialog.labelFont: -xos4-terminus-medium-r-normal-*-14-*-*-*-*-*-*-*
+xscreensaver.Dialog.unameFont: -xos4-terminus-medium-r-normal-*-12-*-*-*-*-*-*-*
+xscreensaver.Dialog.buttonFont: -xos4-terminus-medium-r-normal-*-14-*-*-*-*-*-*-*
+xscreensaver.Dialog.dateFont: -misc-termsyn-medium-*-*-*-12-*-*-*-*-*-*-*
+xscreensaver.passwd.passwdFont: -misc-termsyn-medium-*-*-*-12-*-*-*-*-*-*-*
+xscreensaver.Dialog.foreground: #999999
+xscreensaver.Dialog.background: #000000
+xscreensaver.Dialog.Button.foreground: #999999
+xscreensaver.Dialog.Button.background: #222222
+xscreensaver.Dialog.text.foreground: #AAAAAA
+xscreensaver.Dialog.text.background: #222222
+xscreensaver.passwd.thermometer.foreground: #AA1212
+xscreensaver.passwd.thermometer.background: #000000
+xscreensaver.Dialog.topShadowColor: #151515
+xscreensaver.Dialog.bottomShadowColor: #151515
+xscreensaver.Dialog.logo.width: 0
+xscreensaver.Dialog.logo.height: 0
+xscreensaver.Dialog.internalBorderWidth: 20
+xscreensaver.Dialog.borderWidth: 0
+xscreensaver.Dialog.shadowThickness: 1
+xscreensaver.passwd.heading.label: Session Locked
+xscreensaver.passwd.body.label:
+xscreensaver.passwd.unlock.label: Unlock
+xscreensaver.passwd.thermometer.width: 3
+
+!!neutral cursor theme
+Xcursor.theme: neutral
+
+!!dzen2
+dzen2.font: -misc-termsyn-medium-r-normal--11-79-100-100-c-60-iso8859-1
+
+!!Xterm
+XTerm*geometry: 120x35
+XTerm*internalBorder: 0
+XTerm*borderColor: #000000
+XTerm*borderWidth: 0
+XTerm*font: -*-ttyp0-medium-r-*-*-14-*-*-*-*-*-*-*
+XTerm*boldFont: -*-ttyp0-bold-r-*-*-14-*-*-*-*-*-*-*
+XTerm*title: xterm
+XTerm*termName: xterm-256color
+XTerm*pointerMode: 2
+XTerm*pointerShape: left_ptr
+
+! Solarized color scheme for the X Window System
+! http://ethanschoonover.com/solarized
+! Common
+#define S_yellow #b58900
+#define S_orange #cb4b16
+#define S_red #dc322f
+#define S_magenta #d33682
+#define S_violet #6c71c4
+#define S_blue #268bd2
+#define S_cyan #2aa198
+#define S_green #859900
+! Dark
+#define S_base03 #002b36
+#define S_base02 #073642
+#define S_base01 #586e75
+#define S_base00 #657b83
+#define S_base0 #839496
+#define S_base1 #93a1a1
+#define S_base2 #eee8d5
+#define S_base3 #fdf6e3
+! Light
+! #define S_base03 #fdf6e3
+! #define S_base02 #eee8d5
+! #define S_base01 #93a1a1
+! #define S_base00 #839496
+! #define S_base0 #657b83
+! #define S_base1 #586e75
+! #define S_base2 #073642
+! #define S_base3 #002b36
+XTerm*background: S_base03
+XTerm*foreground: S_base0
+XTerm*fading: 40
+XTerm*fadeColor: S_base03
+XTerm*cursorColor: #ffffff
+XTerm*pointerColorBackground: S_base01
+XTerm*pointerColorForeground: #ffffff
+XTerm*color0: S_base02
+XTerm*color1: S_red
+XTerm*color2: S_green
+XTerm*color3: S_yellow
+XTerm*color4: S_blue
+XTerm*color5: S_magenta
+XTerm*color6: S_cyan
+XTerm*color7: S_base2
+XTerm*color9: S_orange
+XTerm*color8: S_base03
+XTerm*color10: S_base01
+XTerm*color11: S_base00
+XTerm*color12: S_base0
+XTerm*color13: S_violet
+XTerm*color14: S_base1
+XTerm*color15: S_base3

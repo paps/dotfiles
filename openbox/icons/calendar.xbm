@@ -1,0 +1,4 @@
+#define calendar_width 8
+#define calendar_height 8
+static unsigned char calendar_bits[] = {
+   0x54, 0xaa, 0x82, 0xaa, 0x82, 0xaa, 0x82, 0xfe };

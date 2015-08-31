@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openbox_menu xmlns="http://openbox.org/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://openbox.org/                 file:///usr/share/openbox/menu.xsd">
+	<menu id="root-menu" label="Openbox 3">
+		<item label="Tmux">
+			<action name="Execute">
+				<execute>
+					xterm -e 'tmux new -s "$USER - $$"'
+				</execute>
+			</action>
+		</item>
+		<item label="Xterm">
+			<action name="Execute">
+				<execute>
+					xterm
+				</execute>
+			</action>
+		</item>
+		<item label="Firefox">
+			<action name="Execute">
+				<execute>
+					firefox
+				</execute>
+			</action>
+		</item>
+		<separator/>
+		<item label="Pause notifications">
+			<action name="Execute">
+				<execute>
+					sh -c "notify-send '__pause__' 'Notifications paused' ; xsetroot -solid '#333333' ; sleep 0.5 ; killall -SIGUSR1 dunst"
+				</execute>
+			</action>
+		</item>
+		<item label="Resume notifications">
+			<action name="Execute">
+				<command>
+					sh -c "killall -SIGUSR2 dunst ; notify-send '__pause__' 'Notifications resumed' ; xsetroot -solid black"
+				</command>
+			</action>
+		</item>
+		<separator/>
+		<item label="Reload X cfg">
+			<action name="Execute">
+				<execute>
+					~/.paps/openbox/xcfg.sh
+				</execute>
+			</action>
+		</item>
+		<item label="Force lock">
+			<action name="Execute">
+				<execute>
+					xscreensaver-command -lock
+				</execute>
+			</action>
+		</item>
+		<item label="Exit X">
+			<action name="Exit"/>
+		</item>
+	</menu>
+</openbox_menu>

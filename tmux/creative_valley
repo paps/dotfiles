@@ -1,0 +1,93 @@
+window misc
+
+12
+34
+34
+56
+
+foc
+dir ~
+4 foc
+1 run l
+2 run l
+3 run ps u
+4 run ll
+5 run l
+6 run l
+
+
+
+window paps-conf
+
+11112222
+11112222
+11112222
+33333333
+33333333
+33333333
+33333333
+33333333
+33333333
+44445555
+44445555
+44445555
+
+dir ~/paps-conf-box
+3 foc
+1 run l
+2 run ll
+3 run vim -c vsplit -c NERDTree
+4 run git log --reverse -20 | cat -
+5 run git st
+
+
+
+window phantombuster
+
+11112222
+11112222
+11112222
+33333333
+33333333
+33333333
+33333333
+33333333
+33333333
+66667777
+44448888
+44445555
+
+dir ~/phantombuster
+3 foc
+1 run git log --reverse -20 | cat -
+2 run git st
+3 run vim -c vsplit -c NERDTree
+4 run echo "./supervisor.sh"
+5 run echo "./coffee.sh dev"
+6 run l
+7 run ll
+8 run echo "docker"
+
+
+window adopte
+
+11112222
+11112222
+11112222
+33333333
+33333333
+33333333
+33333333
+33333333
+33333333
+44445555
+44445555
+44445555
+
+dir ~/adopte-server
+3 foc
+1 run l
+2 run ll
+3 run vim -c vsplit -c NERDTree
+4 run git log --reverse -20 | cat -
+5 run git st

@@ -21,8 +21,8 @@ Optimal setup procedure:
 * `sudo apt-get install vim`
 * `sudo vim /etc/apt/sources.list`
 
-	deb http://[mirror_url]/debian/ sid main contrib non-free
-	deb http://[mirror_url]/debian/ experimental main contrib non-free
+    deb http://[mirror_url]/debian/ sid main contrib non-free
+    deb http://[mirror_url]/debian/ experimental main contrib non-free
 
 * `sudo apt-get update`
 * `sudo apt-get dist-upgrade`

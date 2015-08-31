@@ -1,0 +1,6 @@
+ReadTags = yes
+ShowHiddenFiles = no
+HideFileExtension = no
+ShowFormat = yes
+Theme = transparent-background
+XTermTheme = transparent-background
