@@ -399,32 +399,32 @@
     <!-- Keybindings for volume and music control -->
     <keybind key="C-A-bracketleft">
       <action name="Execute">
-        <command>~/.paps/bar/volume.sh -</command>
+        <command>~/.paps/openbox/volume.sh -</command>
       </action>
     </keybind>
     <keybind key="C-A-bracketright">
       <action name="Execute">
-        <command>~/.paps/bar/volume.sh +</command>
+        <command>~/.paps/openbox/volume.sh +</command>
       </action>
     </keybind>
     <keybind key="C-A-backslash">
       <action name="Execute">
-        <command>~/.paps/bar/volume.sh m</command>
+        <command>~/.paps/openbox/volume.sh m</command>
       </action>
     </keybind>
     <keybind key="XF86AudioLowerVolume">
       <action name="Execute">
-        <command>~/.paps/bar/volume.sh -</command>
+        <command>~/.paps/openbox/volume.sh -</command>
       </action>
     </keybind>
     <keybind key="XF86AudioRaiseVolume">
       <action name="Execute">
-        <command>~/.paps/bar/volume.sh +</command>
+        <command>~/.paps/openbox/volume.sh +</command>
       </action>
     </keybind>
     <keybind key="XF86AudioMute">
       <action name="Execute">
-        <command>~/.paps/bar/volume.sh m</command>
+        <command>~/.paps/openbox/volume.sh m</command>
       </action>
     </keybind>
   </keyboard>
@@ -682,12 +682,12 @@
     <context name="Desktop">
       <mousebind button="Up" action="Click">
         <action name="Execute">
-          <command>~/.paps/bar/volume.sh +</command>
+          <command>~/.paps/openbox/volume.sh +</command>
         </action>
       </mousebind>
       <mousebind button="Down" action="Click">
         <action name="Execute">
-          <command>~/.paps/bar/volume.sh -</command>
+          <command>~/.paps/openbox/volume.sh -</command>
         </action>
       </mousebind>
       <mousebind button="A-Up" action="Click">
@@ -721,11 +721,6 @@
       <mousebind button="Left" action="Press">
         <action name="ShowMenu">
           <menu>client-list-combined-menu</menu>
-        </action>
-      </mousebind>
-      <mousebind button="Middle" action="Press">
-        <action name="Execute">
-          <command>pkill -USR2 -f bar/notifications_dzen2.py</command>
         </action>
       </mousebind>
       <mousebind button="Right" action="Press">

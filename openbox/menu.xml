@@ -3,23 +3,30 @@
 	<menu id="root-menu" label="Openbox 3">
 		<item label="Tmux">
 			<action name="Execute">
-				<execute>
+				<command>
 					xterm -e 'tmux new -s "$USER - $$"'
-				</execute>
+				</command>
 			</action>
 		</item>
 		<item label="Xterm">
 			<action name="Execute">
-				<execute>
+				<command>
 					xterm
-				</execute>
+				</command>
 			</action>
 		</item>
 		<item label="Firefox">
 			<action name="Execute">
-				<execute>
+				<command>
 					firefox
-				</execute>
+				</command>
+			</action>
+		</item>
+		<item label="Thunar">
+			<action name="Execute">
+				<command>
+					tunar
+				</command>
 			</action>
 		</item>
 		<separator/>
@@ -40,16 +47,16 @@
 		<separator/>
 		<item label="Reload X cfg">
 			<action name="Execute">
-				<execute>
+				<command>
 					~/.paps/openbox/xcfg.sh
-				</execute>
+				</command>
 			</action>
 		</item>
 		<item label="Force lock">
 			<action name="Execute">
-				<execute>
+				<command>
 					xscreensaver-command -lock
-				</execute>
+				</command>
 			</action>
 		</item>
 		<item label="Exit X">

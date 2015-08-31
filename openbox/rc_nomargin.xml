@@ -40,7 +40,7 @@
                   'Active' - where the active window is -->
   </placement>
   <theme>
-    <name>Onyx-Citrus</name>
+    <name>modern-grey</name>
     <titleLayout>NLC</titleLayout>
     <!--
       available characters are NDSLIMC, each can occur at most once.
@@ -55,8 +55,8 @@
     <keepBorder>yes</keepBorder>
     <animateIconify>no</animateIconify>
     <font place="ActiveWindow">
-      <name>Monaco</name>
-      <size>8</size>
+      <name>ProggyCleanTT</name>
+      <size>12</size>
       <!-- font size in points -->
       <weight>Normal</weight>
       <!-- 'bold' or 'normal' -->
@@ -64,8 +64,8 @@
       <!-- 'italic' or 'normal' -->
     </font>
     <font place="InactiveWindow">
-      <name>Monaco</name>
-      <size>8</size>
+      <name>ProggyCleanTT</name>
+      <size>12</size>
       <!-- font size in points -->
       <weight>Normal</weight>
       <!-- 'bold' or 'normal' -->
@@ -73,8 +73,8 @@
       <!-- 'italic' or 'normal' -->
     </font>
     <font place="MenuHeader">
-      <name>Monaco</name>
-      <size>8</size>
+      <name>ProggyCleanTT</name>
+      <size>12</size>
       <!-- font size in points -->
       <weight>Normal</weight>
       <!-- 'bold' or 'normal' -->
@@ -82,8 +82,8 @@
       <!-- 'italic' or 'normal' -->
     </font>
     <font place="MenuItem">
-      <name>Monaco</name>
-      <size>8</size>
+      <name>ProggyCleanTT</name>
+      <size>12</size>
       <!-- font size in points -->
       <weight>Normal</weight>
       <!-- 'bold' or 'normal' -->
@@ -91,8 +91,8 @@
       <!-- 'italic' or 'normal' -->
     </font>
     <font place="ActiveOnScreenDisplay">
-      <name>Monaco</name>
-      <size>8</size>
+      <name>ProggyCleanTT</name>
+      <size>12</size>
       <!-- font size in points -->
       <weight>Bold</weight>
       <!-- 'bold' or 'normal' -->
@@ -100,8 +100,8 @@
       <!-- 'italic' or 'normal' -->
     </font>
     <font place="InactiveOnScreenDisplay">
-      <name>Monaco</name>
-      <size>8</size>
+      <name>ProggyCleanTT</name>
+      <size>12</size>
       <!-- font size in points -->
       <weight>Normal</weight>
       <!-- 'bold' or 'normal' -->
@@ -118,7 +118,7 @@
 
        use obconf if you want to change these without having to log out
        and back in -->
-    <number>4</number>
+    <number>2</number>
     <firstdesk>1</firstdesk>
     <names>
       <name>1</name>
@@ -391,16 +391,6 @@
         <command>gnome-calculator</command>
       </action>
     </keybind>
-    <keybind key="C-A-r">
-      <action name="Execute">
-        <command>pkill -USR2 -f bar/notifications_dzen2.py</command>
-      </action>
-    </keybind>
-    <keybind key="C-A-e">
-      <action name="Execute">
-        <command>pkill -USR1 -f bar/mail_checker.py</command>
-      </action>
-    </keybind>
     <keybind key="XF86Calculator">
       <action name="Execute">
         <command>gnome-calculator</command>
@@ -409,37 +399,32 @@
     <!-- Keybindings for volume and music control -->
     <keybind key="C-A-bracketleft">
       <action name="Execute">
-        <command>~/.paps/bar/volume.sh -</command>
+        <command>~/.paps/openbox/volume.sh -</command>
       </action>
     </keybind>
     <keybind key="C-A-bracketright">
       <action name="Execute">
-        <command>~/.paps/bar/volume.sh +</command>
+        <command>~/.paps/openbox/volume.sh +</command>
       </action>
     </keybind>
     <keybind key="C-A-backslash">
       <action name="Execute">
-        <command>~/.paps/bar/volume.sh m</command>
+        <command>~/.paps/openbox/volume.sh m</command>
       </action>
     </keybind>
     <keybind key="XF86AudioLowerVolume">
       <action name="Execute">
-        <command>~/.paps/bar/volume.sh -</command>
+        <command>~/.paps/openbox/volume.sh -</command>
       </action>
     </keybind>
     <keybind key="XF86AudioRaiseVolume">
       <action name="Execute">
-        <command>~/.paps/bar/volume.sh +</command>
+        <command>~/.paps/openbox/volume.sh +</command>
       </action>
     </keybind>
     <keybind key="XF86AudioMute">
       <action name="Execute">
-        <command>~/.paps/bar/volume.sh m</command>
-      </action>
-    </keybind>
-    <keybind key="C-A-p">
-      <action name="Execute">
-        <command>mocp -G</command>
+        <command>~/.paps/openbox/volume.sh m</command>
       </action>
     </keybind>
   </keyboard>
@@ -697,12 +682,12 @@
     <context name="Desktop">
       <mousebind button="Up" action="Click">
         <action name="Execute">
-          <command>~/.paps/bar/volume.sh +</command>
+          <command>~/.paps/openbox/volume.sh +</command>
         </action>
       </mousebind>
       <mousebind button="Down" action="Click">
         <action name="Execute">
-          <command>~/.paps/bar/volume.sh -</command>
+          <command>~/.paps/openbox/volume.sh -</command>
         </action>
       </mousebind>
       <mousebind button="A-Up" action="Click">
@@ -733,19 +718,6 @@
         <action name="Focus"/>
         <action name="Raise"/>
       </mousebind>
-    </context>
-    <context name="Root">
-      <!-- Menus -->
-      <mousebind button="Left" action="Press">
-        <action name="ShowMenu">
-          <menu>client-list-combined-menu</menu>
-        </action>
-      </mousebind>
-      <mousebind button="Middle" action="Press">
-        <action name="Execute">
-          <command>pkill -USR2 -f bar/notifications_dzen2.py</command>
-        </action>
-      </mousebind>
       <mousebind button="Left" action="Press">
         <action name="ShowMenu">
           <menu>client-list-combined-menu</menu>
@@ -756,6 +728,9 @@
           <menu>root-menu</menu>
         </action>
       </mousebind>
+    </context>
+    <context name="Root">
+      <!-- Menus -->
     </context>
     <context name="MoveResize">
       <mousebind button="Up" action="Click">
