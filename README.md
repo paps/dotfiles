@@ -24,12 +24,11 @@ SSH
 * `git clone git@[box]:dotssh`
 	* `./setup.sh [absolute-path-to-dotssh]`
 
-Install this repository
------------------------
+Install the dotfiles
+--------------------
 
-* Clone it: `git clone git@github.com:paps/dotfiles.git`
+* `git clone git@github.com:paps/dotfiles.git`
 * Create all the required links: `./setup.sh [absolute-path-to-dotfiles]`
-* Enter `desktop`
 
 Shell
 -----
