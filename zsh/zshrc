@@ -11,7 +11,6 @@ alias sl='ls'
 alias view='view -n' # no .swp files when viewing only
 alias grep='grep --color=auto'
 alias open='python ~/.paps/scripts/open.py -i'
-alias fork='python ~/.paps/scripts/open.py -f'
 alias rm='rm -i'
 alias du='du -sh'
 alias df='df -h'

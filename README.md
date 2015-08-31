@@ -45,6 +45,11 @@ Vim
 * For installing a new plugin added in `bundles.vim`: `vim +PluginInstall`
 * For removing unused plugins: `vim +PluginClean`
 
+Local binaries
+--------------
+
+Add local binaries in `~/.paps/bin` (it's in $PATH).
+
 Desktop / Laptop
 ----------------
 
