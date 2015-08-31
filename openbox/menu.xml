@@ -25,7 +25,7 @@
 		<item label="Thunar">
 			<action name="Execute">
 				<command>
-					tunar
+					thunar
 				</command>
 			</action>
 		</item>

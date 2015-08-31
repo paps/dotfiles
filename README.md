@@ -6,9 +6,9 @@ My dotfiles for Debian Sid.
 Packages
 --------
 
-* Always install: `htop vim git most screen zsh tmux p7zip-full unrar tree tig pv pydf curl zsh-doc vim-doc`
+* Always install: `htop vim git most screen zsh tmux tree curl`
 * For desktops/laptops:
-	* Install: `nmap zenmap vim-gtk whiptail obconf obmenu firefox xterm xscreensaver dmenu feh numlockx conky-all scrot x11-xserver-utils acpi alsa-utils gksu stalonetray moc fontconfig vlc gitk xfonts-terminus libx11-dev build-essential xclip mplayer python3 libdatetime-perl gsimplecal gcalctool zenity virt-manager spice-client-gtk python-spice-client-gtk dunst geeqie geany thunar thunar-volman thunar-archive-plugin thunar-media-tags-plugin thunar-gtkhash file-roller unar arj lhasa rar lzip lzop ncompress rzip unace unalz zoo`
+	* Install: `p7zip-full unrar tig pv pydf curl zsh-doc vim-doc nmap zenmap vim-gtk whiptail obconf obmenu firefox xterm xscreensaver dmenu feh numlockx conky-all scrot x11-xserver-utils acpi alsa-utils gksu stalonetray moc fontconfig vlc gitk xfonts-terminus libx11-dev build-essential xclip mplayer python3 libdatetime-perl gsimplecal gcalctool zenity virt-manager spice-client-gtk python-spice-client-gtk dunst geeqie geany thunar thunar-volman thunar-archive-plugin thunar-media-tags-plugin thunar-gtkhash file-roller unar arj lhasa rar lzip lzop ncompress rzip unace unalz zoo`
 	* Remove: `notification-daemon`
 
 SSH
