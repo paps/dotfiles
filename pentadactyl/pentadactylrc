@@ -30,3 +30,21 @@ set! middlemouse.contentLoadURL=false
 set! browser.download.useDownloadDir=false
 hi FontFixed -a font: 12px "Monaco" !important;
 set titlestring=""
+
+style -name=better-borders chrome://* <<EOM
+
+#nav-bar {
+	border: 1px solid #000000 !important;
+	background-color: #000000 !important;
+}
+
+#addon-bar {
+	border: 1px solid #000000 !important;
+	background-color: #000000 !important;
+}
+
+.treestyletab-tabbar-toolbar {
+	border-right: 1px solid #000000 !important;
+}
+
+EOM
