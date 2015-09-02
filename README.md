@@ -6,9 +6,9 @@ My dotfiles for Debian Sid.
 Packages
 --------
 
-* Always install: `htop vim git most screen zsh tmux tree curl`
+* Always install: `htop vim git zsh tmux tree curl`
 * For desktops/laptops:
-	* Install: `p7zip-full unrar tig pv pydf curl zsh-doc vim-doc nmap zenmap vim-gtk whiptail obconf obmenu firefox xterm xscreensaver dmenu feh numlockx conky-all scrot x11-xserver-utils acpi alsa-utils gksu stalonetray moc fontconfig vlc gitk xfonts-terminus libx11-dev build-essential xclip mplayer python3 libdatetime-perl gsimplecal gcalctool zenity virt-manager spice-client-gtk python-spice-client-gtk dunst geeqie geany thunar thunar-volman thunar-archive-plugin thunar-media-tags-plugin thunar-gtkhash file-roller unar arj lhasa rar lzip lzop ncompress rzip unace unalz zoo`
+	* Add: `p7zip-full unrar tig pv pydf zsh-doc vim-gtk vim-doc nmap zenmap whiptail obconf obmenu firefox xterm xscreensaver dmenu feh numlockx conky-all scrot x11-xserver-utils acpi alsa-utils gksu stalonetray moc fontconfig vlc gitk xfonts-terminus libx11-dev build-essential xclip mplayer python3 libdatetime-perl gsimplecal gcalctool zenity virt-manager spice-client-gtk python-spice-client-gtk dunst geeqie geany thunar thunar-volman thunar-archive-plugin thunar-media-tags-plugin thunar-gtkhash file-roller unar arj lhasa rar lzip lzop ncompress rzip unace unalz zoo`
 	* Remove: `notification-daemon`
 
 SSH
@@ -105,7 +105,7 @@ Dual monitors (two openbox processes)
 
 ### Mouse switcher
 
-* `~/.paps/make_switchscreen.sh`
+* `~/.paps/openbox/make_switchscreen.sh`
 * Use Ctrl-Alt-Tab to switch screens
 
 ### Order of displays
