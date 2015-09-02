@@ -105,7 +105,7 @@ Dual monitors (two openbox processes)
 
 ### Mouse switcher
 
-* `~/.paps/make_switchscreen.sh`
+* `~/.paps/openbox/make_switchscreen.sh`
 * Use Ctrl-Alt-Tab to switch screens
 
 ### Order of displays
