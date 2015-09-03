@@ -114,6 +114,13 @@ if [ $xinstall = "desktop" ]; then
     rm -ivr ~/.moc/config
     ln -sT ~/.paps/moc/config ~/.moc/config
 
+    # moc
+    mkdir -p ~/.config/gsimplecal
+
+    echo "Link: ~/.config/gsimplecal/config -> ~/.paps/gsimplecal/config"
+    rm -ivr ~/.config/gsimplecal/config
+    ln -sT ~/.paps/gsimplecal/config ~/.config/gsimplecal/config
+
 fi
 
 # vim

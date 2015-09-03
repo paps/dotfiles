@@ -50,7 +50,7 @@ Local binaries
 
 Add local binaries in `~/.paps/bin` (it's in $PATH).
 
-Desktop / Laptop
+Desktops/Laptops
 ----------------
 
 ### From nothing to a minimal, configurable setup
@@ -59,7 +59,7 @@ Debian testing netinst from http://cdimage.debian.org/cdimage/weekly-builds/
 
 Easiest way to make a bootable usb disk: `sudo umount [...]` then `sudo cp debian.iso /dev/sdX`
 
-Install settings: full disk encryption, no root password, user `paps` in sudoers, no additionnal packages except "Standard system utilities", "SSH server" and optionally "Laptop" (if available).
+Install settings: full disk encryption, no root password, user `paps` in sudoers, `en_US.utf8` locale, `American English` keyboard, no additionnal packages except `Standard system utilities`, `SSH server` and optionally `Laptop` (if available).
 
 Optimal setup procedure:
 
@@ -84,9 +84,9 @@ Optimal setup procedure:
 * Install LastPass: https://lastpass.com/download
 * LastPass configuration: "Automatically Logoff when all browsers are closed after 0 mins", disable all notifications
 * Synchronize Firefox
-* Bookmark Tab extension configuration: set body background-color to #dddddd and body max-width to 250px, replace Tahoma fonts with Monaco, set "Source" to "Menu" only and check "Load overview" and "Preserve state of opened folders", uncheck all other checkboxes
-* Tree Style Tab: disable "narrow scrollbar", "collapse/expand trees" and "indent tabs", set theme to "Plain", set Tree twisties to "None", disable all context menu options except "Close this tree" and "Fix position and width", uncheck "Show tree contents in tooltips"
-* Search engines: `:dia searchengines`, remove all search engines except Google (set `g` as keyword) and Wikipedia (set `w` as keyword) (add other search engines and keywords as needed)
+* Bookmark Tab configuration: set body background-color to `#dddddd` and body max-width to `250px`, replace `Tahoma` fonts with `Monaco`, set "Source" to "Menu" only and check "Load overview" and "Preserve state of opened folders", uncheck all other checkboxes
+* TreeStyleTab configuration: disable "narrow scrollbar", "collapse/expand trees" and "indent tabs", set theme to "Plain", set Tree twisties to "None", disable all context menu options except "Close this tree" and "Fix position and width", uncheck "Show tree contents in tooltips"
+* Search engines configuration: `:dia searchengines`, remove all search engines except Google (set `g` as keyword) and Wikipedia (set `w` as keyword) (add other search engines and keywords as needed)
 
 ### Session startup script
 
@@ -95,6 +95,12 @@ Optional startup script: `~/.paps/scripts/local.sh` (ignored by git, executed by
 ### Disabling locking
 
 To prevent xscreensaver from automatically locking the session: `touch ~/.paps/x/do_not_lock` (then restart X). For convenience, "Force lock" from the Openbox context menu still locks the session.
+
+### Calendar & calculator
+
+* `dpkg-reconfigure locales`, add `fr_FR.utf8` if not present, dot not change default locale (should be `None`)
+* `Ctrl-Alt-C` to open calendar
+* `Ctrl-Alt-Y` to open calculator
 
 Dual monitors (two openbox processes)
 -------------------------------------
@@ -106,7 +112,7 @@ Dual monitors (two openbox processes)
 ### Mouse switcher
 
 * `~/.paps/openbox/make_switchscreen.sh`
-* Use Ctrl-Alt-Tab to switch screens
+* Use `Ctrl-Alt-Tab` to switch screens
 
 ### Order of displays
 
