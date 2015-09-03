@@ -114,12 +114,19 @@ if [ $xinstall = "desktop" ]; then
     rm -ivr ~/.moc/config
     ln -sT ~/.paps/moc/config ~/.moc/config
 
-    # moc
+    # gsimplecal
     mkdir -p ~/.config/gsimplecal
 
     echo "Link: ~/.config/gsimplecal/config -> ~/.paps/gsimplecal/config"
     rm -ivr ~/.config/gsimplecal/config
     ln -sT ~/.paps/gsimplecal/config ~/.config/gsimplecal/config
+
+    # parcellite
+    mkdir -p ~/.config/parcellite
+
+    echo "Link: ~/.config/parcellite/parcelliterc -> ~/.paps/parcellite/parcelliterc"
+    rm -ivr ~/.config/parcellite/parcelliterc
+    ln -sT ~/.paps/parcellite/parcelliterc ~/.config/parcellite/parcelliterc
 
 fi
 
