@@ -8,7 +8,7 @@ Packages
 
 * Always install: `htop vim git zsh tmux tree curl`
 * For desktops/laptops:
-	* Add: `p7zip-full unrar tig pv pydf zsh-doc vim-gtk vim-doc nmap zenmap whiptail obconf obmenu firefox xterm xscreensaver dmenu feh numlockx conky-all scrot x11-xserver-utils acpi alsa-utils gksu stalonetray moc fontconfig vlc gitk xfonts-terminus libx11-dev build-essential xclip mplayer python3 libdatetime-perl gsimplecal gcalctool zenity virt-manager spice-client-gtk python-spice-client-gtk dunst geeqie geany thunar thunar-volman thunar-archive-plugin thunar-media-tags-plugin thunar-gtkhash file-roller unar arj lhasa rar lzip lzop ncompress rzip unace unalz zoo parcellite`
+	* Add: `p7zip-full unrar tig pv pydf zsh-doc vim-gtk vim-doc nmap zenmap whiptail obconf obmenu firefox xterm xscreensaver dmenu feh numlockx conky-all scrot x11-xserver-utils acpi alsa-utils gksu stalonetray moc fontconfig vlc gitk xfonts-terminus libx11-dev build-essential xclip mplayer python3 libdatetime-perl gsimplecal gcalctool zenity virt-manager spice-client-gtk python-spice-client-gtk dunst geeqie geany thunar thunar-volman thunar-archive-plugin thunar-media-tags-plugin thunar-gtkhash file-roller unar arj lhasa rar lzip lzop ncompress rzip unace unalz zoo parcellite flashplugin-nonfree ttf-mscorefonts-installer libnotify-bin`
 	* Remove: `notification-daemon`
 
 SSH
@@ -87,6 +87,7 @@ Optimal setup procedure:
 * Bookmark Tab configuration: set body background-color to `#dddddd` and body max-width to `250px`, replace `Tahoma` fonts with `Monaco`, set "Source" to "Menu" only and check "Load overview" and "Preserve state of opened folders", uncheck all other checkboxes
 * TreeStyleTab configuration: disable "narrow scrollbar", "collapse/expand trees" and "indent tabs", set theme to "Plain", set Tree twisties to "None", disable all context menu options except "Close this tree" and "Fix position and width", uncheck "Show tree contents in tooltips"
 * Search engines configuration: `:dia searchengines`, remove all search engines except Google (set `g` as keyword) and Wikipedia (set `w` as keyword) (add other search engines and keywords as needed)
+* Desktop notifications configuration: disable sounds, enter sync key
 
 ### Session startup script
 
