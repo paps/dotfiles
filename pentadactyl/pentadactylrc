@@ -28,6 +28,8 @@ set! general.smoothScroll=false
 set! nglayout.enable_drag_images=false
 set! middlemouse.contentLoadURL=false
 set! browser.download.useDownloadDir=false
+set! browser.safebrowsing.enabled=false
+set! browser.safebrowsing.malware.enabled=false
 hi FontFixed -a font: 12px "Monaco" !important;
 set titlestring=""
 
