@@ -17,7 +17,7 @@ dir ~
 
 
 
-window paps-conf
+window dotfiles
 
 11112222
 11112222
@@ -32,7 +32,7 @@ window paps-conf
 44445555
 44445555
 
-dir ~/paps-conf-box
+dir ~/dotfiles
 3 foc
 1 run l
 2 run ll
