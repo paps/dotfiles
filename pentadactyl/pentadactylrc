@@ -46,7 +46,7 @@ style -name=better-borders chrome://* <<EOM
 }
 
 .treestyletab-tabbar-toolbar {
-	border-right: 1px solid #000000 !important;
+	border-right: 1px solid #9e9a91 !important;
 }
 
 EOM

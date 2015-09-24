@@ -45,6 +45,11 @@ Vim
 * For installing a new plugin added in `bundles.vim`: `vim +PluginInstall`
 * For removing unused plugins: `vim +PluginClean`
 
+New Relic
+---------
+
+Go to https://newrelic.com, login, go to "Servers" and click "Add more".
+
 Local binaries
 --------------
 
@@ -88,6 +93,7 @@ Optimal setup procedure:
 * TreeStyleTab configuration: disable "narrow scrollbar", "collapse/expand trees" and "indent tabs", set theme to "Plain", set Tree twisties to "None", disable all context menu options except "Close this tree" and "Fix position and width", uncheck "Show tree contents in tooltips"
 * Search engines configuration: `:dia searchengines`, remove all search engines except Google (set `g` as keyword) and Wikipedia (set `w` as keyword) (add other search engines and keywords as needed)
 * Desktop notifications configuration: disable sounds, enter sync key
+* Rescue Time configuration: enter email, uncheck "already using the full rescue time app"
 
 ### Session startup script
 
