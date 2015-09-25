@@ -57,6 +57,15 @@ ${image $HOME/.paps/openbox/icons/net_up_02.png -p 561,1}\
 ${goto 579}${upspeedf eth1}KiB ${upspeedgraph eth1 10,30}\
 \
 ${else}\
+${if_up enp3s0}\
+\
+${image $HOME/.paps/openbox/icons/net_down_01.png -p 423,1}\
+${goto 441}${downspeedf enp3s0}KiB ${downspeedgraph enp3s0 10,30}\
+\
+${image $HOME/.paps/openbox/icons/net_up_02.png -p 561,1}\
+${goto 579}${upspeedf enp3s0}KiB ${upspeedgraph enp3s0 10,30}\
+\
+${else}\
 \
 ${image $HOME/.paps/openbox/icons/net_down_01.png -p 423,1}\
 ${goto 441}${downspeedf}KiB ${downspeedgraph 10,30}\
@@ -64,6 +73,7 @@ ${goto 441}${downspeedf}KiB ${downspeedgraph 10,30}\
 ${image $HOME/.paps/openbox/icons/net_up_02.png -p 561,1}\
 ${goto 579}${upspeedf}KiB ${upspeedgraph 10,30}\
 \
+${endif}\
 ${endif}\
 ${endif}\
 ${endif}\
