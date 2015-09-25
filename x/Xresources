@@ -46,17 +46,17 @@ Xcursor.theme: neutral
 !!dzen2
 dzen2.font: -misc-termsyn-medium-r-normal--11-79-100-100-c-60-iso8859-1
 
-!!Xterm
-XTerm*geometry: 120x35
-XTerm*internalBorder: 0
-XTerm*borderColor: #000000
-XTerm*borderWidth: 0
-XTerm*font: -*-ttyp0-medium-r-*-*-14-*-*-*-*-*-*-*
-XTerm*boldFont: -*-ttyp0-bold-r-*-*-14-*-*-*-*-*-*-*
-XTerm*title: xterm
-XTerm*termName: xterm-256color
-XTerm*pointerMode: 2
-XTerm*pointerShape: left_ptr
+!!UXterm
+UXTerm*geometry: 120x35
+UXTerm*internalBorder: 0
+UXTerm*borderColor: #000000
+UXTerm*borderWidth: 0
+UXTerm*font: -*-ttyp0-medium-r-*-*-14-*-*-*-*-*-*-*
+UXTerm*boldFont: -*-ttyp0-bold-r-*-*-14-*-*-*-*-*-*-*
+UXTerm*title: uxterm
+UXTerm*termName: xterm-256color
+UXTerm*pointerMode: 2
+UXTerm*pointerShape: left_ptr
 
 ! Solarized color scheme for the X Window System
 ! http://ethanschoonover.com/solarized
@@ -87,26 +87,26 @@ XTerm*pointerShape: left_ptr
 ! #define S_base1 #586e75
 ! #define S_base2 #073642
 ! #define S_base3 #002b36
-XTerm*background: S_base03
-XTerm*foreground: S_base0
-XTerm*fading: 40
-XTerm*fadeColor: S_base03
-XTerm*cursorColor: #ffffff
-XTerm*pointerColorBackground: S_base01
-XTerm*pointerColorForeground: #ffffff
-XTerm*color0: S_base02
-XTerm*color1: S_red
-XTerm*color2: S_green
-XTerm*color3: S_yellow
-XTerm*color4: S_blue
-XTerm*color5: S_magenta
-XTerm*color6: S_cyan
-XTerm*color7: S_base2
-XTerm*color9: S_orange
-XTerm*color8: S_base03
-XTerm*color10: S_base01
-XTerm*color11: S_base00
-XTerm*color12: S_base0
-XTerm*color13: S_violet
-XTerm*color14: S_base1
-XTerm*color15: S_base3
+UXTerm*background: S_base03
+UXTerm*foreground: S_base0
+UXTerm*fading: 40
+UXTerm*fadeColor: S_base03
+UXTerm*cursorColor: #ffffff
+UXTerm*pointerColorBackground: S_base01
+UXTerm*pointerColorForeground: #ffffff
+UXTerm*color0: S_base02
+UXTerm*color1: S_red
+UXTerm*color2: S_green
+UXTerm*color3: S_yellow
+UXTerm*color4: S_blue
+UXTerm*color5: S_magenta
+UXTerm*color6: S_cyan
+UXTerm*color7: S_base2
+UXTerm*color9: S_orange
+UXTerm*color8: S_base03
+UXTerm*color10: S_base01
+UXTerm*color11: S_base00
+UXTerm*color12: S_base0
+UXTerm*color13: S_violet
+UXTerm*color14: S_base1
+UXTerm*color15: S_base3

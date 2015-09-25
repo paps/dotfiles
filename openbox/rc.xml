@@ -360,7 +360,7 @@
     </keybind>
     <keybind key="C-A-t">
       <action name="Execute">
-        <command>xterm -e 'tmux new -s "$USER - $$"'</command>
+        <command>uxterm -e 'tmux new -s "$USER - $$"'</command>
       </action>
     </keybind>
     <keybind key="C-A-l">
@@ -787,7 +787,7 @@
     <application class="Opera">
       <decor>no</decor>
     </application>
-    <application class="XTerm">
+    <application class="UXTerm">
       <decor>no</decor>
       <keepBorder>yes</keepBorder>
     </application>

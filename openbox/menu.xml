@@ -4,14 +4,14 @@
 		<item label="Tmux">
 			<action name="Execute">
 				<command>
-					xterm -e 'tmux new -s "$USER - $$"'
+					uxterm -e 'tmux new -s "$USER - $$"'
 				</command>
 			</action>
 		</item>
-		<item label="Xterm">
+		<item label="UXterm">
 			<action name="Execute">
 				<command>
-					xterm
+					uxterm
 				</command>
 			</action>
 		</item>
