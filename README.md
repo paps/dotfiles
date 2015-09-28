@@ -90,6 +90,10 @@ Optimal setup procedure:
 * LastPass configuration:
 	* "Automatically Logoff when all browsers are closed after 0 mins"
 	* Disable all notifications
+	* Uncheck:
+		* "Highligh input boxes"
+		* "Show vault after login"
+		* "Automatically fill login information"
 * Synchronize Firefox
 * Install nightly Pentadactyl: http://5digits.org/pentadactyl/
 * TreeStyleTab configuration:
