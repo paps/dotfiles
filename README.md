@@ -87,20 +87,29 @@ Optimal setup procedure:
 ### Firefox
 
 * Install LastPass: https://lastpass.com/download
-* LastPass configuration: "Automatically Logoff when all browsers are closed after 0 mins", disable all notifications
+* LastPass configuration:
+	* "Automatically Logoff when all browsers are closed after 0 mins"
+	* Disable all notifications
 * Synchronize Firefox
-* Install Pentadactyl: http://5digits.org/pentadactyl/
-* Bookmark Tab configuration: set body background-color to `#dddddd` and body max-width to `250px`, replace `Tahoma` fonts with `Monaco`, set "Source" to "Menu" only and check "Load overview" and "Preserve state of opened folders", uncheck all other checkboxes
+* Install nightly Pentadactyl: http://5digits.org/pentadactyl/
 * TreeStyleTab configuration:
-	* *Disable* "narrow scrollbar", "collapse/expand trees", "indent tabs"
+	* Disable "narrow scrollbar", "collapse/expand trees", "indent tabs"
 	* Theme: "Flat"
 	* Tree twisties: "None"
-	* *Disable all context menu options* except "Close this tree" and "Fix position and width"
-	* *Disable* "Show tree contents in tooltips"
+	* Disable all context menu options except "Close this tree" and "Fix position and width"
+	* Disable "Show tree contents in tooltips"
 	* Auto hide: set "Show tab bar always" for normal window mode *and* full screen mode
-* Search engines configuration: `:dia searchengines`, remove all search engines except Google (set `g` as keyword) and Wikipedia (set `w` as keyword) (add other search engines and keywords as needed)
-* Desktop notifications configuration: disable sounds, enter sync key
-* Rescue Time configuration: enter email, uncheck "already using the full rescue time app"
+* Search engines configuration:
+	* `:dia searchengines`
+	* Configure/add Google (set `g` as keyword)
+	* Configure the rest as needed
+	* In Preferences > Search: set Google as the default search engine
+* Desktop notifications configuration:
+	* Disable sounds
+	* Enter sync key
+* Rescue Time configuration:
+	* Uncheck "already using the full rescue time app"
+	* Enter email
 
 ### Session startup script
 
