@@ -229,3 +229,13 @@ au BufNewFile,BufRead *.ex5 setl filetype=cpp
 " allow project specific settings
 set secure
 set exrc
+
+" copy/paste to * register (to stop yanking when deleting)
+"noremap  y "*y
+"noremap  Y "*Y
+"noremap  p "*p
+"noremap  P "*P
+"vnoremap y "*y
+"vnoremap Y "*Y
+"vnoremap p "*p
+"vnoremap P "*P
