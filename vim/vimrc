@@ -56,7 +56,8 @@ set timeout timeoutlen=3000 ttimeoutlen=0 " compose real commands for 3 seconds,
 set shm+=I " don't care about intro text
 syntax on
 filetype plugin indent on
-let mapleader=","
+nnoremap <Space> <NOP>
+let mapleader="\<Space>"
 
 " reload files that changed
 set autoread

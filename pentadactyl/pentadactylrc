@@ -3,7 +3,7 @@
 loadplugins '\.(js|penta)$'
 group user
 map -b <C-q> <Nop>
-map -count -modes=n,v , <count><Leader>
+map -count -modes=n,v <Space> <count><Leader>
 map -count -modes=n,v <Down> -builtin <count>5<Down>
 map -count -modes=n,v <Up> -builtin <count>5<Up>
 map -count -modes=n,v gr <count>gT
