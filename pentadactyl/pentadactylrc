@@ -24,14 +24,21 @@ nmap -builtin <C-z> <C-v><C-z>
 set defsearch=g
 set guioptions=bCrs
 set scrollsteps=1
+hi FontFixed -a font: 12px "Monaco" !important;
+set titlestring=""
+
 set! general.smoothScroll=false
 set! nglayout.enable_drag_images=false
 set! middlemouse.contentLoadURL=false
 set! browser.download.useDownloadDir=false
 set! browser.safebrowsing.enabled=false
 set! browser.safebrowsing.malware.enabled=false
-hi FontFixed -a font: 12px "Monaco" !important;
-set titlestring=""
+
+set! media.mediasource.enabled=true
+set! media.mediasource.mp4.enabled=true
+set! media.mediasource.webm.enabled=true
+set! media.fragmented-mp4.exposed=true
+set! media.fragmented-mp4.ffmpeg.exposed=true
 
 style -name=better-borders chrome://* <<EOM
 
