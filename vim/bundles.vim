@@ -25,5 +25,6 @@ Bundle 'kchmck/vim-coffee-script'
 Bundle 'wavded/vim-stylus'
 Bundle 'digitaltoad/vim-jade'
 Bundle 'tpope/vim-sleuth'
+Bundle 'guns/xterm-color-table.vim'
 
 filetype plugin indent on " required!
