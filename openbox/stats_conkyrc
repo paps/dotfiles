@@ -12,20 +12,22 @@ draw_graph_borders yes
 format_human_readable yes
 use_spacer right
 max_text_width 0
-default_color adadad
 minimum_size 850
 maximum_width 850
 own_window yes
 own_window_type desktop
 double_buffer yes
 if_up_strictness address
+default_color adadad
+color1 444444
+color2 adadad
 
 TEXT
 ${image $HOME/.paps/openbox/icons/cpu.png -p 0,1}\
-${goto 18}${cpu}%${goto 43} ${cpugraph cpu0 10,30} ${freq_g}GHz\
+${goto 18}${cpu}%${goto 43} ${color1}${cpugraph cpu0 10,30 666666 adadad}${color2} ${freq_g}GHz\
 \
 ${image $HOME/.paps/openbox/icons/mem.png -p 140,1}\
-${goto 158}${mem}/${memmax} ${memgraph 10,30}\
+${goto 158}${mem}/${memmax} ${color1}${memgraph 10,30 666666 adadad}${color2}\
 \
 ${image $HOME/.paps/openbox/icons/empty.png -p 300,1}\
 ${goto 318}${swap}/${swapmax}\
@@ -33,45 +35,45 @@ ${goto 318}${swap}/${swapmax}\
 ${if_up usb0}\
 \
 ${image $HOME/.paps/openbox/icons/net_down_01.png -p 423,1}\
-${goto 441}${downspeedf usb0}KiB ${downspeedgraph usb0 10,30}\
+${goto 441}${downspeedf usb0}KiB ${color1}${downspeedgraph usb0 10,30 666666 adadad}${color2}\
 \
 ${image $HOME/.paps/openbox/icons/net_up_02.png -p 561,1}\
-${goto 579}${upspeedf usb0}KiB ${upspeedgraph usb0 10,30}\
+${goto 579}${upspeedf usb0}KiB ${color1}${upspeedgraph usb0 10,30 666666 adadad}${color2}\
 \
 ${else}\
 ${if_up wlan0}\
 \
 ${image $HOME/.paps/openbox/icons/net_down_01.png -p 423,1}\
-${goto 441}${downspeedf wlan0}KiB ${downspeedgraph wlan0 10,30}\
+${goto 441}${downspeedf wlan0}KiB ${color1}${downspeedgraph wlan0 10,30 666666 adadad}${color2}\
 \
 ${image $HOME/.paps/openbox/icons/net_up_02.png -p 561,1}\
-${goto 579}${upspeedf wlan0}KiB ${upspeedgraph wlan0 10,30}\
+${goto 579}${upspeedf wlan0}KiB ${color1}${upspeedgraph wlan0 10,30 666666 adadad}${color2}\
 \
 ${else}\
 ${if_up eth1}\
 \
 ${image $HOME/.paps/openbox/icons/net_down_01.png -p 423,1}\
-${goto 441}${downspeedf eth1}KiB ${downspeedgraph eth1 10,30}\
+${goto 441}${downspeedf eth1}KiB ${color1}${downspeedgraph eth1 10,30 666666 adadad}${color2}\
 \
 ${image $HOME/.paps/openbox/icons/net_up_02.png -p 561,1}\
-${goto 579}${upspeedf eth1}KiB ${upspeedgraph eth1 10,30}\
+${goto 579}${upspeedf eth1}KiB ${color1}${upspeedgraph eth1 10,30 666666 adadad}${color2}\
 \
 ${else}\
 ${if_up enp3s0}\
 \
 ${image $HOME/.paps/openbox/icons/net_down_01.png -p 423,1}\
-${goto 441}${downspeedf enp3s0}KiB ${downspeedgraph enp3s0 10,30}\
+${goto 441}${downspeedf enp3s0}KiB ${color1}${downspeedgraph enp3s0 10,30 666666 adadad}${color2}\
 \
 ${image $HOME/.paps/openbox/icons/net_up_02.png -p 561,1}\
-${goto 579}${upspeedf enp3s0}KiB ${upspeedgraph enp3s0 10,30}\
+${goto 579}${upspeedf enp3s0}KiB ${color1}${upspeedgraph enp3s0 10,30 666666 adadad}${color2}\
 \
 ${else}\
 \
 ${image $HOME/.paps/openbox/icons/net_down_01.png -p 423,1}\
-${goto 441}${downspeedf}KiB ${downspeedgraph 10,30}\
+${goto 441}${downspeedf}KiB ${color1}${downspeedgraph 10,30 666666 adadad}${color2}\
 \
 ${image $HOME/.paps/openbox/icons/net_up_02.png -p 561,1}\
-${goto 579}${upspeedf}KiB ${upspeedgraph 10,30}\
+${goto 579}${upspeedf}KiB ${color1}${upspeedgraph 10,30 666666 adadad}${color2}\
 \
 ${endif}\
 ${endif}\
