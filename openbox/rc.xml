@@ -52,7 +52,7 @@
       S: shade (roll up/down)
       D: omnipresent (on all desktops).
   -->
-    <keepBorder>yes</keepBorder>
+    <keepBorder>no</keepBorder>
     <animateIconify>no</animateIconify>
     <font place="ActiveWindow">
       <name>ProggyCleanTT</name>
@@ -151,22 +151,22 @@
      Many programs reserve space automatically, but you can use this in other
      cases. -->
   <margins>
-    <top>13</top>
+    <top>1</top>
     <bottom>0</bottom>
-    <left>0</left>
-    <right>0</right>
+    <left>34</left>
+    <right>1</right>
   </margins>
   <dock>
-    <position>TopLeft</position>
+    <position>Floating</position>
     <!-- (Top|Bottom)(Left|Right|)|Top|Bottom|Left|Right|Floating -->
-    <floatingX>0</floatingX>
-    <floatingY>264</floatingY>
+    <floatingX>-2</floatingX>
+    <floatingY>798</floatingY>
     <noStrut>yes</noStrut>
-    <stacking>Above</stacking>
+    <stacking>Below</stacking>
     <!-- 'Above', 'Normal', or 'Below' -->
-    <direction>Horizontal</direction>
+    <direction>Vertical</direction>
     <!-- 'Vertical' or 'Horizontal' -->
-    <autoHide>yes</autoHide>
+    <autoHide>no</autoHide>
     <hideDelay>300</hideDelay>
     <!-- in milliseconds (1000 = 1 second) -->
     <showDelay>50</showDelay>
@@ -338,7 +338,7 @@
     <!-- Dual X Display Ultimate Multi-Desktop Switcher (C) -->
     <keybind key="C-A-Tab">
       <action name="Execute">
-        <command>~/.paps/openbox/mouse-switchscreen</command>
+        <command>~/.paps/openbox/switch.sh</command>
       </action>
     </keybind>
     <!-- Keybindings for menu shortcuts -->

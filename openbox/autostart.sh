@@ -1,9 +1,8 @@
 xscreensaver &
-DISPLAY=:0.0 ~/.paps/openbox/xcfg.sh
+~/.paps/openbox/xcfg.sh
 conky -c ~/.paps/openbox/stats_conkyrc &
 conky -c ~/.paps/openbox/time_conkyrc &
-DISPLAY=:0.0 xsetroot -solid black
-DISPLAY=:0.1 xsetroot -solid black
+xsetroot -solid black
 stalonetray --dockapp-mode simple --icon-size=24 --kludges=force_icons_size &
 ~/.paps/openbox/volume_late.sh &
 

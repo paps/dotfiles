@@ -129,6 +129,7 @@ if has("gui_running")
 else
     set t_Co=256 " 256 colors terminal
     set background=dark " parameter for solarized theme
+    let g:solarized_termtrans=1
     colorscheme solarized
 endif
 highlight SpecialKey term=NONE cterm=NONE gui=NONE
