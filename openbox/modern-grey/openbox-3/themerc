@@ -118,7 +118,7 @@ osd.border.color: #000000
 
 osd.bg: flat solid border
 osd.bg.color: #3c3c3c
-osd.bg.border.color: #3c3c3c
+osd.bg.border.color: #000000
 
 osd.label.bg: parentrelative
 
