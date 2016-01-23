@@ -6,9 +6,11 @@ update_interval 1.0
 total_run_times 0
 font -misc-termsyn-medium-r-normal--11-79-100-100-c-60-iso8859-1
 alignment top_left
-gap_y 1650
+gap_y 800
 gap_x 1
 default_color adadad
+color1 444444
+color2 adadad
 draw_graph_borders yes
 format_human_readable yes
 use_spacer right
@@ -19,14 +21,14 @@ own_window_type desktop
 double_buffer yes
 
 TEXT
-${image $HOME/.paps/openbox/icons/calendar.png -p 0,0}
-${time %a}
- ${time %b}
-  ${time %d}
-
-
-
-${image $HOME/.paps/openbox/icons/clock.png -p 0,77}
+${image $HOME/.paps/openbox/icons/clock.png -p 0,0}
 ${time %H}
- ${time %M}
-  ${time %S}
+${time %M}
+${color1}${time %S}${color2}
+
+
+
+${image $HOME/.paps/openbox/icons/calendar.png -p 0,77}
+${time %a}
+${time %b}
+${time %d}

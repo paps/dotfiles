@@ -6,7 +6,7 @@ update_interval 2.0
 total_run_times 0
 font -misc-termsyn-medium-r-normal--11-79-100-100-c-60-iso8859-1
 alignment top_left
-gap_y 1100
+gap_y 954
 gap_x 1
 default_color adadad
 draw_graph_borders yes
@@ -100,6 +100,6 @@ ${endif}\
 
 
 
-${image $HOME/.paps/openbox/icons/bat_full_01.png -p 0,363}\
-${battery_short BAT1}
-${battery_time BAT1}
+#${image $HOME/.paps/openbox/icons/bat_full_01.png -p 0,363}\
+#${battery_short BAT1}
+#${battery_time BAT1}
