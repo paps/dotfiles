@@ -139,30 +139,11 @@ To prevent xscreensaver from automatically locking the session: `touch ~/.paps/x
 * `Ctrl-Alt-C` to open calendar
 * `Ctrl-Alt-Y` to open calculator
 
-Dual monitors (two openbox processes)
--------------------------------------
+Dual or triple monitor setup with open-source radeon
+----------------------------------------------------
 
-### Generate openbox configuration for the other display
+Dual monitor sample `xorg.conf`: `~/.paps/x/sample_radeon_dual_xorg.conf`
 
-`~/.paps/openbox/generate_nomargin_xml.sh`
+Triple monitor sample `xorg.conf`: `~/.paps/x/sample_radeon_triple_xorg.conf`
 
-### Mouse switcher
-
-* `~/.paps/openbox/make_switchscreen.sh`
-* Use `Ctrl-Alt-Tab` to switch screens
-
-### Order of displays
-
-Edit `~/.paps/x/display_order` to control the order in which Openbox sessions are started (maximum of two monitors for now).
-
-It must contain a single line with two space separated X display addresses.
-
-In practice, there are two possibilities for the content of this optional file:
-
-	:0.1 :0.0
-
-or
-
-	:0.0 :0.1
-
-This file is read by `~/.paps/x/xsession` and is ignored by git.
+The most important thing to note is the use of an absolute `Position` in every `Monitor` section.
