@@ -24,21 +24,26 @@ SSH
 * `git clone git@[box]:dotssh`
 	* `./setup.sh [absolute-path-to-dotssh]`
 
-Install and configure the dotfiles
-----------------------------------
+Install the dotfiles
+--------------------
 
 * `git clone git@github.com:paps/dotfiles.git`
 * `cd dotfiles`
-* `cp openbox/rc.xml.dist openbox/rc.xml`
+* Create all the required links: `./setup.sh [absolute-path-to-dotfiles]`
+
+Desktops/Laptops only: configure openbox, conky
+-----------------------------------------------
+
+* `cd dotfiles/openbox`
+* `cp rc.xml.dist rc.xml`
 	* Set the dock floating position (depends on the Xorg position and height of the left monitor)
-	* Optionally et the margins (a 34px left margin is necessary for conkies)
-* `cp openbox/time_conkyrc.dist openbox/time_conkyrc`
+	* Optionally et the margins (a 34px left margin is necessary for conky)
+* `cp time_conkyrc.dist time_conkyrc`
 	* Set `gap_y` (depends on the Xorg position of the left monitor, the default of 1 is fine in most cases)
-* `cp openbox/stats_conkyrc.dist openbox/stats_conkyrc`
+* `cp stats_conkyrc.dist stats_conkyrc`
 	* Set `gap_y` (depends on the Xorg position of the left monitor, should be the same as `time_conkyrc` + 154)
 	* Identify the network interface to monitor (`downspeedf`, `downspeedgraph`, `upspeedf` and `upspeedgraph`)
 	* If relevant, uncomment the battery section and identify it (`battery_short` and `battery_time`)
-* Create all the required links: `./setup.sh [absolute-path-to-dotfiles]`
 
 Shell
 -----
@@ -139,8 +144,7 @@ To prevent xscreensaver from automatically locking the session: `touch ~/.paps/x
 * `Ctrl-Alt-C` to open calendar
 * `Ctrl-Alt-Y` to open calculator
 
-Dual or triple monitor setup with open-source radeon
-----------------------------------------------------
+### Multi-head AMD setup (xserver-xorg-video-radeon package)
 
 Dual monitor sample `xorg.conf`: `~/.paps/x/sample_radeon_dual_xorg.conf`
 
