@@ -154,13 +154,13 @@
     <top>1</top>
     <bottom>0</bottom>
     <left>34</left>
-    <right>1</right>
+    <right>0</right>
   </margins>
   <dock>
     <position>Floating</position>
     <!-- (Top|Bottom)(Left|Right|)|Top|Bottom|Left|Right|Floating -->
     <floatingX>-2</floatingX>
-    <floatingY>1686</floatingY>
+    <floatingY>700</floatingY>
     <noStrut>yes</noStrut>
     <stacking>Below</stacking>
     <!-- 'Above', 'Normal', or 'Below' -->
