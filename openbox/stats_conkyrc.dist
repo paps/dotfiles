@@ -43,39 +43,9 @@ ${swap}
 ${color1}${swapbar 10,30 666666 adadad}${color2}
 ${swapmax}
 
-\
-${if_up usb0}\
-\
-${image $HOME/.paps/openbox/icons/net_down_01.png -p 423,1}\
-${goto 441}${downspeedf usb0}KiB ${color1}${downspeedgraph usb0 10,30 666666 adadad}${color2}\
-\
-${image $HOME/.paps/openbox/icons/net_up_02.png -p 561,1}\
-${goto 579}${upspeedf usb0}KiB ${color1}${upspeedgraph usb0 10,30 666666 adadad}${color2}\
-\
-${else}\
-${if_up wlan0}\
-\
-${image $HOME/.paps/openbox/icons/net_down_01.png -p 423,1}\
-${goto 441}${downspeedf wlan0}KiB ${color1}${downspeedgraph wlan0 10,30 666666 adadad}${color2}\
-\
-${image $HOME/.paps/openbox/icons/net_up_02.png -p 561,1}\
-${goto 579}${upspeedf wlan0}KiB ${color1}${upspeedgraph wlan0 10,30 666666 adadad}${color2}\
-\
-${else}\
-${if_up eth1}\
-\
-${image $HOME/.paps/openbox/icons/net_down_01.png -p 423,1}\
-${goto 441}${downspeedf eth1}KiB ${color1}${downspeedgraph eth1 10,30 666666 adadad}${color2}\
-\
-${image $HOME/.paps/openbox/icons/net_up_02.png -p 561,1}\
-${goto 579}${upspeedf eth1}KiB ${color1}${upspeedgraph eth1 10,30 666666 adadad}${color2}\
-\
-${else}\
-${if_up enp3s0}\
 
 
-
-${image $HOME/.paps/openbox/icons/net_down_01.png -p 0,231}\
+${image $HOME/.paps/openbox/icons/net_down_01.png -p 0,231}
 ${downspeedf enp3s0}
 ${color1}${downspeedgraph enp3s0 10,30 666666 adadad}${color2}
 
@@ -85,22 +55,8 @@ ${image $HOME/.paps/openbox/icons/net_up_02.png -p 0,297}
 ${upspeedf enp3s0}
 ${color1}${upspeedgraph enp3s0 10,30 666666 adadad}${color2}
 
-\
-${else}\
-\
-${image $HOME/.paps/openbox/icons/net_down_01.png -p 423,1}\
-${goto 441}${downspeedf}KiB ${color1}${downspeedgraph 10,30 666666 adadad}${color2}\
-\
-${image $HOME/.paps/openbox/icons/net_up_02.png -p 561,1}\
-${goto 579}${upspeedf}KiB ${color1}${upspeedgraph 10,30 666666 adadad}${color2}\
-\
-${endif}\
-${endif}\
-${endif}\
-${endif}\
 
 
-
-#${image $HOME/.paps/openbox/icons/bat_full_01.png -p 0,363}\
+#${image $HOME/.paps/openbox/icons/bat_full_01.png -p 0,363}
 #${battery_short BAT1}
 #${battery_time BAT1}

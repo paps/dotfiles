@@ -31,20 +31,6 @@ Install the dotfiles
 * `cd dotfiles`
 * Create all the required links: `./setup.sh [absolute-path-to-dotfiles]`
 
-Desktops/Laptops only: configure openbox, conky
------------------------------------------------
-
-* `cd dotfiles/openbox`
-* `cp rc.xml.dist rc.xml`
-	* Set the dock floating position (depends on the Xorg position and height of the left monitor)
-	* Optionally et the margins (a 34px left margin is necessary for conky)
-* `cp time_conkyrc.dist time_conkyrc`
-	* Set `gap_y` (depends on the Xorg position of the left monitor, the default of 1 is fine in most cases)
-* `cp stats_conkyrc.dist stats_conkyrc`
-	* Set `gap_y` (depends on the Xorg position of the left monitor, should be the same as `time_conkyrc` + 154)
-	* Identify the network interface to monitor (`downspeedf`, `downspeedgraph`, `upspeedf` and `upspeedgraph`)
-	* If relevant, uncomment the battery section and identify it (`battery_short` and `battery_time`)
-
 Shell
 -----
 
@@ -130,6 +116,19 @@ Optimal setup procedure:
 	* Uncheck "already using the full rescue time app"
 	* Enter email
 
+### Configure openbox and conky
+
+* `cd dotfiles/openbox`
+* `cp rc.xml.dist rc.xml`
+	* Set the dock floating position in `<dock>` (depends on the Xorg position and height of the left monitor)
+	* Optionally set the margins in `<margins>` (a 34px left margin is necessary for conky)
+* `cp time_conkyrc.dist time_conkyrc`
+	* Set `gap_y` (depends on the Xorg position of the left monitor, the default of 1 is fine in most cases)
+* `cp stats_conkyrc.dist stats_conkyrc`
+	* Set `gap_y` (depends on the Xorg position of the left monitor, should be the same as `time_conkyrc` + 154)
+	* Identify the network interface to monitor (`downspeedf`, `downspeedgraph`, `upspeedf` and `upspeedgraph`)
+	* If relevant, uncomment the battery section and identify it (`battery_short` and `battery_time`)
+
 ### Session startup script
 
 Optional startup script: `~/.paps/scripts/local.sh` (ignored by git, executed by `~/.paps/openbox/autostart.sh` on session start). Don't forget to `chmod +x`.
@@ -144,7 +143,7 @@ To prevent xscreensaver from automatically locking the session: `touch ~/.paps/x
 * `Ctrl-Alt-C` to open calendar
 * `Ctrl-Alt-Y` to open calculator
 
-### Multi-head AMD setup (xserver-xorg-video-radeon package)
+### Multi-head AMD open-source driver setup (xserver-xorg-video-radeon package)
 
 Dual monitor sample `xorg.conf`: `~/.paps/x/sample_radeon_dual_xorg.conf`
 
