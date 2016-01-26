@@ -116,11 +116,11 @@ Optimal setup procedure:
 	* Uncheck "already using the full rescue time app"
 	* Enter email
 
-### Configure openbox and conky
+### Configure openbox, conky, dunst
 
 * `cd dotfiles/openbox`
 * `cp rc.xml.dist rc.xml`
-	* Set the dock floating position in `<dock>` (depends on the Xorg position and height of the left monitor)
+	* Set the dock floating position in `<dock>` (depends on the Xorg position and height of the left monitor) (or use `obconf` later and visually place the dock)
 	* Optionally set the margins in `<margins>` (a 34px left margin is necessary for conky)
 * `cp time_conkyrc.dist time_conkyrc`
 	* Set `gap_y` (depends on the Xorg position of the left monitor, the default of 1 is fine in most cases)
@@ -128,6 +128,8 @@ Optimal setup procedure:
 	* Set `gap_y` (depends on the Xorg position of the left monitor, should be the same as `time_conkyrc` + 154)
 	* Identify the network interface to monitor (`downspeedf`, `downspeedgraph`, `upspeedf` and `upspeedgraph`)
 	* If relevant, uncomment the battery section and identify it (`battery_short` and `battery_time`)
+* `cp dunstrc.dist dunstrc`
+	* Set `monitor` to `0`, `1` or `2` depending on where you want the notifications
 
 ### Session startup script
 
