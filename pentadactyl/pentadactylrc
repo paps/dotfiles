@@ -21,7 +21,6 @@ nmap -builtin <C-c> <C-v><C-c>
 nmap -builtin <C-v> <C-v><C-v>
 nmap -builtin <C-x> <C-v><C-x>
 nmap -builtin <C-z> <C-v><C-z>
-set defsearch=g
 set guioptions=bCrs
 set scrollsteps=1
 hi FontFixed -a font: 12px "Monaco" !important;
