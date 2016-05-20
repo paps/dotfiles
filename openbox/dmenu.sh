@@ -1,2 +1,2 @@
 #!/bin/sh
-exec $(dmenu_run -i -nb \#000000 -nf \#adadad -sb \#adadad -sf \#000000 -fn Terminus)
+exec $(dmenu_run -i -nb \#ff7916 -nf \#000000 -sb \#222222 -sf \#adadad -fn Ttyp0)

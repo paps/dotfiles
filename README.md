@@ -84,6 +84,7 @@ Optimal setup procedure:
 * `sudo apt-get install firefox (+ libdbus-glib-1-2 ?) geany`
 * `rm -fr Videos Pictures Music Documents Public Templates`
 * `mkdir mnt`
+* `sudo rm /etc/fonts/conf.d/70-no-bitmaps.conf` (allows bitmap fonts in the standard font list)
 
 ### Firefox
 

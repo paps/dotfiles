@@ -43,9 +43,6 @@ xscreensaver.passwd.thermometer.width: 3
 !!neutral cursor theme
 Xcursor.theme: neutral
 
-!!dzen2
-dzen2.font: -misc-termsyn-medium-r-normal--11-79-100-100-c-60-iso8859-1
-
 !!UXterm
 UXTerm*geometry: 120x35
 UXTerm*internalBorder: 0
