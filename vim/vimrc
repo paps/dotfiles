@@ -79,7 +79,7 @@ if &term =~ '^xterm'
     let &t_SI = "\<Esc>[4 q"
     " solid block
     let &t_EI = "\<Esc>[2 q"
-elseif &term =~ "^screen" " xterm in tmux really
+elseif &term =~ "^screen" " xterm in tmux really => forwarding of escape codes
     " solid underscore
     let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>[4 q\<Esc>\\"
     " solid block
