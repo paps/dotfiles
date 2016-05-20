@@ -1,6 +1,6 @@
 # Window geometry
 
-border.width: 1
+border.width: 2
 window.client.padding.width: 0
 window.client.padding.height: 0
 window.handle.width: 0
@@ -30,7 +30,7 @@ menu.items.font: shadow=n
 menu.title.text.font: shadow=n
 
 # Window title justification
-window.label.text.justify: left
+window.label.text.justify: center
 
 # Active window
 window.active.title.bg: Flat solid
