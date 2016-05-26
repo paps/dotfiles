@@ -3,7 +3,6 @@
 scriptencoding utf-8 " this is a utf-8 script with BOM
 
 set nocompatible " don't care about Vi
-set encoding=utf-8
 
 " show tabs and trailing spaces
 set list
@@ -218,12 +217,9 @@ let g:ycm_seed_identifiers_with_syntax = 1
 let g:ycm_auto_start_csharp_server = 0
 
 " powerline
-let g:Powerline_colorscheme='solarized256'
-if has("gui_running")
-    let g:Powerline_symbols='compatible'
-else
-    let g:Powerline_symbols='fancy'
-endif
+let g:Powerline_colorscheme = 'solarized256'
+let g:Powerline_symbols = 'fancy'
+set noshowmode " do not show --INSERT-- and the like in the command line
 
 " colorize MetaQuotes Language like C++
 au BufNewFile,BufRead *.mq5 setl filetype=cpp

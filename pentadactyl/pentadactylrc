@@ -1,16 +1,26 @@
-"hg6817
-
 loadplugins '\.(js|penta)$'
 group user
+
+" never quit by mistake with Ctrl-Q
 map -b <C-q> <Nop>
-map -count -modes=n,v <Space> <count><Leader>
-map -count -modes=n,v <Down> -builtin <count>5<Down>
-map -count -modes=n,v <Up> -builtin <count>5<Up>
+
+" Switch tabs with gr gy
 map -count -modes=n,v gr <count>gT
 map -count -modes=n,v gy <count>d
+
+" Leader is space
+map -count -modes=n,v <Space> <count><Leader>
+
+" Faster scrolling with arrows
+map -count -modes=n,v <Down> -builtin <count>5<Down>
+map -count -modes=n,v <Up> -builtin <count>5<Up>
 map -count -modes=n,v j -builtin <count>8j
 map -count -modes=n,v k -builtin <count>8k
+
+" same as my vimrc
 map -count -modes=n,v <Leader>j <count>:set<Space>hlfind!<Return>
+
+" allow the standard Ctrl-C,V,X,Z
 imap -builtin <Leader>p <C-z>
 imap -builtin <C-c> <C-v><C-c>
 imap -builtin <C-v> <C-v><C-v>
@@ -21,24 +31,40 @@ nmap -builtin <C-c> <C-v><C-c>
 nmap -builtin <C-v> <C-v><C-v>
 nmap -builtin <C-x> <C-v><C-x>
 nmap -builtin <C-z> <C-v><C-z>
+
+" dont show too much menus
 set guioptions=bCrs
-set scrollsteps=1
-hi FontFixed -a font: 12px "Monaco" !important;
+
+" cool small monospace font for the command line
+hi FontFixed -a font: 11px "Monaco" !important;
+
+" give more space for titles of the page in openbox
 set titlestring=""
 
-set! general.smoothScroll=false
+" disable add bookmarks and quickmarks
+map A <NOP>
+map a <NOP>
+map M <NOP>
+
+" disable some features
+set scrollsteps=1 " disables pentadactyl smooth scrolling
+set! general.smoothScroll=false " same, but within firefox
 set! nglayout.enable_drag_images=false
 set! middlemouse.contentLoadURL=false
 set! browser.download.useDownloadDir=false
+
+" speed up browsing
 set! browser.safebrowsing.enabled=false
 set! browser.safebrowsing.malware.enabled=false
 
+" enable some non-default cool video features (remove soon!)
 set! media.mediasource.enabled=true
 set! media.mediasource.mp4.enabled=true
 set! media.mediasource.webm.enabled=true
 set! media.fragmented-mp4.exposed=true
 set! media.fragmented-mp4.ffmpeg.exposed=true
 
+" make sure we have black borders at the right places for better integration with the black openbox theme
 style -name=better-borders chrome://* <<EOM
 
 #nav-bar {

@@ -1,3 +1,2 @@
-" again, disable visual bell
 set t_vb=
-
+set encoding=utf-8

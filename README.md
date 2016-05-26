@@ -140,9 +140,12 @@ Optional startup script: `~/.paps/scripts/local.sh` (ignored by git, executed by
 
 To prevent xscreensaver from automatically locking the session: `touch ~/.paps/x/do_not_lock` (then restart X). For convenience, "Force lock" from the Openbox context menu still locks the session.
 
+### Locales
+
+`dpkg-reconfigure locales`, add `fr_FR.utf8` if not present, make sure the default locale is `en_US.ut8`.
+
 ### Calendar & calculator
 
-* `dpkg-reconfigure locales`, add `fr_FR.utf8` if not present, dot not change default locale (should be `None`)
 * `Ctrl-Alt-C` to open calendar
 * `Ctrl-Alt-Y` to open calculator
 
