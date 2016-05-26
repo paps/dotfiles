@@ -135,6 +135,10 @@ echo "Link: ~/.vimrc -> ~/.paps/vim/.vimrc"
 rm -ivr ~/.vimrc
 ln -sT ~/.paps/vim/vimrc ~/.vimrc
 
+echo "Link: ~/.gvimrc -> ~/.paps/vim/.gvimrc"
+rm -ivr ~/.gvimrc
+ln -sT ~/.paps/vim/gvimrc ~/.gvimrc
+
 echo "Link: ~/.vim -> ~/.paps/vim/.vim"
 rm -ivr ~/.vim
 ln -sT ~/.paps/vim/vim ~/.vim
