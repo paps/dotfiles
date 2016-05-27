@@ -45,6 +45,8 @@ set titlestring=""
 map A <NOP>
 map a <NOP>
 map M <NOP>
+map h H
+map l L
 
 " disable some features
 set scrollsteps=1 " disables pentadactyl smooth scrolling
