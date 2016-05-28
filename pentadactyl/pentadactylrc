@@ -47,8 +47,10 @@ map a <NOP>
 map M <NOP>
 
 " disable some features
-set scrollsteps=1 " disables pentadactyl smooth scrolling
-set! general.smoothScroll=false " same, but within firefox
+" disables pentadactyl smooth scrolling
+set scrollsteps=1
+" same, but within firefox
+set! general.smoothScroll=false
 set! nglayout.enable_drag_images=false
 set! middlemouse.contentLoadURL=false
 set! browser.download.useDownloadDir=false
