@@ -40,19 +40,19 @@ ln -sT "$1" ~/.paps
 if [ $xinstall = "desktop" ]; then
 
     # X11
-    echo "Link: ~/.Xresources -> ~/.paps/x/.Xresources"
+    echo "Link: ~/.Xresources -> ~/.paps/x/Xresources"
     rm -ivr ~/.Xresources
     ln -sT ~/.paps/x/Xresources ~/.Xresources
 
-    echo "Link: ~/.xsession -> ~/.paps/x/.xsession"
+    echo "Link: ~/.xsession -> ~/.paps/x/xsession"
     rm -ivr ~/.xsession
     ln -sT ~/.paps/x/xsession ~/.xsession
 
-    echo "Link: ~/.xinitrc -> ~/.paps/x/.xsession"
+    echo "Link: ~/.xinitrc -> ~/.paps/x/xsession"
     rm -ivr ~/.xinitrc
     ln -sT ~/.paps/x/xsession ~/.xinitrc
 
-    echo "Link: ~/.Xmodmap -> ~/.paps/x/.Xmodmap"
+    echo "Link: ~/.Xmodmap -> ~/.paps/x/Xmodmap"
     rm -ivr ~/.Xmodmap
     ln -sT ~/.paps/x/Xmodmap ~/.Xmodmap
 
@@ -131,28 +131,37 @@ if [ $xinstall = "desktop" ]; then
 fi
 
 # vim
-echo "Link: ~/.vimrc -> ~/.paps/vim/.vimrc"
+echo "Link: ~/.vimrc -> ~/.paps/vim/vimrc"
 rm -ivr ~/.vimrc
 ln -sT ~/.paps/vim/vimrc ~/.vimrc
 
-echo "Link: ~/.gvimrc -> ~/.paps/vim/.gvimrc"
+echo "Link: ~/.gvimrc -> ~/.paps/vim/gvimrc"
 rm -ivr ~/.gvimrc
 ln -sT ~/.paps/vim/gvimrc ~/.gvimrc
 
-echo "Link: ~/.vim -> ~/.paps/vim/.vim"
+echo "Link: ~/.vim -> ~/.paps/vim/vim"
 rm -ivr ~/.vim
 ln -sT ~/.paps/vim/vim ~/.vim
 
+# nvim
+echo "Link: ~/.config/nvim -> ~/.paps/vim/vim"
+rm -ivr ~/.config/nvim
+ln -sT ~/.paps/vim/vim ~/.config/nvim
+
+echo "Link: ~/.config/nvim/init.vim -> ~/.paps/vim/vimrc"
+rm -ivr ~/.config/nvim/init.vim
+ln -sT ~/.paps/vim/vimrc ~/.config/nvim/init.vim
+
 # zsh
-echo "Link: ~/.zshrc -> ~/.paps/zsh/.zshrc"
+echo "Link: ~/.zshrc -> ~/.paps/zsh/zshrc"
 rm -ivr ~/.zshrc
 ln -sT ~/.paps/zsh/zshrc ~/.zshrc
 
-echo "Link: ~/.zshenv -> ~/.paps/zsh/.zshenv"
+echo "Link: ~/.zshenv -> ~/.paps/zsh/zshenv"
 rm -ivr ~/.zshenv
 ln -sT ~/.paps/zsh/zshenv ~/.zshenv
 
-echo "Link: ~/.inputrc -> ~/.paps/zsh/.inputrc"
+echo "Link: ~/.inputrc -> ~/.paps/zsh/inputrc"
 rm -ivr ~/.inputrc
 ln -sT ~/.paps/zsh/inputrc ~/.inputrc
 
@@ -162,7 +171,7 @@ rm -ivr ~/.gitconfig
 ln -sT ~/.paps/git/gitconfig ~/.gitconfig
 
 # tmux
-echo "Link: ~/.tmux.conf -> ~/.paps/tmux/.tmux.conf"
+echo "Link: ~/.tmux.conf -> ~/.paps/tmux/tmux.conf"
 rm -ivr ~/.tmux.conf
 ln -sT ~/.paps/tmux/tmux.conf ~/.tmux.conf
 

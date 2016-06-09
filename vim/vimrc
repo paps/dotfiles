@@ -6,7 +6,7 @@ set nocompatible " don't care about Vi
 
 " show tabs and trailing spaces
 set list
-set listchars=tab:→\ ,trail:·
+set listchars=tab:❚\ ,trail:·
 
 " default indentation
 set shiftwidth=4
@@ -76,15 +76,16 @@ nmap K :Man <C-R>=expand("<cword>")<CR><CR>
 " 6 -> solid vertical bar
 if &term =~ '^xterm'
     " solid underscore
-    let &t_SI = "\<Esc>[4 q"
+    let &t_SI = "\<Esc>[\x35 q"
     " solid block
     let &t_EI = "\<Esc>[2 q"
 elseif &term =~ "^screen" " xterm in tmux really => forwarding of escape codes
     " solid underscore
-    let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>[4 q\<Esc>\\"
+    let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>[\x35 q\<Esc>\\"
     " solid block
     let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>[2 q\<Esc>\\"
 endif
+let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
 " gui
 " remove almost everything
@@ -113,15 +114,10 @@ map <C-D> 5j
 " disable ex mode
 map Q <NOP>
 
-" statusline (now useless with powerline plugin)
 set laststatus=2 " always show status line
-if version >= 703
-    set statusline=%f\ %m%y%r%w%q[%n]%=%{fugitive#statusline()}\ %l/%L\ (%p%%),\ %v\ (%c)
-else
-    set statusline=%f\ %m%y%r%w[%n]%=%{fugitive#statusline()}\ %l/%L\ (%p%%),\ %v\ (%c) " %q not used for older versions
-endif
 
 " colorscheme
+let g:solarized_visibility = "low"
 if has("gui_running")
     set background=dark
     colorscheme solarized
@@ -166,28 +162,35 @@ map <C-k> :tabnext<CR>
 "" ctrl-t for new tab
 nmap <C-t> :tabnew<CR>
 
-" some useful shortcuts
+" some useful <Leader>shortcuts
 map <Leader>m :make<CR>
 map <Leader>n :NERDTree<CR>
-" stop highlighting search results with ,j
 map <Leader>j :nohlsearch<CR>
-" toggle paste with ,p
 map <Leader>p :set paste!<CR>
-" toggle wrapping with ,w
 map <Leader>w :set wrap!<CR>
-" do a syntastic check with ,s
-map <Leader>s :SyntasticCheck<CR>
+map <Leader>e :Errors<CR>
 
 " ignore some file types in nerdtree
-let g:NERDTreeIgnore=['\.o$', '\~$', '\.pyc$', '\.swp$']
-let g:NERDTreeDirArrows=1
-let g:NERDTreeShowHidden=1
-let g:NERDTreeMinimalUI=1
+let g:NERDTreeIgnore = ['\.o$', '\~$', '\.pyc$', '\.swp$']
+let g:NERDTreeDirArrows = 1
+let g:NERDTreeShowHidden = 1
+let g:NERDTreeMinimalUI = 1
+let g:NERDTreeIndicatorMapCustom = {
+    \ "Modified"  : "*",
+    \ "Staged"    : "✚",
+    \ "Untracked" : "-",
+    \ "Renamed"   : ">",
+    \ "Unmerged"  : "═",
+    \ "Deleted"   : "✖",
+    \ "Dirty"     : "✗",
+    \ "Clean"     : "✔︎",
+    \ "Unknown"   : "?"
+    \ }
 
 " BufferGator
-let buffergator_viewport_split_policy='R' " show buffergator on the right side
-let buffergator_split_size=35
-let buffergator_sort_regime='mru' " most recently used buffer sorting
+let buffergator_viewport_split_policy = 'R' " show buffergator on the right side
+let buffergator_split_size = 35
+let buffergator_sort_regime = 'mru' " most recently used buffer sorting
 
 " Syntastic
 let g:syntastic_always_populate_loc_list = 0
@@ -198,28 +201,27 @@ let g:syntastic_error_symbol = "✗"
 let g:syntastic_warning_symbol = "⚠"
 let g:syntastic_style_error_symbol = "✗"
 let g:syntastic_style_warning_symbol = "⚠"
+let g:tsuquyomi_disable_quickfix = 1
+let g:syntastic_typescript_checkers = ['tsuquyomi']
 
-" YouCompleteMe
-let g:ycm_min_num_of_chars_for_completion = 1
-let g:ycm_min_num_identifier_candidate_chars = 0
-let g:ycm_auto_trigger = 0
-let g:ycm_show_diagnostics_ui = 0
-let g:ycm_enable_diagnostic_signs = 0
-let g:ycm_enable_diagnostic_highlighting = 0
-let g:ycm_echo_current_diagnostic = 0
-let g:ycm_always_populate_location_list = 0
-let g:ycm_open_loclist_on_ycm_diags = 0
-let g:ycm_complete_in_comments = 1
-let g:ycm_complete_in_strings = 1
-let g:ycm_collect_identifiers_from_comments_and_strings = 0
-let g:ycm_collect_identifiers_from_tags_files = 0
-let g:ycm_seed_identifiers_with_syntax = 1
-let g:ycm_auto_start_csharp_server = 0
-
-" powerline
-let g:Powerline_colorscheme = 'solarized256'
-let g:Powerline_symbols = 'fancy'
+" airline
+let g:airline_powerline_fonts = 1
+let g:airline_theme = 'solarized'
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+let g:airline_symbols.linenr = '' " do not show ⭡ everywhere
+let g:airline_symbols.maxlinenr = '' " same
+let g:airline_symbols.spell = '⚠'
+let g:airline_symbols.notexists = '⚠'
+let g:airline#extensions#whitespace#mixed_indent_algo = 2 " allow tabs then spaces
+let g:airline#extensions#whitespace#symbol = '⚠'
 set noshowmode " do not show --INSERT-- and the like in the command line
+
+" deoplete
+if has("nvim")
+    let g:deoplete#enable_at_startup = 1
+endif
 
 " colorize MetaQuotes Language like C++
 au BufNewFile,BufRead *.mq5 setl filetype=cpp
