@@ -6,15 +6,15 @@ My dotfiles for Debian Sid.
 Packages
 --------
 
-* Always install: `htop vim-gtk xauth git zsh tmux tree curl inotify-tools`
+* Always install: `htop vim xauth git zsh tmux tree curl inotify-tools`
 * For desktops/laptops:
-	* Add: `p7zip-full unrar tig pv pydf zsh-doc vim-doc nmap zenmap whiptail obconf obmenu firefox xterm xscreensaver dmenu feh numlockx conky-all scrot x11-xserver-utils acpi alsa-utils gksu stalonetray moc fontconfig vlc gitk xfonts-terminus libx11-dev build-essential xclip mplayer python3 libdatetime-perl gsimplecal gcalctool zenity virt-manager spice-client-gtk python-spice-client-gtk dunst geeqie geany thunar thunar-volman thunar-archive-plugin thunar-media-tags-plugin thunar-gtkhash file-roller unar arj lhasa rar lzip lzop ncompress rzip unace unalz zoo parcellite flashplugin-nonfree ttf-mscorefonts-installer libnotify-bin gparted transmission-remote-gtk gimp ssh-askpass evince zip unzip cmake python-dev xdotool`
+	* Add: `p7zip-full unrar tig pv pydf zsh-doc vim-gtk vim-doc nmap zenmap whiptail obconf obmenu firefox xterm xscreensaver dmenu feh numlockx conky-all scrot x11-xserver-utils acpi alsa-utils gksu stalonetray moc fontconfig vlc gitk xfonts-terminus libx11-dev build-essential xclip mplayer python3 libdatetime-perl gsimplecal gcalctool zenity virt-manager spice-client-gtk python-spice-client-gtk dunst geeqie geany thunar thunar-volman thunar-archive-plugin thunar-media-tags-plugin thunar-gtkhash file-roller unar arj lhasa rar lzip lzop ncompress rzip unace unalz zoo parcellite flashplugin-nonfree ttf-mscorefonts-installer libnotify-bin gparted transmission-remote-gtk gimp ssh-askpass evince zip unzip cmake python-dev xdotool`
 	* Remove: `notification-daemon`
 
 SSH
 ---
 
-* `ssh-keygen -t rsa -b 4096 -C "paps@[machine_name]"` (default location, strong passphrase)
+* `ssh-keygen -t rsa -C "paps@[machine_name]"` (default location, strong passphrase)
 * add key to GitHub: https://github.com/settings/ssh
 * `scp ~/.ssh/id_rsa.pub paps@[box]:`
 * `ssh [box]`
@@ -37,19 +37,21 @@ Shell
 * `whereis zsh`
 * `chsh -s [absolute-path-to-shell]`
 
-Vim
----
+Vim, neovim
+-----------
 
 * Only once, before first run: `git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle`
 * Only once, to initialize plugins: `vim -u ~/.paps/vim/bundles.vim +PluginInstall`
 * For updating installed plugins: `vim +PluginUpdate`
 * For installing a new plugin added in `bundles.vim`: `vim +PluginInstall`
 * For removing unused plugins: `vim +PluginClean`
+* Optional: install neovim: `sudo apt-get install neovim -t experimental`
 
-New Relic
----------
+Optional: Moniroting
+--------------------
 
-Go to https://newrelic.com, login, go to "Servers" and click "Add more".
+* Go to https://newrelic.com, login, go to "Servers" and click "Add more".
+* Go to https://papertrailapp.com, login, follow instructions to add a system.
 
 Local binaries
 --------------
@@ -78,11 +80,10 @@ Optimal setup procedure:
 * `sudo apt-get install xinit openbox xterm`
 * for VMs: install `virtualbox-guest-x11` (VirtualBox) or `spice-vdagent` (virt-manager...)
 * `exec startx`
-* `sudo apt-get install htop chromium`
-* add Linux Mint repository and PGP key: https://thestandardoutput.com/posts/install-the-real-firefox-on-debian-7/
+* `sudo apt-get install htop chromium firefox geany`
+* maybe package `libdbus-glib-1-2` is needed for firefox to work
 * `sudo apt-get update`
-* `sudo apt-get install firefox (+ libdbus-glib-1-2 ?) geany`
-* `rm -fr Videos Pictures Music Documents Public Templates`
+* `cd ~ ; rm -fr Videos Pictures Music Documents Public Templates`
 * `mkdir mnt`
 * `sudo rm /etc/fonts/conf.d/70-no-bitmaps.conf` (allows bitmap fonts in the standard font list)
 
@@ -101,7 +102,7 @@ Optimal setup procedure:
 * TreeStyleTab configuration:
 	* Disable "narrow scrollbar", "collapse/expand trees", "indent tabs"
 	* Theme: "Flat"
-	* Tree twisties: "None"
+	* Set only one level of depth
 	* Disable all context menu options except "Close this tree" and "Fix position and width"
 	* Disable "Show tree contents in tooltips"
 	* Auto hide: set "Show tab bar always" for normal window mode *and* full screen mode
@@ -136,15 +137,22 @@ Optimal setup procedure:
 
 Optional startup script: `~/.paps/scripts/local.sh` (ignored by git, executed by `~/.paps/openbox/autostart.sh` on session start). Don't forget to `chmod +x`.
 
-### Disabling locking
+### GTK
+
+* `sudo apt-get install lxappearance gnome-themes-standard`
+* `rehash`
+* `lxappearance`
+* Select HighContrast widget theme and HighContrast icon theme
+
+### Disable locking
 
 To prevent xscreensaver from automatically locking the session: `touch ~/.paps/x/do_not_lock` (then restart X). For convenience, "Force lock" from the Openbox context menu still locks the session.
 
 ### Locales
 
-`dpkg-reconfigure locales`, add `fr_FR.utf8` if not present, make sure the default locale is `en_US.ut8`.
+`sudo dpkg-reconfigure locales`, add `fr_FR.utf8` if not present, make sure the default locale is `en_US.ut8`.
 
-### Calendar & calculator
+### Calendar, calculator
 
 * `Ctrl-Alt-C` to open calendar
 * `Ctrl-Alt-Y` to open calculator
