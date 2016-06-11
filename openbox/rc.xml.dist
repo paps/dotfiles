@@ -160,7 +160,7 @@
     <position>Floating</position>
     <!-- (Top|Bottom)(Left|Right|)|Top|Bottom|Left|Right|Floating -->
     <floatingX>-2</floatingX>
-    <floatingY>600</floatingY>
+    <floatingY>606</floatingY>
     <noStrut>yes</noStrut>
     <stacking>Below</stacking>
     <!-- 'Above', 'Normal', or 'Below' -->
