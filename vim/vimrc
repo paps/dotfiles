@@ -119,13 +119,13 @@ set laststatus=2 " always show status line
 " colorscheme
 let g:solarized_visibility = "low"
 if has("gui_running")
-    set background=dark
+    set background=light
     colorscheme solarized
     set guifont=Ttyp0\ 10
 else
-    set t_Co=256 " 256 colors terminal
-    set background=dark " parameter for solarized theme
-    " let g:solarized_termtrans=1 " optional: enables transparency (tmux pane background selection becomes visible)
+    "set t_Co=256 " 256 colors terminal
+    set background=light " parameter for solarized theme
+    let g:solarized_termtrans=1 " optional: enables transparency (tmux pane background selection becomes visible)
     colorscheme solarized
 endif
 highlight SpecialKey term=NONE cterm=NONE gui=NONE
@@ -207,6 +207,8 @@ let g:syntastic_typescript_checkers = ['tsuquyomi']
 " airline
 let g:airline_powerline_fonts = 1
 let g:airline_theme = 'solarized'
+let g:airline_solarized_normal_green = 0
+let g:airline_solarized_bg = 'light'
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif

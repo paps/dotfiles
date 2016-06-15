@@ -35,5 +35,6 @@ Bundle 'jason0x43/vim-js-indent'
 Bundle 'vim-airline/vim-airline'
 Bundle 'vim-airline/vim-airline-themes'
 Bundle 'Shougo/deoplete.nvim'
+Bundle 'chriskempson/base16-vim'
 
 filetype plugin indent on " required!
