@@ -41,7 +41,7 @@
   </placement>
   <theme>
     <name>modern-grey</name>
-    <titleLayout>NLC</titleLayout>
+    <titleLayout>LC</titleLayout>
     <!--
       available characters are NDSLIMC, each can occur at most once.
       N: window icon
@@ -786,10 +786,6 @@
     </application>
     <application class="Opera">
       <decor>no</decor>
-    </application>
-    <application class="UXTerm">
-      <decor>no</decor>
-      <keepBorder>yes</keepBorder>
     </application>
     <!--
   # this is an example with comments through out. use these to make your

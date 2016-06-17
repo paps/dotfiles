@@ -2,4 +2,11 @@ typeset -U path
 path=(~/.paps/bin $path)
 export PATH
 export PAGER="/bin/sh -c \"unset PAGER; col -b -x | vim -R -c 'set ft=man nomod nolist' - \""
-export EDITOR="vim"
+
+# use neovim as editor only if it's present
+if hash nvim 2>/dev/null
+then
+	export EDITOR='nvim'
+else
+	export EDITOR='vim'
+fi

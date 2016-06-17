@@ -7,8 +7,9 @@ Packages
 --------
 
 * Always install: `htop vim xauth git zsh tmux tree curl inotify-tools`
+* If possible: `trash-cli neovim` (use `-t experimental` for `neovim`)
 * For desktops/laptops:
-	* Add: `p7zip-full unrar tig pv pydf zsh-doc vim-gtk vim-doc nmap zenmap whiptail obconf obmenu firefox xterm xscreensaver dmenu feh numlockx conky-all scrot x11-xserver-utils acpi alsa-utils gksu stalonetray moc fontconfig vlc gitk xfonts-terminus libx11-dev build-essential xclip mplayer python3 libdatetime-perl gsimplecal gcalctool zenity virt-manager spice-client-gtk python-spice-client-gtk dunst geeqie geany thunar thunar-volman thunar-archive-plugin thunar-media-tags-plugin thunar-gtkhash file-roller unar arj lhasa rar lzip lzop ncompress rzip unace unalz zoo parcellite flashplugin-nonfree ttf-mscorefonts-installer libnotify-bin gparted transmission-remote-gtk gimp ssh-askpass evince zip unzip cmake python-dev xdotool`
+	* Add: `p7zip-full unrar tig pv pydf zsh-doc vim-gtk vim-doc nmap zenmap whiptail obconf obmenu firefox gnome-terminal xterm xscreensaver dmenu feh numlockx conky-all scrot x11-xserver-utils acpi alsa-utils gksu stalonetray moc fontconfig vlc gitk xfonts-terminus libx11-dev build-essential xclip mplayer python3 libdatetime-perl gsimplecal gcalctool zenity virt-manager spice-client-gtk python-spice-client-gtk dunst geeqie geany thunar thunar-volman thunar-archive-plugin thunar-media-tags-plugin thunar-gtkhash file-roller unar arj lhasa rar lzip lzop ncompress rzip unace unalz zoo parcellite flashplugin-nonfree ttf-mscorefonts-installer libnotify-bin gparted transmission-remote-gtk gimp ssh-askpass evince zip unzip cmake python-dev xdotool`
 	* Remove: `notification-daemon`
 
 SSH
@@ -37,15 +38,14 @@ Shell
 * `whereis zsh`
 * `chsh -s [absolute-path-to-shell]`
 
-Vim, neovim
------------
+Neovim
+------
 
 * Only once, before first run: `git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle`
-* Only once, to initialize plugins: `vim -u ~/.paps/vim/bundles.vim +PluginInstall`
-* For updating installed plugins: `vim +PluginUpdate`
-* For installing a new plugin added in `bundles.vim`: `vim +PluginInstall`
-* For removing unused plugins: `vim +PluginClean`
-* Optional: install neovim: `sudo apt-get install neovim -t experimental`
+* Only once, to initialize plugins: `nvim -u ~/.paps/vim/bundles.vim +PluginInstall`
+* For updating installed plugins: `nvim +PluginUpdate`
+* For installing a new plugin added in `bundles.vim`: `nvim +PluginInstall`
+* For removing unused plugins: `nvim +PluginClean`
 
 Optional: Moniroting
 --------------------

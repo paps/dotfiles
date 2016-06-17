@@ -7,12 +7,15 @@ alias lll='ll'
 alias llll='ll'
 alias la='ls -lha'
 alias sl='ls'
-alias view='view -n' # no .swp files when viewing only
+alias view="echo 'choose between nvim -Rn and \\\view -n' ; false"
 alias grep='grep --color=auto'
 alias open='python ~/.paps/scripts/open.py -i'
-alias rm='rm -i'
+alias rm="echo 'choose between del (trash-put) and \\\rm' ; false"
 alias du='du -sh'
 alias df='df -h'
+alias vim="echo 'choose between nvim and \\\vim' ; false"
+alias vimdiff="echo 'choose between nvim -d and \\\vimdiff' ; false"
+alias del='trash-put'
 
 # colors
 # ------

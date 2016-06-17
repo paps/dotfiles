@@ -1,4 +1,5 @@
 * vim-devicons, nerd-fonts
+* nvim as pager
 * use shields.io for all my repos
 * rescuetime documentation + auto start with X
 * node, npm install docs
