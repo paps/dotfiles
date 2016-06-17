@@ -48,7 +48,7 @@ autoload -Uz promptinit
 promptinit
 # distant and local prompts
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ] ; then
-	PS1="%{$BG[011]%}%{$FG[015]%}%M%{$BG[014]%}%{$FG[011]%}⮀%{$FG[015]%} %~%{$FX[reset]%}%{$FG[014]%}⮀%{$FX[reset]%} "
+	PS1="%{$BG[002]%}%{$FG[015]%}%M%{$BG[014]%}%{$FG[002]%}⮀%{$FG[015]%} %~%{$FX[reset]%}%{$FG[014]%}⮀%{$FX[reset]%} "
 else
 	PS1="%{$BG[014]%}%{$FG[015]%}%~%{$FX[reset]%}%{$FG[014]%}⮀%{$FX[reset]%} "
 fi
