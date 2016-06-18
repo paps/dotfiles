@@ -772,21 +772,6 @@
     <!-- show the manage desktops section in the client-list-(combined-)menu -->
   </menu>
   <applications>
-    <application title="Mozilla Firefox">
-      <decor>no</decor>
-    </application>
-    <application title="Mozilla Firefox (Private Browsing)">
-      <decor>no</decor>
-    </application>
-    <application class="Chromium-browser">
-      <decor>no</decor>
-    </application>
-    <application title="Tor Browser">
-      <decor>no</decor>
-    </application>
-    <application class="Opera">
-      <decor>no</decor>
-    </application>
     <!--
   # this is an example with comments through out. use these to make your
   # own rules, but without the comments of course.
