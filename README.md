@@ -123,11 +123,13 @@ Optimal setup procedure:
 * `cd dotfiles/openbox`
 * `cp rc.xml.dist rc.xml`
 	* Set the dock floating position in `<dock>` (depends on the Xorg position and height of the left monitor) (or use `obconf` later and visually place the dock)
-	* Optionally set the margins in `<margins>` (a 34px left margin is necessary for conky)
+	* Optionally set the margins in `<margins>` (a 34px left or right margin is necessary for conky)
 * `cp time_conkyrc.dist time_conkyrc`
-	* Set `gap_y` (depends on the Xorg position of the left monitor, the default of 1 is fine in most cases)
+	* Edit the first three lines
+	* `gap_y` depends on the Xorg position of the left monitor, the default of 1 is fine in most cases
 * `cp stats_conkyrc.dist stats_conkyrc`
-	* Set `gap_y` (depends on the Xorg position of the left monitor, should be the same as `time_conkyrc` + 154)
+	* Edit the first three lines
+	* `gap_y` depends on the Xorg position of the left monitor, should be the same as `time_conkyrc` + 154
 	* Identify the network interface to monitor (`downspeedf`, `downspeedgraph`, `upspeedf` and `upspeedgraph`)
 	* If relevant, uncomment the battery section and identify it (`battery_short` and `battery_time`)
 * `cp dunstrc.dist dunstrc`

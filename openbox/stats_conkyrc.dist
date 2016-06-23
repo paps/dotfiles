@@ -1,6 +1,7 @@
+alignment top_left
 gap_y 155
-
 gap_x 1
+
 background no
 out_to_x yes
 out_to_console no
@@ -8,14 +9,13 @@ out_to_stderr no
 update_interval 2.0
 total_run_times 0
 font -misc-termsyn-medium-r-normal--11-79-100-100-c-60-iso8859-1
-alignment top_left
 default_color adadad
 draw_graph_borders yes
 format_human_readable yes
 use_spacer right
 max_text_width 0
 own_window yes
-own_window_type desktop
+own_window_type override
 double_buffer yes
 if_up_strictness address
 default_color adadad
