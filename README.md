@@ -47,11 +47,14 @@ Neovim
 * For installing a new plugin added in `bundles.vim`: `nvim +PluginInstall`
 * For removing unused plugins: `nvim +PluginClean`
 
-Optional: Moniroting
+Optional: Monitoring
 --------------------
 
-* Go to https://newrelic.com, login, go to "Servers" and click "Add more".
+* x86 64/32: Go to https://newrelic.com, login, go to "Servers" and click "Add more".
+* ARM: Go to https://manager.linode.com/longview, login, add a client.
 * Go to https://papertrailapp.com, login, follow instructions to add a system.
+	* Configure TLS encryption: http://help.papertrailapp.com/kb/configuration/encrypting-remote-syslog-with-tls-ssl/#rsyslog
+	* Use better settings for the rsyslog queue: http://help.papertrailapp.com/kb/configuration/advanced-unix-logging-tips/#rsyslog_queue
 
 Local binaries
 --------------
