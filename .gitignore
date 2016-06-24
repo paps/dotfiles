@@ -1,11 +1,12 @@
 *.bak
 .*.swp
-
-vim/vim/.netrwhist
-vim/vim/bundle
 scripts/local.sh
 pentadactyl/pentadactyl/info/
 x/do_not_lock
+
+vim/vim/.netrwhist
+vim/vim/bundle
+vim/vim/.init.vim-rplugin~
 
 openbox/stats_conkyrc
 openbox/time_conkyrc
