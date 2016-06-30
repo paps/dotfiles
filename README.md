@@ -6,7 +6,7 @@ My dotfiles for Debian Sid.
 Packages
 --------
 
-* Always install: `htop vim xauth git zsh tmux tree curl inotify-tools trash-cli`
+* Always install: `htop vim xauth git zsh tmux tree curl inotify-tools trash-cli wget`
 * If possible: `neovim` (use `-t experimental` for `neovim`)
 * For desktops/laptops:
 	* Add: `p7zip-full unrar tig pv pydf zsh-doc vim-gtk vim-doc nmap zenmap whiptail obconf obmenu firefox gnome-terminal xterm xscreensaver dmenu feh numlockx conky-all scrot x11-xserver-utils acpi alsa-utils gksu stalonetray moc fontconfig vlc gitk xfonts-terminus libx11-dev build-essential xclip mplayer python3 libdatetime-perl gsimplecal gcalctool zenity virt-manager spice-client-gtk python-spice-client-gtk dunst geeqie geany thunar thunar-volman thunar-archive-plugin thunar-media-tags-plugin thunar-gtkhash file-roller unar arj lhasa rar lzip lzop ncompress rzip unace unalz zoo parcellite flashplugin-nonfree ttf-mscorefonts-installer libnotify-bin gparted transmission-remote-gtk gimp ssh-askpass evince zip unzip cmake python-dev xdotool`
