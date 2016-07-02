@@ -55,6 +55,7 @@ Optional: Monitoring
 * Go to https://papertrailapp.com, login, follow instructions to add a system.
 	* Configure TLS encryption: http://help.papertrailapp.com/kb/configuration/encrypting-remote-syslog-with-tls-ssl/#rsyslog
 	* Use better settings for the rsyslog queue: http://help.papertrailapp.com/kb/configuration/advanced-unix-logging-tips/#rsyslog_queue
+	* Dont forget the `rsyslog-gnutls` package
 
 Local binaries
 --------------

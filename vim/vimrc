@@ -170,7 +170,7 @@ map <Leader>p :set paste!<CR>
 map <Leader>w :set wrap!<CR>
 map <Leader>e :Errors<CR>
 
-" ignore some file types in nerdtree
+" nerdtree configuration
 let g:NERDTreeIgnore = ['\.o$', '\~$', '\.pyc$', '\.swp$']
 let g:NERDTreeDirArrows = 1
 let g:NERDTreeShowHidden = 1
@@ -186,6 +186,7 @@ let g:NERDTreeIndicatorMapCustom = {
     \ "Clean"     : "✔︎",
     \ "Unknown"   : "?"
     \ }
+autocmd FileType nerdtree setlocal nocursorcolumn
 
 " BufferGator
 let buffergator_viewport_split_policy = 'R' " show buffergator on the right side
