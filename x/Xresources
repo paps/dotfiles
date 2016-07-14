@@ -40,8 +40,8 @@ xscreensaver.passwd.body.label:
 xscreensaver.passwd.unlock.label: Unlock
 xscreensaver.passwd.thermometer.width: 3
 
-!!neutral cursor theme
-Xcursor.theme: neutral
+!!Neutral_Plus cursor theme
+Xcursor.theme: Neutral_Plus
 
 !!UXterm
 UXTerm*geometry: 120x35
