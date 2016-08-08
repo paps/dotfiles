@@ -33,7 +33,8 @@ nmap -builtin <C-x> <C-v><C-x>
 nmap -builtin <C-z> <C-v><C-z>
 
 " dont show too much menus
-set guioptions=bCrs
+" but keep the navbar (which will be hidden by CSS later)
+set guioptions=bCrsT
 
 " cool small monospace font for the command line
 hi FontFixed -a font: 11px "Monaco" !important;
@@ -69,6 +70,7 @@ set! media.fragmented-mp4.exposed=true
 set! media.fragmented-mp4.ffmpeg.exposed=true
 
 " make sure we have black borders at the right places for better integration with the black openbox theme
+" and a small style adjustment for tree style tab
 style -name=better-borders chrome://* <<EOM
 
 #nav-bar {
@@ -83,6 +85,28 @@ style -name=better-borders chrome://* <<EOM
 
 .treestyletab-tabbar-toolbar {
 	border-right: 1px solid #9e9a91 !important;
+}
+
+EOM
+
+" hide the navbar but keep its content visible
+" this fixes a bug where ff australis extensions cant open popups from the pentadactyl bottom bar if the navbar is removed
+" (for example with uBlock: https://github.com/chrisaljoudi/uBlock/issues/549)
+" note: the navbar must be enabled in pentadactyl for this to have any effect (guioptions+=T)
+style -name=hide-navbar chrome://* <<EOM
+
+#nav-bar {
+	height: 0;
+	overflow: hidden;
+	visibility: hidden;
+}
+#nav-bar * {
+	visibility: visible;
+}
+
+/* Blacklist the known nav-bar children */
+#nav-bar-customization-target, #PanelUI-button, #window-controls, #nav-bar-overflow-buton {
+	display: none;
 }
 
 EOM
