@@ -6,7 +6,7 @@ set nocompatible " don't care about Vi
 
 " show tabs and trailing spaces
 set list
-set listchars=tab:❚\ ,trail:·
+set listchars=tab:¦\ ,trail:·
 
 " default indentation
 set shiftwidth=4
