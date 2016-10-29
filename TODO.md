@@ -8,3 +8,7 @@
 * make super-i and menu-i do an Insert
 * redshift-gtk (readme, autostart)
 * use leader-p and leader-y for pasting and yanking from the system clipboard
+* debug dbus mess for gnome-terminal and notifications
+* choose a cool notification daemon
+* dmenu volume indicator
+* toggle screensaver + conky status display
