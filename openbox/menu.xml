@@ -1,50 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openbox_menu xmlns="http://openbox.org/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://openbox.org/                 file:///usr/share/openbox/menu.xsd">
 	<menu id="root-menu" label="Openbox 3">
-		<item label="Tmux">
-			<action name="Execute">
-				<command>
-					uxterm -e 'tmux new -s "$USER - $$"'
-				</command>
-			</action>
-		</item>
-		<item label="UXterm">
-			<action name="Execute">
-				<command>
-					uxterm
-				</command>
-			</action>
-		</item>
-		<item label="Firefox">
-			<action name="Execute">
-				<command>
-					firefox
-				</command>
-			</action>
-		</item>
-		<item label="Thunar">
-			<action name="Execute">
-				<command>
-					thunar
-				</command>
-			</action>
-		</item>
-		<separator/>
-		<item label="Pause notifications">
-			<action name="Execute">
-				<execute>
-					sh -c "notify-send '__pause__' 'Notifications paused' ; xsetroot -solid '#333333' ; sleep 0.5 ; killall -SIGUSR1 dunst"
-				</execute>
-			</action>
-		</item>
-		<item label="Resume notifications">
-			<action name="Execute">
-				<command>
-					sh -c "killall -SIGUSR2 dunst ; notify-send '__pause__' 'Notifications resumed' ; xsetroot -solid black"
-				</command>
-			</action>
-		</item>
-		<separator/>
 		<item label="Reload X cfg">
 			<action name="Execute">
 				<command>
