@@ -6,4 +6,4 @@ fi
 
 ~/.paps/fonts/update.sh
 
-exec openbox-session
+exec dbus-launch --exit-with-session openbox-session
