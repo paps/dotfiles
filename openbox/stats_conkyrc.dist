@@ -26,34 +26,34 @@ short_units yes
 TEXT
 ${goto 10}${image $HOME/.paps/openbox/icons/cpu.png -p 0,0}
 ${cpu}%
-${color1}${cpugraph cpu0 10,30 666666 adadad}${color2}
+${color1}${cpugraph cpu0 10,30 666666 adadad -t}${color2}
 ${freq_g}
 
 
 
 ${image $HOME/.paps/openbox/icons/mem.png -p 0,77}
 ${mem}
-${color1}${memgraph 10,30 666666 adadad}${color2}
+${color1}${memgraph 10,30 666666 adadad -t}${color2}
 ${memmax}
 
 
 
 ${image $HOME/.paps/openbox/icons/empty.png -p 0,154}
 ${swap}
-${color1}${swapbar 10,30 666666 adadad}${color2}
+${color1}${swapbar 10,30 666666 adadad -t}${color2}
 ${swapmax}
 
 
 
 ${image $HOME/.paps/openbox/icons/net_down_01.png -p 0,231}
 ${downspeedf enp3s0}
-${color1}${downspeedgraph enp3s0 10,30 666666 adadad}${color2}
+${color1}${downspeedgraph enp3s0 10,30 666666 adadad -t}${color2}
 
 
 
 ${image $HOME/.paps/openbox/icons/net_up_02.png -p 0,297}
 ${upspeedf enp3s0}
-${color1}${upspeedgraph enp3s0 10,30 666666 adadad}${color2}
+${color1}${upspeedgraph enp3s0 10,30 666666 adadad -t}${color2}
 
 
 
