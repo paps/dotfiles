@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openbox_menu xmlns="http://openbox.org/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://openbox.org/                 file:///usr/share/openbox/menu.xsd">
 	<menu id="root-menu" label="Openbox 3">
-		<item label="Reload X cfg">
+		<item label="Reconfigure">
 			<action name="Execute">
 				<command>
 					~/.paps/openbox/xcfg.sh
 				</command>
 			</action>
 		</item>
-		<item label="Force lock">
+		<item label="Lock">
 			<action name="Execute">
 				<command>
 					xscreensaver-command -lock
 				</command>
 			</action>
 		</item>
-		<item label="Exit X">
+		<item label="Exit">
 			<action name="Exit"/>
 		</item>
 	</menu>
