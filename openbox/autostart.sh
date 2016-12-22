@@ -7,7 +7,7 @@ stalonetray --dockapp-mode simple --icon-size=32 --kludges=force_icons_size -v -
 ~/.paps/openbox/volume_late.sh &
 rescuetime &
 volumeicon &
-redshift-gtk &
+redshift-gtk -l 48.85:2.35 &
 
 if [ -f ~/.paps/scripts/local.sh ]
 then
