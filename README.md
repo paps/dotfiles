@@ -1,70 +1,9 @@
 Martin's dotfiles
 =================
 
-My dotfiles for Debian Sid.
+My Debian Sid dotfiles for desktops or laptops. For a minimal server configuration, use https://github.com/paps/dotfiles-server
 
-Packages
---------
-
-* Always install: `htop neovim vim xauth git zsh tmux tree curl inotify-tools trash-cli wget dnsutils apache2-utils`
-* For desktops/laptops:
-	* Add: `p7zip-full unrar tig pv pydf zsh-doc vim-gtk vim-doc nmap zenmap whiptail obconf obmenu firefox gnome-terminal xterm xscreensaver dmenu feh numlockx conky-all scrot x11-xserver-utils acpi alsa-utils gksu stalonetray moc fontconfig vlc gitk xfonts-terminus libx11-dev build-essential xclip mplayer python3 libdatetime-perl gsimplecal gnome-calculator zenity virt-manager spice-client-gtk dunst geeqie geany thunar thunar-volman thunar-archive-plugin thunar-media-tags-plugin thunar-gtkhash file-roller unar arj lhasa rar lzip lzop ncompress rzip unace unalz zoo parcellite flashplugin-nonfree ttf-mscorefonts-installer libnotify-bin gparted transmission-remote-gtk gimp ssh-askpass evince zip unzip cmake python-dev xdotool redshift-gtk pavucontrol volumeicon-alsa`
-	* Remove: `notification-daemon`
-
-SSH
----
-
-* `ssh-keygen -t rsa -C "paps@[machine_name]"` (default location, strong passphrase)
-* add key to GitHub: https://github.com/settings/ssh
-* `scp ~/.ssh/id_rsa.pub paps@[box]:`
-* `ssh [box]`
-	* add key in gitolite-admin repository, commit, push
-	* add key in dotssh repository, commit, push
-	* `rm id_rsa.pub`
-* `git clone git@[box]:dotssh`
-	* `./setup.sh [absolute-path-to-dotssh]`
-
-Install the dotfiles
---------------------
-
-* `git clone git@github.com:paps/dotfiles.git`
-* `cd dotfiles`
-* Create all the required links: `./setup.sh [absolute-path-to-dotfiles]`
-
-Shell
------
-
-* `whereis zsh`
-* `chsh -s [absolute-path-to-shell]`
-
-Neovim
-------
-
-* Only once, before first run: `git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle`
-* Only once, to initialize plugins: `nvim -u ~/.paps/vim/bundles.vim +PluginInstall`
-* For updating installed plugins: `nvim +PluginUpdate`
-* For installing a new plugin added in `bundles.vim`: `nvim +PluginInstall`
-* For removing unused plugins: `nvim +PluginClean`
-
-Optional: Monitoring
---------------------
-
-* x86 64/32: Go to https://newrelic.com, login, go to "Servers" and click "Add more".
-* ARM: Go to https://manager.linode.com/longview, login, add a client.
-* Go to https://papertrailapp.com, login, follow instructions to add a system.
-	* Configure TLS encryption: http://help.papertrailapp.com/kb/configuration/encrypting-remote-syslog-with-tls-ssl/#rsyslog
-	* Use better settings for the rsyslog queue: http://help.papertrailapp.com/kb/configuration/advanced-unix-logging-tips/#rsyslog_queue
-	* Dont forget the `rsyslog-gnutls` package
-
-Local binaries
---------------
-
-Add local binaries in `~/.paps/bin` (it's in $PATH).
-
-Desktops/Laptops
-----------------
-
-### From nothing to a minimal, configurable setup
+### Install
 
 Debian testing netinst from http://cdimage.debian.org/cdimage/weekly-builds/
 
@@ -76,8 +15,8 @@ Optimal setup procedure:
 
 * `sudo apt-get install vim`
 * `sudo vim /etc/apt/sources.list`
-	* `deb http://[mirror_url]/debian/ sid main contrib non-free`
-	* `deb http://[mirror_url]/debian/ experimental main contrib non-free`
+	* `deb http://deb.debian.org/debian sid main contrib non-free`
+	* `deb http://deb.debian.org/debian experimental main contrib non-free`
 * `sudo apt-get update`
 * `sudo apt-get dist-upgrade`
 * `sudo apt-get install xinit openbox xterm`
@@ -87,6 +26,70 @@ Optimal setup procedure:
 * `cd ~ ; rm -fr Videos Pictures Music Documents Public Templates`
 * `mkdir mnt`
 * `sudo rm /etc/fonts/conf.d/70-no-bitmaps.conf` (allows bitmap fonts in the standard font list)
+
+### Packages
+
+* Install: `htop neovim vim xauth git zsh tmux tree curl inotify-tools trash-cli wget dnsutils apache2-utils p7zip-full unrar tig pv pydf zsh-doc vim-gtk vim-doc nmap zenmap whiptail obconf obmenu firefox gnome-terminal xterm xscreensaver dmenu feh numlockx conky-all scrot x11-xserver-utils acpi alsa-utils gksu stalonetray moc fontconfig vlc gitk xfonts-terminus libx11-dev build-essential xclip mplayer python3 libdatetime-perl gsimplecal gnome-calculator zenity virt-manager spice-client-gtk dunst geeqie geany thunar thunar-volman thunar-archive-plugin thunar-media-tags-plugin thunar-gtkhash file-roller unar arj lhasa rar lzip lzop ncompress rzip unace unalz zoo parcellite flashplugin-nonfree ttf-mscorefonts-installer libnotify-bin gparted transmission-remote-gtk gimp ssh-askpass evince zip unzip cmake python-dev xdotool redshift-gtk pavucontrol volumeicon-alsa apt-transport-https`
+* Remove: `notification-daemon`
+
+### SSH
+
+* `ssh-keygen -t rsa -C "paps@[machine_name]"` (default location, strong passphrase)
+* add key to GitHub: https://github.com/settings/ssh
+* `scp ~/.ssh/id_rsa.pub paps@[box]:`
+* `ssh [box]`
+	* add key in gitolite-admin repository, commit, push
+	* add key in dotssh repository, commit, push
+	* `rm id_rsa.pub`
+* `git clone git@[box]:dotssh`
+	* `./setup.sh [absolute-path-to-dotssh]`
+
+### Install the dotfiles
+
+* `git clone git@github.com:paps/dotfiles.git`
+* `cd dotfiles`
+* Create all the required links: `./setup.sh [absolute-path-to-dotfiles]`
+
+### Shell
+
+* `whereis zsh`
+* `chsh -s [absolute-path-to-shell]`
+
+### Neovim
+
+* Only once, before first run: `git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle`
+* Only once, to initialize plugins: `nvim -u ~/.paps/vim/bundles.vim +PluginInstall`
+* For updating installed plugins: `nvim +PluginUpdate`
+* For installing a new plugin added in `bundles.vim`: `nvim +PluginInstall`
+* For removing unused plugins: `nvim +PluginClean`
+
+### Optional: Monitoring
+
+* x86 64/32: Go to https://newrelic.com, login, go to "Servers" and click "Add more".
+* Go to https://papertrailapp.com, login, follow instructions to add a system.
+	* Configure TLS encryption: http://help.papertrailapp.com/kb/configuration/encrypting-remote-syslog-with-tls-ssl/#rsyslog
+	* Use better settings for the rsyslog queue: http://help.papertrailapp.com/kb/configuration/advanced-unix-logging-tips/#rsyslog_queue
+	* Dont forget the `rsyslog-gnutls` package
+
+### Rescuetime
+
+Go to https://www.rescuetime.com/dashboard and install the Debian package. It is automatically started by `~/.paps/openbox/autostart.sh`.
+
+### Node & NPM
+
+If needed, install Node from a Nodesource Debian distribution: https://github.com/nodesource/distributions
+
+Great to have globally:
+
+* `npm install -g jsonlint`
+* `npm install -g coffee-script`
+* `npm install -g typescript`
+* `npm install -g uglify-js`
+* `npm install -g http-server`
+
+### Local binaries
+
+Add local binaries in `~/.paps/bin` (it's in $PATH).
 
 ### Firefox
 
@@ -112,14 +115,11 @@ Optimal setup procedure:
 	* Configure/add Google (set `g` as keyword)
 	* Configure the rest as needed
 	* In Preferences > Search: set Google as the default search engine
-* Desktop notifications configuration:
-	* Disable sounds
-	* Enter sync key
 * Rescue Time configuration:
-	* Uncheck "already using the full rescue time app"
+	* Check "already using the full rescue time app"
 	* Enter email
 
-### Configure openbox, conky, dunst
+### Configure openbox & conky
 
 * `cd dotfiles/openbox`
 * `cp rc.xml.dist rc.xml`
@@ -133,19 +133,54 @@ Optimal setup procedure:
 	* `gap_y` depends on the Xorg position of the left monitor, should be the same as `time_conkyrc` + 154
 	* Identify the network interface to monitor (`downspeedf`, `downspeedgraph`, `upspeedf` and `upspeedgraph`)
 	* If relevant, uncomment the battery section and identify it (`battery_short` and `battery_time`)
-* `cp dunstrc.dist dunstrc`
-	* Set `monitor` to `0`, `1` or `2` depending on where you want the notifications
+
+### Desktop notifications
+
+* `apt-get install xfce4-notifyd-config`
+* `xfce4-notifyd-config`
+	* Theme: Default
+	* Default position: Bottom right
+	* Disappear after: 10s
+	* Opacity: 100%
+
+### Gnome terminal
+
+* Preferences
+	* General
+		* Uncheck all
+		* Theme: default
+		* Open new terminals in windows
+	* Shortcuts
+		* Everything disabled except:
+		* Hide/show toolbar: F12
+		* Zoom in: Ctrl++
+		* Zoom out: Ctrl+_
+		* Normal size: Ctrl+)
+	* Profiles: just one profile
+	* Encodings: just utf-8 unicode
+* Profile preferences
+	* General
+		* Cursor shape: block
+		* No terminal bell
+		* Allow bold text
+		* Rewrap on resize
+		* Custom font: Ttyp0 Regular of size 10
+	* Command: nothing
+	* Colors
+		* Dont use colors from system
+		* Built-in scheme: Solarized light
+		* Palette: Solarized
+	* Scrolling
+		* No scrollbar
+		* Dont scroll on output
+		* Scroll on keystroke
+		* Limit scrollback to 10000 lines
+	* Compatibility: the default
+* Useful to know: `gnome-terminal --show-menubar`
 
 ### Session startup script
 
 Optional startup script: `~/.paps/scripts/local.sh` (ignored by git, executed by `~/.paps/openbox/autostart.sh` on session start). Don't forget to `chmod +x`.
-
-### GTK
-
-* `sudo apt-get install lxappearance gnome-themes-standard`
-* `rehash`
-* `lxappearance`
-* Select HighContrast widget theme and HighContrast icon theme
 
 ### Disable locking
 
@@ -162,8 +197,23 @@ To prevent xscreensaver from automatically locking the session: `touch ~/.paps/x
 
 ### Multi-head AMD open-source driver setup (xserver-xorg-video-radeon package)
 
-Dual monitor sample `xorg.conf`: `~/.paps/x/sample_radeon_dual_xorg.conf`
+Dual monitor sample `xorg.conf`: `x/radeon/dual_xorg.conf`
 
-Triple monitor sample `xorg.conf`: `~/.paps/x/sample_radeon_triple_xorg.conf`
+Triple monitor sample `xorg.conf`: `x/radeon/triple_xorg.conf`
 
 The most important thing to note is the use of an absolute `Position` in every `Monitor` section.
+
+### Dell XPS
+
+See `x/xps/` folder for examples of X11 configuration for these laptops (Intel Graphics, touchpad and removal of mouse acceleration). To use, put them in `/etc/X11/xorg.conf.d/`.
+
+Use `tlp` for battery optimizations: http://linrunner.de/en/tlp/docs/tlp-linux-advanced-power-management.html
+
+* `apt-get install tlp tlp-rdw`
+* `service tlp start`
+* `service tlp status`
+* `tlp-stat -s`
+
+Use `powertop` for monitoring power usage (however, when used in parallel with `tlp`, some of the information displayed seems wrong, beware).
+
+* `apt-get install powertop`
