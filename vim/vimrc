@@ -226,11 +226,6 @@ if has("nvim")
     let g:deoplete#enable_at_startup = 1
 endif
 
-" colorize MetaQuotes Language like C++
-au BufNewFile,BufRead *.mq5 setl filetype=cpp
-au BufNewFile,BufRead *.mqh setl filetype=cpp
-au BufNewFile,BufRead *.ex5 setl filetype=cpp
-
 " allow project specific settings
 set secure
 set exrc
