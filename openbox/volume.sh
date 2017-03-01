@@ -1,5 +1,15 @@
 #!/usr/bin/env bash
 
+lockfile="$HOME/.paps/openbox/.volume-lock"
+
+if [ -f "$lockfile" ]
+then
+    echo "Lock file $lockfile exits"
+    exit 1
+fi
+
+touch "$lockfile"
+
 if [ $# -eq 1 ]
 then
     if [ $1 = "+" ]
@@ -18,7 +28,10 @@ then
         amixer -q set LFE toggle
         amixer -q set Line toggle
     else
-        echo "Usage: $0 [+/-/m]"
-        exit 1
+        echo "Usage: $0 +|-|m"
     fi
+else
+    echo "Usage: $0 +|-|m"
 fi
+
+rm "$lockfile"
