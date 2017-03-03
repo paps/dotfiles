@@ -16,6 +16,7 @@ alias df='df -h'
 alias vim="echo 'choose between nvim and \\\vim' ; false"
 alias vimdiff="echo 'choose between nvim -d and \\\vimdiff' ; false"
 alias del='trash-put'
+alias trash-restore='restore-trash'
 
 # colors
 # ------

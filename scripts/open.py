@@ -18,7 +18,7 @@ bindings = [
       "chromium-browser"]),
     # video
     (["avi", "mkv", "mp4", "3gp", "mov", "ogg"],
-     ["vlc", "mplayer"]),
+     ["vlc", "mplayer", "smplayer"]),
     # audio
     (["mp3", "wav", "flac", "aac", "aiff", "aifc", "aif", "ape"],
      ["vlc"]),
