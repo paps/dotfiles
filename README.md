@@ -190,6 +190,11 @@ To prevent xscreensaver from automatically locking the session: `touch ~/.paps/x
 
 `sudo dpkg-reconfigure locales`, add `fr_FR.utf8` if not present, make sure the default locale is `en_US.ut8`.
 
+### Force default browser
+
+* `sudo update-alternatives --config x-www-browser` and select Firefox
+* `xdg-settings set default-web-browser firefox.desktop`
+
 ### Calendar, calculator
 
 * `Ctrl-Alt-C` to open calendar
