@@ -46,7 +46,7 @@ set scrolloff=3 " offset of 3 lines around the cursor
 set modelines=0
 set cursorline
 set cursorcolumn
-set noek " don't care about escape commands
+"set noek " don't care about escape commands
 set noequalalways
 set lazyredraw " do not redraw too much when executing macros
 set wildmenu " enhanced command line completion
