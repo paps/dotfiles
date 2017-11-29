@@ -418,12 +418,12 @@
     <!-- Keybindings for screen backlight -->
     <keybind key="XF86MonBrightnessUp">
       <action name="Execute">
-        <command>xbacklight -inc 5</command>
+        <command>xbacklight -inc 20</command>
       </action>
     </keybind>
     <keybind key="XF86MonBrightnessDown">
       <action name="Execute">
-        <command>xbacklight -dec 5</command>
+        <command>xbacklight -dec 20</command>
       </action>
     </keybind>
   </keyboard>

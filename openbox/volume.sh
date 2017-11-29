@@ -4,7 +4,7 @@ lockfile="$HOME/.paps/openbox/.volume-lock"
 
 if [ -f "$lockfile" ]
 then
-    echo "Lock file $lockfile exits"
+    echo "Lock file $lockfile exists"
     exit 1
 fi
 
