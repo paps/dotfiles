@@ -5,6 +5,7 @@ scripts/local.sh
 pentadactyl/pentadactyl/info/
 x/do_not_lock
 zsh/do_not_start_ssh_agent
+fonts/.uuid
 
 vim/vim/.netrwhist
 vim/vim/bundle
