@@ -50,15 +50,6 @@ echo "Link: ~/.Xmodmap -> ~/.paps/x/Xmodmap"
 rm $rmflags ~/.Xmodmap
 ln -sT ~/.paps/x/Xmodmap ~/.Xmodmap
 
-# pentadactyl
-echo "Link: ~/.pentadactylrc -> ~/.paps/pentadactyl/pentadactylrc"
-rm $rmflags ~/.pentadactylrc
-ln -sT ~/.paps/pentadactyl/pentadactylrc ~/.pentadactylrc
-
-echo "Link: ~/.pentadactyl -> ~/.paps/pentadactyl/pentadactyl"
-rm $rmflags ~/.pentadactyl
-ln -sT ~/.paps/pentadactyl/pentadactyl ~/.pentadactyl
-
 # icons
 echo "Link: ~/.icons -> ~/.paps/icons"
 rm $rmflags ~/.icons
@@ -93,6 +84,10 @@ mkdir -p ~/.themes
 echo "Link: ~/.themes/modern-grey -> ~/.paps/openbox/modern-grey"
 rm $rmflags ~/.themes/modern-grey
 ln -sT ~/.paps/openbox/modern-grey ~/.themes/modern-grey
+
+echo "Link: ~/.themes/retrosmart-openbox-themes-gold -> ~/.paps/openbox/retrosmart-openbox-themes-gold"
+rm $rmflags ~/.themes/retrosmart-openbox-themes-gold
+ln -sT ~/.paps/openbox/retrosmart-openbox-themes-gold ~/.themes/retrosmart-openbox-themes-gold
 
 # gsimplecal
 mkdir -p ~/.config/gsimplecal
