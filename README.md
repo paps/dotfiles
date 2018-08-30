@@ -24,12 +24,11 @@ Optimal setup procedure:
 * `exec startx`
 * `sudo apt-get install htop chromium firefox geany`
 * `cd ~ ; rm -fr Videos Pictures Music Documents Public Templates`
-* `mkdir mnt`
 * `sudo rm /etc/fonts/conf.d/70-no-bitmaps.conf` (allows bitmap fonts in the standard font list)
 
 ### Packages
 
-* Install: `htop neovim vim xauth git zsh tmux tree curl inotify-tools trash-cli wget dnsutils apache2-utils p7zip-full unrar tig pv pydf zsh-doc vim-gtk vim-doc nmap zenmap whiptail obconf obmenu firefox gnome-terminal xterm xscreensaver dmenu feh numlockx conky-all scrot x11-xserver-utils acpi alsa-utils gksu stalonetray fontconfig vlc gitk xfonts-terminus libx11-dev build-essential xclip mplayer python3 libdatetime-perl gsimplecal gnome-calculator zenity virt-manager spice-client-gtk geeqie geany thunar thunar-volman thunar-archive-plugin thunar-media-tags-plugin thunar-gtkhash file-roller unar arj lhasa rar lzip lzop ncompress rzip unace unalz zoo parcellite flashplugin-nonfree ttf-mscorefonts-installer libnotify-bin gparted transmission-remote-gtk gimp ssh-askpass evince zip unzip cmake python-dev xdotool redshift-gtk pavucontrol volumeicon-alsa apt-transport-https rsync`
+* Install: `htop neovim vim xauth git zsh tmux tree curl inotify-tools trash-cli wget dnsutils apache2-utils p7zip-full unrar tig pv pydf zsh-doc vim-gtk vim-doc nmap zenmap whiptail obconf obmenu firefox gnome-terminal xterm xscreensaver dmenu feh numlockx conky-all scrot x11-xserver-utils acpi alsa-utils gksu stalonetray fontconfig vlc gitk xfonts-terminus fonts-croscore libx11-dev build-essential xclip mplayer python3 libdatetime-perl gsimplecal gnome-calculator zenity virt-manager spice-client-gtk geeqie geany thunar thunar-volman thunar-archive-plugin thunar-media-tags-plugin thunar-gtkhash file-roller unar arj lhasa rar lzip lzop ncompress rzip unace unalz zoo parcellite flashplugin-nonfree ttf-mscorefonts-installer libnotify-bin gparted transmission-remote-gtk gimp ssh-askpass evince zip unzip cmake python-dev xdotool redshift-gtk pavucontrol volumeicon-alsa apt-transport-https rsync network-manager network-manager-gnome`
 * Remove: `notification-daemon xsel`
 
 ### SSH
@@ -65,7 +64,7 @@ Optimal setup procedure:
 
 ### Optional: Monitoring
 
-* x86 64/32: Go to https://newrelic.com, login, go to "Servers" and click "Add more".
+* **TODO**: Describe collectd install
 * Go to https://papertrailapp.com, login, follow instructions to add a system.
 	* Configure TLS encryption: http://help.papertrailapp.com/kb/configuration/encrypting-remote-syslog-with-tls-ssl/#rsyslog
 	* Use better settings for the rsyslog queue: http://help.papertrailapp.com/kb/configuration/advanced-unix-logging-tips/#rsyslog_queue
@@ -82,10 +81,13 @@ If needed, install Node from a Nodesource Debian distribution: https://github.co
 Great to have globally:
 
 * `npm install -g jsonlint`
-* `npm install -g coffee-script`
 * `npm install -g typescript`
 * `npm install -g uglify-js`
 * `npm install -g http-server`
+* `npm install -g eslint`
+* `npm install -g tslint`
+* `npm install -g neovim`
+* `npm install -g phantombuster-sdk`
 
 ### Local binaries
 
@@ -102,19 +104,7 @@ Add local binaries in `~/.paps/bin` (it's in $PATH).
 		* "Show vault after login"
 		* "Automatically fill login information"
 * Synchronize Firefox
-* Install nightly Pentadactyl: http://5digits.org/pentadactyl/
-* TreeStyleTab configuration:
-	* Disable "narrow scrollbar", "collapse/expand trees", "indent tabs"
-	* Theme: "Flat"
-	* Set only one level of depth
-	* Disable all context menu options except "Close this tree" and "Fix position and width"
-	* Disable "Show tree contents in tooltips"
-	* Auto hide: set "Show tab bar always" for normal window mode *and* full screen mode
-* Search engines configuration:
-	* `:dia searchengines`
-	* Configure/add Google (set `g` as keyword)
-	* Configure the rest as needed
-	* In Preferences > Search: set Google as the default search engine
+* **TODO**: Describe new Firefox install
 * Rescue Time configuration:
 	* Check "already using the full rescue time app"
 	* Enter email
