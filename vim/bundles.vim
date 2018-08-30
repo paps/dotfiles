@@ -10,32 +10,62 @@ call vundle#rc()
 " To remove unused bundles, run:
 " vim +PluginClean
 
-" Comments after Bundle command are not allowed
+" NOTE: Comments after Bundle command are not allowed
 Plugin 'gmarik/vundle'
+
+" Generic useful plugins
+" ======================
+" Fix vim's repeat . command
 Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-unimpaired'
+" Useful :Git commands
 Plugin 'tpope/vim-fugitive'
-Plugin 'bronson/vim-trailing-whitespace'
-Plugin 'milkypostman/vim-togglelist'
-Plugin 'jeetsukumaran/vim-buffergator'
-Plugin 'scrooloose/nerdtree'
-Plugin 'Xuyuanp/nerdtree-git-plugin'
-Plugin 'scrooloose/syntastic'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'wavded/vim-stylus'
-Plugin 'digitaltoad/vim-jade'
-Plugin 'digitaltoad/vim-pug'
+" Auto-detect indent from file/folder contents
 Plugin 'tpope/vim-sleuth'
-Plugin 'guns/xterm-color-table.vim'
-Plugin 'Shougo/vimproc.vim'
-Plugin 'Quramy/tsuquyomi'
-Plugin 'Quramy/vim-js-pretty-template'
-Plugin 'leafgarland/typescript-vim'
-Plugin 'jason0x43/vim-js-indent'
+" Highlight trailing whitespace
+Plugin 'bronson/vim-trailing-whitespace'
+" leader-l, leader-q to toggle location list, quickfix list
+Plugin 'milkypostman/vim-togglelist'
+
+" Styling
+" =======
+" Support for 256 colors
+Plugin 'chriskempson/base16-vim'
+" Status line
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+
+" File management
+" ===============
+" Buffer quick-switch (leader-b)
+Plugin 'jeetsukumaran/vim-buffergator'
+" Left-side file browser (leader-n)
+Plugin 'scrooloose/nerdtree'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
+
+" Syntax highlighting
+" ===================
+" CoffeeScript
+Plugin 'kchmck/vim-coffee-script'
+" Pug / Jade
+Plugin 'digitaltoad/vim-pug'
+" Modern JavaScript
+Plugin 'pangloss/vim-javascript'
+" JSON
+Plugin 'elzr/vim-json'
+" TypeScript
+Plugin 'HerringtonDarkholme/yats.vim'
+
+" Auto completion
+" ===============
+" Main framework
 Plugin 'Shougo/deoplete.nvim'
-Plugin 'chriskempson/base16-vim'
+" Typescript
+Plugin 'mhartington/nvim-typescript'
+
+" Linting (many linters supported, async during typing)
+Plugin 'w0rp/ale'
+
+" Analytics
 Plugin 'wakatime/vim-wakatime'
 
 filetype plugin indent on " required!
