@@ -126,7 +126,7 @@ Add local binaries in `~/.paps/bin` (it's in $PATH).
 
 ### Desktop notifications
 
-* `apt-get install xfce4-notifyd-config`
+* `apt-get install xfce4-notifyd`
 * `xfce4-notifyd-config`
 	* Theme: Default
 	* Default position: Bottom right
