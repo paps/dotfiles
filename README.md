@@ -100,12 +100,15 @@ Add local binaries in `~/.paps/bin` (it's in $PATH).
 	* "Automatically Logoff when all browsers are closed after 0 mins"
 	* Disable all notifications
 	* Uncheck:
-		* "Highligh input boxes"
+		* "Highlight input boxes"
 		* "Show vault after login"
 		* "Automatically fill login information"
 * Synchronize Firefox
-* **TODO**: Describe new Firefox install
-* Rescue Time configuration:
+* Preferences:
+	* Disable smooth scrolling
+* In `about:config`:
+	* Set `mousewheel.default.delta_multiplier_y` to `200`
+* Rescue Time configuration (if asked):
 	* Check "already using the full rescue time app"
 	* Enter email
 
@@ -139,10 +142,8 @@ Add local binaries in `~/.paps/bin` (it's in $PATH).
 	* General
 		* Uncheck all
 		* Theme: default
-		* Open new terminals in windows
 	* Shortcuts
 		* Everything disabled except:
-		* Hide/show toolbar: F12
 		* Zoom in: Ctrl++
 		* Zoom out: Ctrl+_
 		* Normal size: Ctrl+)
@@ -152,10 +153,9 @@ Add local binaries in `~/.paps/bin` (it's in $PATH).
 	* General
 		* Cursor shape: block
 		* No terminal bell
-		* Allow bold text
-		* Rewrap on resize
 		* Custom font: Ttyp0 Regular of size 10
-	* Command: nothing
+	* Command:
+		* Run custom command instead of shell: `tmux`
 	* Colors
 		* Dont use colors from system
 		* Built-in scheme: Solarized light
