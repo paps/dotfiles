@@ -79,16 +79,7 @@ Go to https://www.rescuetime.com/dashboard and install the Debian package. It is
 
 If needed, install Node from a Nodesource Debian distribution: https://github.com/nodesource/distributions
 
-Great to have globally:
-
-* `npm install -g jsonlint`
-* `npm install -g typescript`
-* `npm install -g uglify-js`
-* `npm install -g http-server`
-* `npm install -g eslint`
-* `npm install -g tslint`
-* `npm install -g neovim`
-* `npm install -g phantombuster-sdk`
+Great to have globally: `npm install -g jsonlint typescript uglify-js http-server eslint tslint neovim phantombuster-sdk`
 
 ### Local binaries
 
