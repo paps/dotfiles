@@ -108,6 +108,7 @@ Add local binaries in `~/.paps/bin` (it's in $PATH).
 	* Disable smooth scrolling
 * In `about:config`:
 	* Set `mousewheel.default.delta_multiplier_y` to `200`
+	* Set `services.sync.addons.ignoreUserEnabledChanges` to `true` (addons installs/uninstalls will be synched, but not their enabled/disabled statuses)
 * Rescue Time configuration (if asked):
 	* Check "already using the full rescue time app"
 	* Enter email
