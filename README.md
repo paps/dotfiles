@@ -101,6 +101,8 @@ Add local binaries in `~/.paps/bin` (it's in $PATH).
 * In `about:config`:
 	* Set `mousewheel.default.delta_multiplier_y` to `200`
 	* Set `services.sync.addons.ignoreUserEnabledChanges` to `true` (addons installs/uninstalls will be synched, but not their enabled/disabled statuses)
+	* Set `extensions.pocket.enabled` to `false`
+	* Set `nglayout.enable_drag_images` to `false`
 * Rescue Time configuration (if asked):
 	* Check "already using the full rescue time app"
 	* Enter email
