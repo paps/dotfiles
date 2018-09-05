@@ -96,13 +96,10 @@ Add local binaries in `~/.paps/bin` (it's in $PATH).
 		* "Show vault after login"
 		* "Automatically fill login information"
 * Synchronize Firefox
-* Preferences:
-	* Disable smooth scrolling
-* In `about:config`:
-	* Set `mousewheel.default.delta_multiplier_y` to `200`
-	* Set `services.sync.addons.ignoreUserEnabledChanges` to `true` (addons installs/uninstalls will be synched, but not their enabled/disabled statuses)
-	* Set `extensions.pocket.enabled` to `false`
-	* Set `nglayout.enable_drag_images` to `false`
+* Go into the default profile folder `~/.mozilla/firefox/XXXX.default` then:
+	* `mkdir chrome`
+	* `ln -s ~/.paps/firefox/userChrome.css chrome/`
+	* `ln -s ~/.paps/firefox/user.js .`
 * Rescue Time configuration (if asked):
 	* Check "already using the full rescue time app"
 	* Enter email
@@ -137,8 +134,8 @@ Add local binaries in `~/.paps/bin` (it's in $PATH).
 	* General
 		* Uncheck all
 		* Theme: default
-	* Shortcuts
-		* Everything disabled except:
+		* Allow blinking text: never
+	* Shortcuts, everything disabled except:
 		* Zoom in: Ctrl++
 		* Zoom out: Ctrl+_
 		* Normal size: Ctrl+)
