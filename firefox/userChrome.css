@@ -3,3 +3,13 @@
 .tabbrowser-tab > .tab-stack > .tab-content[pinned][titlechanged] {
 	background-image: none !important;
 }
+
+/* Sidetabs: Completely hide the "title changed" notification dot on pinned tabs */
+#sidebar-box[sidebarcommand="_0ad88674-2b41-4cfb-99e3-e206c74a0076_-sidebar-action"] #sidebar-header {
+  visibility: collapse;
+}
+
+/* Sidetabs: Hide other useless UI from it */
+#tabbrowser-tabs {
+  visibility: collapse;
+}
