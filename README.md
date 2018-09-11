@@ -81,7 +81,7 @@ If needed, install Node from a Nodesource Debian distribution: https://github.co
 
 Great to have globally: `npm install -g jsonlint typescript uglify-js http-server eslint tslint neovim phantombuster-sdk`
 
-After having installed TypeScrit, completion support, do this: `cd ~/.vim/bundle/nvim-typescript ; ./install.sh`
+After having installed TypeScript, for completion support, do this: `cd ~/.vim/bundle/nvim-typescript ; ./install.sh`
 
 ### Local binaries
 
