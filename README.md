@@ -61,6 +61,7 @@ Optimal setup procedure:
 * Only once, to initialize plugins: `nvim -u ~/.paps/vim/bundles.vim +PluginInstall`
 * For updating installed plugins: `nvim +PluginUpdate`
 * For installing a new plugin added in `bundles.vim`: `nvim +PluginInstall`
+* Often needed after updates or installs: `nvim +UpdateRemotePlugins`
 * For removing unused plugins: `nvim +PluginClean`
 
 ### Optional: Monitoring
