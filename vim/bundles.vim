@@ -41,6 +41,7 @@ Plugin 'jeetsukumaran/vim-buffergator'
 " Left-side file browser (leader-n)
 Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
+Plugin 'airblade/vim-gitgutter'
 
 " Syntax highlighting
 " ===================
