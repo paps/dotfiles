@@ -61,6 +61,7 @@ Optimal setup procedure:
 * Only once, to initialize plugins: `nvim -u ~/.paps/vim/bundles.vim +PluginInstall`
 * For updating installed plugins: `nvim +PluginUpdate`
 * For installing a new plugin added in `bundles.vim`: `nvim +PluginInstall`
+* Often needed after updates or installs: `nvim +UpdateRemotePlugins`
 * For removing unused plugins: `nvim +PluginClean`
 
 ### Optional: Monitoring
@@ -80,6 +81,8 @@ Go to https://www.rescuetime.com/dashboard and install the Debian package. It is
 If needed, install Node from a Nodesource Debian distribution: https://github.com/nodesource/distributions
 
 Great to have globally: `npm install -g jsonlint typescript uglify-js http-server eslint tslint neovim phantombuster-sdk`
+
+After having installed TypeScript, for completion support, do this: `cd ~/.vim/bundle/nvim-typescript ; ./install.sh`
 
 ### Local binaries
 
