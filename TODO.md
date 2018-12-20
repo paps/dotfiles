@@ -3,4 +3,4 @@
 * ✅ use leader-p and leader-y for pasting and yanking from the system clipboard
 * ~~toggle screensaver + conky status display~~
 * hotkeys for gnome-screenshot -i
-* simplify prompt, stop showing left-aligned text
+* ✅ simplify prompt, stop showing left-aligned text
