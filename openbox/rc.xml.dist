@@ -251,7 +251,6 @@
     <!-- Keybindings for tiling -->
     <keybind key="C-A-Prior">
       <action name="Unmaximize"/>
-      <action name="Undecorate"/>
       <action name="MoveResizeTo">
         <x>0</x>
         <y>0</y>
@@ -261,7 +260,6 @@
     </keybind>
     <keybind key="C-A-Next">
       <action name="Unmaximize"/>
-      <action name="Undecorate"/>
       <action name="MoveResizeTo">
         <x>0</x>
         <y>-0</y>
@@ -271,7 +269,6 @@
     </keybind>
     <keybind key="C-A-End">
       <action name="Unmaximize"/>
-      <action name="Undecorate"/>
       <action name="MoveResizeTo">
         <x>-0</x>
         <y>0</y>
@@ -281,7 +278,6 @@
     </keybind>
     <keybind key="C-A-Home">
       <action name="Unmaximize"/>
-      <action name="Undecorate"/>
       <action name="MoveResizeTo">
         <x>0</x>
         <y>0</y>
