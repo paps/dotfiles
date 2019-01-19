@@ -1,15 +1,15 @@
-/* Completely hide the "title changed" notification dot on pinned tabs */
+/* Hide the "title changed" blue glow on pinned tabs */
 /* See https://support.mozilla.org/en-US/questions/1181537 */
 .tabbrowser-tab > .tab-stack > .tab-content[pinned][titlechanged] {
-	background-image: none !important;
+    background-image: none !important;
 }
 
-/* Sidetabs: Completely hide the "title changed" notification dot on pinned tabs */
+/* For sidebar tabs: hide the "title changed" blue glow on pinned tabs */
 #sidebar-box[sidebarcommand="_0ad88674-2b41-4cfb-99e3-e206c74a0076_-sidebar-action"] #sidebar-header {
-  visibility: collapse;
+    visibility: collapse;
 }
 
-/* Sidetabs: Hide other useless UI from it */
-#tabbrowser-tabs {
-  visibility: collapse;
+/* For sidebar tabs: hide tab search menu on top */
+#topmenu {
+    display: none;
 }
