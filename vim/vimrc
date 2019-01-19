@@ -238,11 +238,11 @@ let g:ale_linters = {
 " Gitgutter
 let g:gitgutter_map_keys = 0
 set updatetime=500
-if exists('&signcolumn') " Vim 7.4.2201
-    set signcolumn=yes
-else
-    let g:gitgutter_sign_column_always = 1
-endif
+" if exists('&signcolumn') " Vim 7.4.2201
+"     set signcolumn=yes
+" else
+"     let g:gitgutter_sign_column_always = 1
+" endif
 
 " JSON highlighter
 let g:vim_json_syntax_conceal = 0
