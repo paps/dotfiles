@@ -6,4 +6,6 @@ fi
 
 ~/.paps/fonts/update.sh
 
+export MOZ_USE_XINPUT2=1
+
 exec dbus-launch --exit-with-session openbox-session
