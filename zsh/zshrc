@@ -52,11 +52,17 @@ function __vi_mode_prompt() {
 	local normal_mode="%{$FG[011]%}⮂%{$BG[011]%}%{$FG[015]%}%{$FX[bold]%} NORMAL %{$FX[reset]%}%{$FG[011]%}⮀%{$FX[reset]%}"
 	echo -n "${${KEYMAP/vicmd/$normal_mode}/(main|viins)/}"
 }
-# distant and local prompts
+function __vi_mode_prompt_begin() {
+	local normal_mode="%{$BG[011]%}"
+	echo -n "${${KEYMAP/vicmd/$normal_mode}/(main|viins)/}"
+}
+# prompts
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ] ; then
+	# distant prompt
 	PS1='%{$FG[002]%}⮂%{$BG[002]%}%{$FG[015]%}%{$FX[bold]%}%M%{$FX[reset]%}%{$FG[002]%}⮀%(?..%{$FG[001]%}⮂%{$BG[001]%}%{$FG[015]%}↪%?%{$FX[reset]%}%{$FG[001]%}⮀)$(__vi_mode_prompt)$(__vcs_info_prompt)%{$FX[reset]%}%{$FG[014]%}⮂%{$BG[014]%}%{$FG[015]%}%~%{$FX[reset]%}%{$FG[014]%}⮀%{$FX[reset]%} '
 else
-	PS1='%(?..%{$FG[001]%}⮂%{$BG[001]%}%{$FG[015]%}↪%?%{$FX[reset]%}%{$FG[001]%}⮀)$(__vi_mode_prompt)$(__vcs_info_prompt)%{$FX[reset]%}%{$FG[014]%}⮂%{$BG[014]%}%{$FG[015]%}%~%{$FX[reset]%}%{$FG[014]%}⮀%{$FX[reset]%} '
+	# local prompt
+	PS1='%(?..%{$FG[001]%}⮂%{$BG[001]%}%{$FG[015]%}↪%?%{$FX[reset]%}%{$FG[001]%}⮀)$(__vcs_info_prompt)%{$FX[reset]%}%{$FG[014]%}⮂%{$BG[014]%}$(__vi_mode_prompt_begin)%{$FG[015]%}%~%{$FX[reset]%}%{$FG[014]%}⮀%{$FX[reset]%} '
 fi
 # reset prompt on some events
 function zle-keymap-select zle-line-init zle-line-finish {
