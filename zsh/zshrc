@@ -25,8 +25,6 @@ eval `dircolors ~/.paps/zsh/dircolors.ansi-light`
 
 # VCS info
 # --------
-
-
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:*' actionformats "%{$BG[004]%}%{$FG[015]%}%a%{$BG[014]%}%{$FG[015]%}%b%c%{$FX[reset]%}%{$FG[014]%}%u%{$FX[reset]%} "
@@ -49,7 +47,7 @@ setopt prompt_subst
 # prompt init
 autoload -Uz promptinit
 promptinit
-# left side prompt vi mode
+# vi mode background color change
 function __vi_mode_prompt() {
 	local normal_mode="%{$BG[005]%}"
 	echo -n "${${KEYMAP/vicmd/$normal_mode}/(main|viins)/}"
