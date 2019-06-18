@@ -4,7 +4,7 @@
 	branch = auto
 [user]
 	name = Martin Tapia
-	email = contact@martintapia.com
+	email = martin@phantombuster.com
 	signingkey = contact@martintapia.com
 [alias]
 	ci = commit
