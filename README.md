@@ -207,3 +207,9 @@ Use `tlp` for battery optimizations: http://linrunner.de/en/tlp/docs/tlp-linux-a
 Use `powertop` for monitoring power usage (however, when used in parallel with `tlp`, some of the information displayed seems wrong, beware).
 
 * `apt-get install powertop`
+
+### Apple Wireless Keyboard
+
+* Respect standard layout: `# echo 0 > /sys/module/hid_apple/parameters/iso_layout`
+* Have ctrl & alt were it's expected: `# echo 1 > /sys/module/hid_apple/parameters/swap_opt_cmd`
+* F keys are F keys: `# echo 2 > /sys/module/hid_apple/parameters/fnmode`
