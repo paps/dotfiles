@@ -5,7 +5,7 @@ My Debian Sid dotfiles for desktops or laptops. For a minimal server configurati
 
 ### Install
 
-Debian testing netinst from http://cdimage.debian.org/cdimage/weekly-builds/
+Debian testing netinst from http://cdimage.debian.org/cdimage/weekly-builds/ (or even better, take one that includes non-free firmware: http://cdimage.debian.org/cdimage/unofficial/non-free/cd-including-firmware/weekly-builds/amd64/iso-cd/)
 
 Easiest way to make a bootable usb disk: `sudo umount [...]` then `sudo cp debian.iso /dev/sdX`
 
