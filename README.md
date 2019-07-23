@@ -5,7 +5,7 @@ My Debian Sid dotfiles for desktops or laptops. For a minimal server configurati
 
 ### Install
 
-Debian testing netinst from http://cdimage.debian.org/cdimage/weekly-builds/
+Debian testing netinst from http://cdimage.debian.org/cdimage/weekly-builds/ (or even better, take one that includes non-free firmware: http://cdimage.debian.org/cdimage/unofficial/non-free/cd-including-firmware/weekly-builds/amd64/iso-cd/)
 
 Easiest way to make a bootable usb disk: `sudo umount [...]` then `sudo cp debian.iso /dev/sdX`
 
@@ -207,3 +207,9 @@ Use `tlp` for battery optimizations: http://linrunner.de/en/tlp/docs/tlp-linux-a
 Use `powertop` for monitoring power usage (however, when used in parallel with `tlp`, some of the information displayed seems wrong, beware).
 
 * `apt-get install powertop`
+
+### Apple Wireless Keyboard
+
+* Respect standard layout: `# echo 0 > /sys/module/hid_apple/parameters/iso_layout`
+* Have ctrl & alt were it's expected: `# echo 1 > /sys/module/hid_apple/parameters/swap_opt_cmd`
+* F keys are F keys: `# echo 2 > /sys/module/hid_apple/parameters/fnmode`
