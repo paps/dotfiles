@@ -13,3 +13,9 @@
 #topmenu {
     display: none;
 }
+
+
+
+#tabbrowser-tabs {
+    visibility: collapse;
+}
