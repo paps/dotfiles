@@ -36,13 +36,6 @@ Optimal setup procedure:
 
 * `ssh-keygen -t rsa -C "paps@[machine_name]"` (default location, strong passphrase)
 * add key to GitHub: https://github.com/settings/ssh
-* `scp ~/.ssh/id_rsa.pub paps@[box]:`
-* `ssh [box]`
-	* add key in gitolite-admin repository, commit, push
-	* add key in dotssh repository, commit, push
-	* `rm id_rsa.pub`
-* `git clone git@[box]:dotssh`
-	* `./setup.sh [absolute-path-to-dotssh]`
 
 ### Install the dotfiles
 
@@ -180,10 +173,11 @@ To prevent xscreensaver from automatically locking the session: `touch ~/.paps/x
 * `sudo update-alternatives --config x-www-browser` and select Firefox
 * `xdg-settings set default-web-browser firefox.desktop`
 
-### Calendar, calculator
+### Openbox shortcuts
 
 * `Ctrl-Alt-C` to open calendar
 * `Ctrl-Alt-Y` to open calculator
+* `Ctrl-Alt-S` to take a screenshot
 
 ### Multi-head AMD open-source driver setup (xserver-xorg-video-radeon package)
 
