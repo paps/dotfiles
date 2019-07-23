@@ -1,0 +1,20 @@
+Host *
+    VisualHostKey yes
+    ServerAliveInterval 60
+    HashKnownHosts no
+    ControlMaster auto
+    Compression yes
+    ControlPath ~/.ssh/cm_socket_%r@%h:%p
+
+Host box
+    HostName box.martintapia.com
+    User paps
+
+Host meudon
+    HostName meudon.martintapia.com
+    Port 2222
+    User pi
+
+Host paris
+    HostName paris.martintapia.com
+    User paps

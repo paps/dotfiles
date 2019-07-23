@@ -33,6 +33,19 @@ echo "Link: ~/.paps -> $1"
 rm $rmflags ~/.paps
 ln -sT "$1" ~/.paps
 
+# ssh
+mkdir -v -p ~/.ssh
+
+echo "Link: ~/.ssh/config -> ~/.paps/ssh/config"
+rm $rmflags ~/.ssh/config
+ln -sT ~/.paps/ssh/config ~/.ssh/config
+chmod -v og-rwx ~/.ssh/config
+
+echo "curl: https://github.com/paps.keys -> ~/.ssh/authorized_keys"
+rm $rmflags ~/.ssh/authorized_keys
+curl --silent 'https://github.com/paps.keys' -o ~/.ssh/authorized_keys
+chmod -v og-rwx ~/.ssh/authorized_keys
+
 # X11
 echo "Link: ~/.Xresources -> ~/.paps/x/Xresources"
 rm $rmflags ~/.Xresources
@@ -65,7 +78,7 @@ rm $rmflags ~/.fonts
 ln -sT ~/.paps/fonts ~/.fonts
 
 # openbox
-mkdir -p ~/.config/openbox
+mkdir -v -p ~/.config/openbox
 
 echo "Link: ~/.config/openbox/menu.xml -> ~/.paps/openbox/menu.xml"
 rm $rmflags ~/.config/openbox/menu.xml
@@ -79,7 +92,7 @@ echo "Link: ~/.config/openbox/autostart.sh -> ~/.paps/openbox/autostart.sh"
 rm $rmflags ~/.config/openbox/autostart.sh
 ln -sT ~/.paps/openbox/autostart.sh ~/.config/openbox/autostart.sh
 
-mkdir -p ~/.themes
+mkdir -v -p ~/.themes
 
 echo "Link: ~/.themes/modern-grey -> ~/.paps/openbox/modern-grey"
 rm $rmflags ~/.themes/modern-grey
@@ -90,14 +103,14 @@ rm $rmflags ~/.themes/retrosmart-openbox-themes-gold
 ln -sT ~/.paps/openbox/retrosmart-openbox-themes-gold ~/.themes/retrosmart-openbox-themes-gold
 
 # gsimplecal
-mkdir -p ~/.config/gsimplecal
+mkdir -v -p ~/.config/gsimplecal
 
 echo "Link: ~/.config/gsimplecal/config -> ~/.paps/gsimplecal/config"
 rm $rmflags ~/.config/gsimplecal/config
 ln -sT ~/.paps/gsimplecal/config ~/.config/gsimplecal/config
 
 # parcellite
-mkdir -p ~/.config/parcellite
+mkdir -v -p ~/.config/parcellite
 
 echo "Link: ~/.config/parcellite/parcelliterc -> ~/.paps/parcellite/parcelliterc"
 rm $rmflags ~/.config/parcellite/parcelliterc
@@ -145,7 +158,7 @@ rm $rmflags ~/.tmux.conf
 ln -sT ~/.paps/tmux/tmux.conf ~/.tmux.conf
 
 # htop
-mkdir -p ~/.config/htop
+mkdir -v -p ~/.config/htop
 
 echo "Link: ~/.config/htop/htoprc -> ~/.paps/htop/htoprc"
 rm $rmflags ~/.config/htop/htoprc
