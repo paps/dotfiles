@@ -207,3 +207,8 @@ Use `powertop` for monitoring power usage (however, when used in parallel with `
 * Respect standard layout: `# echo 0 > /sys/module/hid_apple/parameters/iso_layout`
 * Have ctrl & alt were it's expected: `# echo 1 > /sys/module/hid_apple/parameters/swap_opt_cmd`
 * F keys are F keys: `# echo 2 > /sys/module/hid_apple/parameters/fnmode`
+
+### White noise focus
+
+* Download white noise mp3 file: https://drive.google.com/file/d/1CduNogudNJpVzJ4-Y575vCMWpOzTVW61
+* Then: `cvlc --start-time=300 --stop-time=1500 --repeat noise.mp3`
