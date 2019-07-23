@@ -370,6 +370,11 @@
         <command>gsimplecal</command>
       </action>
     </keybind>
+    <keybind key="C-A-s">
+      <action name="Execute">
+        <command>gnome-screenshot -i</command>
+      </action>
+    </keybind>
     <keybind key="C-A-y">
       <action name="Execute">
         <command>gnome-calculator</command>
