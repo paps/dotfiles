@@ -14,8 +14,22 @@
     display: none;
 }
 
-
-
+/* Hide horizontal default Firefox tabs */
 #tabbrowser-tabs {
     visibility: collapse;
 }
+
+/* CSS tweaks to copy-paste in Tab Center Redux preferences */
+/*
+    #topmenu {
+        display: none;
+    }
+
+    .tab.pinned.wants-attention {
+        background-image: none !important;
+    }
+
+    .tab-loading-burst {
+        display: none;
+    }
+*/

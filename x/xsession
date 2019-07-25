@@ -1,11 +1,22 @@
 if [ -f ~/.paps/x/do_not_lock ] ; then
-    xrdb -load -DLOCK=false ~/.Xresources
+	lock=false
 else
-    xrdb -load -DLOCK=true ~/.Xresources
+	lock=true
 fi
+
+if [ -f ~/.paps/x/dpi144 ] ; then
+	dpi=144
+else
+	dpi=96
+fi
+
+xrdb -load -DLOCK=$lock -DDPI=$dpi ~/.Xresources
 
 ~/.paps/fonts/update.sh
 
 export MOZ_USE_XINPUT2=1
+export QT_AUTO_SCREEN_SCALE_FACTOR=1
+#export GDK_SCALE=2
+#export GDK_DPI_SCALE=0.5
 
 exec dbus-launch --exit-with-session openbox-session

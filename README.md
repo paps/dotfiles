@@ -162,7 +162,7 @@ Optional startup script: `~/.paps/scripts/local.sh` (ignored by git, executed by
 
 ### Disable locking
 
-To prevent xscreensaver from automatically locking the session: `touch ~/.paps/x/do_not_lock` (then restart X). For convenience, "Force lock" from the Openbox context menu still locks the session.
+To prevent xscreensaver from automatically locking the session: `touch ~/.paps/x/do_not_lock` (then restart X). For convenience, "Lock" from the Openbox context menu still locks the session.
 
 ### Locales
 
@@ -187,9 +187,9 @@ Triple monitor sample `xorg.conf`: `x/radeon/triple_xorg.conf`
 
 The most important thing to note is the use of an absolute `Position` in every `Monitor` section.
 
-### Dell XPS
+### Laptops
 
-See `x/xps/` folder for examples of X11 configuration for these laptops (Intel Graphics, touchpad and removal of mouse acceleration). To use, put them in `/etc/X11/xorg.conf.d/`.
+See `x/laptop/` folder for examples of X11 configuration for laptops (Intel Graphics, touchpad and removal of mouse acceleration). To use, put them in `/etc/X11/xorg.conf.d/` (folder might need to be created).
 
 Use `tlp` for battery optimizations: http://linrunner.de/en/tlp/docs/tlp-linux-advanced-power-management.html
 
@@ -201,6 +201,10 @@ Use `tlp` for battery optimizations: http://linrunner.de/en/tlp/docs/tlp-linux-a
 Use `powertop` for monitoring power usage (however, when used in parallel with `tlp`, some of the information displayed seems wrong, beware).
 
 * `apt-get install powertop`
+
+### High DPI
+
+To switch to 144 instead of the default of 96: `touch ~/.paps/x/dpi144` (then restart X). The `xsession` defines a `$dpi` variable according to the precense of this file, which is then passed to `Xresources`.
 
 ### Apple Wireless Keyboard
 

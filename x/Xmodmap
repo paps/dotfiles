@@ -13,5 +13,8 @@ keysym l = l L Right
 ! <> is shift (FR keyboard layout)
 keycode 94 = Shift_L
 
-! print screen is insert
-keysym Print = Insert
+! print screen is insert (useful for Dell XPS 13 keyboard layout)
+!keysym Print = Insert
+
+! print screen is compose key (useful for ThinkPad Carbon X1 keyboard layout)
+keycode 107 = Multi_key

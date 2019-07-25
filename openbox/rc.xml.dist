@@ -296,9 +296,6 @@
       </action>
     </keybind>
     <!-- Keybindings for windows -->
-    <keybind key="A-F4">
-      <action name="Close"/>
-    </keybind>
     <keybind key="A-F10">
       <action name="ToggleMaximize"/>
     </keybind>

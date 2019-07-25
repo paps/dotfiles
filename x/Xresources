@@ -1,3 +1,12 @@
+!!xft
+Xft.dpi: DPI
+Xft.autohint: 0
+Xft.lcdfilter: lcddefault
+Xft.hintstyle: hintfull
+Xft.hinting: 1
+Xft.antialias: 1
+Xft.rgba: rgb
+
 !!xscreensaver
 xscreensaver.lock: LOCK
 xscreensaver.splash: false
@@ -40,8 +49,8 @@ xscreensaver.passwd.body.label:
 xscreensaver.passwd.unlock.label: Unlock
 xscreensaver.passwd.thermometer.width: 3
 
-!!Neutral_Plus cursor theme
-Xcursor.theme: Neutral_Plus
+!!Hackneyed cursor theme
+Xcursor.theme: Hackneyed
 
 !!UXterm
 UXTerm*geometry: 120x35
