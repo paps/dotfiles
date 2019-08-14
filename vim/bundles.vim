@@ -58,15 +58,18 @@ Plugin 'HerringtonDarkholme/yats.vim'
 
 " Auto completion
 " ===============
-" Main framework
-Plugin 'Shougo/deoplete.nvim'
 " Typescript
 Plugin 'mhartington/nvim-typescript'
+" Main framework
+Plugin 'Shougo/deoplete.nvim'
 
 " Linting (many linters supported, async during typing)
 Plugin 'w0rp/ale'
 
 " Analytics
 Plugin 'wakatime/vim-wakatime'
+
+" Pretty icons
+Plugin 'ryanoasis/vim-devicons'
 
 filetype plugin indent on " required!
