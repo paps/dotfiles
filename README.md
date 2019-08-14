@@ -23,7 +23,7 @@ Optimal setup procedure:
 * for VMs: install `virtualbox-guest-x11` (VirtualBox) or `spice-vdagent` (virt-manager...)
 * `exec startx`
 * `sudo apt-get install htop chromium firefox geany`
-* `cd ~ ; rm -fr Videos Pictures Music Documents Public Templates`
+* `cd ~ ; rm -fr Videos Pictures Music Documents Desktop Public Templates`
 * `sudo rm /etc/fonts/conf.d/70-no-bitmaps.conf` (allows bitmap fonts in the standard font list)
 
 ### Packages
