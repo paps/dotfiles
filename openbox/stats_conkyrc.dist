@@ -57,6 +57,11 @@ ${color1}${upspeedgraph enp3s0 10,30 666666 adadad -t}${color2}
 
 
 
-#${image $HOME/.paps/openbox/icons/bat_full_01.png -p 0,363}
+Ping
+${tcp_ping 8.8.8.8 53}
+
+
+
+#${image $HOME/.paps/openbox/icons/bat_full_01.png -p 0,418}
 #${battery_short BAT1}
 #${battery_time BAT1}
