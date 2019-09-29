@@ -216,3 +216,9 @@ To switch to 144 instead of the default of 96: `touch ~/.paps/x/dpi144` (then re
 
 * Download white noise mp3 file: https://drive.google.com/file/d/1CduNogudNJpVzJ4-Y575vCMWpOzTVW61
 * Then: `cvlc --start-time=300 --stop-time=1500 --repeat noise.mp3`
+
+### Keybase
+
+* Keybase can be installed from here: https://keybase.io/docs/the_app/install_linux#ubuntu-debian-and-friends
+* Then: `run_keybase`
+* Do no forget to disable autostart with `keybase ctl autostart --disable` (https://keybase.io/docs/linux-user-guide#autostart)
