@@ -23,12 +23,12 @@ Optimal setup procedure:
 * for VMs: install `virtualbox-guest-x11` (VirtualBox) or `spice-vdagent` (virt-manager...)
 * `exec startx`
 * `sudo apt-get install htop chromium firefox geany`
-* `cd ~ ; rm -fr Videos Pictures Music Documents Public Templates`
+* `cd ~ ; rm -fr Videos Pictures Music Documents Desktop Public Templates`
 * `sudo rm /etc/fonts/conf.d/70-no-bitmaps.conf` (allows bitmap fonts in the standard font list)
 
 ### Packages
 
-* Install: `htop neovim vim xauth git zsh tmux tree curl inotify-tools trash-cli wget dnsutils apache2-utils p7zip-full unrar tig pv pydf zsh-doc vim-gtk vim-doc nmap zenmap whiptail obconf obmenu firefox gnome-terminal xterm xscreensaver dmenu feh numlockx conky-all scrot x11-xserver-utils acpi alsa-utils stalonetray fontconfig vlc gitk xfonts-terminus fonts-croscore libx11-dev build-essential xclip mplayer python3 libdatetime-perl gsimplecal gnome-calculator zenity virt-manager spice-client-gtk geeqie geany thunar thunar-volman thunar-archive-plugin thunar-media-tags-plugin thunar-gtkhash file-roller unar arj lhasa rar lzip lzop ncompress rzip unace unalz parcellite flashplugin-nonfree ttf-mscorefonts-installer libnotify-bin gparted transmission-remote-gtk gimp ssh-askpass evince zip unzip cmake python-dev xdotool redshift-gtk pavucontrol volumeicon-alsa apt-transport-https rsync network-manager network-manager-gnome e2fsprogs logsave arandr dbus-x11 gnome-screenshot`
+* Install: `htop neovim vim xauth git zsh tmux tree curl inotify-tools trash-cli wget dnsutils apache2-utils p7zip-full unrar tig pv pydf zsh-doc vim-gtk vim-doc nmap zenmap whiptail obconf obmenu firefox gnome-terminal xterm xscreensaver dmenu feh numlockx conky-all scrot x11-xserver-utils acpi alsa-utils stalonetray fontconfig vlc gitk xfonts-terminus fonts-croscore libx11-dev build-essential xclip mplayer python3 libdatetime-perl gsimplecal gnome-calculator zenity virt-manager spice-client-gtk geeqie geany thunar thunar-volman thunar-archive-plugin thunar-media-tags-plugin thunar-gtkhash file-roller unar arj lhasa rar lzip lzop ncompress rzip unace unalz parcellite flashplugin-nonfree ttf-mscorefonts-installer libnotify-bin gparted transmission-remote-gtk gimp ssh-askpass evince zip unzip cmake python-dev xdotool redshift-gtk pavucontrol volumeicon-alsa apt-transport-https rsync network-manager network-manager-gnome e2fsprogs logsave arandr dbus-x11 gnome-screenshot apt-transport-https ca-certificates gnupg2 software-properties-common`
 * Recommended: `intel-microcode firmware-linux` (other firmware packages might be necessary)
 * Remove: `notification-daemon xsel`
 
@@ -162,7 +162,7 @@ Optional startup script: `~/.paps/scripts/local.sh` (ignored by git, executed by
 
 ### Disable locking
 
-To prevent xscreensaver from automatically locking the session: `touch ~/.paps/x/do_not_lock` (then restart X). For convenience, "Force lock" from the Openbox context menu still locks the session.
+To prevent xscreensaver from automatically locking the session: `touch ~/.paps/x/do_not_lock` (then restart X). For convenience, "Lock" from the Openbox context menu still locks the session.
 
 ### Locales
 
@@ -187,9 +187,9 @@ Triple monitor sample `xorg.conf`: `x/radeon/triple_xorg.conf`
 
 The most important thing to note is the use of an absolute `Position` in every `Monitor` section.
 
-### Dell XPS
+### Laptops
 
-See `x/xps/` folder for examples of X11 configuration for these laptops (Intel Graphics, touchpad and removal of mouse acceleration). To use, put them in `/etc/X11/xorg.conf.d/`.
+See `x/laptop/` folder for examples of X11 configuration for laptops (Intel Graphics, touchpad and removal of mouse acceleration). To use, put them in `/etc/X11/xorg.conf.d/` (folder might need to be created).
 
 Use `tlp` for battery optimizations: http://linrunner.de/en/tlp/docs/tlp-linux-advanced-power-management.html
 
@@ -202,6 +202,10 @@ Use `powertop` for monitoring power usage (however, when used in parallel with `
 
 * `apt-get install powertop`
 
+### High DPI
+
+To switch to 144 instead of the default of 96: `touch ~/.paps/x/dpi144` (then restart X). The `xsession` defines a `$dpi` variable according to the precense of this file, which is then passed to `Xresources`.
+
 ### Apple Wireless Keyboard
 
 * Respect standard layout: `# echo 0 > /sys/module/hid_apple/parameters/iso_layout`
@@ -212,3 +216,9 @@ Use `powertop` for monitoring power usage (however, when used in parallel with `
 
 * Download white noise mp3 file: https://drive.google.com/file/d/1CduNogudNJpVzJ4-Y575vCMWpOzTVW61
 * Then: `cvlc --start-time=300 --stop-time=1500 --repeat noise.mp3`
+
+### Keybase
+
+* Keybase can be installed from here: https://keybase.io/docs/the_app/install_linux#ubuntu-debian-and-friends
+* Then: `run_keybase`
+* Do no forget to disable autostart with `keybase ctl autostart --disable` (https://keybase.io/docs/linux-user-guide#autostart)
