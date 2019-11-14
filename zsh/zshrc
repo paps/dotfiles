@@ -110,6 +110,7 @@ bindkey -M vicmd '/' history-incremental-pattern-search-forward
 # --------------
 setopt no_rm_star_silent
 stty -ixon # disable ctrl-s/ctrl-q xterm scroll lock
+setopt interactivecomments # allow for comments starting with # directly in the command line
 
 # ssh-agent
 # ---------
