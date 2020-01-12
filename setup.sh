@@ -63,6 +63,33 @@ echo "Link: ~/.Xmodmap -> ~/.paps/x/Xmodmap"
 rm $rmflags ~/.Xmodmap
 ln -sT ~/.paps/x/Xmodmap ~/.Xmodmap
 
+# gtk 3
+mkdir -v -p ~/.config/gtk-3.0
+echo "Link: ~/.config/gtk-3.0/settings.ini -> ~/.paps/gtk/settings3.ini"
+rm $rmflags ~/.config/gtk-3.0/settings.ini
+ln -sT ~/.paps/gtk/settings3.ini ~/.config/gtk-3.0/settings.ini
+
+# gtk 2
+mkdir -v -p ~/.config/gtk-2.0
+echo "Link: ~/.config/gtk-2.0/settings.ini -> ~/.paps/gtk/settings2.ini"
+rm $rmflags ~/.config/gtk-2.0/settings.ini
+ln -sT ~/.paps/gtk/settings2.ini ~/.config/gtk-2.0/settings.ini
+
+# qt
+mkdir -v -p ~/.qt
+
+echo "Link: ~/.qt/qtrc -> ~/.paps/qt/qtrc"
+rm $rmflags ~/.qt/qtrc
+ln -sT ~/.paps/qt/qtrc ~/.qt/qtrc
+
+echo "Link: ~/.config/Trolltech.conf -> ~/.paps/qt/Trolltech.conf"
+rm $rmflags ~/.config/Trolltech.conf
+ln -sT ~/.paps/qt/Trolltech.conf ~/.config/Trolltech.conf
+
+echo "Link: ~/.config/QtProject.conf -> ~/.paps/qt/QtProject.conf"
+rm $rmflags ~/.config/QtProject.conf
+ln -sT ~/.paps/qt/QtProject.conf ~/.config/QtProject.conf
+
 # icons
 echo "Link: ~/.icons -> ~/.paps/icons"
 rm $rmflags ~/.icons
@@ -104,14 +131,12 @@ ln -sT ~/.paps/openbox/retrosmart-openbox-themes-gold ~/.themes/retrosmart-openb
 
 # gsimplecal
 mkdir -v -p ~/.config/gsimplecal
-
 echo "Link: ~/.config/gsimplecal/config -> ~/.paps/gsimplecal/config"
 rm $rmflags ~/.config/gsimplecal/config
 ln -sT ~/.paps/gsimplecal/config ~/.config/gsimplecal/config
 
 # parcellite
 mkdir -v -p ~/.config/parcellite
-
 echo "Link: ~/.config/parcellite/parcelliterc -> ~/.paps/parcellite/parcelliterc"
 rm $rmflags ~/.config/parcellite/parcelliterc
 ln -sT ~/.paps/parcellite/parcelliterc ~/.config/parcellite/parcelliterc
@@ -159,7 +184,6 @@ ln -sT ~/.paps/tmux/tmux.conf ~/.tmux.conf
 
 # htop
 mkdir -v -p ~/.config/htop
-
 echo "Link: ~/.config/htop/htoprc -> ~/.paps/htop/htoprc"
 rm $rmflags ~/.config/htop/htoprc
 ln -sT ~/.paps/htop/htoprc ~/.config/htop/htoprc
