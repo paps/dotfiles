@@ -11,9 +11,9 @@ Xft.rgba: rgb
 xscreensaver.lock: LOCK
 xscreensaver.splash: false
 !!xscreensaver.mode: blank
-xscreensaver.timeout: 0:10:00
+xscreensaver.timeout: LOCK_TIMEOUT
 xscreensaver.dpmsEnabled: true
-xscreensaver.dpmsStandby: 0:15:00
+xscreensaver.dpmsStandby: LOCK_DPMS_TIMEOUT
 xscreensaver.dpmsSuspend: 0
 xscreensaver.dpmsOff: 0
 xscreensaver.dpmsQuickOff: false

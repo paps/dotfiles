@@ -4,13 +4,25 @@ else
 	lock=true
 fi
 
+if [ -f ~/.paps/x/screensaver_4h ] ; then
+	lock_timeout=4:00:00
+	lock_dpms_timeout=4:05:00
+else
+	lock_timeout=0:10:00
+	lock_dpms_timeout=0:15:00
+fi
+
 if [ -f ~/.paps/x/dpi144 ] ; then
 	dpi=144
 else
-	dpi=96
+	if [ -f ~/.paps/x/dpi192 ] ; then
+		dpi=192
+	else
+		dpi=96
+	fi
 fi
 
-xrdb -load -DLOCK=$lock -DDPI=$dpi ~/.Xresources
+xrdb -load -DLOCK=$lock -DLOCK_TIMEOUT=$lock_timeout DLOCK_DPMS_TIMEOUT=$lock_dpms_timeout -DDPI=$dpi ~/.Xresources
 
 ~/.paps/fonts/update.sh
 
