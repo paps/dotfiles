@@ -185,7 +185,7 @@ Install NextDNS' CLI client: https://github.com/nextdns/nextdns/wiki/Debian-Base
 
 Do `sh -c "$(curl -sL https://nextdns.io/install)"` then enable 'report device name', enable 'hardened privacy mode', don't 'setup as router' and enable 'Automatically configure host DNS on daemon startup'.
 
-To target NextDNS' configuration on poorly configurable devices (e.g. a Samsung TV) behind the same NAT as a desktop PC, the public IP is bound thanks to a crontab entry similar to this one: `todo`.
+To target NextDNS' configuration on poorly configurable devices (e.g. a Samsung TV) behind the same NAT as a desktop PC, the public IP is bound thanks to a crontab entry similar to this one: `21 */4 * * * curl --fail --silent --show-error 'https://link-ip.nextdns.io/xxxxxx/yyyyyyyyyyyyyyyyy' 2>&1 | logger -t nextdnslinkip`.
 
 ### Multi-head AMD open-source driver setup (xserver-xorg-video-radeon package)
 
