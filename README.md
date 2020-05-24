@@ -179,6 +179,14 @@ To prevent xscreensaver from automatically locking the session: `touch ~/.paps/x
 * `Ctrl-Alt-Y` to open calculator
 * `Ctrl-Alt-S` to take a screenshot
 
+### NextDNS
+
+Install NextDNS' CLI client: https://github.com/nextdns/nextdns/wiki/Debian-Based-Distribution
+
+Do `sh -c "$(curl -sL https://nextdns.io/install)"` then enable 'report device name', enable 'hardened privacy mode', don't 'setup as router' and enable 'Automatically configure host DNS on daemon startup'.
+
+To target NextDNS' configuration on poorly configurable devices (e.g. a Samsung TV) behind the same NAT as a desktop PC, the public IP is bound thanks to a crontab entry similar to this one: `todo`.
+
 ### Multi-head AMD open-source driver setup (xserver-xorg-video-radeon package)
 
 Dual monitor sample `xorg.conf`: `x/radeon/dual_xorg.conf`
@@ -204,7 +212,7 @@ Use `powertop` for monitoring power usage (however, when used in parallel with `
 
 ### High DPI
 
-To switch to 144 instead of the default of 96: `touch ~/.paps/x/dpi144` (then restart X). The `xsession` defines a `$dpi` variable according to the precense of this file, which is then passed to `Xresources`.
+To switch to 144 instead of the default of 96: `touch ~/.paps/x/dpi144` (then restart X). The `xsession` defines a `$dpi` variable according to the precense of this file, which is then passed to `Xresources`. Another option is 192: `touch ~/.paps/x/dpi192`.
 
 ### Apple Wireless Keyboard
 
