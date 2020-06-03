@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 lockfile="$HOME/.paps/openbox/.volume-lock"
+volstate="$HOME/.paps/openbox/.volume-state"
 
 if [ -f "$lockfile" ]
 then
@@ -14,10 +15,10 @@ if [ $# -eq 1 ]
 then
     if [ $1 = "+" ]
     then
-        amixer -q set Master -M 3%+
+        amixer -q set Master -M 5%+
     elif [ $1 = "-" ]
     then
-        amixer -q set Master -M 3%-
+        amixer -q set Master -M 5%-
     elif [ $1 = "m" ]
     then
         amixer -q set Master toggle
@@ -30,6 +31,7 @@ then
     else
         echo "Usage: $0 +|-|m"
     fi
+    amixer sget Master | grep -m 1 -Eo ' \[[0-9]{1,3}%\] \[(on|off)\]' > $volstate
 else
     echo "Usage: $0 +|-|m"
 fi
