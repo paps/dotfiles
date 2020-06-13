@@ -14,7 +14,7 @@ redshift-gtk -l 48.85:2.35 & # Paris
 volstate="$HOME/.paps/openbox/.volume-state"
 [ ! -f $volstate ] && touch $volstate
 while true; do
-    inotifywait -qq $volstate
+    inotifywait -e close_write -qq $volstate
     if [ $? -ne 0 ]
     then
         notify-send "inotifywait for volume feedback failed"
@@ -22,7 +22,7 @@ while true; do
     fi
     while
         cat $volstate
-        inotifywait -qq -t 2 $volstate
+        inotifywait -e close_write -qq -t 2 $volstate
     do true; done | lemonbar -g 210x34+34+1 -d -B '#859900' -F '#fdf6e3' -f '-xos4-terminus-bold-r-normal--32-320-72-72-c-160-*-*'
 done &
 
@@ -32,7 +32,7 @@ if [ -x "$(command -v xbacklight)" ]
 then
     [ ! -f $lightstate ] && touch $lightstate
     while true; do
-        inotifywait -qq $lightstate
+        inotifywait -e close_write -qq $lightstate
         if [ $? -ne 0 ]
         then
             notify-send "inotifywait for backlight feedback failed"
@@ -40,7 +40,7 @@ then
         fi
         while
             cat $lightstate
-            inotifywait -qq -t 3 $lightstate
+            inotifywait -e close_write -qq -t 3 $lightstate
         do true; done | lemonbar -g 250x34+34+1 -d -B '#859900' -F '#fdf6e3' -f '-xos4-terminus-bold-r-normal--32-320-72-72-c-160-*-*'
     done &
 fi
