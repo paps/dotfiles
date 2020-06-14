@@ -7,3 +7,4 @@ user_pref("extensions.pocket.enabled", false);
 user_pref("services.sync.addons.ignoreUserEnabledChanges", true); // don't sync extension's enabled/disabled status
 user_pref("toolkit.cosmeticAnimations.enabled", false);
 user_pref("ui.caretBlinkTime", 0);
+user_pref("browser.urlbar.trimURLs", false);
