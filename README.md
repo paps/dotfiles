@@ -99,6 +99,8 @@ Add local binaries in `~/.paps/bin` (it's in $PATH).
 * Rescue Time configuration (if asked):
 	* Check "already using the full rescue time app"
 	* Enter email
+* Stylus configuration:
+	* Go to options and enable `Sync to cloud` with personal Google Drive
 
 ### Configure openbox & conky
 
