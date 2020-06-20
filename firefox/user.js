@@ -8,3 +8,4 @@ user_pref("services.sync.addons.ignoreUserEnabledChanges", true); // don't sync 
 user_pref("toolkit.cosmeticAnimations.enabled", false);
 user_pref("ui.caretBlinkTime", 0);
 user_pref("browser.urlbar.trimURLs", false);
+user_pref("browser.display.background_color", "#155968"); // solarized dark background

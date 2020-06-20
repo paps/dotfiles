@@ -50,7 +50,7 @@ xscreensaver.passwd.unlock.label: Unlock
 xscreensaver.passwd.thermometer.width: 3
 
 !!Hackneyed cursor theme
-Xcursor.theme: Hackneyed
+Xcursor.theme: Hackneyed-Dark (scalable)
 
 !!UXterm
 UXTerm*geometry: 120x35
