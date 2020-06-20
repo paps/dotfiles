@@ -95,6 +95,7 @@ Add local binaries in `~/.paps/bin` (it's in $PATH).
 * Go into the default profile folder `~/.mozilla/firefox/XXXX.default` then:
 	* `mkdir chrome`
 	* `ln -s ~/.paps/firefox/userChrome.css chrome/`
+	* `ln -s ~/.paps/firefox/userContent.css chrome/`
 	* `ln -s ~/.paps/firefox/user.js .`
 * Rescue Time configuration (if asked):
 	* Check "already using the full rescue time app"

@@ -33,3 +33,12 @@
         display: none;
     }
 */
+
+/*
+ * Make most backgrounds (about:home, loading tab) a dark solarized color
+ * This is supposed to go with the 'Solarize Fox' theme:
+ * https://addons.mozilla.org/en-US/firefox/addon/solarize-fox/
+ */
+.browserContainer { background-color: #155968 !important; }
+.tabbrowser-tabpanels { background-color: #155968 !important; }
+@-moz-document url(about:home) { * { background-color: #155968 !important; } }
