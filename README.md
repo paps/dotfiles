@@ -238,7 +238,9 @@ To switch to 144 instead of the default of 96: `touch ~/.paps/x/dpi144` (then re
 
 Add the following lines to `/etc/sysctl.conf`:
 ```
-# --- Custom settings below ---
+# --- Personal dotfiles settings below ---
+# Debian's default of 8192 is easily hit, we want to be able to watch more files
+fs.inotify.max_user_watches=524288
 # Much more aggresive TCP "link down" detection (~30s instead of 1+h)
 net.ipv4.tcp_keepalive_time=10
 net.ipv4.tcp_keepalive_intvl=10
