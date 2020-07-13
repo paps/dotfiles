@@ -28,7 +28,7 @@ done &
 
 # Backlight feedback
 lightstate="$HOME/.paps/openbox/.backlight-state"
-if [ -x "$(command -v xbacklight)" ]
+if [ -x "$(command -v light)" ]
 then
     [ ! -f $lightstate ] && touch $lightstate
     while true; do

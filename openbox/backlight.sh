@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-if [ ! -x "$(command -v xbacklight)" ]
+if [ ! -x "$(command -v light)" ]
 then
-    echo "xbacklight command not found"
+    echo "light command not found"
     exit 1
 fi
 
@@ -21,14 +21,14 @@ if [ $# -eq 1 ]
 then
     if [ $1 = "+" ]
     then
-        xbacklight -inc 10
+        light -A 10%
     elif [ $1 = "-" ]
     then
-        xbacklight -dec 10
+        light -U 10%
     else
         echo "Usage: $0 +|-"
     fi
-    echo " Backlight $(xbacklight -get | cut -d. -f1)%" > $lightstate
+    echo " Backlight $(light -G | cut -d. -f1)%" > $lightstate
 else
     echo "Usage: $0 +|-"
 fi

@@ -213,6 +213,10 @@ Use `powertop` for monitoring power usage (however, when used in parallel with `
 
 * `apt-get install powertop`
 
+Intel driver provided by package `xserver-xorg-video-intel` is deprecated and should not be used on any recent hardware.
+
+Install the `light` package to be able to control screen backlight brightness.
+
 ### High DPI
 
 To switch to 144 instead of the default of 96: `touch ~/.paps/x/dpi144` (then restart X). The `xsession` defines a `$dpi` variable according to the precense of this file, which is then passed to `Xresources`. Another option is 192: `touch ~/.paps/x/dpi192`.
