@@ -42,3 +42,8 @@
 .browserContainer { background-color: #155968 !important; }
 .tabbrowser-tabpanels { background-color: #155968 !important; }
 @-moz-document url(about:home) { * { background-color: #155968 !important; } }
+
+/*
+ * Disable F11 fullscreen animation
+ */
+#navigator-toolbox[fullscreenShouldAnimate] { transition: none !important; }
