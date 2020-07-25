@@ -28,7 +28,7 @@ Optimal setup procedure:
 
 ### Packages
 
-* Install: `htop neovim vim xauth git zsh tmux tree curl inotify-tools trash-cli wget dnsutils apache2-utils p7zip-full unrar tig pv pydf zsh-doc vim-gtk vim-doc nmap zenmap whiptail obconf obmenu firefox gnome-terminal xterm xscreensaver dmenu feh numlockx conky-all scrot x11-xserver-utils acpi alsa-utils stalonetray fontconfig vlc gitk xfonts-terminus fonts-croscore libx11-dev build-essential xclip mplayer python3 libdatetime-perl gsimplecal gnome-calculator zenity virt-manager spice-client-gtk geany thunar thunar-volman thunar-archive-plugin thunar-media-tags-plugin thunar-gtkhash file-roller unar arj lhasa rar lzip lzop ncompress rzip unace unalz parcellite flashplugin-nonfree ttf-mscorefonts-installer libnotify-bin gparted transmission-remote-gtk gimp ssh-askpass evince zip unzip cmake python-dev xdotool redshift-gtk pavucontrol volumeicon-alsa apt-transport-https rsync network-manager network-manager-gnome e2fsprogs logsave arandr dbus-x11 gnome-screenshot apt-transport-https ca-certificates gnupg2 software-properties-common lemonbar rofi peek gpicview mate-themes`
+* Install: `htop neovim vim xauth git zsh tmux tree curl inotify-tools trash-cli wget dnsutils apache2-utils p7zip-full unrar tig pv pydf zsh-doc vim-gtk vim-doc nmap whiptail obconf firefox gnome-terminal xterm xscreensaver suckless-tools feh numlockx conky-all scrot x11-xserver-utils acpi alsa-utils stalonetray fontconfig vlc gitk xfonts-terminus fonts-croscore libx11-dev build-essential xclip mplayer python3 libdatetime-perl gsimplecal gnome-calculator zenity virt-manager spice-client-gtk geany thunar thunar-volman thunar-archive-plugin thunar-media-tags-plugin thunar-gtkhash file-roller unar arj lhasa rar lzip lzop ncompress rzip unace unalz parcellite ttf-mscorefonts-installer libnotify-bin gparted transmission-remote-gtk gimp ssh-askpass evince zip unzip cmake python-dev xdotool redshift-gtk pavucontrol volumeicon-alsa apt-transport-https rsync network-manager network-manager-gnome e2fsprogs logsave arandr dbus-x11 gnome-screenshot apt-transport-https ca-certificates gnupg2 software-properties-common lemonbar rofi peek gpicview mate-themes`
 * Recommended: `intel-microcode firmware-linux` (other firmware packages might be necessary)
 * Remove: `notification-daemon xsel`
 
@@ -86,13 +86,15 @@ Add local binaries in `~/.paps/bin` (it's in $PATH).
 * Install LastPass: https://lastpass.com/download
 * LastPass configuration:
 	* "Automatically Logoff when all browsers are closed after 0 mins"
-	* Disable all notifications
+	* Disable most notifications
 	* Uncheck:
 		* "Highlight input boxes"
 		* "Show vault after login"
 		* "Automatically fill login information"
 * Synchronize Firefox
-* Go into the default profile folder `~/.mozilla/firefox/XXXX.default` then:
+* Remove URL bookmark star shortcut (right click)
+* In "customize mode", remove URL bar spacers, enable Solarized fox theme, etc
+* Go into the default profile folder `~/.mozilla/firefox/XXXX.default-release` then:
 	* `mkdir chrome`
 	* `ln -s ~/.paps/firefox/userChrome.css chrome/`
 	* `ln -s ~/.paps/firefox/userContent.css chrome/`
@@ -137,16 +139,15 @@ Add local binaries in `~/.paps/bin` (it's in $PATH).
 	* Shortcuts, everything disabled except:
 		* Zoom in: Ctrl++
 		* Zoom out: Ctrl+_
-		* Normal size: Ctrl+)
+		* Normal size: Ctrl+0
 	* Profiles: just one profile
-	* Encodings: just utf-8 unicode
 * Profile preferences
-	* General
+	* Text
+		* Custom font: Hack Nerd Font Mono Regular 9
 		* Cursor shape: block
+		* Disabled cursor blinking
 		* No terminal bell
 		* Custom font: Ttyp0 Regular of size 10
-	* Command:
-		* Run custom command instead of shell: `tmux`
 	* Colors
 		* Dont use colors from system
 		* Built-in scheme: Solarized light
@@ -156,8 +157,10 @@ Add local binaries in `~/.paps/bin` (it's in $PATH).
 		* Dont scroll on output
 		* Scroll on keystroke
 		* Limit scrollback to 10000 lines
+	* Command:
+		* Run custom command instead of shell: `tmux`
 	* Compatibility: the default
-* Useful to know: `gnome-terminal --show-menubar`
+* Useful to know: `gnome-terminal --show-menubar` and shift-right-click for context menu
 
 ### Session startup script
 
@@ -166,6 +169,8 @@ Optional startup script: `~/.paps/scripts/local.sh` (ignored by git, executed by
 ### Disable locking
 
 To prevent xscreensaver from automatically locking the session: `touch ~/.paps/x/do_not_lock` (then restart X). For convenience, "Lock" from the Openbox context menu still locks the session.
+
+There is also `touch ~/.paps/x/screensaver_4h` to make the screensaver wait 4 hours before activating (useful for TVs)
 
 ### Locales
 
