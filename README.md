@@ -13,16 +13,16 @@ Install settings: full disk encryption, no root password, user `paps` in sudoers
 
 Optimal setup procedure:
 
-* `sudo apt-get install vim`
+* `sudo apt install vim`
 * `sudo vim /etc/apt/sources.list`
 	* `deb http://deb.debian.org/debian sid main contrib non-free`
 	* `deb http://deb.debian.org/debian experimental main contrib non-free`
-* `sudo apt-get update`
-* `sudo apt-get dist-upgrade`
-* `sudo apt-get install xinit openbox xterm`
+* `sudo apt update`
+* `sudo apt dist-upgrade`
+* `sudo apt install xinit openbox xterm`
 * for VMs: install `virtualbox-guest-x11` (VirtualBox) or `spice-vdagent` (virt-manager...)
 * `exec startx`
-* `sudo apt-get install htop chromium firefox geany`
+* `sudo apt install htop chromium firefox geany`
 * `cd ~ ; rm -fr Videos Pictures Music Documents Desktop Public Templates`
 * `sudo rm /etc/fonts/conf.d/70-no-bitmaps.conf` (allows bitmap fonts in the standard font list)
 
@@ -122,7 +122,7 @@ Add local binaries in `~/.paps/bin` (it's in $PATH).
 
 ### Desktop notifications
 
-* `apt-get install xfce4-notifyd`
+* `apt install xfce4-notifyd`
 * `xfce4-notifyd-config`
 	* Theme: Default
 	* Default position: Bottom right
@@ -209,14 +209,14 @@ See `x/laptop/` folder for examples of X11 configuration for laptops (Intel Grap
 
 Use `tlp` for battery optimizations: http://linrunner.de/en/tlp/docs/tlp-linux-advanced-power-management.html
 
-* `apt-get install tlp tlp-rdw`
+* `apt install tlp tlp-rdw`
 * `service tlp start`
 * `service tlp status`
 * `tlp-stat -s`
 
 Use `powertop` for monitoring power usage (however, when used in parallel with `tlp`, some of the information displayed seems wrong, beware).
 
-* `apt-get install powertop`
+* `apt install powertop`
 
 Intel driver provided by package `xserver-xorg-video-intel` is deprecated and should not be used on any recent hardware.
 
