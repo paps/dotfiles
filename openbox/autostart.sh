@@ -45,6 +45,21 @@ then
     done &
 fi
 
+# Check that we're still protected by NextDNS every 5 minutes
+while true; do
+    sleep 300
+    advertiser_ip=$(dig +short doubleclick.net | xargs) # xargs is used for trimming
+    if [ -z "$advertiser_ip" ]
+    then
+        notify-send "dig failed on doubleclick.net — are we online?"
+    else
+        if [ "$advertiser_ip" != "0.0.0.0" ]
+        then
+            notify-send "dig doubleclick.net: $advertiser_ip"
+        fi
+    fi
+done &
+
 if [ -f ~/.paps/scripts/local.sh ]
 then
     ~/.paps/scripts/local.sh &
