@@ -32,10 +32,17 @@ Optimal setup procedure:
 * Recommended: `intel-microcode firmware-linux` (other firmware packages might be necessary)
 * Remove: `notification-daemon xsel`
 
-### SSH
+### SSH key
 
 * `ssh-keygen -t rsa -C "paps@[machine_name]"` (default location, strong passphrase)
-* add key to GitHub: https://github.com/settings/ssh
+* Add key to GitHub: https://github.com/settings/ssh
+* (Now is a good time to remove old keys from GitHub.)
+
+**Deploying the new SSH key**
+
+First of all, make sure all keys stored on GitHub are still valid and that each one corresponds to a known, live, accessible, owned device. Beware of keys added by tools (e.g. CircleCI) — these MUST be moved to a [GitHub machine user](https://docs.github.com/en/developers/overview/managing-deploy-keys#machine-users), we don't want to give tools access to all our machines.
+
+Then, proceed by SSHing into all relevant managed machines and execute `curl 'https://github.com/paps.keys' > ~/.ssh/authorized_keys && cat ~/.ssh/authorized_keys` on each. (The `cat` command is added to visually confirm we're not losing access to the machine by mistake.)
 
 ### Install the dotfiles
 
@@ -240,7 +247,8 @@ To switch to 144 instead of the default of 96: `touch ~/.paps/x/dpi144` (then re
 ### Keybase
 
 * Keybase can be installed from here: https://keybase.io/docs/the_app/install_linux#ubuntu-debian-and-friends
-* Then: `run_keybase`
+* Then, to start it: `run_keybase`
+* To completely stop it: `keybase ctl stop`
 * Do no forget to disable autostart with `keybase ctl autostart --disable` (https://keybase.io/docs/linux-user-guide#autostart)
 
 ### Linux kernel config
