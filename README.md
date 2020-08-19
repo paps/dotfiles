@@ -84,6 +84,13 @@ Great to have globally: `sudo npm install -g jsonlint typescript uglify-js http-
 
 After having installed TypeScript, for completion support, do this: `cd ~/.vim/bundle/nvim-typescript ; ./install.sh`
 
+If you want to have a Node binary from Nodesource of a lower version than what's available in the Debian unstable repos, use pinning, e.g. edit `/etc/apt/preferences.d/99priority-to-nodesource` with this:
+```
+Package: *
+Pin: origin deb.nodesource.com
+Pin-Priority: 1001
+```
+
 ### Local binaries
 
 Add local binaries in `~/.paps/bin` (it's in $PATH).
