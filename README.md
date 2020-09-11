@@ -28,7 +28,7 @@ Optimal setup procedure:
 
 ### Packages
 
-* Install: `htop neovim vim xauth git zsh tmux tree curl inotify-tools trash-cli wget dnsutils apache2-utils p7zip-full unrar tig pv pydf zsh-doc vim-gtk vim-doc nmap whiptail obconf firefox gnome-terminal xterm xscreensaver suckless-tools feh numlockx conky-all scrot x11-xserver-utils acpi alsa-utils stalonetray fontconfig vlc gitk xfonts-terminus fonts-croscore libx11-dev build-essential xclip mplayer python3 libdatetime-perl gsimplecal gnome-calculator zenity virt-manager spice-client-gtk geany thunar thunar-volman thunar-archive-plugin thunar-media-tags-plugin thunar-gtkhash file-roller unar arj lhasa rar lzip lzop ncompress rzip unace unalz parcellite ttf-mscorefonts-installer libnotify-bin gparted transmission-remote-gtk gimp ssh-askpass evince zip unzip cmake python-dev xdotool redshift-gtk pavucontrol volumeicon-alsa apt-transport-https rsync network-manager network-manager-gnome e2fsprogs logsave arandr dbus-x11 gnome-screenshot apt-transport-https ca-certificates gnupg2 software-properties-common lemonbar rofi peek gpicview mate-themes`
+* Install: `htop neovim vim xauth git zsh tmux tree curl inotify-tools trash-cli wget dnsutils apache2-utils p7zip-full unrar tig pv pydf zsh-doc vim-gtk vim-doc nmap whiptail obconf firefox gnome-terminal xterm suckless-tools feh numlockx conky-all scrot x11-xserver-utils acpi alsa-utils stalonetray fontconfig vlc gitk xfonts-terminus fonts-croscore libx11-dev build-essential xclip mplayer python3 libdatetime-perl gsimplecal gnome-calculator zenity virt-manager spice-client-gtk geany thunar thunar-volman thunar-archive-plugin thunar-media-tags-plugin thunar-gtkhash file-roller unar arj lhasa rar lzip lzop ncompress rzip unace unalz parcellite ttf-mscorefonts-installer libnotify-bin gparted transmission-remote-gtk gimp ssh-askpass evince zip unzip cmake python-dev xdotool redshift-gtk pavucontrol volumeicon-alsa apt-transport-https rsync network-manager network-manager-gnome e2fsprogs logsave arandr dbus-x11 gnome-screenshot apt-transport-https ca-certificates gnupg2 software-properties-common lemonbar rofi peek gpicview mate-themes`
 * Recommended: `intel-microcode firmware-linux` (other firmware packages might be necessary)
 * Remove: `notification-daemon xsel`
 
@@ -180,11 +180,13 @@ Add local binaries in `~/.paps/bin` (it's in $PATH).
 
 Optional startup script: `~/.paps/scripts/local.sh` (ignored by git, executed by `~/.paps/openbox/autostart.sh` on session start). Don't forget to `chmod +x`.
 
-### Disable locking
+### Screensaving
 
-To prevent xscreensaver from automatically locking the session: `touch ~/.paps/x/do_not_lock` (then restart X). For convenience, "Lock" from the Openbox context menu still locks the session.
+In `openbox/xcfg.sh`, we make X make the screen black at 10min then shut it down at 11min.
 
-There is also `touch ~/.paps/x/screensaver_4h` to make the screensaver wait 4 hours before activating (useful for TVs)
+Useful for TVs: `touch ~/.paps/x/screensaver_4h` to make the screensaver wait 4 hours before activating.
+
+`Ctrl-Alt-L` and "Lock" from the Openbox context menu will call `slock` which will lock the screen and will wait for the correct password to be entered.
 
 ### Locales
 

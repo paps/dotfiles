@@ -7,48 +7,6 @@ Xft.hinting: 1
 Xft.antialias: 1
 Xft.rgba: rgb
 
-!!xscreensaver
-xscreensaver.lock: LOCK
-xscreensaver.splash: false
-!!xscreensaver.mode: blank
-xscreensaver.timeout: LOCK_TIMEOUT
-xscreensaver.dpmsEnabled: true
-xscreensaver.dpmsStandby: LOCK_DPMS_TIMEOUT
-xscreensaver.dpmsSuspend: 0
-xscreensaver.dpmsOff: 0
-xscreensaver.dpmsQuickOff: false
-xscreensaver.lockTimeout: 0:00:15
-xscreensaver.fade: false
-xscreensaver.unfade: false
-xscreensaver.captureStderr: false
-xscreensaver.newLoginCommand:
-xscreensaver.Dialog.headingFont: -xos4-terminus-bold-r-normal-*-18-*-*-*-*-*-*-*
-xscreensaver.Dialog.bodyFont: -misc-termsyn-medium-*-*-*-12-*-*-*-*-*-*-*
-xscreensaver.Dialog.labelFont: -xos4-terminus-medium-r-normal-*-14-*-*-*-*-*-*-*
-xscreensaver.Dialog.unameFont: -xos4-terminus-medium-r-normal-*-12-*-*-*-*-*-*-*
-xscreensaver.Dialog.buttonFont: -xos4-terminus-medium-r-normal-*-14-*-*-*-*-*-*-*
-xscreensaver.Dialog.dateFont: -misc-termsyn-medium-*-*-*-12-*-*-*-*-*-*-*
-xscreensaver.passwd.passwdFont: -misc-termsyn-medium-*-*-*-12-*-*-*-*-*-*-*
-xscreensaver.Dialog.foreground: #999999
-xscreensaver.Dialog.background: #000000
-xscreensaver.Dialog.Button.foreground: #999999
-xscreensaver.Dialog.Button.background: #222222
-xscreensaver.Dialog.text.foreground: #AAAAAA
-xscreensaver.Dialog.text.background: #222222
-xscreensaver.passwd.thermometer.foreground: #AA1212
-xscreensaver.passwd.thermometer.background: #000000
-xscreensaver.Dialog.topShadowColor: #151515
-xscreensaver.Dialog.bottomShadowColor: #151515
-xscreensaver.Dialog.logo.width: 0
-xscreensaver.Dialog.logo.height: 0
-xscreensaver.Dialog.internalBorderWidth: 20
-xscreensaver.Dialog.borderWidth: 0
-xscreensaver.Dialog.shadowThickness: 1
-xscreensaver.passwd.heading.label: Session Locked
-xscreensaver.passwd.body.label:
-xscreensaver.passwd.unlock.label: Unlock
-xscreensaver.passwd.thermometer.width: 3
-
 !!Hackneyed cursor theme
 Xcursor.theme: Hackneyed-Dark (scalable)
 

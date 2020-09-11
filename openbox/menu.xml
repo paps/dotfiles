@@ -11,7 +11,7 @@
 		<item label="Lock">
 			<action name="Execute">
 				<command>
-					xscreensaver-command -lock
+					slock
 				</command>
 			</action>
 		</item>

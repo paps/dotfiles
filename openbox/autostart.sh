@@ -1,4 +1,3 @@
-xscreensaver &
 ~/.paps/openbox/xcfg.sh
 (while true; do conky -c ~/.paps/openbox/stats_conkyrc; sleep 5; notify-send 'Restarting conky stats'; done &) # auto-restart of conky stats (crashes when too many net interfaces are created)
 conky -c ~/.paps/openbox/time_conkyrc &
