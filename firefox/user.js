@@ -17,6 +17,7 @@ user_pref("ui.caretBlinkTime", 0);
 user_pref("ui.scrollToClick", 1);
 user_pref("nglayout.enable_drag_images", false);
 user_pref("ui.prefersReducedMotion", 1);
+user_pref("browser.download.animateNotifications", false);
 
 // wheel always scrolls, whatever the pressed modifier key
 user_pref("mousewheel.with_alt.action", 1);
@@ -29,6 +30,13 @@ user_pref("mousewheel.with_win.action", 1);
 user_pref("layers.acceleration.force-enabled", true);
 user_pref("gfx.webrender.all", true);
 
-// only use memory cache
-user_pref("browser.cache.disk.enable", false)
-user_pref("browser.cache.memory.enable", true)
+// only use memory cache, don't touch SSD (speeds things up? probably not)
+user_pref("browser.cache.disk.enable", false);
+user_pref("browser.cache.memory.enable", true);
+
+// disable safe browsing (speeds things up just a little bit, but is it really necessary?)
+user_pref("browser.safebrowsing.malware.enabled", false);
+user_pref("browser.safebrowsing.phishing.enabled", false);
+user_pref("browser.safebrowsing.malware.enabled", false);
+
+user_pref("dom.serviceWorkers.enabled", false);
