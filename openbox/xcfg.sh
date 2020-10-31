@@ -25,8 +25,7 @@ fi
 setxkbmap -option compose:ralt
 setxkbmap -option compose:rctrl
 setxkbmap -option compose:menu
-# Not using rwin as a possible compose key because it's a good Discord PTT key
-#setxkbmap -option compose:rwin
+setxkbmap -option compose:rwin
 
 xmodmap ~/.Xmodmap
 numlockx on

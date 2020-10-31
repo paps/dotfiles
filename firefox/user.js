@@ -18,6 +18,13 @@ user_pref("ui.scrollToClick", 1);
 user_pref("nglayout.enable_drag_images", false);
 user_pref("ui.prefersReducedMotion", 1);
 
+// wheel always scrolls, whatever the pressed modifier key
+user_pref("mousewheel.with_alt.action", 1);
+user_pref("mousewheel.with_shift.action", 1);
+user_pref("mousewheel.with_control.action", 1);
+user_pref("mousewheel.with_meta.action", 1);
+user_pref("mousewheel.with_win.action", 1);
+
 // force hardware acceleration (flaky?)
 user_pref("layers.acceleration.force-enabled", true);
 user_pref("gfx.webrender.all", true);

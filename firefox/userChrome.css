@@ -15,9 +15,9 @@
 }
 
 /* Hide horizontal default Firefox tabs */
-#tabbrowser-tabs {
+/*#tabbrowser-tabs {
     visibility: collapse;
-}
+}*/
 
 /* CSS tweaks to copy-paste in Tab Center Redux preferences */
 /*
