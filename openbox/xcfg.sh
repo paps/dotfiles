@@ -22,10 +22,12 @@ else
     xset dpms 660 720 780
 fi
 
-setxkbmap -option compose:ralt
-setxkbmap -option compose:rctrl
-setxkbmap -option compose:menu
-setxkbmap -option compose:rwin
+# reset xkbmap options (empty -option)
+# and swap Caps_Lock and Control_L
+# and use the full bottom right row of keys for composition
+setxkbmap -option -option ctrl:swapcaps -option compose:ralt -option compose:rctrl -option compose:menu -option compose:rwin
 
+# load a few more keyboard customizations
 xmodmap ~/.Xmodmap
+
 numlockx on

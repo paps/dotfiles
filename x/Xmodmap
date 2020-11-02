@@ -1,7 +1,7 @@
-! caps lock is control
-remove lock = Caps_Lock
-keycode 66 = Control_L
-add control = Control_L
+! remap caps lock, which has been swapped with Control_L just before in ../openbox/xcfg.sh,
+! to an never-used modifier, so that it's useful for something
+! e.g. it's a very good, non-invasive Discord PTT key
+keysym Caps_Lock = Hyper_L
 
 ! win + hjkl = arrows
 keycode 133 = Mode_switch
