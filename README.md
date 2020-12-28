@@ -43,6 +43,10 @@ First of all, make sure all keys stored on GitHub are still valid and that each 
 
 Then, proceed by SSHing into all relevant managed machines and execute `curl 'https://github.com/paps.keys' > ~/.ssh/authorized_keys && cat ~/.ssh/authorized_keys` on each. (The `cat` command is added to visually confirm we're not losing access to the machine by mistake.)
 
+### SSH server
+
+**Important:** Set `PasswordAuthentication` to `no` in `/etc/ssh/sshd_config`.
+
 ### Install the dotfiles
 
 * `git clone git@github.com:paps/dotfiles.git`
@@ -79,7 +83,7 @@ Go to https://www.rescuetime.com/dashboard and install the Debian package. It is
 
 If needed, install Node from a Nodesource Debian distribution: https://github.com/nodesource/distributions
 
-Great to have globally: `sudo npm install -g jsonlint typescript uglify-js http-server eslint tslint neovim phantombuster-sdk`
+Great to have globally: `sudo npm install -g jsonlint typescript uglify-js http-server eslint neovim phantombuster-sdk`
 
 After having installed TypeScript, for completion support, do this: `cd ~/.vim/bundle/nvim-typescript ; ./install.sh`
 
@@ -96,14 +100,12 @@ Add local binaries in `~/.paps/bin` (it's in $PATH).
 
 ### Firefox
 
-* Install LastPass: https://lastpass.com/download
-* LastPass configuration:
-	* "Automatically Logoff when all browsers are closed after 0 mins"
-	* Disable most notifications
-	* Uncheck:
-		* "Highlight input boxes"
-		* "Show vault after login"
-		* "Automatically fill login information"
+* Install Bitwarden: https://bitwarden.com/download/
+* Bitwarden configuration (most defaults are fine except these):
+	* Set "Clear clipboard" to 5 minutes
+	* Don't show cards on tag page
+	* Don't show identities on tab page
+	* Disable context menu otions
 * Synchronize Firefox
 * Remove URL bookmark star shortcut (right click)
 * In "customize mode", remove URL bar spacers, enable Solarized fox theme, etc
@@ -160,7 +162,6 @@ Add local binaries in `~/.paps/bin` (it's in $PATH).
 		* Cursor shape: block
 		* Disabled cursor blinking
 		* No terminal bell
-		* Custom font: Ttyp0 Regular of size 10
 	* Colors
 		* Dont use colors from system
 		* Built-in scheme: Solarized light
@@ -210,17 +211,15 @@ Do `sh -c "$(curl -sL https://nextdns.io/install)"` then enable 'report device n
 
 To target NextDNS' configuration on poorly configurable devices (e.g. a Samsung TV) behind the same NAT as a desktop PC, the public IP is bound thanks to a crontab entry similar to this one: `21 */4 * * * curl --fail --silent --show-error 'https://link-ip.nextdns.io/xxxxxx/yyyyyyyyyyyyyyyyy' 2>&1 | logger -t nextdnslinkip`.
 
-### Multi-head AMD open-source driver setup (xserver-xorg-video-radeon package)
+### Mouse acceleration
 
-Dual monitor sample `xorg.conf`: `x/radeon/dual_xorg.conf`
+Before `libinput` existed, the `xset m` command found in `openbox/xcfg.sh` had an effect. Now it's a no-op.
 
-Triple monitor sample `xorg.conf`: `x/radeon/triple_xorg.conf`
-
-The most important thing to note is the use of an absolute `Position` in every `Monitor` section.
+To disable mouse acceleration, copy `x/configs/40-mouse.conf` in `/etc/X11/xorg.conf.d/`.
 
 ### Laptops
 
-See `x/laptop/` folder for examples of X11 configuration for laptops (Intel Graphics, touchpad and removal of mouse acceleration). To use, put them in `/etc/X11/xorg.conf.d/` (folder might need to be created).
+`x/configs/20-intel.conf` is an example of a good integrated Intel Graphics configuration. `x/configs/30-touchpad.conf` is an example of a good touchpad configuration. Copy these to `/etc/X11/xorg.conf.d/` to use them.
 
 Use `tlp` for battery optimizations: http://linrunner.de/en/tlp/docs/tlp-linux-advanced-power-management.html
 

@@ -18,3 +18,8 @@ Host meudon
 Host paris
     HostName paris.martintapia.com
     User paps
+
+Host ghost
+    HostName paris.martintapia.com
+    Port 2222
+    User paps
