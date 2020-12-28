@@ -211,6 +211,14 @@ Do `sh -c "$(curl -sL https://nextdns.io/install)"` then enable 'report device n
 
 To target NextDNS' configuration on poorly configurable devices (e.g. a Samsung TV) behind the same NAT as a desktop PC, the public IP is bound thanks to a crontab entry similar to this one: `21 */4 * * * curl --fail --silent --show-error 'https://link-ip.nextdns.io/xxxxxx/yyyyyyyyyyyyyyyyy' 2>&1 | logger -t nextdnslinkip`.
 
+### Network Manager
+
+The NetworkManager service is not enabled by default on Debian. Normally for normal desktop PCs this would not be needed as they just connect via their wired iface automatically, but NextDNS seems to get flaky when NetworkManager is not up.
+
+In order to enable the NetworkManager service:
+* change `managed=false` to `managed=true` in `/etc/NetworkManager/NetworkManager.conf` to let it manage wired interfaces
+* run `sudo systemctl enable NetworkManager` (and `sudo systemctl start NetworkManager` the first time)
+
 ### Mouse acceleration
 
 Before `libinput` existed, the `xset m` command found in `openbox/xcfg.sh` had an effect. Now it's a no-op.
