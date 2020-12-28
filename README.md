@@ -28,7 +28,7 @@ Optimal setup procedure:
 ### Packages
 
 * Install: `htop neovim vim xauth git zsh tmux tree curl inotify-tools trash-cli wget dnsutils apache2-utils p7zip-full unrar tig pv pydf zsh-doc vim-gtk vim-doc nmap whiptail obconf firefox gnome-terminal xterm suckless-tools feh numlockx conky-all scrot x11-xserver-utils acpi alsa-utils stalonetray fontconfig vlc gitk xfonts-terminus fonts-croscore libx11-dev build-essential xclip mplayer python3 libdatetime-perl gsimplecal gnome-calculator zenity geany thunar thunar-volman thunar-archive-plugin thunar-media-tags-plugin thunar-gtkhash file-roller unar arj lhasa rar lzip lzop ncompress rzip unace unalz parcellite ttf-mscorefonts-installer libnotify-bin gparted transmission-remote-gtk gimp ssh-askpass evince zip unzip cmake python-dev xdotool redshift-gtk pavucontrol volumeicon-alsa rsync network-manager network-manager-gnome e2fsprogs logsave arandr dbus-x11 gnome-screenshot apt-transport-https ca-certificates gnupg2 software-properties-common lemonbar rofi peek gpicview mate-themes`
-* Recommended: `intel-microcode firmware-linux` (other firmware packages might be necessary)
+* Recommended: `intel-microcode amd64-microcode firmware-linux` (other firmware packages might be necessary)
 * Remove: `notification-daemon xsel`
 
 ### SSH key
@@ -232,7 +232,7 @@ Use `powertop` for monitoring power usage (however, when used in parallel with `
 
 * `apt install powertop`
 
-Intel driver provided by package `xserver-xorg-video-intel` is deprecated and should not be used on any recent hardware.
+Intel driver provided by package `xserver-xorg-video-intel` is deprecated and should not be used on any recent hardware. The newer alternative is referred to as the Modesetting driver. Use that.
 
 Install the `light` package to be able to control screen backlight brightness.
 
