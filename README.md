@@ -119,6 +119,13 @@ Add local binaries in `~/.paps/bin` (it's in $PATH).
 	* Enter email
 * Stylus configuration:
 	* Go to options and enable `Sync to cloud` with personal Google Drive
+* uBlock configuration:
+	* In the "Settings" tab:
+		* Tick "Enable cloud storage support"
+		* Untick "Make use of context menu where appropriate"
+	* In the "Filter lists" tab:
+		* Set the machine's name (top-right cogwheel)
+		* Pull the lists from cloud storage
 
 ### Configure openbox & conky
 
