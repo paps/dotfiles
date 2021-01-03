@@ -18,3 +18,4 @@ openbox/time_conkyrc
 openbox/rc.xml
 openbox/.backlight-state
 openbox/.volume-state
+openbox/.brightness-state

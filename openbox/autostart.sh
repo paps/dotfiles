@@ -6,9 +6,6 @@ stalonetray --dockapp-mode simple --icon-size=32 --kludges=force_icons_size -v -
 ~/.paps/openbox/volume_late.sh &
 (while true; do rescuetime; sleep 5; notify-send 'Restarting rescuetime'; done &) # auto-restart of rescuetime
 
-redshift-gtk -l 48.85:2.35 & # Paris
-# redshift-gtk -l 37.77:-122.41 & # San Francisco
-
 # Volume feedback
 volstate="$HOME/.paps/openbox/.volume-state"
 [ ! -f $volstate ] && touch $volstate
@@ -43,6 +40,36 @@ then
         do true; done | lemonbar -g 250x34+34+1 -d -B '#859900' -F '#fdf6e3' -f '-xos4-terminus-bold-r-normal--32-320-72-72-c-160-*-*'
     done &
 fi
+
+# Screen brightness control:
+#  redshift is run every 90s to adjust screen temperature
+#  '-b' sets the brightness (first value for day, second value for night)
+#  '-l 48.85:2.35' means we're located in Paris
+#  '-m randr' skips a useless check for Wayland
+#  '-r' makes changes instantaneous (disables fading)
+#  '-o' means 'one shot mode', i.e. redshift immediately exits
+#  '-P' resets everything before applying new temp/brightness values
+brightness="$HOME/.paps/openbox/.brightness-state"
+echo -n 1.0 > $brightness
+while true; do
+    inotifywait -e close_write -qq $brightness
+    if [ $? -ne 0 ]
+    then
+        notify-send "inotifywait for brightness feedback failed"
+        sleep 30
+    fi
+    while
+        val=`cat $brightness`
+        echo " Brightness $val"
+        redshift -m randr -l 48.85:2.35 -r -o -P -b "$val:$val" > /dev/null
+        inotifywait -e close_write -qq -t 2 $brightness
+    do true; done | lemonbar -g 290x34+34+1 -d -B '#859900' -F '#fdf6e3' -f '-xos4-terminus-bold-r-normal--32-320-72-72-c-160-*-*'
+done &
+while true; do
+    val=`cat $brightness`
+    redshift -m randr -l 48.85:2.35 -r -o -P -b "$val:$val"
+    sleep 90
+done &
 
 # Check that we're still protected by NextDNS every 5 minutes
 while true; do
