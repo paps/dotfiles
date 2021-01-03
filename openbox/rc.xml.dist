@@ -689,6 +689,16 @@
           <command>~/.paps/openbox/volume.sh -</command>
         </action>
       </mousebind>
+      <mousebind button="C-Up" action="Click">
+        <action name="Execute">
+          <command>~/.paps/openbox/brightness.sh +</command>
+        </action>
+      </mousebind>
+      <mousebind button="C-Down" action="Click">
+        <action name="Execute">
+          <command>~/.paps/openbox/brightness.sh -</command>
+        </action>
+      </mousebind>
       <mousebind button="A-Up" action="Click">
         <action name="GoToDesktop">
           <to>previous</to>
