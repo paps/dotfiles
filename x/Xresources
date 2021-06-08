@@ -8,7 +8,7 @@ Xft.antialias: 1
 Xft.rgba: rgb
 
 !!Hackneyed cursor theme
-Xcursor.theme: Hackneyed-Dark (scalable)
+Xcursor.theme: X11-Default-Black
 
 !!UXterm
 UXTerm*geometry: 120x35
