@@ -1,29 +1,32 @@
-alignment top_left
-gap_y 185
-gap_x 1
+conky.config = {
+	alignment = 'top_left',
+	gap_y = 185,
+	gap_x = 1,
 
-background no
-out_to_x yes
-out_to_console no
-out_to_stderr no
-update_interval 2.0
-total_run_times 0
-font -misc-termsyn-medium-r-normal--11-79-100-100-c-60-iso8859-1
-default_color adadad
-draw_graph_borders yes
-format_human_readable yes
-use_spacer right
-max_text_width 0
-own_window yes
-own_window_type override
-double_buffer yes
-if_up_strictness address
-default_color adadad
-color1 444444
-color2 adadad
-short_units yes
+	background = false,
+	out_to_x = true,
+	out_to_console = false,
+	out_to_stderr = false,
+	update_interval = 2.0,
+	total_run_times = 0,
+	font = '-misc-termsyn-medium-r-normal--11-79-100-100-c-60-iso8859-1',
+	default_color = '#adadad',
+	draw_graph_borders = true,
+	format_human_readable = true,
+	use_spacer = 'right',
+	max_text_width = 0,
+	own_window = true,
+	own_window_type = 'override',
+	double_buffer = true,
+	if_up_strictness = 'address',
+	default_color = '#adadad',
+	color1 = '#444444',
+	color2 = '#adadad',
+	short_units = true,
 
-TEXT
+};
+
+conky.text = [[
 ${goto 10}${image $HOME/.paps/openbox/icons/cpu.png -p 0,0}
 ${cpu}%
 ${color1}${cpugraph cpu0 10,30 666666 adadad -t}${color2}
@@ -66,3 +69,4 @@ ${tcp_ping 8.8.8.8 53}
 #${battery_short BAT1}
 #${battery_time BAT1}
 #${exec cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor}
+]];
