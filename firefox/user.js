@@ -7,7 +7,6 @@ user_pref("extensions.pocket.enabled", false);
 user_pref("services.sync.addons.ignoreUserEnabledChanges", true); // don't sync extension's enabled/disabled status
 user_pref("extensions.allowPrivateBrowsingByDefault", true); // enable all extensions in private browsing too
 user_pref("browser.urlbar.trimURLs", false);
-// user_pref("browser.display.background_color", "#155968"); // solarized dark background
 
 // prevent things from moving all over the place
 user_pref("general.smoothScroll", false);
