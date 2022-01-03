@@ -75,6 +75,10 @@ echo "Link: ~/.config/gtk-2.0/settings.ini -> ~/.paps/gtk/settings2.ini"
 rm $rmflags ~/.config/gtk-2.0/settings.ini
 ln -sT ~/.paps/gtk/settings2.ini ~/.config/gtk-2.0/settings.ini
 
+echo "Link: ~/.gtkrc-2.0 -> ~/.paps/gtk/settings2.ini"
+rm $rmflags ~/.gtkrc-2.0
+ln -sT ~/.paps/gtk/settings2.ini ~/.gtkrc-2.0
+
 # qt
 mkdir -v -p ~/.qt
 
@@ -128,6 +132,15 @@ ln -sT ~/.paps/openbox/modern-grey ~/.themes/modern-grey
 echo "Link: ~/.themes/retrosmart-openbox-themes-gold -> ~/.paps/openbox/retrosmart-openbox-themes-gold"
 rm $rmflags ~/.themes/retrosmart-openbox-themes-gold
 ln -sT ~/.paps/openbox/retrosmart-openbox-themes-gold ~/.themes/retrosmart-openbox-themes-gold
+
+echo "Link: ~/.themes/Nord-Openbox -> ~/.paps/openbox/Nord-Openbox"
+rm $rmflags ~/.themes/Nord-Openbox
+ln -sT ~/.paps/openbox/Nord-Openbox ~/.themes/Nord-Openbox
+
+# gtk themes
+echo "Link: ~/.themes/Nordic -> ~/.paps/openbox/Nordic"
+rm $rmflags ~/.themes/Nordic
+ln -sT ~/.paps/gtk/Nordic ~/.themes/Nordic
 
 # gsimplecal
 mkdir -v -p ~/.config/gsimplecal

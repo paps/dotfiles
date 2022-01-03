@@ -35,13 +35,13 @@
 */
 
 /*
- * Make most backgrounds (about:home, loading tab) a dark solarized color
- * This is supposed to go with the 'Solarize Fox' theme:
- * https://addons.mozilla.org/en-US/firefox/addon/solarize-fox/
+ * Make most backgrounds (about:home, loading tab) a dark 'Nord' style color
+ * This is supposed to go with a 'Nord' theme:
+ * https://addons.mozilla.org/en-US/firefox/addon/nord-theme-cool/
  */
-.browserContainer { background-color: #155968 !important; }
-.tabbrowser-tabpanels { background-color: #155968 !important; }
-@-moz-document url(about:home) { * { background-color: #155968 !important; } }
+.browserContainer { background-color: #3b4252 !important; }
+.tabbrowser-tabpanels { background-color: #3b4252 !important; }
+@-moz-document url(about:home) { * { background-color: #3b4252 !important; } }
 
 /*
  * Disable F11 fullscreen animation
