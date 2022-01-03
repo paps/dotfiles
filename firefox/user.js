@@ -38,5 +38,3 @@ user_pref("browser.cache.memory.enable", true);
 user_pref("browser.safebrowsing.malware.enabled", false);
 user_pref("browser.safebrowsing.phishing.enabled", false);
 user_pref("browser.safebrowsing.malware.enabled", false);
-
-user_pref("dom.serviceWorkers.enabled", false);
