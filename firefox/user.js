@@ -45,10 +45,15 @@ user_pref("browser.safebrowsing.malware.enabled", false);
 user_pref("browser.safebrowsing.phishing.enabled", false);
 
 // Select light/dark mode depending on the OS setting (see gtk/settings3.ini)
-// instead of the Firefox theme suggestion
+// instead of the Firefox "inferred from theme colors". This is for websites.
 user_pref("layout.css.prefers-color-scheme.content-override", 2);
+
+// Make the Firefox UI light mode instead of "inferred from theme colors"
+user_pref("browser.theme.content-theme", 1);
+user_pref("browser.theme.toolbar-theme", 1);
+
 
 // Make the scrollbars bigger
 user_pref("widget.non-native-theme.gtk.scrollbar.round-thumb", false);
 user_pref("widget.non-native-theme.gtk.scrollbar.thumb-size", 1);
-user_pref("widget.non-native-theme.scrollbar.size.override", 14);
+user_pref("widget.non-native-theme.scrollbar.size.override", 14); // width in pixels

@@ -15,6 +15,7 @@ xrdb -load -DDPI=$dpi ~/.Xresources
 export MOZ_USE_XINPUT2=1 # make firefox true smooth scrolling work
 export QT_AUTO_SCREEN_SCALE_FACTOR=1
 export GTK_OVERLAY_SCROLLING=0 # disable gtk3 scrollbar auto hide
+export GDK_CORE_DEVICE_EVENTS=1 # make gtk3 NOT use high-resolution mouse wheel mode
 
 #export GDK_SCALE=2
 #export GDK_DPI_SCALE=0.5
