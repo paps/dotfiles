@@ -48,9 +48,6 @@ user_pref("browser.safebrowsing.phishing.enabled", false);
 // instead of the Firefox theme suggestion
 user_pref("layout.css.prefers-color-scheme.content-override", 2);
 
-// instead of the Firefox theme suggestion
-user_pref("layout.css.prefers-color-scheme.content-override", 2);
-
 // Make the scrollbars bigger
 user_pref("widget.non-native-theme.gtk.scrollbar.round-thumb", false);
 user_pref("widget.non-native-theme.gtk.scrollbar.thumb-size", 1);
