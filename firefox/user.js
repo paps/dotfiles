@@ -1,12 +1,19 @@
+// Apparently this is needed for userChrome.css customizations to work
 user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
 user_pref("browser.fixup.alternate.enabled", false);
+
 // user_pref("mousewheel.default.delta_multiplier_y", 200);
 // user_pref("privacy.donottrackheader.enabled", true);
 user_pref("privacy.trackingprotection.enabled", true);
 user_pref("extensions.pocket.enabled", false);
-user_pref("services.sync.addons.ignoreUserEnabledChanges", true); // don't sync extension's enabled/disabled status
-user_pref("extensions.allowPrivateBrowsingByDefault", true); // enable all extensions in private browsing too
 user_pref("browser.urlbar.trimURLs", false);
+
+// Enable all extensions in private browsing too
+// This flag is not supported anymore: https://superuser.com/questions/1669675/enable-all-firefox-extensions-in-private-mode-by-default
+user_pref("extensions.allowPrivateBrowsingByDefault", true);
+
+// don't sync extension's enabled/disabled status
+user_pref("services.sync.addons.ignoreUserEnabledChanges", true);
 
 // prevent things from moving all over the place
 user_pref("general.smoothScroll", false);
@@ -36,4 +43,15 @@ user_pref("browser.cache.memory.enable", true);
 // disable safe browsing (speeds things up just a little bit, but is it really necessary?)
 user_pref("browser.safebrowsing.malware.enabled", false);
 user_pref("browser.safebrowsing.phishing.enabled", false);
-user_pref("browser.safebrowsing.malware.enabled", false);
+
+// Select light/dark mode depending on the OS setting (see gtk/settings3.ini)
+// instead of the Firefox theme suggestion
+user_pref("layout.css.prefers-color-scheme.content-override", 2);
+
+// instead of the Firefox theme suggestion
+user_pref("layout.css.prefers-color-scheme.content-override", 2);
+
+// Make the scrollbars bigger
+user_pref("widget.non-native-theme.gtk.scrollbar.round-thumb", false);
+user_pref("widget.non-native-theme.gtk.scrollbar.thumb-size", 1);
+user_pref("widget.non-native-theme.scrollbar.size.override", 14);
