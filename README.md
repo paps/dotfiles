@@ -3,18 +3,42 @@ Martin's dotfiles
 
 My Debian Sid dotfiles for desktops or laptops. For a minimal server configuration, use https://github.com/paps/dotfiles-server
 
-### Useful shortcuts
+### Shortcuts
 
 Once everything is configured correctly, these useful shortcuts are available:
 
+Sound
+* `Ctrl-Alt-[` to lower sound volume
+* `Ctrl-Alt-]` to increase sound volume
+* `Ctrl-Alt-\` to mute/unmute sound
+* `WheelUp`/`WheelDown` with the cursor positionned at the top pixel row to lower/increase sound volume
+
+Apps
 * `Ctrl-Alt-c` to open calendar
 * `Ctrl-Alt-y` to open calculator
 * `Ctrl-Alt-s` to take a screenshot
+* `Ctrl-Alt-t` to spawn a terminal
+
+Desktop environment
+* `Alt-F1` to open the window switcher
+* `Alt-F2` to open rofi (app launcher)
+* `Alt-F3` to open the Openbox menu
+* `Alt-Space` to open the window contextual menu
 * `Ctrl-Alt-d` to collapse all windows (go to desktop)
 * `Ctrl-Alt-l` to lock (with password, different from just letting the screen go to sleep)
+* `Ctrl-WheelUp`/`Ctrl-WheelDown` with the cursor positionned at the top pixel row to lower/increase screen brightness
+
+Tiling
+* `Ctrl-Alt-Home`: vertical split, left side
+* `Ctrl-Alt-End`: vertical split, right side
+* `Ctrl-Alt-PageUp`: horizontal split, top side
+* `Ctrl-Alt-PageDown`: horizontal split, bottom side
+
+Text editing
 * `Ctrl-Alt-f` to open the clipboard menu
 * `Ctrl-Alt-g` to switch input method (e.g. EN/CN)
 * `Ctrl-.` to insert an emoji (input field)
+* `Super-H`/`Super-J`/`Super-K`/`Super-L` can be used instead of arrow keys
 
 ### Install
 
@@ -219,7 +243,7 @@ Useful for TVs: `touch ~/.paps/x/screensaver_4h` to make the screensaver wait 4 
 
 ### IBus input methods
 
-By default ibus-daemon comes with `Super-Space` as a shortcut to switch between input methods (e.g. between EN and CN). This doesn't work because it conflicts with Openbox's window context menu shortcut.
+By default ibus-daemon comes with `Super-Space` as a shortcut to switch between input methods (e.g. between EN and CN). This doesn't work because it conflicts with the xmodmap settings.
 
 To fix, go into IBus preferences, and changes the "Next input method" setting to `<Control><Alt>g`.
 
