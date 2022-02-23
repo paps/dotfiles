@@ -3,6 +3,19 @@ Martin's dotfiles
 
 My Debian Sid dotfiles for desktops or laptops. For a minimal server configuration, use https://github.com/paps/dotfiles-server
 
+### Useful shortcuts
+
+Once everything is configured correctly, these useful shortcuts are available:
+
+* `Ctrl-Alt-c` to open calendar
+* `Ctrl-Alt-y` to open calculator
+* `Ctrl-Alt-s` to take a screenshot
+* `Ctrl-Alt-d` to collapse all windows (go to desktop)
+* `Ctrl-Alt-l` to lock (with password, different from just letting the screen go to sleep)
+* `Ctrl-Alt-f` to open the clipboard menu
+* `Ctrl-Alt-g` to switch input method (e.g. EN/CN)
+* `Ctrl-.` to insert an emoji (input field)
+
 ### Install
 
 Debian testing netinst from http://cdimage.debian.org/cdimage/weekly-builds/ (or even better, take one that includes non-free firmware: http://cdimage.debian.org/cdimage/unofficial/non-free/cd-including-firmware/weekly-builds/amd64/iso-cd/)
@@ -193,7 +206,7 @@ In `openbox/xcfg.sh`, we make X make the screen black at 10min then shut it down
 
 Useful for TVs: `touch ~/.paps/x/screensaver_4h` to make the screensaver wait 4 hours before activating.
 
-`Ctrl-Alt-L` and "Lock" from the Openbox context menu will call `slock` which will lock the screen and will wait for the correct password to be entered.
+`Ctrl-Alt-l` and "Lock" from the Openbox context menu will call `slock` which will lock the screen and will wait for the correct password to be entered.
 
 ### Locales
 
@@ -204,11 +217,11 @@ Useful for TVs: `touch ~/.paps/x/screensaver_4h` to make the screensaver wait 4 
 * `sudo update-alternatives --config x-www-browser` and select Firefox
 * `xdg-settings set default-web-browser firefox.desktop`
 
-### Openbox shortcuts
+### IBus input methods
 
-* `Ctrl-Alt-C` to open calendar
-* `Ctrl-Alt-Y` to open calculator
-* `Ctrl-Alt-S` to take a screenshot
+By default ibus-daemon comes with `Super-Space` as a shortcut to switch between input methods (e.g. between EN and CN). This doesn't work because it conflicts with Openbox's window context menu shortcut.
+
+To fix, go into IBus preferences, and changes the "Next input method" setting to `<Control><Alt>g`.
 
 ### NextDNS
 

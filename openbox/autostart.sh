@@ -5,7 +5,9 @@ xsetroot -solid black
 stalonetray --dockapp-mode simple --icon-size=32 --kludges=force_icons_size -v -bg black -d none --icon-gravity S --geometry 1x10 &
 ~/.paps/openbox/volume_late.sh &
 (while true; do rescuetime; sleep 5; notify-send 'Restarting rescuetime'; done &) # auto-restart of rescuetime
+(while true; do parcellite; sleep 5; notify-send 'Restarting parcellite'; done &) # auto-restart of parcellite
 ibus-daemon -d &
+nm-applet &
 
 # Volume feedback
 volstate="$HOME/.paps/openbox/.volume-state"

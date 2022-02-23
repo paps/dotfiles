@@ -36,6 +36,6 @@ ellipsize=2
 multi_user=true
 icon_name=parcellite
 menu_key=
-history_key=
+history_key=<Ctrl><Alt>F
 phistory_key=
 actions_key=
