@@ -159,7 +159,7 @@
   <dock>
     <position>Floating</position>
     <!-- (Top|Bottom)(Left|Right|)|Top|Bottom|Left|Right|Floating -->
-    <floatingX>-4</floatingX>
+    <floatingX>-1</floatingX>
     <floatingY>606</floatingY>
     <noStrut>yes</noStrut>
     <stacking>Below</stacking>
