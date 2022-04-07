@@ -16,6 +16,7 @@ user_pref("extensions.allowPrivateBrowsingByDefault", true);
 user_pref("services.sync.addons.ignoreUserEnabledChanges", true);
 
 // prevent things from moving all over the place
+// calming the UI
 user_pref("general.smoothScroll", false);
 user_pref("toolkit.cosmeticAnimations.enabled", false);
 user_pref("browser.fullscreen.animateUp", 0);
@@ -24,6 +25,8 @@ user_pref("ui.scrollToClick", 1);
 user_pref("nglayout.enable_drag_images", false);
 user_pref("ui.prefersReducedMotion", 1);
 user_pref("browser.download.animateNotifications", false);
+user_pref("browser.aboutConfig.showWarning", false);
+user_pref("full-screen-api.warning.timeout", 0);
 
 // wheel always scrolls, whatever the pressed modifier key
 user_pref("mousewheel.with_alt.action", 1);
