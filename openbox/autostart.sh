@@ -9,6 +9,12 @@ stalonetray --dockapp-mode simple --icon-size=32 --kludges=force_icons_size -v -
 ibus-daemon -d &
 nm-applet &
 
+# Start solaar (Logitech Unifying monitor/controller) if it's installed
+if [ -x "$(command -v solaar)" ]
+then
+    solaar --window hide &
+fi
+
 # Volume feedback
 volstate="$HOME/.paps/openbox/.volume-state"
 [ ! -f $volstate ] && touch $volstate

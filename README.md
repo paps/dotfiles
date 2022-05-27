@@ -104,6 +104,14 @@ Then, proceed by SSHing into all relevant managed machines and execute `curl 'ht
 * Often needed after updates or installs: `nvim +UpdateRemotePlugins`
 * For removing unused plugins: `nvim +PluginClean`
 
+### Optional: Solaar
+
+If using a wireless device of the "Logitech unifying" type, it's a good idea to install `solaar`, at least to be aware of the device battery level.
+
+Run `sudo apt install solaar`.
+
+`solaar` is automatically started by openbox's `autostart.sh` when it is detected as installed.
+
 ### Optional: Monitoring
 
 * **TODO**: Describe collectd install
