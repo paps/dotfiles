@@ -23,6 +23,7 @@ Desktop environment
 * `Alt-F1` to open the window switcher
 * `Alt-F2` to open rofi (app launcher)
 * `Alt-F3` to open the Openbox menu
+* `Alt-F10` to maximize/unmaximize the focused window
 * `Alt-Space` to open the window contextual menu
 * `Ctrl-Alt-d` to collapse all windows (go to desktop)
 * `Ctrl-Alt-l` to lock (with password, different from just letting the screen go to sleep)
