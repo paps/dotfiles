@@ -1,3 +1,7 @@
+/*
+ * This CSS file is for Firefox's UI
+ */
+
 /* Hide the "title changed" blue glow on pinned tabs */
 /* See https://support.mozilla.org/en-US/questions/1181537 */
 .tabbrowser-tab > .tab-stack > .tab-content[pinned][titlechanged] {

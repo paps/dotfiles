@@ -1,4 +1,4 @@
-// Apparently this is needed for userChrome.css customizations to work
+// Apparently this is needed for userContent.css customizations to work (or is it userChrome.css?)
 user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
 user_pref("browser.fixup.alternate.enabled", false);
 

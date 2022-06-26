@@ -1,3 +1,10 @@
 /*
- * Apparently userContent.css is the new userChrome.css (?)
+ * This CSS file is applied to websites
+ * (which is different from userChrome.css which is applied to Firefox's UI)
  */
+
+/* Stop websites from changing the scrollbars */
+* {
+    scrollbar-color:auto!important;
+    scrollbar-width:auto!important;
+}
