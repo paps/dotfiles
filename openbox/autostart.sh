@@ -53,7 +53,11 @@ fi
 # Screen brightness control:
 #  redshift is run every 90s to adjust screen temperature
 #  '-b' sets the brightness (first value for day, second value for night)
-#  '-l 48.85:2.35' means we're located in Paris (use 25.03:121.56 for Taipei)
+#  '-l' sets our location in the world. When changing location, update the two commands with:
+#     Paris: 48.85:2.35
+#     San Francisco: 37.77:122.41
+#     Taipei: 25.03:121.56
+#     (sidenote: to change timezone, run `sudo dpkg-reconfigure tzdata`)
 #  '-m randr' skips a useless check for Wayland
 #  '-r' makes changes instantaneous (disables fading)
 #  '-o' means 'one shot mode', i.e. redshift immediately exits
@@ -70,7 +74,7 @@ while true; do
     while
         val=`cat $brightness`
         echo " Brightness $val"
-        redshift -m randr -l 48.85:2.35 -r -o -P -b "$val:$val" > /dev/null
+        redshift -m randr -l 25.03:121.56 -r -o -P -b "$val:$val" > /dev/null
         inotifywait -e close_write -qq -t 2 $brightness
     do true; done | lemonbar -g 290x34+34+1 -d -B '#859900' -F '#fdf6e3' -f '-xos4-terminus-bold-r-normal--32-320-72-72-c-160-*-*'
 done &
