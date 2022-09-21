@@ -53,7 +53,7 @@ fi
 # Screen brightness control:
 #  redshift is run every 90s to adjust screen temperature
 #  '-b' sets the brightness (first value for day, second value for night)
-#  '-l 48.85:2.35' means we're located in Paris
+#  '-l 48.85:2.35' means we're located in Paris (use 25.03:121.56 for Taipei)
 #  '-m randr' skips a useless check for Wayland
 #  '-r' makes changes instantaneous (disables fading)
 #  '-o' means 'one shot mode', i.e. redshift immediately exits
@@ -76,7 +76,7 @@ while true; do
 done &
 while true; do
     val=`cat $brightness`
-    redshift -m randr -l 48.85:2.35 -r -o -P -b "$val:$val"
+    redshift -m randr -l 25.03:121.56 -r -o -P -b "$val:$val"
     sleep 90
 done &
 
