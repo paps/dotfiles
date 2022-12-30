@@ -287,7 +287,6 @@
     </keybind>
     <keybind key="C-A-Delete">
       <action name="Unmaximize"/>
-      <action name="Decorate"/>
       <action name="MoveResizeTo">
         <x>center</x>
         <y>center</y>
@@ -459,16 +458,6 @@
       <mousebind button="A-Middle" action="Press">
         <action name="Resize"/>
       </mousebind>
-      <mousebind button="A-Up" action="Click">
-        <action name="GoToDesktop">
-          <to>previous</to>
-        </action>
-      </mousebind>
-      <mousebind button="A-Down" action="Click">
-        <action name="GoToDesktop">
-          <to>next</to>
-        </action>
-      </mousebind>
       <mousebind button="C-A-Up" action="Click">
         <action name="GoToDesktop">
           <to>previous</to>
@@ -479,14 +468,23 @@
           <to>next</to>
         </action>
       </mousebind>
-      <mousebind button="A-S-Up" action="Click">
-        <action name="SendToDesktop">
-          <to>previous</to>
+      <!-- Window tiling with prev/next mouse buttons -->
+      <mousebind button="C-A-Button8" action="Press">
+        <action name="Unmaximize"/>
+        <action name="MoveResizeTo">
+          <x>0</x>
+          <y>0</y>
+          <width>50%</width>
+          <height>100%</height>
         </action>
       </mousebind>
-      <mousebind button="A-S-Down" action="Click">
-        <action name="SendToDesktop">
-          <to>next</to>
+      <mousebind button="C-A-Button9" action="Press">
+        <action name="Unmaximize"/>
+        <action name="MoveResizeTo">
+          <x>-0</x>
+          <y>0</y>
+          <width>50%</width>
+          <height>100%</height>
         </action>
       </mousebind>
     </context>
