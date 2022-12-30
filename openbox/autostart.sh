@@ -74,13 +74,13 @@ while true; do
     while
         val=`cat $brightness`
         echo " Brightness $val"
-        redshift -m randr -l 25.03:121.56 -r -o -P -b "$val:$val" > /dev/null
+        redshift -m randr -l 48.85:2.35 -r -o -P -b "$val:$val" > /dev/null
         inotifywait -e close_write -qq -t 2 $brightness
     do true; done | lemonbar -g 290x34+34+1 -d -B '#859900' -F '#fdf6e3' -f '-xos4-terminus-bold-r-normal--32-320-72-72-c-160-*-*'
 done &
 while true; do
     val=`cat $brightness`
-    redshift -m randr -l 25.03:121.56 -r -o -P -b "$val:$val"
+    redshift -m randr -l 48.85:2.35 -r -o -P -b "$val:$val"
     sleep 90
 done &
 
