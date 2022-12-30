@@ -3,15 +3,26 @@
 ! e.g. it's a very good, non-invasive Discord PTT key
 keysym Caps_Lock = Hyper_L
 
-! win + hjkl = arrows
+! the 'win' key is our mode_switch modifier (what triggers the third option in the following remappings)
 keycode 133 = Mode_switch
+
+! win + hjkl = arrows
 keysym h = h H Left
 keysym j = j J Down
 keysym k = k K Up
 keysym l = l L Right
 
-! <> is shift (FR keyboard layout)
-keycode 94 = Shift_L
+! win + arrows = home/end/pageUp/pageDown movements
+keysym Left = Left NoSymbol Home
+keysym Right = Right NoSymbol End
+keysym Up = Up NoSymbol Page_Up
+keysym Down = Down NoSymbol Page_Down
+
+! <> is shift (some FR keyboard layouts with a smaller left shift key)
+!keycode 94 = Shift_L
+
+! §± is `~ (at least on some Apple keyboards with UK/US-intl layouts, §± is found on the left side of the number row)
+keycode 94 = grave asciitilde
 
 ! print screen is insert (useful for Dell XPS 13 keyboard layout)
 !keysym Print = Insert
@@ -19,5 +30,5 @@ keycode 94 = Shift_L
 ! print screen is compose key (useful for ThinkPad Carbon X1 keyboard layout)
 keycode 107 = Multi_key
 
-! eject is delete (apple keyboard...)
+! eject is delete (some Apple keyboards)
 keycode 169 = Delete
