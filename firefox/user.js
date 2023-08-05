@@ -59,4 +59,4 @@ user_pref("browser.theme.toolbar-theme", 1);
 // Make the scrollbars bigger
 user_pref("widget.non-native-theme.gtk.scrollbar.round-thumb", false);
 user_pref("widget.non-native-theme.gtk.scrollbar.thumb-size", 1);
-user_pref("widget.non-native-theme.scrollbar.size.override", 14); // width in pixels
+user_pref("widget.non-native-theme.scrollbar.size.override", 11); // width in pixels
