@@ -225,26 +225,6 @@
         <wrap>no</wrap>
       </action>
     </keybind>
-    <keybind key="C-A-1">
-      <action name="GoToDesktop">
-        <to>1</to>
-      </action>
-    </keybind>
-    <keybind key="C-A-2">
-      <action name="GoToDesktop">
-        <to>2</to>
-      </action>
-    </keybind>
-    <keybind key="C-A-3">
-      <action name="GoToDesktop">
-        <to>3</to>
-      </action>
-    </keybind>
-    <keybind key="C-A-4">
-      <action name="GoToDesktop">
-        <to>4</to>
-      </action>
-    </keybind>
     <keybind key="C-A-d">
       <action name="ToggleShowDesktop"/>
     </keybind>
@@ -379,6 +359,12 @@
     <keybind key="XF86Calculator">
       <action name="Execute">
         <command>gnome-calculator</command>
+      </action>
+    </keybind>
+    <!-- Keybindings C-A-Number "useful shortcuts" -->
+    <keybind key="C-A-1">
+      <action name="Execute">
+        <command>~/.paps/openbox/c-a-1-write-time-and-date.sh</command>
       </action>
     </keybind>
     <!-- Keybindings for volume and music control -->
