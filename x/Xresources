@@ -7,8 +7,7 @@ Xft.hinting: 1
 Xft.antialias: 1
 Xft.rgba: rgb
 
-!!Retro style cursor theme
-Xcursor.theme: X11-Default-Black
+Xcursor.theme: Adwaita
 
 #define S_base03        #002b36
 #define S_base02        #073642
