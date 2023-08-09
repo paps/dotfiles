@@ -201,30 +201,6 @@
         <wrap>no</wrap>
       </action>
     </keybind>
-    <keybind key="S-A-Left">
-      <action name="SendToDesktop">
-        <to>left</to>
-        <wrap>no</wrap>
-      </action>
-    </keybind>
-    <keybind key="S-A-j">
-      <action name="SendToDesktop">
-        <to>left</to>
-        <wrap>no</wrap>
-      </action>
-    </keybind>
-    <keybind key="S-A-Right">
-      <action name="SendToDesktop">
-        <to>right</to>
-        <wrap>no</wrap>
-      </action>
-    </keybind>
-    <keybind key="S-A-k">
-      <action name="SendToDesktop">
-        <to>right</to>
-        <wrap>no</wrap>
-      </action>
-    </keybind>
     <keybind key="C-A-d">
       <action name="ToggleShowDesktop"/>
     </keybind>
@@ -436,14 +412,16 @@
       <mousebind button="A-Right" action="Drag">
         <action name="Resize"/>
       </mousebind>
-      <mousebind button="C-A-Up" action="Click">
+      <mousebind button="C-A-Button6" action="Press">
         <action name="GoToDesktop">
           <to>previous</to>
+          <wrap>no</wrap>
         </action>
       </mousebind>
-      <mousebind button="C-A-Down" action="Click">
+      <mousebind button="C-A-Button7" action="Press">
         <action name="GoToDesktop">
           <to>next</to>
+          <wrap>no</wrap>
         </action>
       </mousebind>
       <!-- Window tiling with prev/next mouse buttons -->
