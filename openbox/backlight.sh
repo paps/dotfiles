@@ -6,8 +6,8 @@ then
     exit 1
 fi
 
-lockfile="$HOME/.paps/openbox/.backlight-lock"
-lightstate="$HOME/.paps/openbox/.backlight-state"
+lockfile="$HOME/.paps/openbox/.global-event-lock"
+notification="$HOME/.paps/openbox/.notification-string"
 
 if [ -f "$lockfile" ]
 then
@@ -28,7 +28,7 @@ then
     else
         echo "Usage: $0 +|-"
     fi
-    echo " Backlight $(light -G | cut -d. -f1)%" > $lightstate
+    echo "%{c}Backlight $(light -G | cut -d. -f1)%" > $notification
 else
     echo "Usage: $0 +|-"
 fi

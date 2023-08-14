@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-lockfile="$HOME/.paps/openbox/.volume-lock"
-volstate="$HOME/.paps/openbox/.volume-state"
+lockfile="$HOME/.paps/openbox/.global-event-lock"
+notification="$HOME/.paps/openbox/.notification-string"
 
 if [ -f "$lockfile" ]
 then
@@ -31,7 +31,7 @@ then
     else
         echo "Usage: $0 +|-|m"
     fi
-    amixer sget Master | grep -m 1 -Eo ' \[[0-9]{1,3}%\] \[(on|off)\]' > $volstate
+    amixer sget Master | grep -m 1 -Eo ' \[[0-9]{1,3}%\] \[(on|off)\]' > $notification
 else
     echo "Usage: $0 +|-|m"
 fi

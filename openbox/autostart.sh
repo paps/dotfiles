@@ -9,49 +9,31 @@ stalonetray --dockapp-mode simple --icon-size=32 --kludges=force_icons_size -v -
 ibus-daemon -d &
 nm-applet &
 
-# Start solaar (Logitech Unifying monitor/controller) if it's installed
+# Start solaar (Logitech Unifying/bluetooth monitor/controller) if it's installed
 if [ -x "$(command -v solaar)" ]
 then
     solaar --window hide &
 fi
 
-# Volume feedback
-volstate="$HOME/.paps/openbox/.volume-state"
-[ ! -f $volstate ] && touch $volstate
+# Generic notification system
+notification="$HOME/.paps/openbox/.notification-string"
+[ ! -f $notification ] && touch $notification
 while true; do
-    inotifywait -e close_write -qq $volstate
+    inotifywait -e close_write -qq $notification
     if [ $? -ne 0 ]
     then
-        notify-send "inotifywait for volume feedback failed"
+        notify-send "inotifywait for ./notification-string display failed"
         sleep 30
     fi
     while
-        cat $volstate
-        inotifywait -e close_write -qq -t 2 $volstate
-    do true; done | lemonbar -g 210x34+34+1 -d -B '#859900' -F '#fdf6e3' -f '-xos4-terminus-bold-r-normal--32-320-72-72-c-160-*-*'
+        cat $notification
+        inotifywait -e close_write -qq -t 3 $notification
+    do true; done | lemonbar -g 300x34+34+1 -d -B '#859900' -F '#fdf6e3' -f '-xos4-terminus-bold-r-normal--32-320-72-72-c-160-*-*'
 done &
 
-# Backlight feedback
-lightstate="$HOME/.paps/openbox/.backlight-state"
-if [ -x "$(command -v light)" ]
-then
-    [ ! -f $lightstate ] && touch $lightstate
-    while true; do
-        inotifywait -e close_write -qq $lightstate
-        if [ $? -ne 0 ]
-        then
-            notify-send "inotifywait for backlight feedback failed"
-            sleep 30
-        fi
-        while
-            cat $lightstate
-            inotifywait -e close_write -qq -t 3 $lightstate
-        do true; done | lemonbar -g 250x34+34+1 -d -B '#859900' -F '#fdf6e3' -f '-xos4-terminus-bold-r-normal--32-320-72-72-c-160-*-*'
-    done &
-fi
-
 # Screen brightness control:
-#  redshift is run every 90s to adjust screen temperature
+#  redshift is manually run every 90s to adjust screen temperature
+#
 #  '-b' sets the brightness (first value for day, second value for night)
 #  '-l' sets our location in the world. When changing location, update the two commands with:
 #     Paris: 48.85:2.35
@@ -62,22 +44,10 @@ fi
 #  '-r' makes changes instantaneous (disables fading)
 #  '-o' means 'one shot mode', i.e. redshift immediately exits
 #  '-P' resets everything before applying new temp/brightness values
+#
+# /!\ redshift is also called by brightness.sh, changes should be made over there too
 brightness="$HOME/.paps/openbox/.brightness-state"
 echo -n 1.0 > $brightness
-while true; do
-    inotifywait -e close_write -qq $brightness
-    if [ $? -ne 0 ]
-    then
-        notify-send "inotifywait for brightness feedback failed"
-        sleep 30
-    fi
-    while
-        val=`cat $brightness`
-        echo " Brightness $val"
-        redshift -m randr -l 48.85:2.35 -r -o -P -b "$val:$val" > /dev/null
-        inotifywait -e close_write -qq -t 2 $brightness
-    do true; done | lemonbar -g 290x34+34+1 -d -B '#859900' -F '#fdf6e3' -f '-xos4-terminus-bold-r-normal--32-320-72-72-c-160-*-*'
-done &
 while true; do
     val=`cat $brightness`
     redshift -m randr -l 48.85:2.35 -r -o -P -b "$val:$val"
