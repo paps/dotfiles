@@ -30,7 +30,9 @@ then
         value="0.2"
     fi
 
-    # Save value for next run of this script
+    # Save value for next run of this script.
+    # This value is also used to maintain the chosen brightness when redshift is rerun
+    # to adjust blue light (see autostart.sh)
     echo -n $value > $brightness
 
     # Screen brightness control:
