@@ -334,3 +334,12 @@ net.ipv4.tcp_keepalive_intvl=10
 net.ipv4.tcp_keepalive_probes=2
 net.ipv4.tcp_retries2=6
 ```
+
+### Notification of jack plugged in/plugged out
+
+In `/etc/acpi/events/notify-jack` (this is a new file), put the following:
+```
+event=jack/.*
+action=su paps -c 'bash /home/paps/.paps/openbox/publish-notification.sh "%%{r}%e"'
+```
+

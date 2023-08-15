@@ -5,6 +5,9 @@
 # .global-event-lock being taken into account (prevents
 # weird stuff from happening with parallel file edits)
 
+# this script is called by /etc/acpi/events/notify-jack
+# (see ../README.md)
+
 lockfile="$HOME/.paps/openbox/.global-event-lock"
 notification="$HOME/.paps/openbox/.notification-string"
 
