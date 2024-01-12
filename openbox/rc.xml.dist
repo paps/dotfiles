@@ -324,12 +324,12 @@
     </keybind>
     <keybind key="C-A-y">
       <action name="Execute">
-        <command>gnome-calculator</command>
+        <command>qalculate</command>
       </action>
     </keybind>
     <keybind key="XF86Calculator">
       <action name="Execute">
-        <command>gnome-calculator</command>
+        <command>qalculate</command>
       </action>
     </keybind>
     <!-- Keybindings C-A-Number "useful shortcuts" -->
