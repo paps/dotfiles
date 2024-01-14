@@ -1,0 +1,29 @@
+conky.config = {
+	alignment = 'top_left',
+	gap_y = 14,
+	gap_x = 1010,
+
+	background = false,
+	out_to_x = true,
+	out_to_console = false,
+	out_to_stderr = false,
+	update_interval = 1.0,
+	total_run_times = 0,
+	font = '-*-terminus-*-*-*-*-28-*-*-*-*-*-*',
+	default_color = '#adadad',
+	color1 = '#555555',
+	color2 = '#adadad',
+	draw_graph_borders = true,
+	format_human_readable = true,
+	use_spacer = 'right',
+	max_text_width = 0,
+	default_color = '#adadad',
+	own_window = true,
+	own_window_type = 'override',
+	double_buffer = true,
+
+};
+
+conky.text = [[
+${time %a} ${time %b} ${time %d} · ${time %H}:${time %M}${color1}${time %S}${color2}
+]];
