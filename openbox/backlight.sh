@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-if [ ! -x "$(command -v light)" ]
+if [ ! -x "$(command -v brightnessctl)" ]
 then
-    echo "light command not found"
+    echo "brightnessctl command not found"
     exit 1
 fi
 
@@ -21,14 +21,14 @@ if [ $# -eq 1 ]
 then
     if [ $1 = "+" ]
     then
-        light -A 10%
+		brightnessctl set '+5%'
     elif [ $1 = "-" ]
     then
-        light -U 10%
+		brightnessctl set '5%-'
     else
         echo "Usage: $0 +|-"
     fi
-    echo "%{c}Backlight $(light -G | cut -d. -f1)%" > $notification
+    echo "%{c}Backlight $(brightnessctl -m | cut -d, -f4)%" > $notification
 else
     echo "Usage: $0 +|-"
 fi

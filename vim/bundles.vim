@@ -67,7 +67,7 @@ Plugin 'Shougo/deoplete.nvim'
 Plugin 'w0rp/ale'
 
 " Analytics
-Plugin 'wakatime/vim-wakatime'
+" Plugin 'wakatime/vim-wakatime'
 
 " Pretty icons
 Plugin 'ryanoasis/vim-devicons'

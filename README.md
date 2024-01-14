@@ -65,7 +65,10 @@ Optimal setup procedure:
 
 ### Packages
 
-* Install: `bc psmisc htop neovim vim xauth git zsh tmux tree curl inotify-tools trash-cli wget dnsutils apache2-utils p7zip-full unrar tig pv pydf zsh-doc vim-gtk vim-doc nmap whiptail obconf firefox gnome-terminal xterm suckless-tools feh numlockx conky-all scrot x11-xserver-utils acpi alsa-utils stalonetray fontconfig vlc gitk xfonts-terminus fonts-croscore fonts-noto-color-emoji libx11-dev build-essential xclip mplayer python3 libdatetime-perl gsimplecal qalculate zenity geany thunar thunar-volman thunar-archive-plugin thunar-media-tags-plugin thunar-gtkhash file-roller unar arj lhasa rar lzip lzop ncompress rzip unace unalz parcellite ttf-mscorefonts-installer libnotify-bin gparted transmission-remote-gtk gimp ssh-askpass evince zip unzip cmake python-dev xdotool redshift pavucontrol volumeicon-alsa rsync network-manager network-manager-gnome e2fsprogs logsave arandr dbus-x11 gnome-screenshot apt-transport-https ca-certificates gnupg2 software-properties-common ansible ibus-libpinyin lemonbar rofi peek gpicview mate-themes gnome-themes-standard gtk2-engines greybird-gtk-theme elementary-xfce-icon-theme`
+* Install base packages: `bc psmisc htop neovim vim xauth git zsh tmux tree curl inotify-tools trash-cli wget dnsutils apache2-utils p7zip-full unrar tig pv pydf zsh-doc vim-doc nmap whiptail obconf firefox gnome-terminal xterm suckless-tools feh numlockx conky-all x11-xserver-utils acpi acpid alsa-utils stalonetray fontconfig gitk libx11-dev build-essential xclip python3 libdatetime-perl zenity thunar thunar-volman thunar-archive-plugin thunar-media-tags-plugin thunar-gtkhash file-roller unar arj lhasa lzip lzop ncompress rzip unace unalz parcellite libnotify-bin ssh-askpass evince zip unzip cmake xdotool redshift pavucontrol rsync network-manager network-manager-gnome e2fsprogs logsave arandr dbus-x11 apt-transport-https ca-certificates gnupg2 software-properties-common ibus-libpinyin lemonbar rofi`
+* Install fonts: `xfonts-terminus fonts-croscore fonts-noto-color-emoji ttf-mscorefonts-installer fonts-inter fonts-inter-variable fonts-hack fonts-open-sans`
+* Install themes: `mate-themes gtk2-engines greybird-gtk-theme elementary-xfce-icon-theme`
+* Install utilities: `gnome-screenshot peek gpicview ansible scrot vlc mplayer gparted transmission-remote-gtk gimp gsimplecal qalculate geany`
 * Recommended: `intel-microcode amd64-microcode firmware-linux` (other firmware packages might be necessary)
 * Remove: `notification-daemon xsel`
 
@@ -113,17 +116,9 @@ Run `sudo apt install solaar`.
 
 `solaar` is automatically started by openbox's `autostart.sh` when it is detected as installed.
 
-### Optional: Monitoring
-
-* **TODO**: Describe collectd install
-* Go to https://papertrailapp.com, login, follow instructions to add a system.
-	* Configure TLS encryption: http://help.papertrailapp.com/kb/configuration/encrypting-remote-syslog-with-tls-ssl/#rsyslog
-	* Use better settings for the rsyslog queue: http://help.papertrailapp.com/kb/configuration/advanced-unix-logging-tips/#rsyslog_queue
-	* Dont forget the `rsyslog-gnutls` package
-
 ### Rescuetime
 
-Go to https://www.rescuetime.com/dashboard and install the Debian package. It is automatically started by `~/.paps/openbox/autostart.sh`.
+Go to https://www.rescuetime.com/dashboard and install the Debian package. It is automatically started by `~/.paps/openbox/autostart.sh`. (Asahi: no ARM package available.)
 
 ### Node & NPM
 
@@ -154,12 +149,14 @@ Add local binaries in `~/.paps/bin` (it's in $PATH).
 	* Disable context menu otions
 * Synchronize Firefox
 * Remove URL bookmark star shortcut (right click)
-* In "customize mode", remove URL bar spacers, enable Solarized fox theme, etc
 * Go into the default profile folder `~/.mozilla/firefox/XXXX.default-release` then:
 	* `mkdir chrome`
 	* `ln -s ~/.paps/firefox/userChrome.css chrome/`
 	* `ln -s ~/.paps/firefox/userContent.css chrome/`
 	* `ln -s ~/.paps/firefox/user.js .`
+	* Firefox needs to be restarted for these to be taken into account
+* In "customize mode", remove URL bar spacers, enable Solarized fox theme, etc
+	* Select compact density (this is only possible after applying `user.js`)
 * Rescue Time configuration (if asked):
 	* Check "already using the full rescue time app"
 	* Enter email
@@ -229,9 +226,11 @@ Add local binaries in `~/.paps/bin` (it's in $PATH).
 	* Compatibility: the default
 * Useful to know: `gnome-terminal --show-menubar` and shift-right-click for context menu
 
-### Session startup script
+### Session startup script(s)
 
-Optional startup script: `~/.paps/scripts/local.sh` (ignored by git, executed by `~/.paps/openbox/autostart.sh` on session start). Don't forget to `chmod +x`.
+**For the current user:** Optional startup script `~/.paps/scripts/local.sh` (ignored by git, executed by `~/.paps/openbox/autostart.sh` on session start). Don't forget to `chmod +x` when creating this file.
+
+**As root:** Edit `~/.paps/scripts/root-boot.sh` as needed, then run `sudo contrab -e` and add this line `@reboot sleep 5 && /home/paps/.paps/scripts/root-boot.sh` (a sleep is added as a cheap workaround to wait for most things to be ready, daemons to be loaded, etc).
 
 ### Screensaving
 
@@ -244,6 +243,10 @@ Useful for TVs: `touch ~/.paps/x/screensaver_4h` to make the screensaver wait 4 
 ### Locales
 
 `sudo dpkg-reconfigure locales`, add `fr_FR.utf8` if not present, make sure the default locale is `en_US.ut8`.
+
+### Timezone
+
+Use `sudo dpkg-reconfigure tzdata` to change timezone. A change like this should come with a change to redshift configuration, see `openbox/autostart.sh`.
 
 ### Force default browser
 
@@ -266,6 +269,12 @@ By default, `dhclient` is probably running on the machine, which means that the 
 
 To target NextDNS' configuration on poorly configurable devices (e.g. a Samsung TV) behind the same NAT as a desktop PC, the public IP is bound thanks to a crontab entry similar to this one: `21 */4 * * * curl --fail --silent --show-error 'https://link-ip.nextdns.io/xxxxxx/yyyyyyyyyyyyyyyyy' 2>&1 | logger -t nextdnslinkip`.
 
+### Obsidian
+
+Get it from https://obsidian.md/ (Asahi: get the AppImage because they don't have an ARM deb). Once installed, enable sync.
+
+**Important:** in the settings, go to 'Sync' and check all the boxes (sync files of all types, sync all configuration), and then restart Obsidian.
+
 ### Network Manager
 
 The NetworkManager service is not enabled by default on Debian. Normally for normal desktop PCs this would not be needed as they just connect via their wired iface automatically, but it's great to have a graphical UI for controlling some network settings.
@@ -280,7 +289,7 @@ Before `libinput` existed, the `xset m` command found in `openbox/xcfg.sh` had a
 
 To disable mouse acceleration, copy `x/configs/40-mouse.conf` in `/etc/X11/xorg.conf.d/`.
 
-### Laptops
+### Laptops (non-Asahi)
 
 `x/configs/20-intel.conf` is an example of a good integrated Intel Graphics configuration. `x/configs/30-touchpad.conf` is an example of a good touchpad configuration. Copy these to `/etc/X11/xorg.conf.d/` to use them.
 
@@ -297,13 +306,18 @@ Use `powertop` for monitoring power usage (however, when used in parallel with `
 
 Intel driver provided by package `xserver-xorg-video-intel` is deprecated and should not be used on any recent hardware. The newer alternative is referred to as the Modesetting driver. Use that.
 
-Install the `light` package to be able to control screen backlight brightness.
+### Laptop screen backlight control
+
+* Install `brigthnessctl brightness-udev`
+* Run `sudo usermod -a -G video paps` (assuming `paps` is the current user)
+* Logout/login as a group membership was changed
+* Screen backlight controls should now be working
 
 ### High DPI
 
-To switch to 144 instead of the default of 96: `touch ~/.paps/x/dpi144` (then restart X). The `xsession` defines a `$dpi` variable according to the precense of this file, which is then passed to `Xresources`. Another option is 192: `touch ~/.paps/x/dpi192`.
+To switch to 144 instead of the default of 96: `touch ~/.paps/x/dpi144` (then restart X). The `xsession` defines a `$dpi` variable according to the precense of this file, which is then passed to `Xresources`. Another option is 192: `touch ~/.paps/x/dpi192`. (Asahi: 192 is a good option)
 
-### Apple Wireless Keyboard
+### Apple keyboards
 
 * Respect standard layout: `# echo 0 > /sys/module/hid_apple/parameters/iso_layout`
 * Have ctrl & alt were it's expected: `# echo 1 > /sys/module/hid_apple/parameters/swap_opt_cmd`
