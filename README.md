@@ -23,15 +23,21 @@ Desktop environment
 * `Alt-F1` to open the window switcher
 * `Alt-F2` to open rofi (app launcher)
 * `Alt-F3` to open the Openbox menu
-* `Alt-F10` to maximize/unmaximize the focused window
-* `Alt-Space` to open the window contextual menu
-* `Ctrl-Alt-d` to collapse all windows (go to desktop)
 * `Ctrl-Alt-l` to lock (with password, different from just letting the screen go to sleep)
 * `Ctrl-WheelUp`/`Ctrl-WheelDown` with the cursor positionned at the top pixel row to lower/increase screen brightness
 
+Window management
+* `Alt-F10` to maximize/unmaximize the focused window
+* `Alt-Space` to open the window contextual menu
+* `Ctrl-Alt-d` to collapse all windows (go to desktop)
+* To go from one desktop to another:
+	* `Ctrl-Alt-HorizontalWheelUp`/`Ctrl-Alt-HorizontalWheelUp` or
+	* `Ctrl-Alt-Left`/`Ctrl-Alt-Right` or
+	* `Ctrl-Alt-j`/`Ctrl-Alt-k`
+
 Tiling
-* `Ctrl-Alt-Home`: vertical split, left side
-* `Ctrl-Alt-End`: vertical split, right side
+* `Ctrl-Alt-Home` or `Ctrl-Alt-MousePrev`: vertical split, left side
+* `Ctrl-Alt-End` or `Ctrl-Alt-MouseNext`: vertical split, right side
 * `Ctrl-Alt-PageUp`: horizontal split, top side
 * `Ctrl-Alt-PageDown`: horizontal split, bottom side
 
@@ -47,7 +53,7 @@ Debian testing netinst from http://cdimage.debian.org/cdimage/weekly-builds/ (or
 
 Easiest way to make a bootable usb disk: `sudo umount [...]` then `sudo cp debian.iso /dev/sdX`
 
-Install settings: full disk encryption, no root password, user `paps` in sudoers, `en_US.utf8` locale, `American English` keyboard, no additionnal packages except `Standard system utilities`, `SSH server` and optionally `Laptop` (if available).
+Install settings: full disk encryption, no root password, user `paps` in sudoers, `en_US.utf8` locale, `American English` keyboard, no additionnal packages except `Standard system utilities`and optionally `SSH server` and `Laptop` (if available).
 
 Optimal setup procedure:
 
@@ -84,7 +90,7 @@ First of all, make sure all keys stored on GitHub are still valid and that each 
 
 Then, proceed by SSHing into all relevant managed machines and execute `curl 'https://github.com/paps.keys' > ~/.ssh/authorized_keys && cat ~/.ssh/authorized_keys` on each. (The `cat` command is added to visually confirm we're not losing access to the machine by mistake.)
 
-### SSH server
+### Optional: SSH server
 
 **Important:** Set `PasswordAuthentication` to `no` in `/etc/ssh/sshd_config`.
 
@@ -120,7 +126,7 @@ Run `sudo apt install solaar`.
 
 Go to https://www.rescuetime.com/dashboard and install the Debian package. It is automatically started by `~/.paps/openbox/autostart.sh`. (Asahi: no ARM package available.)
 
-### Node & NPM
+### Optional: Node & NPM
 
 If needed, install Node from a Nodesource Debian distribution: https://github.com/nodesource/distributions
 
@@ -135,7 +141,7 @@ Pin: origin deb.nodesource.com
 Pin-Priority: 1001
 ```
 
-### Local binaries
+### Optional: Local binaries
 
 Add local binaries in `~/.paps/bin` (it's in $PATH).
 
@@ -184,6 +190,8 @@ Add local binaries in `~/.paps/bin` (it's in $PATH).
 	* `gap_y` depends on the Xorg position of the left monitor, should be the same as `time_conkyrc` + 154
 	* Identify the network interface to monitor (`downspeedf`, `downspeedgraph`, `upspeedf` and `upspeedgraph`)
 	* If relevant, uncomment the battery section and identify it (`battery_short` and `battery_time`)
+
+**Asahi:** Special `.notch.dist` conky templates are available, these should be used as a starting point instead. Use `obconf` to adjust dock position and margins (a 60px top margin seems perfect).
 
 ### Desktop notifications
 
