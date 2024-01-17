@@ -230,7 +230,7 @@ Add local binaries in `~/.paps/bin` (it's in $PATH).
 
 **For the current user:** Optional startup script `~/.paps/scripts/local.sh` (ignored by git, executed by `~/.paps/openbox/autostart.sh` on session start). Don't forget to `chmod +x` when creating this file.
 
-**As root:** Edit `~/.paps/scripts/root-boot.sh` as needed, then run `sudo contrab -e` and add this line `@reboot sleep 5 && /home/paps/.paps/scripts/root-boot.sh` (a sleep is added as a cheap workaround to wait for most things to be ready, daemons to be loaded, etc).
+**As root:** Edit `~/.paps/scripts/root-boot.sh` as needed, then run `sudo contrab -e` and add this line `@reboot sleep 5 && /home/paps/.paps/scripts/root-boot.sh` (assuming `paps` is the current user) (a sleep is added as a cheap workaround to wait for most things to be ready, daemons to be loaded, etc).
 
 ### Screensaving
 
@@ -322,6 +322,8 @@ To switch to 144 instead of the default of 96: `touch ~/.paps/x/dpi144` (then re
 * Respect standard layout: `# echo 0 > /sys/module/hid_apple/parameters/iso_layout`
 * Have ctrl & alt were it's expected: `# echo 1 > /sys/module/hid_apple/parameters/swap_opt_cmd`
 * F keys are F keys: `# echo 2 > /sys/module/hid_apple/parameters/fnmode`
+
+If such a keyboard is present at boot (e.g. it's not a bluetooth keyboard), these options should already be set by `scripts/root-boot.sh` — no intervention required, provided the script is correctly launched by cron on @reboot.
 
 ### White noise focus
 
