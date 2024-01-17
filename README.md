@@ -308,7 +308,7 @@ Intel driver provided by package `xserver-xorg-video-intel` is deprecated and sh
 
 ### Laptop screen backlight control
 
-* Install `brigthnessctl brightness-udev`
+* Install `brightnessctl brightness-udev`
 * Run `sudo usermod -a -G video paps` (assuming `paps` is the current user)
 * Logout/login as a group membership was changed
 * Screen backlight controls should now be working
