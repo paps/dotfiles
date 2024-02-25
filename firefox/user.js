@@ -2,15 +2,9 @@
 user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
 user_pref("browser.fixup.alternate.enabled", false);
 
-// user_pref("mousewheel.default.delta_multiplier_y", 200);
-// user_pref("privacy.donottrackheader.enabled", true);
 user_pref("privacy.trackingprotection.enabled", true);
 user_pref("extensions.pocket.enabled", false);
 user_pref("browser.urlbar.trimURLs", false);
-
-// Enable all extensions in private browsing too
-// This flag is not supported anymore: https://superuser.com/questions/1669675/enable-all-firefox-extensions-in-private-mode-by-default
-user_pref("extensions.allowPrivateBrowsingByDefault", true);
 
 // don't sync extension's enabled/disabled status
 user_pref("services.sync.addons.ignoreUserEnabledChanges", true);
@@ -35,10 +29,6 @@ user_pref("mousewheel.with_control.action", 1);
 user_pref("mousewheel.with_meta.action", 1);
 user_pref("mousewheel.with_win.action", 1);
 
-// force hardware acceleration (flaky?)
-user_pref("layers.acceleration.force-enabled", true);
-user_pref("gfx.webrender.all", true);
-
 // only use memory cache, don't touch SSD (speeds things up? probably not)
 user_pref("browser.cache.disk.enable", false);
 user_pref("browser.cache.memory.enable", true);
@@ -49,14 +39,17 @@ user_pref("browser.safebrowsing.phishing.enabled", false);
 
 // Select light/dark mode depending on the OS setting (see gtk/settings3.ini)
 // instead of the Firefox "inferred from theme colors". This is for websites.
-user_pref("layout.css.prefers-color-scheme.content-override", 2);
+user_pref("layout.css.prefers-color-scheme.content-override", 1);
 
 // Make the Firefox UI light mode instead of "inferred from theme colors"
 user_pref("browser.theme.content-theme", 1);
 user_pref("browser.theme.toolbar-theme", 1);
 
-
 // Make the scrollbars bigger
 user_pref("widget.non-native-theme.gtk.scrollbar.round-thumb", false);
 user_pref("widget.non-native-theme.gtk.scrollbar.thumb-size", 1);
-user_pref("widget.non-native-theme.scrollbar.size.override", 11); // width in pixels
+user_pref("widget.non-native-theme.scrollbar.size.override", 20); // width in pixels
+
+// Give back the ability to have a 'compact' density UI
+// (then you have to go in the Customize view to select it manually)
+user_pref("browser.compactmode.show", true);

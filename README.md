@@ -46,6 +46,7 @@ Text editing
 * `Ctrl-Alt-g` to switch input method (e.g. EN/CN)
 * `Ctrl-.` to insert an emoji (input field)
 * `Super-H`/`Super-J`/`Super-K`/`Super-L` can be used instead of arrow keys
+* `Ctrl-Alt-1` to insert current date and time
 
 ### Install
 
@@ -90,7 +91,7 @@ First of all, make sure all keys stored on GitHub are still valid and that each 
 
 Then, proceed by SSHing into all relevant managed machines and execute `curl 'https://github.com/paps.keys' > ~/.ssh/authorized_keys && cat ~/.ssh/authorized_keys` on each. (The `cat` command is added to visually confirm we're not losing access to the machine by mistake.)
 
-### Optional: SSH server
+### SSH server
 
 **Important:** Set `PasswordAuthentication` to `no` in `/etc/ssh/sshd_config`.
 
@@ -114,7 +115,7 @@ Then, proceed by SSHing into all relevant managed machines and execute `curl 'ht
 * Often needed after updates or installs: `nvim +UpdateRemotePlugins`
 * For removing unused plugins: `nvim +PluginClean`
 
-### Optional: Solaar
+### Solaar
 
 If using a wireless device of the "Logitech unifying" type, it's a good idea to install `solaar`, at least to be aware of the device battery level.
 
@@ -126,7 +127,7 @@ Run `sudo apt install solaar`.
 
 Go to https://www.rescuetime.com/dashboard and install the Debian package. It is automatically started by `~/.paps/openbox/autostart.sh`. (Asahi: no ARM package available.)
 
-### Optional: Node & NPM
+### Node & NPM
 
 If needed, install Node from a Nodesource Debian distribution: https://github.com/nodesource/distributions
 
@@ -141,7 +142,7 @@ Pin: origin deb.nodesource.com
 Pin-Priority: 1001
 ```
 
-### Optional: Local binaries
+### Local binaries
 
 Add local binaries in `~/.paps/bin` (it's in $PATH).
 
@@ -267,6 +268,12 @@ By default ibus-daemon comes with `Super-Space` as a shortcut to switch between 
 
 To fix, go into IBus preferences, and changes the "Next input method" setting to `<Control><Alt>g`.
 
+Change simplified to traditional
+
+Change emoji to control period
+Enable fuzzy matching on 3 characters any match
+Enable cloud pinyin input
+
 ### NextDNS
 
 Install NextDNS' CLI client: https://github.com/nextdns/nextdns/wiki/Debian-Based-Distribution
@@ -290,6 +297,10 @@ The NetworkManager service is not enabled by default on Debian. Normally for nor
 In order to enable the NetworkManager service:
 * change `managed=false` to `managed=true` in `/etc/NetworkManager/NetworkManager.conf` to let it manage wired interfaces
 * run `sudo systemctl enable NetworkManager` (and `sudo systemctl start NetworkManager` the first time)
+
+### Bluetooth
+
+Install `bluetooth bluez-firmware blueman` and restart. When there is a need to pair to something, run `blueman-applet`.
 
 ### Mouse acceleration
 

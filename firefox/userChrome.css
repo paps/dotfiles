@@ -8,35 +8,10 @@
     background-image: none !important;
 }
 
-/* For sidebar tabs: hide the "title changed" blue glow on pinned tabs */
-#sidebar-box[sidebarcommand="_0ad88674-2b41-4cfb-99e3-e206c74a0076_-sidebar-action"] #sidebar-header {
-    visibility: collapse;
-}
-
-/* For sidebar tabs: hide tab search menu on top */
-#topmenu {
-    display: none;
-}
-
-/* Hide horizontal default Firefox tabs */
-/*#tabbrowser-tabs {
-    visibility: collapse;
-}*/
-
-/* CSS tweaks to copy-paste in Tab Center Redux preferences */
 /*
-    #topmenu {
-        display: none;
-    }
-
-    .tab.pinned.wants-attention {
-        background-image: none !important;
-    }
-
-    .tab-loading-burst {
-        display: none;
-    }
-*/
+ * Hide the 'add to bookmarks' star button included in the URL bar
+ */
+#star-button-box { display:none !important; }
 
 /*
  * Make most backgrounds (about:home, loading tab) a dark solarized color

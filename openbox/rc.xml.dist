@@ -412,20 +412,23 @@
       <mousebind button="A-Right" action="Drag">
         <action name="Resize"/>
       </mousebind>
-      <mousebind button="C-A-Button6" action="Press"> <!-- On MX Master 3, this corresponds to horizontal scrollwheel down -->
+      <mousebind button="C-A-Button6" action="Press">
+        <!-- On MX Master 3, this corresponds to horizontal scrollwheel down -->
         <action name="GoToDesktop">
           <to>previous</to>
           <wrap>no</wrap>
         </action>
       </mousebind>
-      <mousebind button="C-A-Button7" action="Press"> <!-- On MX Master 3, this corresponds to horizontal scrollwheel up -->
+      <mousebind button="C-A-Button7" action="Press">
+        <!-- On MX Master 3, this corresponds to horizontal scrollwheel up -->
         <action name="GoToDesktop">
           <to>next</to>
           <wrap>no</wrap>
         </action>
       </mousebind>
       <!-- Window tiling with prev/next mouse buttons -->
-      <mousebind button="C-A-Button8" action="Press"> <!-- On MX Master 3, this corresponds to Prev -->
+      <mousebind button="C-A-Button8" action="Press">
+        <!-- On MX Master 3, this corresponds to Prev -->
         <action name="Unmaximize"/>
         <action name="MoveResizeTo">
           <x>0</x>
@@ -434,13 +437,18 @@
           <height>100%</height>
         </action>
       </mousebind>
-      <mousebind button="C-A-Button9" action="Press"> <!-- On MX Master 3, this corresponds to Next -->
+      <mousebind button="C-A-Button9" action="Press">
+        <!-- On MX Master 3, this corresponds to Next -->
         <action name="Unmaximize"/>
         <action name="MoveResizeTo">
           <x>-0</x>
           <y>0</y>
           <width>50%</width>
           <height>100%</height>
+        </action>
+        <!-- Add second action to create a gap -->
+        <action name="ResizeRelative">
+          <left>-4</left>
         </action>
       </mousebind>
     </context>
