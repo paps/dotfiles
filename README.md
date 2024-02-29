@@ -290,6 +290,8 @@ Get it from https://obsidian.md/ (Asahi: get the AppImage because they don't hav
 
 **Important:** in the settings, go to 'Sync' and check all the boxes (sync files of all types, sync all configuration), and then restart Obsidian.
 
+Other settings to change in 'Appearance': do use 'Native menus', do use 'Native frame'.
+
 ### Network Manager
 
 The NetworkManager service is not enabled by default on Debian. Normally for normal desktop PCs this would not be needed as they just connect via their wired iface automatically, but it's great to have a graphical UI for controlling some network settings.

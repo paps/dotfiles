@@ -1,10 +1,9 @@
 ~/.paps/openbox/xcfg.sh
 (while true; do conky -c ~/.paps/openbox/stats_conkyrc; sleep 5; notify-send 'Restarting conky stats'; done &) # auto-restart of conky stats (crashes when too many net interfaces are created)
 conky -c ~/.paps/openbox/time_conkyrc &
-xsetroot -solid black
-stalonetray --dockapp-mode simple --icon-size=32 --kludges=force_icons_size -v -bg black -d none --icon-gravity S --geometry 1x10 &
+xsetroot -solid '#222'
+stalonetray --dockapp-mode simple --icon-size=32 --kludges=force_icons_size -v -bg black -d none --icon-gravity W --geometry 12x1 &
 ~/.paps/openbox/volume_late.sh &
-(while true; do rescuetime; sleep 5; notify-send 'Restarting rescuetime'; done &) # auto-restart of rescuetime
 (killall parcellite; sleep 5; while true; do parcellite; sleep 5; notify-send 'Restarting parcellite'; done &) # auto-restart of parcellite
 ibus-daemon -d &
 nm-applet &

@@ -29,10 +29,6 @@ user_pref("mousewheel.with_control.action", 1);
 user_pref("mousewheel.with_meta.action", 1);
 user_pref("mousewheel.with_win.action", 1);
 
-// only use memory cache, don't touch SSD (speeds things up? probably not)
-user_pref("browser.cache.disk.enable", false);
-user_pref("browser.cache.memory.enable", true);
-
 // disable safe browsing (speeds things up just a little bit, but is it really necessary?)
 user_pref("browser.safebrowsing.malware.enabled", false);
 user_pref("browser.safebrowsing.phishing.enabled", false);
