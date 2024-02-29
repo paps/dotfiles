@@ -336,7 +336,11 @@ Intel driver provided by package `xserver-xorg-video-intel` is deprecated and sh
 
 ### High DPI
 
-To switch to 144 instead of the default of 96: `touch ~/.paps/x/dpi144` (then restart X). The `xsession` defines a `$dpi` variable according to the precense of this file, which is then passed to `Xresources`. Another option is 192: `touch ~/.paps/x/dpi192`. (Asahi: 192 is a good option)
+* `touch ~/.paps/x/dpi144` then restart X for 50% more pixels
+* `touch ~/.paps/x/dpi168` then restart X for 75% more pixels
+* `touch ~/.paps/x/dpi192` then restart X for 100% more pixels
+
+The `xsession` defines a `$dpi` variable according to the precense of this file, which is then passed to `Xresources`.
 
 ### Apple keyboards
 

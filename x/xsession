@@ -1,10 +1,14 @@
 if [ -f ~/.paps/x/dpi144 ] ; then
 	dpi=144
 else
-	if [ -f ~/.paps/x/dpi192 ] ; then
-		dpi=192
+	if [ -f ~/.paps/x/dpi168 ] ; then
+		dpi=168
 	else
-		dpi=96
+		if [ -f ~/.paps/x/dpi192 ] ; then
+			dpi=192
+		else
+			dpi=96
+		fi
 	fi
 fi
 
