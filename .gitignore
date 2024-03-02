@@ -5,6 +5,7 @@ scripts/local.sh
 pentadactyl/pentadactyl/info/
 x/screensaver_4h
 x/dpi144
+x/dpi168
 x/dpi192
 zsh/do_not_start_ssh_agent
 fonts/.uuid
