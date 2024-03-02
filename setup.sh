@@ -125,22 +125,9 @@ ln -sT ~/.paps/openbox/autostart.sh ~/.config/openbox/autostart.sh
 
 mkdir -v -p ~/.themes
 
-echo "Link: ~/.themes/modern-grey -> ~/.paps/openbox/modern-grey"
-rm $rmflags ~/.themes/modern-grey
-ln -sT ~/.paps/openbox/modern-grey ~/.themes/modern-grey
-
 echo "Link: ~/.themes/retrosmart-openbox-themes-gold -> ~/.paps/openbox/retrosmart-openbox-themes-gold"
 rm $rmflags ~/.themes/retrosmart-openbox-themes-gold
 ln -sT ~/.paps/openbox/retrosmart-openbox-themes-gold ~/.themes/retrosmart-openbox-themes-gold
-
-echo "Link: ~/.themes/Nord-Openbox -> ~/.paps/openbox/Nord-Openbox"
-rm $rmflags ~/.themes/Nord-Openbox
-ln -sT ~/.paps/openbox/Nord-Openbox ~/.themes/Nord-Openbox
-
-# gtk themes
-echo "Link: ~/.themes/Nordic -> ~/.paps/openbox/Nordic"
-rm $rmflags ~/.themes/Nordic
-ln -sT ~/.paps/gtk/Nordic ~/.themes/Nordic
 
 # gsimplecal
 mkdir -v -p ~/.config/gsimplecal
