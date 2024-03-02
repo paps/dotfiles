@@ -387,3 +387,8 @@ action=su paps -c 'bash /home/paps/.paps/openbox/publish-notification.sh "%%{r}%
 Run `sudo vim /etc/systemd/logind.conf` and do the following:
 * Find `HandlePowerKey`, uncomment it and set it to `ignore` - resulting line: `HandlePowerKey=ignore`
 * Find `HandlePowerKeyLongPress`, uncomment it and set it to `poweroff` - resulting line: `HandlePowerKeyLongPress=poweroff`
+
+### Apple Color Emoji
+
+Download the latest [AppleColorEmoji.ttf](https://github.com/samuelngs/apple-emoji-linux/releases) and put it in `fonts/` (it's already ignored by .gitignore) (`fonts/fonts.conf` is already configured to trigger the use of Apple Color Emoji for emojis).
+

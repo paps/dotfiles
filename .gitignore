@@ -1,21 +1,24 @@
+# vim and misc
+vim/vim/.netrwhist
+vim/vim/bundle
+vim/vim/.init.vim-rplugin~
 *.bak
 .*.swp
 
+# files meant to stay local
 scripts/local.sh
-pentadactyl/pentadactyl/info/
 x/screensaver_4h
 x/dpi144
 x/dpi168
 x/dpi192
 zsh/do_not_start_ssh_agent
-fonts/.uuid
-
-vim/vim/.netrwhist
-vim/vim/bundle
-vim/vim/.init.vim-rplugin~
-
 openbox/stats_conkyrc
 openbox/time_conkyrc
 openbox/rc.xml
 openbox/.notification-string
 openbox/.brightness-state
+
+# fonts
+fonts/.uuid
+# this file should be downloaded from https://github.com/samuelngs/apple-emoji-linux/releases
+fonts/AppleColorEmoji.ttf
