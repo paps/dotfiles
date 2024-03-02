@@ -15,7 +15,9 @@ else
     fi
 fi
 
-# Warn about low battery
-~/.paps/openbox/publish-notification.sh "Battery 50%"
+sleep 120
 
-sleep 240
+# Todo some day: notify about low battery
+# ~/.paps/openbox/publish-notification.sh "Battery 50%"
+
+sleep 120

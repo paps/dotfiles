@@ -108,6 +108,7 @@ Then, proceed by SSHing into all relevant managed machines and execute `curl 'ht
 
 ### Neovim
 
+* Set Neovim as the "default editor": `sudo update-alternatives --config editor` then select nvim
 * Only once, before first run: `git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle`
 * Only once, to initialize plugins: `nvim -u ~/.paps/vim/bundles.vim +PluginInstall`
 * For updating installed plugins: `nvim +PluginUpdate`
