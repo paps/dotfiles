@@ -1,7 +1,7 @@
 Martin's dotfiles
 =================
 
-My Debian Sid dotfiles for desktops or laptops. For a minimal server configuration, use https://github.com/paps/dotfiles-server
+My Debian sid/unstable dotfiles, mostly intended for laptops (and in particular for Asahi macbooks at the time of writing), even though they're quite versatile. For a minimal server configuration, use https://github.com/paps/dotfiles-server
 
 ### Shortcuts
 
@@ -48,7 +48,7 @@ Text editing
 * `Super-H`/`Super-J`/`Super-K`/`Super-L` can be used instead of arrow keys
 * `Ctrl-Alt-1` to insert current date and time
 
-### Install
+### Installing from netinst (i.e. not Asahi)
 
 Debian testing netinst from http://cdimage.debian.org/cdimage/weekly-builds/ (or even better, take one that includes non-free firmware: http://cdimage.debian.org/cdimage/unofficial/non-free/cd-including-firmware/weekly-builds/amd64/iso-cd/)
 
@@ -56,7 +56,7 @@ Easiest way to make a bootable usb disk: `sudo umount [...]` then `sudo cp debia
 
 Install settings: full disk encryption, no root password, user `paps` in sudoers, `en_US.utf8` locale, `American English` keyboard, no additionnal packages except `Standard system utilities`and optionally `SSH server` and `Laptop` (if available).
 
-Optimal setup procedure:
+### Suggested initial setup procedure
 
 * `sudo apt install vim`
 * `sudo vim /etc/apt/sources.list`
@@ -91,7 +91,7 @@ First of all, make sure all keys stored on GitHub are still valid and that each 
 
 Then, proceed by SSHing into all relevant managed machines and execute `curl 'https://github.com/paps.keys' > ~/.ssh/authorized_keys && cat ~/.ssh/authorized_keys` on each. (The `cat` command is added to visually confirm we're not losing access to the machine by mistake.)
 
-### SSH server
+### SSH server (if present)
 
 **Important:** Set `PasswordAuthentication` to `no` in `/etc/ssh/sshd_config`.
 
@@ -151,7 +151,6 @@ Add local binaries in `~/.paps/bin` (it's in $PATH).
 	* Don't show identities on tab page
 	* Disable context menu otions
 * Synchronize Firefox
-* Remove URL bookmark star shortcut (right click)
 * Go into the default profile folder `~/.mozilla/firefox/XXXX.default-release` then:
 	* `mkdir chrome`
 	* `ln -s ~/.paps/firefox/userChrome.css chrome/`
@@ -245,7 +244,7 @@ Useful for TVs: `touch ~/.paps/x/screensaver_4h` to make the screensaver wait 4 
 
 ### Locales
 
-`sudo dpkg-reconfigure locales`, add `fr_FR.utf8` if not present, make sure the default locale is `en_US.ut8`.
+`sudo dpkg-reconfigure locales`, add `en_US.ut8` and `fr_FR.utf8` if not present, make sure the default locale is `en_US.ut8`.
 
 ### Timezone
 
@@ -262,11 +261,15 @@ By default ibus-daemon comes with `Super-Space` as a shortcut to switch between 
 
 To fix, go into IBus preferences, and changes the "Next input method" setting to `<Control><Alt>g`.
 
-Change simplified to traditional
+In the Emoji tab, change the keyboard shortcut to `<Control>period`.
 
-Change emoji to control period
-Enable fuzzy matching on 3 characters any match
-Enable cloud pinyin input
+For Chinese input support:
+* Add the Intelligent Pinyin input method
+* Change Simplified to Traditional
+* Change number of candidates to 6, and orientation to Vertical
+* Enable dynamic adjustment of candidates order
+* Sort candidates by frequency
+* Important: in the Pinyin mode tab, enable Cloud Input with Baidu source
 
 ### NextDNS
 
@@ -288,7 +291,7 @@ Other settings to change in 'Appearance': do use 'Native menus', do use 'Native 
 
 ### Network Manager
 
-The NetworkManager service is not enabled by default on Debian. Normally for normal desktop PCs this would not be needed as they just connect via their wired iface automatically, but it's great to have a graphical UI for controlling some network settings.
+The NetworkManager service is not enabled by default on Debian (?). Normally for normal desktop PCs this would not be needed as they just connect via their wired iface automatically, but it's great to have a graphical UI for controlling some network settings.
 
 In order to enable the NetworkManager service:
 * change `managed=false` to `managed=true` in `/etc/NetworkManager/NetworkManager.conf` to let it manage wired interfaces
@@ -302,7 +305,7 @@ Install `bluetooth bluez-firmware blueman` and restart. When there is a need to 
 
 Before `libinput` existed, the `xset m` command found in `openbox/xcfg.sh` had an effect. Now it's a no-op.
 
-To disable mouse acceleration, copy `x/configs/40-mouse.conf` in `/etc/X11/xorg.conf.d/`.
+To disable mouse acceleration for standard mice (i.e. not touchpads), copy `x/configs/40-mouse.conf` in `/etc/X11/xorg.conf.d/`.
 
 ### Laptops (non-Asahi)
 
@@ -321,12 +324,13 @@ Use `powertop` for monitoring power usage (however, when used in parallel with `
 
 Intel driver provided by package `xserver-xorg-video-intel` is deprecated and should not be used on any recent hardware. The newer alternative is referred to as the Modesetting driver. Use that.
 
-### Laptop screen backlight control
+### Laptop screen backlight and keyboard light control
 
 * Install `brightnessctl brightness-udev`
 * Run `sudo usermod -a -G video paps` (assuming `paps` is the current user)
+* Run `sudo usermod -a -G input paps` (assuming `paps` is the current user)
 * Logout/login as a group membership was changed
-* Screen backlight controls should now be working
+* Screen backlight and keyboard light controls should now be working
 
 ### High DPI
 
@@ -378,3 +382,8 @@ event=jack/.*
 action=su paps -c 'bash /home/paps/.paps/openbox/publish-notification.sh "%%{r}%e"'
 ```
 
+### Power button configuration
+
+Run `sudo vim /etc/systemd/logind.conf` and do the following:
+* Find `HandlePowerKey`, uncomment it and set it to `ignore` - resulting line: `HandlePowerKey=ignore`
+* Find `HandlePowerKeyLongPress`, uncomment it and set it to `poweroff` - resulting line: `HandlePowerKeyLongPress=poweroff`
