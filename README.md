@@ -123,10 +123,6 @@ Run `sudo apt install solaar`.
 
 `solaar` is automatically started by openbox's `autostart.sh` when it is detected as installed.
 
-### Rescuetime
-
-Go to https://www.rescuetime.com/dashboard and install the Debian package. It is automatically started by `~/.paps/openbox/autostart.sh`. (Asahi: no ARM package available.)
-
 ### Node & NPM
 
 If needed, install Node from a Nodesource Debian distribution: https://github.com/nodesource/distributions
@@ -164,9 +160,6 @@ Add local binaries in `~/.paps/bin` (it's in $PATH).
 	* Firefox needs to be restarted for these to be taken into account
 * In "customize mode", remove URL bar spacers, enable Solarized fox theme, etc
 	* Select compact density (this is only possible after applying `user.js`)
-* Rescue Time configuration (if asked):
-	* Check "already using the full rescue time app"
-	* Enter email
 * Stylus configuration:
 	* Go to options and enable `Sync to cloud` with personal Google Drive
 * uBlock configuration:
