@@ -207,6 +207,7 @@ Add local binaries in `~/.paps/bin` (it's in $PATH).
 		* Zoom in: Ctrl++
 		* Zoom out: Ctrl+_
 		* Normal size: Ctrl+0
+		* Copy and paste: Ctrl+Shift+c, Ctrl+Shift+v
 	* Profiles: just one profile
 * Profile preferences
 	* Text
