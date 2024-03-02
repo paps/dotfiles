@@ -44,8 +44,12 @@ user_pref("browser.theme.toolbar-theme", 1);
 // Make the scrollbars bigger
 user_pref("widget.non-native-theme.gtk.scrollbar.round-thumb", false);
 user_pref("widget.non-native-theme.gtk.scrollbar.thumb-size", 1);
-user_pref("widget.non-native-theme.scrollbar.size.override", 20); // width in pixels
+user_pref("widget.non-native-theme.scrollbar.size.override", 14); // width in pixels
 
 // Give back the ability to have a 'compact' density UI
 // (then you have to go in the Customize view to select it manually)
 user_pref("browser.compactmode.show", true);
+
+// Disable swipe gestures used as prev/next navigation
+user_pref("browser.gesture.swipe.left", "cmd_scrollLeft");
+user_pref("browser.gesture.swipe.right", "cmd_scrollRight");
