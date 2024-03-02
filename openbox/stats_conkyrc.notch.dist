@@ -1,7 +1,7 @@
 conky.config = {
 	alignment = 'top_left',
 	gap_y = 1,
-	gap_x = 2200,
+	gap_x = 2650,
 
 	background = false,
 	out_to_x = true,

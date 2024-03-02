@@ -2,7 +2,10 @@
 (while true; do conky -c ~/.paps/openbox/stats_conkyrc; sleep 5; notify-send 'Restarting conky stats'; done &) # auto-restart of conky stats (crashes when too many net interfaces are created)
 conky -c ~/.paps/openbox/time_conkyrc &
 xsetroot -solid black
+
+# Depending on top or left side placement, geometry and gravity should be changed
 stalonetray --dockapp-mode simple --icon-size=32 --kludges=force_icons_size -v -bg black -d none --icon-gravity W --geometry 12x1 &
+
 ~/.paps/openbox/volume_late.sh &
 (killall parcellite; sleep 5; while true; do parcellite; sleep 5; notify-send 'Restarting parcellite'; done &) # auto-restart of parcellite
 ibus-daemon -d &
@@ -53,19 +56,10 @@ while true; do
     sleep 90
 done &
 
-# Check that we're still protected by NextDNS every 5 minutes
+# Restart watchdog.sh every 60s so that it can check and report important system info
 while true; do
-    sleep 300
-    advertiser_ip=$(dig +short doubleclick.net | xargs) # xargs is used for trimming
-    if [ -z "$advertiser_ip" ]
-    then
-        notify-send "dig failed on doubleclick.net — are we online?"
-    else
-        if [ "$advertiser_ip" != "0.0.0.0" ]
-        then
-            notify-send "dig doubleclick.net: $advertiser_ip"
-        fi
-    fi
+    sleep 60
+    ~/.paps/openbox/watchdog.sh
 done &
 
 if [ -f ~/.paps/scripts/local.sh ]

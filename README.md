@@ -172,19 +172,22 @@ Add local binaries in `~/.paps/bin` (it's in $PATH).
 ### Configure openbox & conky
 
 * `cd dotfiles/openbox`
-* `cp rc.xml.dist rc.xml`
-	* Set the dock floating position in `<dock>` (depends on the Xorg position and height of the left monitor) (or use `obconf` later and visually place the dock)
-	* Optionally set the margins in `<margins>` (a 34px left or right margin is necessary for conky)
-* `cp time_conkyrc.dist time_conkyrc`
-	* Edit the first three lines
-	* `gap_y` depends on the Xorg position of the left monitor, the default of 1 is fine in most cases
-* `cp stats_conkyrc.dist stats_conkyrc`
-	* Edit the first three lines
-	* `gap_y` depends on the Xorg position of the left monitor, should be the same as `time_conkyrc` + 154
-	* Identify the network interface to monitor (`downspeedf`, `downspeedgraph`, `upspeedf` and `upspeedgraph`)
-	* If relevant, uncomment the battery section and identify it (`battery_short` and `battery_time`)
-
-**Asahi:** Special `.notch.dist` conky templates are available, these should be used as a starting point instead. Use `obconf` to adjust dock position and margins (a 60px top margin seems perfect).
+* Asahi
+	* `cp rc.xml.dist rc.xml`
+		* Then use `obconf` to eventually adjust the `<dock>` and `<margins>` values depending on screen size and notch placement
+		* Top margin of 60px recommended
+		* Optional: change the `stalonetray` options in `autostart.sh`
+	* `cp time_conkyrc.notch.dist time_conkyrc`
+	* `cp stats_conkyrc.notch.dist stats_conkyrc`
+		* Adjust `gap_x` and/or `gap_y` depending on screen size and notch placement
+* Non-Asahi
+	* `cp rc.xml.dist rc.xml`
+		* Probably left margin of 34px and top margin of 1px, and a dock X position of -1 (by setting it manually in the file) (Y position can be adjusted in with `obconf`)
+		* Optional: change the `stalonetray` options in `autostart.sh`
+	* `cp time_conkyrc.dist time_conkyrc`
+	* `cp stats_conkyrc.dist stats_conkyrc`
+		* Identify the network interface to monitor (`downspeedf`, `downspeedgraph`, `upspeedf` and `upspeedgraph`)
+		* If relevant, uncomment the battery section and identify it (`battery_short` and `battery_time`)
 
 ### Desktop notifications
 
