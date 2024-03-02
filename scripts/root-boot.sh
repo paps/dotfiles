@@ -12,7 +12,7 @@
 # In case an Apple keyboard is already present, let's configure it with sane options
 # (if not present, these 3 commands will fail, but the script will continue anyway)
 # Respect standard layout:
-echo 0 > /sys/module/hid_apple/parameters/iso_layouta2
+echo 0 > /sys/module/hid_apple/parameters/iso_layout
 # Have ctrl & alt were it's expected:
 echo 1 > /sys/module/hid_apple/parameters/swap_opt_cmd
 # F keys are F keys:
