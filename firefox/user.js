@@ -53,3 +53,6 @@ user_pref("browser.compactmode.show", true);
 // Disable swipe gestures used as prev/next navigation
 user_pref("browser.gesture.swipe.left", "cmd_scrollLeft");
 user_pref("browser.gesture.swipe.right", "cmd_scrollRight");
+
+// Disable reader view button that sometimes appear in URL bar
+user_pref("reader.parse-on-load.enabled", false);
