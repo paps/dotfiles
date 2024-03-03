@@ -15,10 +15,10 @@ if [ $# -eq 1 ]
 then
     if [ $1 = "+" ]
     then
-        amixer -q set Master -M 5%+
+        pactl set-sink-volume 0 +5%
     elif [ $1 = "-" ]
     then
-        amixer -q set Master -M 5%-
+        pactl set-sink-volume 0 -5%
     elif [ $1 = "m" ]
     then
         amixer -q set Master toggle
