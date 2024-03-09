@@ -291,7 +291,7 @@ Get it from https://obsidian.md/ (Asahi: get the AppImage because they don't hav
 
 **Important:** in the settings, go to 'Sync' and check all the boxes (sync files of all types, sync all configuration), and then restart Obsidian.
 
-Other settings to change in 'Appearance': do use 'Native menus', do use 'Native frame'.
+Other settings to change in 'Appearance': do use 'Native menus', do use 'Native frame'. And in 'Editor': add 'French (France)' to the spellchecker.
 
 ### Network Manager
 
