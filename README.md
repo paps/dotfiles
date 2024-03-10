@@ -73,7 +73,7 @@ Install settings: full disk encryption, no root password, user `paps` in sudoers
 ### Packages
 
 * Install base packages: `bc psmisc htop neovim vim xauth git zsh tmux tree curl inotify-tools trash-cli wget dnsutils apache2-utils p7zip-full unrar tig pv pydf zsh-doc vim-doc nmap whiptail obconf firefox gnome-terminal xterm suckless-tools feh numlockx conky-all x11-xserver-utils acpi acpid alsa-utils stalonetray fontconfig gitk libx11-dev build-essential xclip python3 libdatetime-perl zenity thunar thunar-volman thunar-archive-plugin thunar-media-tags-plugin thunar-gtkhash file-roller unar arj lhasa lzip lzop ncompress rzip unace unalz parcellite libnotify-bin ssh-askpass evince zip unzip cmake xdotool redshift pavucontrol rsync network-manager network-manager-gnome e2fsprogs logsave arandr dbus-x11 apt-transport-https ca-certificates gnupg2 software-properties-common ibus-libpinyin lemonbar rofi`
-* Install fonts: `xfonts-terminus fonts-croscore fonts-noto-color-emoji ttf-mscorefonts-installer fonts-inter fonts-inter-variable fonts-hack fonts-open-sans`
+* Install fonts: `xfonts-terminus fonts-croscore ttf-mscorefonts-installer fonts-inter fonts-inter-variable fonts-hack fonts-open-sans`
 * Install themes: `mate-themes gtk2-engines greybird-gtk-theme elementary-xfce-icon-theme`
 * Install utilities: `gnome-screenshot peek gpicview ansible scrot vlc mplayer gparted transmission-remote-gtk gimp gsimplecal qalculate geany`
 * Recommended: `intel-microcode amd64-microcode firmware-linux` (other firmware packages might be necessary)
@@ -396,3 +396,4 @@ Run `sudo vim /etc/systemd/logind.conf` and do the following:
 
 Download the latest [AppleColorEmoji.ttf](https://github.com/samuelngs/apple-emoji-linux/releases) and put it in `fonts/` (it's already ignored by .gitignore) (`fonts/fonts.conf` is already configured to trigger the use of Apple Color Emoji for emojis).
 
+Note: It is not clear to me how fonts take priority over others. For Apple Color Emoji to work well, it's best to uninstall other emoji fonts such as `fonts-noto-color-emoji`.
