@@ -1,5 +1,5 @@
 ~/.paps/openbox/xcfg.sh
-(while true; do conky -c ~/.paps/openbox/stats_conkyrc; sleep 5; notify-send 'Restarting conky stats'; done &) # auto-restart of conky stats (crashes when too many net interfaces are created)
+conky -c ~/.paps/openbox/stats_conkyrc &
 conky -c ~/.paps/openbox/time_conkyrc &
 xsetroot -solid black
 
@@ -10,6 +10,10 @@ stalonetray --dockapp-mode simple --icon-size=32 --kludges=force_icons_size -v -
 (killall parcellite; sleep 5; while true; do parcellite; sleep 5; notify-send 'Restarting parcellite'; done &) # auto-restart of parcellite
 ibus-daemon -d &
 nm-applet &
+if [ -x "$(command -v blueman-applet)" ]
+then
+    blueman-applet &
+fi
 
 # Start solaar (Logitech Unifying/bluetooth monitor/controller) if it's installed
 if [ -x "$(command -v solaar)" ]
