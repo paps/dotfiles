@@ -56,3 +56,6 @@ user_pref("browser.gesture.swipe.right", "cmd_scrollRight");
 
 // Disable reader view button that sometimes appear in URL bar
 user_pref("reader.parse-on-load.enabled", false);
+
+// Unload tabs when memory contention is high
+user_pref("browser.tabs.unloadOnLowMemory", true);
