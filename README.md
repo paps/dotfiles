@@ -277,11 +277,9 @@ For Chinese input support:
 
 ### NextDNS
 
-Install NextDNS' CLI client: https://github.com/nextdns/nextdns/wiki/Debian-Based-Distribution
+Install `systemd-resolved` and follow the instructions from NextDNS' dashboard to properly configure `/etc/systemd/resolved.conf` (basically add 5 lines).
 
-Do `sh -c "$(curl -sL https://nextdns.io/install)"` then enable 'report device name', enable 'hardened privacy mode', disable 'setup as router' and enable 'Automatically configure host DNS on daemon startup'.
-
-By default, `dhclient` is probably running on the machine, which means that the `127.0.0.1` DNS server set in `/etc/resolv.conf` by NextDNS will be overridden regularly. To continue using both the local NextDNS server and `dhclient` at the same time, edit `/etc/dhcp/dhclient.conf` and make sure to uncomment (or add) the following line: `prepend domain-name-servers 127.0.0.1;`
+Good to know: NetworkManager doesn't conflict with systemd-resolved, it detects it and lets it control name resolution (see `man NetworkManager.conf`).
 
 To target NextDNS' configuration on poorly configurable devices (e.g. a Samsung TV) behind the same NAT as a desktop PC, the public IP is bound thanks to a crontab entry similar to this one: `21 */4 * * * curl --fail --silent --show-error 'https://link-ip.nextdns.io/xxxxxx/yyyyyyyyyyyyyyyyy' 2>&1 | logger -t nextdnslinkip`.
 
