@@ -277,7 +277,7 @@ For Chinese input support:
 
 ### NextDNS
 
-Install `systemd-resolved` and follow the instructions from NextDNS' dashboard to properly configure `/etc/systemd/resolved.conf` (basically add 5 lines).
+Install `systemd-resolved` and follow the instructions from NextDNS' dashboard to properly configure `/etc/systemd/resolved.conf` (basically add 5 lines) AND IMPORTANT: add `Cache=no`.
 
 Good to know: NetworkManager doesn't conflict with systemd-resolved, it detects it and lets it control name resolution (see `man NetworkManager.conf`).
 
