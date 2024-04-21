@@ -21,17 +21,11 @@ value=`brightnessctl --device kbd_backlight get`
 
 if [ $value = "0" ]
 then
-    brightnessctl --device kbd_backlight set 128
-    echo "%{c}Kbdlight 50%" > $notification
+    brightnessctl --device kbd_backlight set 255
+    echo "%{c}Kbdlight on" > $notification
 else
-    if [ $value = "128" ]
-    then
-        brightnessctl --device kbd_backlight set 255
-        echo "%{c}Kbdlight max" > $notification
-    else
-        brightnessctl --device kbd_backlight set 0
-        echo "%{c}Kbdlight off" > $notification
-    fi
+    brightnessctl --device kbd_backlight set 0
+    echo "%{c}Kbdlight off" > $notification
 fi
 
 rm "$lockfile"

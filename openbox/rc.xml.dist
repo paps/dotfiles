@@ -269,6 +269,9 @@
     <!-- Keybindings for windows -->
     <keybind key="A-F10">
       <action name="ToggleMaximize"/>
+      <action name="Focus"/>
+      <action name="Raise"/>
+      <action name="Unshade"/>
     </keybind>
     <keybind key="A-space">
       <action name="ShowMenu">
