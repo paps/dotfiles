@@ -3,6 +3,10 @@ conky -c ~/.paps/openbox/stats_conkyrc &
 conky -c ~/.paps/openbox/time_conkyrc &
 xsetroot -solid black
 
+# Start xsecurelock every time the X screensaver (xss) activates
+# The --transfer-sleep-lock option is used to make sure this happens correctly when the laptop goes to sleep too (i.e. when the lid is closed)
+XSECURELOCK_SHOW_HOSTNAME=0 XSECURELOCK_SHOW_USERNAME=0 XSECURELOCK_SHOW_DATETIME=1 XSECURELOCK_AUTH_BACKGROUND_COLOR='Slate Gray' XSECURELOCK_AUTH_TIMEOUT=5 XSECURELOCK_BLANK_TIMEOUT=10 xss-lock --transfer-sleep-lock -- xsecurelock
+
 # Depending on top or left side placement, geometry and gravity should be changed
 stalonetray --dockapp-mode simple --icon-size=32 --kludges=force_icons_size -v -bg black -d none --icon-gravity W --geometry 12x1 &
 
@@ -58,6 +62,27 @@ while true; do
     val=`cat $brightness`
     redshift -m randr -l 48.85:2.35 -r -o -P -b "$val:$val"
     sleep 90
+done &
+
+# Small monitoring script that notifies when xsecurelock is about to trigger because the user is inactive
+while true; do
+    timeleft_ms=`xssstate -t`
+    timeleft=$(echo "$timeleft_ms / 1000" | bc)
+    if [ $timeleft -le 3 ]
+    then
+        # either we're about to lock, we're already locked, or activity just happened in the last few seconds before lock
+        # so we can safely wait and re-assess the situation in one minute
+        sleep 60
+    elif [ $timeleft -le 60 ]
+    then
+        # xsecurelock will activate soon, so we notify
+        $HOME/.paps/openbox/publish-notification.sh "%{c}Locking in ${timeleft}s"
+        sleep 5
+    else
+        # xsecurelock will activate in a long time, so we wait until the last moment to re-check again
+        sleeptime=$(echo "$timeleft - 60" | bc)
+        sleep ${sleeptime}
+    fi
 done &
 
 # Restart watchdog.sh every 60s so that it can check and report important system info
