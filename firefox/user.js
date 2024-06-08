@@ -58,4 +58,4 @@ user_pref("browser.gesture.swipe.right", "cmd_scrollRight");
 user_pref("reader.parse-on-load.enabled", false);
 
 // Unload tabs when memory contention is high
-user_pref("browser.tabs.unloadOnLowMemory", true);
+user_pref("browser.tabs.unloadOnLowMemory", false);
