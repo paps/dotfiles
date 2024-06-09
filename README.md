@@ -307,7 +307,7 @@ If there is a need to clear the local cache (improbable as we're using `Cache=no
 
 **Switching off NextDNS**
 
-In some cases (such as wifi portals), it might be necessary to disable NextDNS. To do this:
+In some cases (such as wifi portals), it might be necessary to disable NextDNS:
 1. Comment out `dns=none` and `systemd-resolved=false` in `/etc/NetworkManager/NetworkManager.conf`
 2. Comment out the 4 NextDNS server lines and `DNSOverTLS=yes` in `/etc/systemd/resolved.conf` (but keep `Cache=no`)
 3. Restart systemd-resolved: `sudo service systemd-resolved restart`
@@ -357,7 +357,7 @@ Intel driver provided by package `xserver-xorg-video-intel` is deprecated and sh
 ### High DPI
 
 * `touch ~/.paps/x/dpi144` then restart X for 50% more pixels
-* `touch ~/.paps/x/dpi168` then restart X for 75% more pixels
+* `touch ~/.paps/x/dpi168` then restart X for 75% more pixels (good for 16" M2 Macbook)
 * `touch ~/.paps/x/dpi192` then restart X for 100% more pixels
 
 The `xsession` defines a `$dpi` variable according to the precense of this file, which is then passed to `Xresources`.
@@ -419,6 +419,10 @@ There are ways to make the daemon take this change into account, but a reboot sh
 Run `sudo vim /etc/systemd/logind.conf` and do the following:
 * Find `HandlePowerKey`, uncomment it and set it to `ignore` - resulting line: `HandlePowerKey=ignore`
 * Find `HandlePowerKeyLongPress`, uncomment it and set it to `poweroff` - resulting line: `HandlePowerKeyLongPress=poweroff`
+
+### Run a script on laptop suspend
+
+Copy `systemd/before-suspend.service` to `/etc/systemd/system/`, then run `sudo systemctl daemon-reload`, then run `sudo systemctl enable before-suspend`.
 
 ### Apple Color Emoji
 

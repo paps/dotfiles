@@ -1,0 +1,12 @@
+[Unit]
+Description=Run a bash script before suspend
+Before=sleep.target
+
+[Service]
+Type=oneshot
+Environment=DISPLAY=:0
+Environment=XDG_RUNTIME_DIR=/run/user/1000
+ExecStart=/usr/sbin/runuser -u paps -- /home/paps/.paps/systemd/before-suspend.sh
+
+[Install]
+WantedBy=sleep.target
