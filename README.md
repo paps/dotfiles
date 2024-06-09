@@ -267,14 +267,6 @@ For Chinese input support:
 * Sort candidates by frequency
 * Important: in the Pinyin mode tab, enable Cloud Input with Baidu source
 
-### NextDNS
-
-Install `systemd-resolved` and follow the instructions from NextDNS' dashboard to properly configure `/etc/systemd/resolved.conf` (basically add 5 lines) AND IMPORTANT: add `Cache=no`.
-
-Good to know: NetworkManager doesn't conflict with systemd-resolved, it detects it and lets it control name resolution (see `man NetworkManager.conf`).
-
-To target NextDNS' configuration on poorly configurable devices (e.g. a Samsung TV) behind the same NAT as a desktop PC, the public IP is bound thanks to a crontab entry similar to this one: `21 */4 * * * curl --fail --silent --show-error 'https://link-ip.nextdns.io/xxxxxx/yyyyyyyyyyyyyyyyy' 2>&1 | logger -t nextdnslinkip`.
-
 ### Obsidian
 
 Get it from https://obsidian.md/ (Asahi: get the AppImage because they don't have an ARM deb). Once installed, enable sync.
@@ -283,13 +275,41 @@ Get it from https://obsidian.md/ (Asahi: get the AppImage because they don't hav
 
 Other settings to change in 'Appearance': do use 'Native menus', do use 'Native frame'. And in 'Editor': add 'French (France)' to the spellchecker.
 
-### Network Manager
+### Network and DNS
 
-The NetworkManager service is not enabled by default on Debian (?). Normally for normal desktop PCs this would not be needed as they just connect via their wired iface automatically, but it's great to have a graphical UI for controlling some network settings.
+First of all, replace the contents of `/etc/NetworkManager/NetworkManager.conf` with this:
+```
+[main]
+plugins=ifupdown,keyfile
 
-In order to enable the NetworkManager service:
-* change `managed=false` to `managed=true` in `/etc/NetworkManager/NetworkManager.conf` to let it manage wired interfaces
-* run `sudo systemctl enable NetworkManager` (and `sudo systemctl start NetworkManager` the first time)
+# Do not handle DNS, in particular:
+#  - do not update /etc/resolv.conf with servers received via DHCP,
+#  - and do not talk to any local DNS server daemon that might be present (in our case, systemd-resolved)
+dns=none
+# And just to make sure: don't send DNS information to systemd-resolved
+# (i.e. leave it alone with its own config, meaning NextDNS)
+systemd-resolved=false
+
+[ifupdown]
+# Make NetworkManager manage interfaces, including wired
+managed=true
+```
+
+Then install `systemd-resolved` and follow the instructions from NextDNS' dashboard to properly configure `/etc/systemd/resolved.conf` (basically add the 4 server lines and 1 line to force DNS over TLS) **AND IMPORTANT: add `Cache=no`** (because we want to use NextDNS' cache and not ours). When done, restart the service.
+
+Then make sure the NetworkManager service is enabled (which is apparently not the case on Debian by default?): run `sudo systemctl enable NetworkManager` (and `sudo systemctl start NetworkManager` the first time). In any case, after the config change, make sure the service is restarted.
+
+(To target NextDNS' configuration on poorly configurable devices (e.g. a Samsung TV) behind the same NAT as a desktop PC, the public IP is bound thanks to a crontab entry similar to this one: `21 */4 * * * curl --fail --silent --show-error 'https://link-ip.nextdns.io/xxxxxx/yyyyyyyyyyyyyyyyy' 2>&1 | logger -t nextdnslinkip`.)
+
+**Switching off NextDNS**
+
+In some cases (such as wifi portals), it might be necessary to disable NextDNS. To do this:
+1. Comment out `dns=none` and `systemd-resolved=false` in `/etc/NetworkManager/NetworkManager.conf`
+2. Comment out the 4 NextDNS server lines and `DNSOverTLS=yes` in `/etc/systemd/resolved.conf` (but keep `Cache=no`)
+3. Restart systemd-resolved: `sudo service systemd-resolved restart`
+4. Restart NetworkManager: `sudo service NetworkManager restart`
+
+To go back to using NextDNS, do the reverse.
 
 ### Bluetooth
 
