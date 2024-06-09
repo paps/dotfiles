@@ -301,6 +301,10 @@ Then make sure the NetworkManager service is enabled (which is apparently not th
 
 (To target NextDNS' configuration on poorly configurable devices (e.g. a Samsung TV) behind the same NAT as a desktop PC, the public IP is bound thanks to a crontab entry similar to this one: `21 */4 * * * curl --fail --silent --show-error 'https://link-ip.nextdns.io/xxxxxx/yyyyyyyyyyyyyyyyy' 2>&1 | logger -t nextdnslinkip`.)
 
+To observe the current DNS configuration, simply run `resolvectl`.
+
+If there is a need to clear the local cache (improbable as we're using `Cache=no`), run `resolvectl flush-caches`.
+
 **Switching off NextDNS**
 
 In some cases (such as wifi portals), it might be necessary to disable NextDNS. To do this:
