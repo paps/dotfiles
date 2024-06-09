@@ -232,19 +232,11 @@ Add local binaries in `~/.paps/bin` (it's in $PATH).
 	* Compatibility: the default
 * Useful to know: `gnome-terminal --show-menubar` and shift-right-click for context menu
 
-### Session startup script(s)
-
-**For the current user:** Optional startup script `~/.paps/scripts/local.sh` (ignored by git, executed by `~/.paps/openbox/autostart.sh` on session start). Don't forget to `chmod +x` when creating this file.
+### Startup script
 
 **As root:** Edit `~/.paps/scripts/root-boot.sh` as needed, then run `sudo contrab -e` and add this line `@reboot sleep 5 && /home/paps/.paps/scripts/root-boot.sh` (assuming `paps` is the current user) (a sleep is added as a cheap workaround to wait for most things to be ready, daemons to be loaded, etc).
 
-### Screensaving
-
-In `openbox/xcfg.sh`, we make X make the screen black at 10min then shut it down at 11min.
-
-Useful for TVs: `touch ~/.paps/x/screensaver_4h` to make the screensaver wait 4 hours before activating.
-
-`Ctrl-Alt-l` and "Lock" from the Openbox context menu will call `slock` which will lock the screen and will wait for the correct password to be entered.
+Note: when using a home directory encrypted with fscrypt, this file needs to be moved outside of the home directory (because it will be run before the user logs in, therefore before home directory decryption).
 
 ### Locales
 
@@ -301,17 +293,21 @@ In order to enable the NetworkManager service:
 
 ### Bluetooth
 
-Install `bluetooth bluez-firmware blueman` and restart. When there is a need to pair to something, run `blueman-applet`.
+Install `bluetooth bluez-firmware blueman` and restart. `blueman-applet` will be automatically run on session start by `openbox/autostart.sh`.
 
 ### Mouse acceleration
 
-Before `libinput` existed, the `xset m` command found in `openbox/xcfg.sh` had an effect. Now it's a no-op.
+Before `libinput` existed, the `xset m` command found in `openbox/xcfg.sh` had an effect. Now, as I understand it, it's a no-op.
 
-To disable mouse acceleration for standard mice (i.e. not touchpads), copy `x/configs/40-mouse.conf` in `/etc/X11/xorg.conf.d/`.
+To disable mouse acceleration for standard mice (i.e. not touchpads), copy `x/configs/40-mouse.conf` to `/etc/X11/xorg.conf.d/`.
+
+### Asahi touchpad
+
+Copy `x/configs/30-asahi-touchpad.conf` to `/etc/X11/xorg.conf.d/`.
 
 ### Laptops (non-Asahi)
 
-`x/configs/20-intel.conf` is an example of a good integrated Intel Graphics configuration. `x/configs/30-touchpad.conf` is an example of a good touchpad configuration. Copy these to `/etc/X11/xorg.conf.d/` to use them.
+`x/configs/20-intel.conf` is an example of a good integrated Intel Graphics configuration. `x/configs/30-touchpad.conf` is an example of a good touchpad configuration (but don't use this on Asahi). Copy these to `/etc/X11/xorg.conf.d/` to use them.
 
 Use `tlp` for battery optimizations: http://linrunner.de/en/tlp/docs/tlp-linux-advanced-power-management.html
 

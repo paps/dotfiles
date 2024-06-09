@@ -7,10 +7,10 @@ xsetroot -solid black
 # The --transfer-sleep-lock option is used to make sure this happens correctly when the laptop goes to sleep too (i.e. when the lid is closed)
 XSECURELOCK_SHOW_HOSTNAME=0 XSECURELOCK_SHOW_USERNAME=0 XSECURELOCK_SHOW_DATETIME=1 XSECURELOCK_AUTH_BACKGROUND_COLOR='Slate Gray' XSECURELOCK_AUTH_TIMEOUT=5 XSECURELOCK_BLANK_TIMEOUT=10 xss-lock --transfer-sleep-lock -- xsecurelock &
 
+# Start a standard system tray
 # Depending on top or left side placement, geometry and gravity should be changed
 stalonetray --dockapp-mode simple --icon-size=32 --kludges=force_icons_size -v -bg black -d none --icon-gravity W --geometry 12x1 &
 
-~/.paps/openbox/volume_late.sh &
 (killall parcellite; sleep 5; while true; do parcellite; sleep 5; notify-send 'Restarting parcellite'; done &) # auto-restart of parcellite
 ibus-daemon -d &
 nm-applet &
@@ -90,8 +90,3 @@ while true; do
     sleep 60
     ~/.paps/openbox/watchdog.sh
 done &
-
-if [ -f ~/.paps/scripts/local.sh ]
-then
-    ~/.paps/scripts/local.sh &
-fi
