@@ -22,6 +22,7 @@
 				</command>
 			</action>
 		</item>
+		<separator />
 		<item label="Reconfigure Openbox">
 			<action name="Execute">
 				<command>
@@ -36,7 +37,8 @@
 				</command>
 			</action>
 		</item>
-		<item label="Lock">
+		<separator />
+		<item label="Lock (Ctrl-Alt-L)">
 			<action name="Execute">
 				<command>
 					~/.paps/openbox/lock.sh

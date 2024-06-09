@@ -383,6 +383,16 @@ In `/etc/acpi/events/notify-jack` (this is a new file), put the following:
 event=jack/.*
 action=su paps -c 'bash /home/paps/.paps/openbox/publish-notification.sh "%%{r}%e"'
 ```
+There are ways to make the daemon take this change into account, but a reboot should do the trick.
+
+### Notification of AC adapter plugged in/plugged out
+
+In `/etc/udev/rules.d/99-ac-adapter.rules` (this is a new file), put the following:
+```
+SUBSYSTEM=="power_supply", ATTR{online}=="1", ACTION=="change", RUN+="/usr/bin/su paps -c 'bash /home/paps/.paps/openbox/publish-notification.sh %{c}Plugged-in'"
+SUBSYSTEM=="power_supply", ATTR{online}=="0", ACTION=="change", RUN+="/usr/bin/su paps -c 'bash /home/paps/.paps/openbox/publish-notification.sh %{c}Unplugged'"
+```
+There are ways to make the daemon take this change into account, but a reboot should do the trick.
 
 ### Power button configuration
 
