@@ -16,10 +16,10 @@ if [ -f ~/.paps/x/screensaver_4h ] ; then
     # screen standby at 4h1min, suspend at 4h2min, off at 4h3min
     xset dpms 14460 14520 14580
 else
-    # screensaver at 10min
-    xset s 600
-    # screen standby at 11min, suspend at 12min, off at 13min
-    xset dpms 660 720 780
+    # screensaver at 20min
+    xset s 1200
+    # screen standby at 21min, suspend at 22min, off at 23min
+    xset dpms 1260 1320 1380
 fi
 
 # reset xkbmap options (empty -option)

@@ -73,14 +73,14 @@ while true; do
         # either we're about to lock, we're already locked, or activity just happened in the last few seconds before lock
         # so we can safely wait and re-assess the situation in one minute
         sleep 60
-    elif [ $timeleft -le 60 ]
+    elif [ $timeleft -le 300 ]
     then
         # xsecurelock will activate soon, so we notify
         $HOME/.paps/openbox/publish-notification.sh "%{c}Locking in ${timeleft}s"
         sleep 5
     else
         # xsecurelock will activate in a long time, so we wait until the last moment to re-check again
-        sleeptime=$(echo "$timeleft - 60" | bc)
+        sleeptime=$(echo "$timeleft - 300" | bc)
         sleep ${sleeptime}
     fi
 done &
