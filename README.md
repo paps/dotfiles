@@ -417,7 +417,7 @@ There are ways to make the daemon take this change into account, but a reboot sh
 ### Power button configuration
 
 Run `sudo vim /etc/systemd/logind.conf` and do the following:
-* Find `HandlePowerKey`, uncomment it and set it to `ignore` - resulting line: `HandlePowerKey=ignore`
+* Find `HandlePowerKey`, uncomment it and set it to `lock` - resulting line: `HandlePowerKey=lock` (thanks to `xss-lock` in `openbox/autostart.sh`, this has the correct intended effect of locking the laptop on key press)
 * Find `HandlePowerKeyLongPress`, uncomment it and set it to `poweroff` - resulting line: `HandlePowerKeyLongPress=poweroff`
 
 ### Run a script on laptop suspend
