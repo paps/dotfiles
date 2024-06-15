@@ -1,3 +1,3 @@
 #!/bin/sh
 # dmenu became rofi at some point
-exec $(rofi -modi drun -show drun -font "Hack Nerd Font Mono Regular 22")
+exec $(rofi -modi run -show run -font "Hack Nerd Font Mono Regular 22")
