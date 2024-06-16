@@ -5,7 +5,7 @@ xsetroot -solid black
 
 # Start xsecurelock every time the X screensaver (xss) activates
 # The --transfer-sleep-lock option is used to make sure this happens correctly when the laptop goes to sleep too (i.e. when the lid is closed)
-XSECURELOCK_SHOW_HOSTNAME=0 XSECURELOCK_SHOW_USERNAME=0 XSECURELOCK_SHOW_DATETIME=1 XSECURELOCK_AUTH_BACKGROUND_COLOR='Slate Gray' XSECURELOCK_AUTH_TIMEOUT=5 XSECURELOCK_BLANK_TIMEOUT=10 xss-lock --transfer-sleep-lock -- xsecurelock &
+XSECURELOCK_SHOW_HOSTNAME=0 XSECURELOCK_SHOW_USERNAME=0 XSECURELOCK_SHOW_DATETIME=1 XSECURELOCK_AUTH_BACKGROUND_COLOR='Slate Gray' XSECURELOCK_AUTH_TIMEOUT=10 XSECURELOCK_BLANK_TIMEOUT=10 xss-lock --transfer-sleep-lock -- xsecurelock -- ~/.paps/openbox/after-lock.sh &
 
 # Start a standard system tray
 # Depending on top or left side placement, geometry and gravity should be changed

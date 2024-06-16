@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# Script meant to be executed after successfull screen lock.
+# It is triggered by xsecurelock (configured in autostart.sh).
+
 if [ -x "$(command -v brightnessctl)" ]
 then
     # If we have brightnessctl installed, we're
@@ -7,6 +10,3 @@ then
     # disable keyboard light on lock.
     brightnessctl --device kbd_backlight set 0
 fi
-
-xset s activate
-

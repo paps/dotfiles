@@ -41,7 +41,7 @@
 		<item label="Lock (Ctrl-Alt-L)">
 			<action name="Execute">
 				<command>
-					~/.paps/openbox/lock.sh
+					xset s activate
 				</command>
 			</action>
 		</item>
