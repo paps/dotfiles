@@ -305,6 +305,10 @@ To observe the current DNS configuration, simply run `resolvectl`.
 
 If there is a need to clear the local cache (improbable as we're using `Cache=no`), run `resolvectl flush-caches`.
 
+**Mullvad**
+
+When using Mullvad, go to Settings > VPN Settings > Use custom DNS server and set `127.0.0.1`.
+
 **Switching off NextDNS**
 
 In some cases (such as wifi portals), it might be necessary to disable NextDNS:

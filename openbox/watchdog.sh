@@ -15,6 +15,18 @@ else
     fi
 fi
 
+# Check that we're still protected by mullvad
+mullvad=$(curl 'https://am.i.mullvad.net/connected')
+if [ -z "$mullvad" ]
+then
+    notify-send "curl failed on mullvad.net — are we online?"
+else
+    if [[ $mullvad == *"not"* ]]
+    then
+        notify-send "$mullvad"
+    fi
+fi
+
 sleep 120
 
 # Todo some day: notify about low battery

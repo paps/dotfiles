@@ -267,7 +267,7 @@
       </action>
     </keybind>
     <!-- Keybindings for windows -->
-    <keybind key="A-F10">
+    <keybind key="F10">
       <action name="ToggleMaximize"/>
       <action name="Focus"/>
       <action name="Raise"/>
@@ -859,5 +859,20 @@
 
   # end of the example
 -->
+    <application class="firefox">
+      <decor>no</decor>
+    </application>
+    <application class="Gnome-terminal">
+      <decor>no</decor>
+    </application>
+    <application class="obsidian">
+      <decor>no</decor>
+    </application>
+    <application class="Chromium">
+      <decor>no</decor>
+    </application>
+    <application class="ArmCord">
+      <decor>no</decor>
+    </application>
   </applications>
 </openbox_config>
