@@ -246,6 +246,14 @@ Note: when using a home directory encrypted with fscrypt, this file needs to be 
 
 Use `sudo dpkg-reconfigure tzdata` to change timezone. A change like this should come with a change to redshift configuration, see `openbox/autostart.sh`.
 
+### Accurate clock
+
+```
+sudo apt install systemd-timesyncd
+sudo systemctl enable systemd-timesyncd
+sudo systemctl start systemd-timesyncd
+```
+
 ### Force default browser
 
 * `sudo update-alternatives --config x-www-browser` and select Firefox
