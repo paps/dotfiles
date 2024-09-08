@@ -1,7 +1,7 @@
 conky.config = {
 	alignment = 'top_left',
 	gap_y = 1,
-	gap_x = 2650,
+	gap_x = 2850,
 
 	background = false,
 	out_to_x = true,
@@ -49,29 +49,17 @@ ${goto 240}${swapmax}
 
 
 
-${voffset -108}${goto 360}D: ${downspeedf wlan0}
-${goto 360}${color1}${downspeedgraph wlan0 17,60 666666 adadad -t}${color2}
+${voffset -108}${goto 360}Down ${downspeedf wlan0}
+${goto 360}${color1}${downspeedgraph wlan0 32,100 666666 adadad -t}${color2}
 
 
 
 
 
-${voffset -108}${goto 480}U: ${upspeedf wlan0}
-${goto 480}${color1}${upspeedgraph wlan0 17,60 666666 adadad -t}${color2}
+${voffset -123}${goto 480}Up ${upspeedf wlan0}
+${goto 480}${color1}${upspeedgraph wlan0 32,100 666666 adadad -t}${color2}
 
 
 
-
-
-${voffset -108}${goto 600}Ping
-${voffset 6}${goto 600}${tcp_ping 8.8.8.8 53}
-
-
-
-
-
-${voffset -97}${goto 720}${battery_short macsmc-battery}
-${goto 720}${battery_time macsmc-battery}
-${goto 720}${exec cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor}
 
 ]];

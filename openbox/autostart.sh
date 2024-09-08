@@ -1,7 +1,7 @@
 ~/.paps/openbox/xcfg.sh
-conky -c ~/.paps/openbox/stats_conkyrc &
-conky -c ~/.paps/openbox/time_conkyrc &
 xsetroot -solid black
+conky -c ~/.paps/openbox/stats_conkyrc &
+polybar --config=~/.paps/openbox/polybar.ini --reload
 
 # Start xsecurelock every time the X screensaver (xss) activates
 # The --transfer-sleep-lock option is used to make sure this happens correctly when the laptop goes to sleep too (i.e. when the lid is closed)
@@ -38,7 +38,7 @@ while true; do
     while
         cat $notification
         inotifywait -e close_write -qq -t 3 $notification
-    do true; done | lemonbar -g 300x34+34+1 -d -B '#859900' -F '#fdf6e3' -f '-xos4-terminus-bold-r-normal--32-320-72-72-c-160-*-*'
+    do true; done | lemonbar -g 500x34+34+10 -d -B '#859900' -F '#fdf6e3' -f '-xos4-terminus-bold-r-normal--32-320-72-72-c-160-*-*'
 done &
 
 # Screen brightness control:

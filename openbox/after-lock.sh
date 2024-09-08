@@ -10,3 +10,5 @@ then
     # disable keyboard light on lock.
     brightnessctl --device kbd_backlight set 0
 fi
+
+pactl set-sink-mute @DEFAULT_SINK@ 1

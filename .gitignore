@@ -12,9 +12,6 @@ x/dpi144
 x/dpi168
 x/dpi192
 zsh/do_not_start_ssh_agent
-openbox/stats_conkyrc
-openbox/time_conkyrc
-openbox/rc.xml
 openbox/.notification-string
 openbox/.brightness-state
 

@@ -172,23 +172,7 @@ Add local binaries in `~/.paps/bin` (it's in $PATH).
 
 ### Configure openbox & conky
 
-* `cd dotfiles/openbox`
-* Asahi
-	* `cp rc.xml.dist rc.xml`
-		* Then use `obconf` to eventually adjust the `<dock>` and `<margins>` values depending on screen size and notch placement
-		* Top margin of 60px recommended
-		* Optional: change the `stalonetray` options in `autostart.sh`
-	* `cp time_conkyrc.notch.dist time_conkyrc`
-	* `cp stats_conkyrc.notch.dist stats_conkyrc`
-		* Adjust `gap_x` and/or `gap_y` depending on screen size and notch placement
-* Non-Asahi
-	* `cp rc.xml.dist rc.xml`
-		* Probably left margin of 34px and top margin of 1px, and a dock X position of -1 (by setting it manually in the file) (Y position can be adjusted in with `obconf`)
-		* Optional: change the `stalonetray` options in `autostart.sh`
-	* `cp time_conkyrc.dist time_conkyrc`
-	* `cp stats_conkyrc.dist stats_conkyrc`
-		* Identify the network interface to monitor (`downspeedf`, `downspeedgraph`, `upspeedf` and `upspeedgraph`)
-		* If relevant, uncomment the battery section and identify it (`battery_short` and `battery_time`)
+In will continue having a single machine in the future, so there is nothing to configure here anymore.
 
 ### Desktop notifications
 
