@@ -1,11 +1,11 @@
 Martin's dotfiles
 =================
 
-My Debian sid/unstable dotfiles, mostly intended for laptops (and in particular for Asahi macbooks at the time of writing), even though they're quite versatile. For a minimal server configuration, use https://github.com/paps/dotfiles-server
+My Debian sid/unstable dotfiles, mostly intended for laptops (and in particular for Asahi macbooks at the time of writing). For a minimal server configuration, use https://github.com/paps/dotfiles-server
 
 ### Shortcuts
 
-Once everything is configured correctly, these useful shortcuts are available:
+Once everything is configured correctly, these shortcuts are available:
 
 Sound
 * `Ctrl-Alt-[` to lower sound volume
@@ -23,7 +23,7 @@ Desktop environment
 * `Alt-F1` to open the window switcher
 * `Alt-F2` to open rofi (app launcher)
 * `Alt-F3` to open the Openbox menu
-* `Ctrl-Alt-l` to lock (with password, different from just letting the screen go to sleep)
+* `Ctrl-Alt-l` to lock
 * `Ctrl-WheelUp`/`Ctrl-WheelDown` with the cursor positionned at the top pixel row to lower/increase screen brightness
 
 Window management
@@ -172,7 +172,7 @@ Add local binaries in `~/.paps/bin` (it's in $PATH).
 
 ### Configure openbox & conky
 
-In will continue having a single machine in the future, so there is nothing to configure here anymore.
+I will continue having a single machine in the future, so there is reference file to copy anymore. What is versioned is my current configuration and that's it.
 
 ### Desktop notifications
 
