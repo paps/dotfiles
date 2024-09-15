@@ -25,7 +25,7 @@ then
     else
         echo "Usage: $0 +|-|m"
     fi
-    amixer sget Master | grep -m 1 -Eo ' \[[0-9]{1,3}%\] \[(on|off)\]' > $notification
+    echo "%{c}Vol $(pactl get-sink-volume @DEFAULT_SINK@ | grep -oP '\d+%' | head -1)" > $notification
 else
     echo "Usage: $0 +|-|m"
 fi
