@@ -59,3 +59,7 @@ user_pref("reader.parse-on-load.enabled", false);
 
 // Unload tabs when memory contention is high
 user_pref("browser.tabs.unloadOnLowMemory", false);
+
+// See https://news.ycombinator.com/item?id=41311479
+// But I think on Linux this is not deployed by Mozilla yet
+user_pref("dom.private-attribution.submission.enabled", false);
