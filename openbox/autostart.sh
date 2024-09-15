@@ -1,7 +1,7 @@
 ~/.paps/openbox/xcfg.sh
 xsetroot -solid black
 conky -c ~/.paps/openbox/stats_conkyrc &
-polybar --config=~/.paps/openbox/polybar.ini --reload
+polybar --config=~/.paps/openbox/polybar.ini --reload &
 
 # Start xsecurelock every time the X screensaver (xss) activates
 # The --transfer-sleep-lock option is used to make sure this happens correctly when the laptop goes to sleep too (i.e. when the lid is closed)

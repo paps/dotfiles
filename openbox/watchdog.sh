@@ -21,7 +21,7 @@ if [ -z "$mullvad" ]
 then
     notify-send "curl failed on mullvad.net — are we online?"
 else
-    if [[ $mullvad == *"not"* ]]
+    if [[ $mullvad != *"You are connected to Mullvad"* ]]
     then
         notify-send "$mullvad"
     fi
