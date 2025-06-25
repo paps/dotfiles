@@ -89,7 +89,7 @@ Install settings: full disk encryption, no root password, user `paps` in sudoers
 
 First of all, make sure all keys stored on GitHub are still valid and that each one corresponds to a known, live, accessible, owned device. Beware of keys added by tools (e.g. CircleCI) — these MUST be moved to a [GitHub machine user](https://docs.github.com/en/developers/overview/managing-deploy-keys#machine-users), we don't want to give tools access to all our machines.
 
-Then, proceed by SSHing into all relevant managed machines and execute `curl 'https://github.com/paps.keys' > ~/.ssh/authorized_keys && cat ~/.ssh/authorized_keys` on each. (The `cat` command is added to visually confirm we're not losing access to the machine by mistake.)
+Then, proceed by SSHing into all relevant managed machines and execute `curl 'https://github.com/YOUR_USERNAME.keys' > ~/.ssh/authorized_keys && cat ~/.ssh/authorized_keys` on each (replace YOUR_USERNAME with your GitHub username). The `cat` command is added to visually confirm we're not losing access to the machine by mistake.
 
 ### SSH server (if present)
 
@@ -99,7 +99,9 @@ Then, proceed by SSHing into all relevant managed machines and execute `curl 'ht
 
 * `git clone git@github.com:paps/dotfiles.git`
 * `cd dotfiles`
-* Create all the required links: `./setup.sh [absolute-path-to-dotfiles]`
+* Create all the required links: `./setup.sh [absolute-path-to-dotfiles] [--force] [github_username]`
+  * `--force`: Optional flag to force removal of existing files without prompts
+  * `github_username`: Optional GitHub username to fetch SSH keys from (defaults to "paps" if not provided)
 
 ### Shell
 

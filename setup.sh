@@ -3,7 +3,7 @@
 # arg number check
 if [ $# -lt 1 ]
 then
-    echo "Usage: $0 /absolute/path/to/conf/git [--force]"
+    echo "Usage: $0 /absolute/path/to/conf/git [--force] [github_username]"
     exit 1
 fi
 
@@ -26,6 +26,16 @@ rmflags="-ivr"
 if [ "$2" = "--force" ]
 then
     rmflags="-fvr"
+    github_username="$3"
+else
+    github_username="$2"
+fi
+
+# Use default username if none is provided
+if [ -z "$github_username" ]
+then
+    echo "No GitHub username provided, using default 'paps'"
+    github_username="paps"
 fi
 
 # dir
@@ -41,9 +51,21 @@ rm $rmflags ~/.ssh/config
 ln -sT ~/.paps/ssh/config ~/.ssh/config
 chmod -v og-rwx ~/.ssh/config
 
-echo "curl: https://github.com/paps.keys -> ~/.ssh/authorized_keys"
-rm $rmflags ~/.ssh/authorized_keys
-curl --silent 'https://github.com/paps.keys' -o ~/.ssh/authorized_keys
+echo "curl: https://github.com/$github_username.keys -> ~/.ssh/authorized_keys"
+if [ -f ~/.ssh/authorized_keys.backup ]
+then
+    echo "Backup of authorized_keys already exists at ~/.ssh/authorized_keys.backup"
+else
+    # Backup existing authorized_keys file if it exists
+    if [ -f ~/.ssh/authorized_keys ]
+    then
+        echo "Backing up existing authorized_keys to ~/.ssh/authorized_keys.backup"
+        cp ~/.ssh/authorized_keys ~/.ssh/authorized_keys.backup
+    fi
+fi
+
+# Fetch keys from GitHub
+curl --silent "https://github.com/$github_username.keys" -o ~/.ssh/authorized_keys
 chmod -v og-rwx ~/.ssh/authorized_keys
 
 # X11
