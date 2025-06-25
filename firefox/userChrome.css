@@ -26,3 +26,18 @@
  * Disable F11 fullscreen animation
  */
 #navigator-toolbox[fullscreenShouldAnimate] { transition: none !important; }
+
+
+
+
+
+/* Change the background color of discarded tabs */
+.tabbrowser-tab[discarded="true"] {
+    background-color: #ffcccb !important; /* Light red background */
+    color: black !important; /* Black text */
+}
+
+/* Styling for tabs that haven't been reopened after a session restore */
+.tabbrowser-tab[pending="true"] {
+    opacity: 0.5 !important;
+}

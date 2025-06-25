@@ -405,10 +405,10 @@ There are ways to make the daemon take this change into account, but a reboot sh
 
 In `/etc/udev/rules.d/99-ac-adapter.rules` (this is a new file), put the following:
 ```
-SUBSYSTEM=="power_supply", ATTR{online}=="1", ACTION=="change", RUN+="/usr/bin/su paps -c 'bash /home/paps/.paps/openbox/publish-notification.sh %{c}Plugged-in'"
-SUBSYSTEM=="power_supply", ATTR{online}=="0", ACTION=="change", RUN+="/usr/bin/su paps -c 'bash /home/paps/.paps/openbox/publish-notification.sh %{c}Unplugged'"
+SUBSYSTEM=="power_supply", ATTR{type}=="Mains", ATTR{online}=="1", ACTION=="change", RUN+="/usr/bin/su paps -c 'bash /home/paps/.paps/openbox/publish-notification.sh %{c}Plugged-in'"
+SUBSYSTEM=="power_supply", ATTR{type}=="Mains", ATTR{online}=="0", ACTION=="change", RUN+="/usr/bin/su paps -c 'bash /home/paps/.paps/openbox/publish-notification.sh %{c}Unplugged'"
 ```
-There are ways to make the daemon take this change into account, but a reboot should do the trick.
+There are ways to make the daemon take this change into account, but a reboot should do the trick. Note that `ATTR{type}=="Mains"` is a filter to better target the AC adapter, this will not work for all hardware types, but it does work for a 16" M2 MBP.
 
 ### Power button configuration
 

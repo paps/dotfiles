@@ -23,7 +23,9 @@ then
 else
     if [[ $mullvad != *"You are connected to Mullvad"* ]]
     then
-        notify-send "$mullvad"
+        # Disabled while in Taiwan
+        #notify-send "$mullvad"
+        echo 'disabled'
     fi
 fi
 

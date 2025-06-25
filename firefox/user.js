@@ -58,7 +58,7 @@ user_pref("browser.gesture.swipe.right", "cmd_scrollRight");
 user_pref("reader.parse-on-load.enabled", false);
 
 // Unload tabs when memory contention is high
-user_pref("browser.tabs.unloadOnLowMemory", false);
+user_pref("browser.tabs.unloadOnLowMemory", true);
 
 // See https://news.ycombinator.com/item?id=41311479
 // But I think on Linux this is not deployed by Mozilla yet
