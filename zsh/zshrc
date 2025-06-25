@@ -9,7 +9,7 @@ alias la='ls -lha'
 alias sl='ls'
 alias view="echo 'choose between nvim -Rn and \\\view -n' ; false"
 alias grep='grep --color=auto'
-alias open='python ~/.paps/scripts/open.py -i'
+alias open='python3 ~/.paps/scripts/open.py -i'
 alias rm="echo 'choose between del (trash-put) and \\\rm' ; false"
 alias du='du -sh'
 alias df='df -h'

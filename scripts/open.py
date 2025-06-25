@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # -*- encoding: utf-8 -*-
 
 import sys
@@ -108,8 +109,8 @@ def interactive_mode(file_path):
     elif os.path.isdir(file_path):
         file_ext = "."
     else:
-        print "'%s' not found" % file_path
-        exit()
+        print("'%s' not found" % file_path)
+        sys.exit()
 
     commands = get_commands(file_ext)
     title = get_menu_title(file_ext)
@@ -120,21 +121,22 @@ def interactive_mode(file_path):
     p = subprocess.Popen(whiptail(title, commands, file_path), stderr=subprocess.PIPE)
     ret = p.wait()
     if not ret:
-        fork_and_disown(p.stderr.read(), "\"" + file_path + "\"")
+        selected = p.stderr.read().decode().strip()
+        fork_and_disown(selected, "\"" + file_path + "\"")
 
 def print_usage():
-    print "Usage: open -i file"
-    print "       open -f program"
+    print("Usage: open -i file")
+    print("       open -f program")
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
         print_usage()
-        exit()
+        sys.exit()
     if len(sys.argv) < 3:
-        exit()
+        sys.exit()
     if not len(sys.argv[1]) or not len(sys.argv[2]):
         print_usage()
-        exit()
+        sys.exit()
 
     if sys.argv[1] == "-i":
         interactive_mode(sys.argv[2])
@@ -142,3 +144,4 @@ if __name__ == "__main__":
         fork_and_disown(sys.argv[2])
     else:
         print_usage()
+        sys.exit()
