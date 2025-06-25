@@ -85,8 +85,8 @@ while true; do
     fi
 done &
 
-# Run watchdog.sh every 5 minutes to check and report important system info
+# Restart watchdog.sh every 60s so that it can check and report important system info
 while true; do
-    sleep 300
+    sleep 60
     ~/.paps/openbox/watchdog.sh
 done &
