@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # This script is meant to be run a few seconds after boot using cron.
-# To set it up, run `sudo contrab -e` then add the following line:
+# To set it up, run `sudo crontab -e` then add the following line:
 # @reboot sleep 5 && /home/paps/.paps/scripts/root-boot.sh
 #
 # (A sleep is added as a cheap workaround to wait for most things to be

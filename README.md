@@ -218,7 +218,7 @@ I will continue having a single machine in the future, so there is reference fil
 
 ### Startup script
 
-**As root:** Edit `~/.paps/scripts/root-boot.sh` as needed, then run `sudo contrab -e` and add this line `@reboot sleep 5 && /home/paps/.paps/scripts/root-boot.sh` (assuming `paps` is the current user) (a sleep is added as a cheap workaround to wait for most things to be ready, daemons to be loaded, etc).
+**As root:** Edit `~/.paps/scripts/root-boot.sh` as needed, then run `sudo crontab -e` and add this line `@reboot sleep 5 && /home/paps/.paps/scripts/root-boot.sh` (assuming `paps` is the current user) (a sleep is added as a cheap workaround to wait for most things to be ready, daemons to be loaded, etc).
 
 Note: when using a home directory encrypted with fscrypt, this file needs to be moved outside of the home directory (because it will be run before the user logs in, therefore before home directory decryption).
 
