@@ -1,6 +1,6 @@
 # screensaver
 xset s on
-xset s noblank # don't make screensaver shutdown screens, xsecurelock will do it, or dpms will do it one minute later
+xset s noblank # don't make screensaver shutdown screens, xsecurelock will do it
 xset s 1200 # screensaver at 20min
 
 ~/.paps/x/input-config.sh
@@ -17,7 +17,7 @@ XSECURELOCK_SHOW_HOSTNAME=0 XSECURELOCK_SHOW_USERNAME=0 XSECURELOCK_SHOW_DATETIM
 stalonetray --dockapp-mode simple --icon-size=32 --kludges=force_icons_size -v -bg black -d none --icon-gravity W --geometry 12x1 &
 
 (killall parcellite; sleep 5; while true; do parcellite; sleep 5; notify-send 'Restarting parcellite'; done &) # auto-restart of parcellite
-ibus-daemon -d &
+ibus-daemon -d & # for emoji, mandarin, etc
 nm-applet &
 if [ -x "$(command -v blueman-applet)" ]
 then
