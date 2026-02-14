@@ -1,11 +1,16 @@
-~/.paps/openbox/xcfg.sh
+# screensaver
+xset s on
+xset s noblank # don't make screensaver shutdown screens, xsecurelock will do it, or dpms will do it one minute later
+xset s 1200 # screensaver at 20min
+
+~/.paps/x/input-config.sh
 xsetroot -solid black
 conky -c ~/.paps/openbox/stats_conkyrc &
 polybar --config=~/.paps/openbox/polybar.ini --reload &
 
 # Start xsecurelock every time the X screensaver (xss) activates
 # The --transfer-sleep-lock option is used to make sure this happens correctly when the laptop goes to sleep too (i.e. when the lid is closed)
-XSECURELOCK_SHOW_HOSTNAME=0 XSECURELOCK_SHOW_USERNAME=0 XSECURELOCK_SHOW_DATETIME=1 XSECURELOCK_AUTH_BACKGROUND_COLOR='Slate Gray' XSECURELOCK_AUTH_TIMEOUT=10 XSECURELOCK_BLANK_TIMEOUT=10 xss-lock --transfer-sleep-lock -- xsecurelock -- ~/.paps/openbox/after-lock.sh &
+XSECURELOCK_SHOW_HOSTNAME=0 XSECURELOCK_SHOW_USERNAME=0 XSECURELOCK_SHOW_DATETIME=1 XSECURELOCK_AUTH_BACKGROUND_COLOR='Slate Gray' XSECURELOCK_AUTH_TIMEOUT=10 XSECURELOCK_BLANK_TIMEOUT=10 XSECURELOCK_BLANK_DPMS_STATE=off xss-lock --transfer-sleep-lock -- xsecurelock -- ~/.paps/openbox/after-lock.sh &
 
 # Start a standard system tray
 # Depending on top or left side placement, geometry and gravity should be changed
@@ -39,29 +44,6 @@ while true; do
         cat $notification
         inotifywait -e close_write -qq -t 3 $notification
     do true; done | lemonbar -g 500x34+34+10 -d -B '#859900' -F '#fdf6e3' -f '-xos4-terminus-bold-r-normal--32-320-72-72-c-160-*-*'
-done &
-
-# Screen brightness control:
-#  redshift is manually run every 90s to adjust screen temperature
-#
-#  '-b' sets the brightness (first value for day, second value for night)
-#  '-l' sets our location in the world. When changing location, update the two commands with:
-#     Paris: 48.85:2.35
-#     San Francisco: 37.77:122.41
-#     Taipei: 25.03:121.56
-#     (sidenote: to change timezone, run `sudo dpkg-reconfigure tzdata`)
-#  '-m randr' skips a useless check for Wayland
-#  '-r' makes changes instantaneous (disables fading)
-#  '-o' means 'one shot mode', i.e. redshift immediately exits
-#  '-P' resets everything before applying new temp/brightness values
-#
-# /!\ redshift is also called by brightness.sh, changes should be made over there too
-brightness="$HOME/.paps/openbox/.brightness-state"
-echo -n 1.0 > $brightness
-while true; do
-    val=`cat $brightness`
-    redshift -m randr -l 48.85:2.35 -r -o -P -b "$val:$val"
-    sleep 90
 done &
 
 # Small monitoring script that notifies when xsecurelock is about to trigger because the user is inactive
