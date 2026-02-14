@@ -26,15 +26,13 @@
 		<item label="Reconfigure Openbox">
 			<action name="Execute">
 				<command>
-					bash -c "openbox --reconfigure &amp;&amp; ~/.paps/openbox/publish-notification.sh '%{c}O. reconfigured'"
+					bash -c "openbox --reconfigure &amp;&amp; ~/.paps/openbox/publish-notification.sh '%{c}Openbox reconfigured'"
 				</command>
 			</action>
 		</item>
 		<item label="Reconfigure X">
 			<action name="Execute">
-				<command>
-					bash -c "~/.paps/openbox/xcfg.sh &amp;&amp; ~/.paps/openbox/publish-notification.sh '%{c}X reconfigured'"
-				</command>
+				<command>~/.paps/x/apply-input-config.sh</command>
 			</action>
 		</item>
 		<separator />

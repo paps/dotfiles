@@ -1,3 +1,11 @@
+# This script is called from openbox/autostart.sh,
+# almost as a first step for the desktop session.
+#
+# It is also called by x/apply-input-config.sh, useful
+# when a new keyboard appears (udev notification) or
+# when the user wants to trigger it manually (openbox
+# menu)
+
 setxkbmap us
 
 # disable beeping
@@ -6,12 +14,6 @@ xset b off
 xset r rate 165 28
 # mouse acceleration and threshold
 xset m 7/6 6 # from what I understand, this is a no-op on any modern system with libinput
-
-# screensaver and dpms
-xset s on
-xset s noblank # don't make screensaver shutdown screens, xsecurelock will do it, or dpms will do it one minute later
-xset s 1200 # screensaver at 20min
-xset dpms 1260 1320 1380 # screen standby at 21min, suspend at 22min, off at 23min
 
 # reset xkbmap options (empty -option)
 # and swap Caps_Lock and Control_L

@@ -410,6 +410,14 @@ SUBSYSTEM=="power_supply", ATTR{type}=="Mains", ATTR{online}=="0", ACTION=="chan
 ```
 There are ways to make the daemon take this change into account, but a reboot should do the trick. Note that `ATTR{type}=="Mains"` is a filter to better target the AC adapter, this will not work for all hardware types, but it does work for a 16" M2 MBP.
 
+### Detection of keyboard hotplug for auto config
+
+In `/etc/udev/rules.d/98-xmodmap-hotplug.rules` (this is a new file), put the following:
+```
+ACTION=="add|change", SUBSYSTEM=="input", ENV{ID_INPUT_KEYBOARD}=="1", RUN+="/usr/bin/su paps -c 'bash /home/paps/.paps/x/apply-input-config.sh'"
+```
+There are ways to make the daemon take this change into account, but a reboot should do the trick.
+
 ### Power button configuration
 
 Run `sudo vim /etc/systemd/logind.conf` and do the following:
@@ -425,3 +433,9 @@ Copy `systemd/before-suspend.service` to `/etc/systemd/system/`, then run `sudo 
 Download the latest [AppleColorEmoji.ttf](https://github.com/samuelngs/apple-emoji-linux/releases) and put it in `fonts/` (it's already ignored by .gitignore) (`fonts/fonts.conf` is already configured to trigger the use of Apple Color Emoji for emojis).
 
 Note: It is not clear to me how fonts take priority over others. For Apple Color Emoji to work well, it's best to uninstall other emoji fonts such as `fonts-noto-color-emoji`.
+
+### Terminal colors
+
+The best combination is text 000 and background 014 (bright cyan). A variation can be made with 006 (cyan)
+
+Small indicators can use background 009 (bright red), 001 (red), 010 (bright green), 002 (green) all with text 000, for light touches.
