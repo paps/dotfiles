@@ -159,6 +159,12 @@ echo "Link: ~/.config/nvim -> ~/.paps/vim/vim"
 rm $rmflags ~/.config/nvim
 ln -sT ~/.paps/vim/vim ~/.config/nvim
 
+# alacritty
+mkdir -v -p ~/.config/alacritty
+echo "Link: ~/.config/alacritty/alacritty.toml -> ~/.paps/alacritty/alacritty.toml"
+rm $rmflags ~/.config/alacritty/alacritty.toml
+ln -sT ~/.paps/alacritty/alacritty.toml ~/.config/alacritty/alacritty.toml
+
 # zsh
 echo "Link: ~/.zshrc -> ~/.paps/zsh/zshrc"
 rm $rmflags ~/.zshrc
