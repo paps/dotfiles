@@ -7,13 +7,11 @@ vim/vim/.init.vim-rplugin~
 
 # files meant to stay local
 scripts/local.sh
-x/screensaver_4h
 x/dpi144
 x/dpi168
 x/dpi192
 zsh/do_not_start_ssh_agent
 openbox/.notification-string
-openbox/.brightness-state
 
 # fonts
 fonts/.uuid

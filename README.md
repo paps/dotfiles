@@ -14,7 +14,6 @@ Sound
 * `WheelUp`/`WheelDown` with the cursor positionned at the top pixel row to lower/increase sound volume
 
 Apps
-* `Ctrl-Alt-c` to open calendar
 * `Ctrl-Alt-y` to open calculator
 * `Ctrl-Alt-s` to take a screenshot
 * `Ctrl-Alt-t` to spawn a terminal
@@ -24,14 +23,13 @@ Desktop environment
 * `Alt-F2` to open rofi (app launcher)
 * `Alt-F3` to open the Openbox menu
 * `Ctrl-Alt-l` to lock
-* `Ctrl-WheelUp`/`Ctrl-WheelDown` with the cursor positionned at the top pixel row to lower/increase screen brightness
 
 Window management
-* `Alt-F10` to maximize/unmaximize the focused window
+* `F10` to maximize/unmaximize the focused window
 * `Alt-Space` to open the window contextual menu
 * `Ctrl-Alt-d` to collapse all windows (go to desktop)
 * To go from one desktop to another:
-	* `Ctrl-Alt-HorizontalWheelUp`/`Ctrl-Alt-HorizontalWheelUp` or
+	* `Ctrl-Alt-HorizontalWheelLeft`/`Ctrl-Alt-HorizontalWheelRight` or
 	* `Ctrl-Alt-Left`/`Ctrl-Alt-Right` or
 	* `Ctrl-Alt-j`/`Ctrl-Alt-k`
 
@@ -317,7 +315,7 @@ Install `bluetooth bluez-firmware blueman` and restart. `blueman-applet` will be
 
 ### Mouse acceleration
 
-Before `libinput` existed, the `xset m` command found in `openbox/xcfg.sh` had an effect. Now, as I understand it, it's a no-op.
+Before `libinput` existed, the `xset m` command found in `x/input-config.sh` had an effect. Now, as I understand it, it's a no-op.
 
 To disable mouse acceleration for standard mice (i.e. not touchpads), copy `x/configs/40-mouse.conf` to `/etc/X11/xorg.conf.d/`.
 

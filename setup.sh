@@ -129,12 +129,6 @@ echo "Link: ~/.themes/retrosmart-openbox-themes-gold -> ~/.paps/openbox/retrosma
 rm $rmflags ~/.themes/retrosmart-openbox-themes-gold
 ln -sT ~/.paps/openbox/retrosmart-openbox-themes-gold ~/.themes/retrosmart-openbox-themes-gold
 
-# gsimplecal
-mkdir -v -p ~/.config/gsimplecal
-echo "Link: ~/.config/gsimplecal/config -> ~/.paps/gsimplecal/config"
-rm $rmflags ~/.config/gsimplecal/config
-ln -sT ~/.paps/gsimplecal/config ~/.config/gsimplecal/config
-
 # parcellite
 mkdir -v -p ~/.config/parcellite
 echo "Link: ~/.config/parcellite/parcelliterc -> ~/.paps/parcellite/parcelliterc"
