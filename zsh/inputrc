@@ -1,3 +1,4 @@
-set editing-mode vi
-set keymap vi-command
-set bell-style none
+# Readline configuration (used by bash, python REPL, gdb, and other
+# readline-based programs — NOT zsh, which uses its own line editor, zle).
+
+set editing-mode vi # use vi style keybindings instead of the emacs default

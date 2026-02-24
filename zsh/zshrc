@@ -1,3 +1,10 @@
+# env
+# ---
+export PATH="$PATH:$HOME/.paps/bin"
+export EDITOR='nvim'
+export MANPAGER='nvim +Man!'
+#export LESS='-RiM' # less config: colors, smart-case search, verbose prompt
+
 # aliases
 # -------
 alias ls='ls --color=auto -F'
@@ -7,74 +14,33 @@ alias lll='ll'
 alias llll='ll'
 alias la='ls -lha'
 alias sl='ls'
-alias view="echo 'choose between nvim -Rn and \\\view -n' ; false"
 alias grep='grep --color=auto'
-alias open='python3 ~/.paps/scripts/open.py -i'
-alias rm="echo 'choose between del (trash-put) and \\\rm' ; false"
-alias du='du -sh'
-alias df='df -h'
 alias vim="echo 'choose between nvim and \\\vim' ; false"
+alias vi="echo 'choose between nvim and \\\vim' ; false"
 alias vimdiff="echo 'choose between nvim -d and \\\vimdiff' ; false"
 alias del='trash-put'
-#alias trash-restore='restore-trash'
+alias rm="echo 'choose between del (trash-put) and \\\rm' ; false"
 
-# colors
-# ------
-eval `dircolors ~/.paps/zsh/dircolors.ansi-light`
-. $HOME/.paps/zsh/spectrum.zsh # provides FG[] & BG[] for easier color formatting
+# history
+# -------
+# append history immediately, ignore duplicates and space-prefixed commands
+setopt inc_append_history hist_ignore_dups hist_find_no_dups hist_ignore_space
+HISTFILE="$HOME/.zsh_history"
+HISTSIZE=30000  # max entries in memory
+SAVEHIST=30000  # max entries written to file
 
 # VCS info
 # --------
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' check-for-changes true
-zstyle ':vcs_info:*' actionformats "%{$BG[004]%}%{$FG[015]%}%a%{$BG[014]%}%{$FG[015]%}%b%c%{$FX[reset]%}%{$FG[014]%}%u%{$FX[reset]%} "
-zstyle ':vcs_info:*' formats "%{$BG[014]%}%{$FG[015]%}%b%c%{$FX[reset]%}%{$FG[014]%}%u%{$FX[reset]%} "
-zstyle ':vcs_info:*' stagedstr "%{$BG[006]%}%{$FG[015]%}%{$FX[bold]%}✓%{$FX[reset]%}"
-zstyle ':vcs_info:*' unstagedstr "%{$BG[004]%}%{$FG[015]%}%{$FX[bold]%}*%{$FX[reset]%}"
+zstyle ':vcs_info:*' formats '%F{magenta}(%b%u%c)%f '
+zstyle ':vcs_info:*' actionformats '%F{magenta}(%b|%a%u%c)%f '
+zstyle ':vcs_info:*' stagedstr '+'
+zstyle ':vcs_info:*' unstagedstr '*'
 zstyle ':vcs_info:*' enable git
-# right side prompt vcs
-function __vcs_info_prompt() {
-	vcs_info
-	if [ -n "$vcs_info_msg_0_" ]; then
-		echo -n "${vcs_info_msg_0_}"
-	fi
-}
-
-# command line vim mode
-# ---------------------
-# regenerate prompt every time
-setopt prompt_subst
-# prompt init
-autoload -Uz promptinit
-promptinit
-# vi mode background color change
-function __vi_mode_prompt() {
-	local normal_mode="%{$BG[005]%}"
-	echo -n "${${KEYMAP/vicmd/$normal_mode}/(main|viins)/}"
-}
-# prompts
-if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ] ; then
-	# distant prompt
-	PS1='%{$BG[002]%}%{$FG[015]%}%{$FX[bold]%}%M%{$FX[reset]%} %(?..%{$BG[001]%}%{$FG[015]%}↪%?%{$FX[reset]%} )$(__vcs_info_prompt)%{$FX[reset]%}%{$BG[014]%}$(__vi_mode_prompt)%{$FG[015]%}%~%{$FX[reset]%} '
-else
-	# local prompt
-	PS1='%(?..%{$BG[001]%}%{$FG[015]%}↪%?%{$FX[reset]%} )$(__vcs_info_prompt)%{$FX[reset]%}%{$BG[014]%}$(__vi_mode_prompt)%{$FG[015]%}%~%{$FX[reset]%} '
-fi
-# reset prompt on some events
-function zle-keymap-select zle-line-init zle-line-finish {
-	zle reset-prompt
-	zle -R
-}
-bindkey -v # vi mode
-# load some editing widgets for vi mode prompt
-zle -N zle-line-init
-zle -N zle-line-finish
-zle -N zle-keymap-select
-zle -N edit-command-line
-KEYTIMEOUT=1 # almost no delay when escape is pressed
-# visual mode goes to real vim
-autoload -Uz edit-command-line
-bindkey -M vicmd 'v' edit-command-line
+# refresh vcs info before each prompt
+# (clobbers the entire precmd hook but it's fine, we just need this)
+precmd() { vcs_info }
 
 # completions
 # -----------
@@ -82,45 +48,56 @@ autoload -Uz compinit
 compinit
 unsetopt correct_all
 setopt correct # only correct commands, not arguments
-zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
-zstyle ':completion:*:*:*:*:*' menu select
-zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
-function expand-or-complete-with-dots() {
-	echo -n "\e[31m...\e[0m"
-	zle expand-or-complete
-	zle redisplay
-}
-zle -N expand-or-complete-with-dots
-bindkey "^I" expand-or-complete-with-dots
-bindkey '^[[Z' reverse-menu-complete
 
-# history
-# -------
-DIRSTACKSIZE=10
-setopt inc_append_history hist_ignore_dups hist_ignore_space hist_find_no_dups auto_pushd pushd_minus pushd_ignore_dups
-HISTFILE="$HOME/.zsh_history"
-HISTSIZE=30000
-SAVEHIST=30000
+# command line vim mode
+# ---------------------
+bindkey -v # vi mode
+KEYTIMEOUT=1 # almost no delay (=10ms) when escape is pressed (lowest practical value)
+# search bindings (must be after bindkey -v to not get overridden)
 bindkey "^R" history-incremental-pattern-search-backward
 bindkey "^S" history-incremental-pattern-search-forward
 bindkey -M vicmd '?' history-incremental-pattern-search-backward
 bindkey -M vicmd '/' history-incremental-pattern-search-forward
+# visual mode goes to real vim
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey -M vicmd 'v' edit-command-line
+
+# prompt
+# ------
+setopt prompt_subst # allow variable expansion in PS1
+# show [N] when in vi normal mode, nothing in insert mode
+function zle-keymap-select zle-line-init {
+	VI_MODE="${${KEYMAP/vicmd/[N] }/(main|viins)/}"
+	zle reset-prompt
+}
+# register widgets to update vi mode indicator on keymap change and line init
+zle -N zle-keymap-select
+zle -N zle-line-init
+# [N] ↪exit_code [user@host:]path
+# vi mode indicator, exit code in red only if non-zero, user@host only when SSHed in, path in blue
+if [[ -n "$SSH_CONNECTION" ]]; then
+	PS1='${VI_MODE}%(?..%F{red}↪%?%f )${vcs_info_msg_0_}%F{green}%n%f@%F{yellow}%m%f:%B%F{blue}%~%f%b› '
+else
+	PS1='${VI_MODE}%(?..%F{red}↪%?%f )${vcs_info_msg_0_}%B%F{blue}%~%f%b› '
+fi
 
 # other stuff...
 # --------------
-setopt no_rm_star_silent
-stty -ixon # disable ctrl-s/ctrl-q xterm scroll lock
+setopt no_rm_star_silent # prompt for confirmation on rm *
+stty -ixon # disable ctrl-s/ctrl-q terminal scroll lock (ultra legacy stuff that is just annoying)
 setopt interactivecomments # allow for comments starting with # directly in the command line
 
 # ssh-agent
 # ---------
-if [ ! -f "$HOME/.paps/zsh/do_not_start_ssh_agent" ]; then
+# only start ssh-agent on local sessions, not when SSHed in (-z tests if a string is zero-length)
+if [[ -z "$SSH_CONNECTION" ]]; then
 	local ssh_agent_env="$HOME/.ssh/environment-$HOST"
 	function start_ssh_agent() {
 		ssh-agent | sed 's/^echo/#echo/' > ${ssh_agent_env}
 		chmod 600 ${ssh_agent_env}
 		. ${ssh_agent_env} > /dev/null
-		ssh-add $HOME/.ssh/*_rsa
+		ssh-add
 	}
 	if [ -f "${ssh_agent_env}" ]; then
 		. ${ssh_agent_env} > /dev/null
@@ -134,8 +111,3 @@ if [ ! -f "$HOME/.paps/zsh/do_not_start_ssh_agent" ]; then
 	unset ssh_agent_env
 fi
 
-# fixes for Del, Home and End keys
-# --------------------------------
-bindkey "^[[1~" beginning-of-line
-bindkey "^[[4~" end-of-line
-bindkey "^[[3~" delete-char

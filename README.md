@@ -1,45 +1,58 @@
 Martin's dotfiles
 =================
 
-My Debian sid/unstable dotfiles, mostly intended for laptops (and in particular for Asahi macbooks at the time of writing). For a minimal server configuration, use https://github.com/paps/dotfiles-server
+My Debian dotfiles, mostly intended for laptops (and in particular for Asahi macbooks at the time of writing).
+
+For a super quick minimal install (that's also suitable for Ubuntu, headless setups, servers/VMs, containers, etc), just run:
+
+```
+curl -fsSL 'https://raw.githubusercontent.com/paps/dotfiles/refs/heads/master/min-setup-via-curl.sh' | bash
+```
+
+(if at all required, you can later seamlessly upgrade to the full dotiles by following the normal setup below)
 
 ### Shortcuts
 
 Once everything is configured correctly, these shortcuts are available:
 
 Sound
+
 * `Ctrl-Alt-[` to lower sound volume
 * `Ctrl-Alt-]` to increase sound volume
 * `Ctrl-Alt-\` to mute/unmute sound
 * `WheelUp`/`WheelDown` with the cursor positionned at the top pixel row to lower/increase sound volume
 
 Apps
+
 * `Ctrl-Alt-y` to open calculator
 * `Ctrl-Alt-s` to take a screenshot
 * `Ctrl-Alt-t` to spawn a terminal
 
 Desktop environment
+
 * `Alt-F1` to open the window switcher
 * `Alt-F2` to open rofi (app launcher)
 * `Alt-F3` to open the Openbox menu
 * `Ctrl-Alt-l` to lock
 
 Window management
+
 * `F10` to maximize/unmaximize the focused window
 * `Alt-Space` to open the window contextual menu
-* `Ctrl-Alt-d` to collapse all windows (go to desktop)
 * To go from one desktop to another:
 	* `Ctrl-Alt-HorizontalWheelLeft`/`Ctrl-Alt-HorizontalWheelRight` or
 	* `Ctrl-Alt-Left`/`Ctrl-Alt-Right` or
 	* `Ctrl-Alt-j`/`Ctrl-Alt-k`
 
 Tiling
+
 * `Ctrl-Alt-Home` or `Ctrl-Alt-MousePrev`: vertical split, left side
 * `Ctrl-Alt-End` or `Ctrl-Alt-MouseNext`: vertical split, right side
 * `Ctrl-Alt-PageUp`: horizontal split, top side
 * `Ctrl-Alt-PageDown`: horizontal split, bottom side
 
 Text editing
+
 * `Ctrl-Alt-f` to open the clipboard menu
 * `Ctrl-Alt-g` to switch input method (e.g. EN/CN)
 * `Ctrl-.` to insert an emoji (input field)
@@ -56,13 +69,13 @@ Install settings: full disk encryption, no root password, user `paps` in sudoers
 
 ### Suggested initial setup procedure
 
-* `sudo apt install vim`
-* `sudo vim /etc/apt/sources.list`
-	* `deb http://deb.debian.org/debian sid main contrib non-free`
-	* `deb http://deb.debian.org/debian experimental main contrib non-free`
+* `sudo apt install neovim`
+* `sudo nvim /etc/apt/sources.list`
+  * `deb http://deb.debian.org/debian sid main contrib non-free non-free-firmware`
+  * `deb http://deb.debian.org/debian experimental main contrib non-free non-free-firmware`
 * `sudo apt update`
 * `sudo apt dist-upgrade`
-* `sudo apt install xinit openbox xterm`
+* `sudo apt install xinit openbox alacritty`
 * `exec startx`
 * `sudo apt install htop chromium firefox geany`
 * `cd ~ ; rm -fr Videos Pictures Music Documents Desktop Public Templates`
@@ -70,10 +83,10 @@ Install settings: full disk encryption, no root password, user `paps` in sudoers
 
 ### Packages
 
-* Install base packages: `bc psmisc htop neovim vim xauth git zsh tmux tree curl inotify-tools trash-cli wget dnsutils apache2-utils p7zip-full unrar tig pv pydf zsh-doc vim-doc nmap whiptail obconf firefox gnome-terminal xterm suckless-tools feh numlockx conky-all x11-xserver-utils acpi acpid alsa-utils stalonetray fontconfig gitk libx11-dev build-essential xclip python3 libdatetime-perl zenity thunar thunar-volman thunar-archive-plugin thunar-media-tags-plugin thunar-gtkhash file-roller unar arj lhasa lzip lzop ncompress rzip unace unalz parcellite libnotify-bin ssh-askpass evince zip unzip cmake xdotool redshift pavucontrol rsync network-manager network-manager-gnome e2fsprogs logsave arandr dbus-x11 apt-transport-https ca-certificates gnupg2 software-properties-common ibus-libpinyin lemonbar rofi xss-lock xsecurelock polybar`
+* Install base packages: `bc psmisc htop xauth git zsh tmux tree curl inotify-tools trash-cli wget dnsutils apache2-utils p7zip-full unrar tig pv pydf nmap whiptail obconf firefox suckless-tools feh numlockx conky-all x11-xserver-utils acpi acpid alsa-utils stalonetray fontconfig gitk libx11-dev build-essential xclip python3 libdatetime-perl zenity thunar thunar-volman thunar-archive-plugin thunar-media-tags-plugin thunar-gtkhash file-roller unar arj lhasa lzip lzop ncompress rzip unace unalz libnotify-bin ssh-askpass evince zip unzip cmake xdotool redshift pavucontrol rsync network-manager network-manager-gnome e2fsprogs logsave arandr dbus-x11 apt-transport-https ca-certificates gnupg2 software-properties-common ibus-libpinyin lemonbar rofi xss-lock xsecurelock polybar`
 * Install fonts: `xfonts-terminus fonts-croscore ttf-mscorefonts-installer fonts-inter fonts-inter-variable fonts-hack fonts-open-sans`
 * Install themes: `mate-themes gtk2-engines greybird-gtk-theme elementary-xfce-icon-theme`
-* Install utilities: `gnome-screenshot peek gpicview ansible scrot vlc mplayer gparted transmission-remote-gtk gimp gsimplecal qalculate geany`
+* Install utilities: `parcellite gnome-screenshot peek gpicview ansible scrot vlc mplayer gparted transmission-remote-gtk gimp gsimplecal qalculate geany`
 * Recommended: `intel-microcode amd64-microcode firmware-linux` (other firmware packages might be necessary)
 * Remove: `notification-daemon xsel`
 
@@ -107,12 +120,6 @@ Then, proceed by SSHing into all relevant managed machines and execute `curl 'ht
 ### Neovim
 
 * Set Neovim as the "default editor": `sudo update-alternatives --config editor` then select nvim
-* Only once, before first run: `git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle`
-* Only once, to initialize plugins: `nvim -u ~/.paps/vim/bundles.vim +PluginInstall`
-* For updating installed plugins: `nvim +PluginUpdate`
-* For installing a new plugin added in `bundles.vim`: `nvim +PluginInstall`
-* Often needed after updates or installs: `nvim +UpdateRemotePlugins`
-* For removing unused plugins: `nvim +PluginClean`
 
 ### Solaar
 
@@ -131,6 +138,7 @@ Great to have globally: `sudo npm install -g jsonlint typescript uglify-js http-
 After having installed TypeScript, for completion support, do this: `cd ~/.vim/bundle/nvim-typescript ; ./install.sh`
 
 If you want to have a Node binary from Nodesource of a lower version than what's available in the Debian unstable repos, use pinning, e.g. edit `/etc/apt/preferences.d/99priority-to-nodesource` with this:
+
 ```
 Package: *
 Pin: origin deb.nodesource.com
@@ -181,39 +189,6 @@ I will continue having a single machine in the future, so there is reference fil
 	* Disappear after: 10s
 	* Opacity: 100%
 
-### Gnome terminal
-
-* Preferences
-	* General
-		* Uncheck all
-		* Theme: default
-		* Allow blinking text: never
-	* Shortcuts, everything disabled except:
-		* Zoom in: Ctrl++
-		* Zoom out: Ctrl+_
-		* Normal size: Ctrl+0
-		* Copy and paste: Ctrl+Shift+c, Ctrl+Shift+v
-	* Profiles: just one profile
-* Profile preferences
-	* Text
-		* Custom font: Hack Nerd Font Mono Regular 9
-		* Cursor shape: block
-		* Disabled cursor blinking
-		* No terminal bell
-	* Colors
-		* Dont use colors from system
-		* Built-in scheme: Solarized light
-		* Palette: Solarized
-	* Scrolling
-		* No scrollbar
-		* Dont scroll on output
-		* Scroll on keystroke
-		* Limit scrollback to 10000 lines
-	* Command:
-		* Run custom command instead of shell: `tmux`
-	* Compatibility: the default
-* Useful to know: `gnome-terminal --show-menubar` and shift-right-click for context menu
-
 ### Startup script
 
 **As root:** Edit `~/.paps/scripts/root-boot.sh` as needed, then run `sudo crontab -e` and add this line `@reboot sleep 5 && /home/paps/.paps/scripts/root-boot.sh` (assuming `paps` is the current user) (a sleep is added as a cheap workaround to wait for most things to be ready, daemons to be loaded, etc).
@@ -226,7 +201,7 @@ Note: when using a home directory encrypted with fscrypt, this file needs to be 
 
 ### Timezone
 
-Use `sudo dpkg-reconfigure tzdata` to change timezone. A change like this should come with a change to redshift configuration, see `openbox/autostart.sh`.
+Use `sudo dpkg-reconfigure tzdata` to change timezone.
 
 ### Accurate clock
 
@@ -323,22 +298,6 @@ To disable mouse acceleration for standard mice (i.e. not touchpads), copy `x/co
 
 Copy `x/configs/30-asahi-touchpad.conf` to `/etc/X11/xorg.conf.d/`.
 
-### Laptops (non-Asahi)
-
-`x/configs/20-intel.conf` is an example of a good integrated Intel Graphics configuration. `x/configs/30-touchpad.conf` is an example of a good touchpad configuration (but don't use this on Asahi). Copy these to `/etc/X11/xorg.conf.d/` to use them.
-
-Use `tlp` for battery optimizations: http://linrunner.de/en/tlp/docs/tlp-linux-advanced-power-management.html
-
-* `apt install tlp tlp-rdw`
-* `service tlp start`
-* `service tlp status`
-* `tlp-stat -s`
-
-Use `powertop` for monitoring power usage (however, when used in parallel with `tlp`, some of the information displayed seems wrong, beware).
-
-* `apt install powertop`
-
-Intel driver provided by package `xserver-xorg-video-intel` is deprecated and should not be used on any recent hardware. The newer alternative is referred to as the Modesetting driver. Use that.
 
 ### Laptop screen backlight and keyboard light control
 
@@ -363,18 +322,6 @@ The `xsession` defines a `$dpi` variable according to the precense of this file,
 * F keys are F keys: `# echo 2 > /sys/module/hid_apple/parameters/fnmode`
 
 If such a keyboard is present at boot (e.g. it's not a bluetooth keyboard), these options should already be set by `scripts/root-boot.sh` — no intervention required, provided the script is correctly launched by cron on @reboot.
-
-### White noise focus
-
-* Download white noise mp3 file: https://drive.google.com/file/d/1CduNogudNJpVzJ4-Y575vCMWpOzTVW61
-* Then: `cvlc --start-time=300 --stop-time=1500 --repeat noise.mp3`
-
-### Keybase
-
-* Keybase can be installed from here: https://keybase.io/docs/the_app/install_linux#ubuntu-debian-and-friends
-* Then, to start it: `run_keybase`
-* To completely stop it: `keybase ctl stop`
-* Do no forget to disable autostart with `keybase ctl autostart --disable` (https://keybase.io/docs/linux-user-guide#autostart)
 
 ### Linux kernel config
 

@@ -35,16 +35,10 @@ ln -sT "$1" ~/.paps
 
 # ssh
 mkdir -v -p ~/.ssh
-
 echo "Link: ~/.ssh/config -> ~/.paps/ssh/config"
 rm $rmflags ~/.ssh/config
 ln -sT ~/.paps/ssh/config ~/.ssh/config
 chmod -v og-rwx ~/.ssh/config
-
-echo "curl: https://github.com/paps.keys -> ~/.ssh/authorized_keys"
-rm $rmflags ~/.ssh/authorized_keys
-curl --silent 'https://github.com/paps.keys' -o ~/.ssh/authorized_keys
-chmod -v og-rwx ~/.ssh/authorized_keys
 
 # X11
 echo "Link: ~/.Xresources -> ~/.paps/x/Xresources"
@@ -135,23 +129,11 @@ echo "Link: ~/.config/parcellite/parcelliterc -> ~/.paps/parcellite/parcelliterc
 rm $rmflags ~/.config/parcellite/parcelliterc
 ln -sT ~/.paps/parcellite/parcelliterc ~/.config/parcellite/parcelliterc
 
-# vim
-echo "Link: ~/.vimrc -> ~/.paps/vim/vimrc"
-rm $rmflags ~/.vimrc
-ln -sT ~/.paps/vim/vimrc ~/.vimrc
-
-echo "Link: ~/.gvimrc -> ~/.paps/vim/gvimrc"
-rm $rmflags ~/.gvimrc
-ln -sT ~/.paps/vim/gvimrc ~/.gvimrc
-
-echo "Link: ~/.vim -> ~/.paps/vim/vim"
-rm $rmflags ~/.vim
-ln -sT ~/.paps/vim/vim ~/.vim
-
 # nvim
-echo "Link: ~/.config/nvim -> ~/.paps/vim/vim"
-rm $rmflags ~/.config/nvim
-ln -sT ~/.paps/vim/vim ~/.config/nvim
+mkdir -v -p ~/.config/nvim
+echo "Link: ~/.config/nvim/init.lua -> ~/.paps/nvim/init.lua"
+rm $rmflags ~/.config/nvim/init.lua
+ln -sT ~/.paps/nvim/init.lua ~/.config/nvim/init.lua
 
 # alacritty
 mkdir -v -p ~/.config/alacritty
@@ -163,10 +145,6 @@ ln -sT ~/.paps/alacritty/alacritty.toml ~/.config/alacritty/alacritty.toml
 echo "Link: ~/.zshrc -> ~/.paps/zsh/zshrc"
 rm $rmflags ~/.zshrc
 ln -sT ~/.paps/zsh/zshrc ~/.zshrc
-
-echo "Link: ~/.zshenv -> ~/.paps/zsh/zshenv"
-rm $rmflags ~/.zshenv
-ln -sT ~/.paps/zsh/zshenv ~/.zshenv
 
 echo "Link: ~/.inputrc -> ~/.paps/zsh/inputrc"
 rm $rmflags ~/.inputrc
@@ -182,8 +160,3 @@ echo "Link: ~/.tmux.conf -> ~/.paps/tmux/tmux.conf"
 rm $rmflags ~/.tmux.conf
 ln -sT ~/.paps/tmux/tmux.conf ~/.tmux.conf
 
-# htop
-mkdir -v -p ~/.config/htop
-echo "Link: ~/.config/htop/htoprc -> ~/.paps/htop/htoprc"
-rm $rmflags ~/.config/htop/htoprc
-ln -sT ~/.paps/htop/htoprc ~/.config/htop/htoprc

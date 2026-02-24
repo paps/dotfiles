@@ -10,8 +10,8 @@ scripts/local.sh
 x/dpi144
 x/dpi168
 x/dpi192
-zsh/do_not_start_ssh_agent
 openbox/.notification-string
+.claude
 
 # fonts
 fonts/.uuid

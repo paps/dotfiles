@@ -201,9 +201,6 @@
         <wrap>no</wrap>
       </action>
     </keybind>
-    <keybind key="C-A-d">
-      <action name="ToggleShowDesktop"/>
-    </keybind>
     <!-- Keybindings for tiling -->
     <keybind key="C-A-Prior">
       <action name="Unmaximize"/>

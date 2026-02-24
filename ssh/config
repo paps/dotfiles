@@ -15,6 +15,7 @@ Host meudon
     Port 2222
     User pi
 
-Host paris
-    HostName paris.martintapia.com
-    User paps
+Host vps-d53a2176
+    HostName 91.134.139.180
+    User ubuntu
+
