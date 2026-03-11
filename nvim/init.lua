@@ -14,42 +14,44 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true -- ignore case when searching only in lowercase
 
 -- layout
-vim.opt.number = true -- show line numbers
+vim.opt.number = false -- don't show line numbers (I like being able to copy text with the terminal selection)
 vim.opt.splitright = true -- open vertical splits to the right
 vim.opt.splitbelow = true -- open horizontal splits below
 
 -- statusline
 -- Claude-generated minimal imitation of what would have been done by the airline external plugin in the past
-local mode_config = {
-	n = { label = "NORMAL",  hl = "StlModeNormal" },
-	i = { label = "INSERT",  hl = "StlModeInsert" },
-	v = { label = "VISUAL",  hl = "StlModeVisual" },
-	V = { label = "V-LINE",  hl = "StlModeVisual" },
-	["\22"] = { label = "V-BLOCK", hl = "StlModeVisual" },
-	R = { label = "REPLACE", hl = "StlModeReplace" },
-	c = { label = "COMMAND", hl = "StlModeCommand" },
-	t = { label = "TERMINAL", hl = "StlModeInsert" },
-}
--- set some 'semantic' colors based on the current theme (not important, it's just to have the mode change color)
-vim.api.nvim_set_hl(0, "StlModeNormal",  { link = "CurSearch" })
-vim.api.nvim_set_hl(0, "StlModeInsert",  { link = "DiffAdd" })
-vim.api.nvim_set_hl(0, "StlModeVisual",  { link = "Visual" })
-vim.api.nvim_set_hl(0, "StlModeReplace", { link = "DiffDelete" })
-vim.api.nvim_set_hl(0, "StlModeCommand", { link = "WarningMsg" })
-function Statusline()
-	local m = mode_config[vim.fn.mode()] or { label = vim.fn.mode(), hl = "StlModeNormal" }
-	local file = vim.fn.expand("%:f")
-	if file == "" then file = "[No Name]" end
-	local modified = vim.bo.modified and " [+]" or ""
-	local readonly = vim.bo.readonly and " [RO]" or ""
-	local ft = vim.bo.filetype ~= "" and vim.bo.filetype or "none"
-	local pos = string.format("%d:%d %d%%%%", vim.fn.line("."), vim.fn.col("."), math.floor(vim.fn.line(".") * 100 / math.max(vim.fn.line("$"), 1)))
-	return "%#" .. m.hl .. "# " .. m.label .. " %#StatusLine# " .. file .. modified .. readonly .. "%=" .. ft .. "  " .. pos .. " "
+if not vim.g.vscode then
+	local mode_config = {
+		n = { label = "NORMAL",  hl = "StlModeNormal" },
+		i = { label = "INSERT",  hl = "StlModeInsert" },
+		v = { label = "VISUAL",  hl = "StlModeVisual" },
+		V = { label = "V-LINE",  hl = "StlModeVisual" },
+		["\22"] = { label = "V-BLOCK", hl = "StlModeVisual" },
+		R = { label = "REPLACE", hl = "StlModeReplace" },
+		c = { label = "COMMAND", hl = "StlModeCommand" },
+		t = { label = "TERMINAL", hl = "StlModeInsert" },
+	}
+	-- set some 'semantic' colors based on the current theme (not important, it's just to have the mode change color)
+	vim.api.nvim_set_hl(0, "StlModeNormal",  { link = "CurSearch" })
+	vim.api.nvim_set_hl(0, "StlModeInsert",  { link = "DiffAdd" })
+	vim.api.nvim_set_hl(0, "StlModeVisual",  { link = "Visual" })
+	vim.api.nvim_set_hl(0, "StlModeReplace", { link = "DiffDelete" })
+	vim.api.nvim_set_hl(0, "StlModeCommand", { link = "WarningMsg" })
+	function Statusline()
+		local m = mode_config[vim.fn.mode()] or { label = vim.fn.mode(), hl = "StlModeNormal" }
+		local file = vim.fn.expand("%:f")
+		if file == "" then file = "[No Name]" end
+		local modified = vim.bo.modified and " [+]" or ""
+		local readonly = vim.bo.readonly and " [RO]" or ""
+		local ft = vim.bo.filetype ~= "" and vim.bo.filetype or "none"
+		local pos = string.format("%d:%d %d%%%%", vim.fn.line("."), vim.fn.col("."), math.floor(vim.fn.line(".") * 100 / math.max(vim.fn.line("$"), 1)))
+		return "%#" .. m.hl .. "# " .. m.label .. " %#StatusLine# " .. file .. modified .. readonly .. "%=" .. ft .. "  " .. pos .. " "
+	end
+	vim.opt.statusline = "%!v:lua.Statusline()"
 end
-vim.opt.statusline = "%!v:lua.Statusline()"
 
 -- other stuff
-vim.opt.wrap = false -- do not wrap long lines
+vim.opt.wrap = false -- do not wrap long lines initially (use <Space>w to toggle)
 vim.opt.scrolloff = 3 -- offset of 3 lines around the cursor
 vim.opt.undofile = true -- persist undo history to disk so it survives closing and reopening files
 vim.opt.modelines = 0 -- disable modelines (special vim comments in files) to avoid security exploits
@@ -74,7 +76,7 @@ end
 vim.keymap.set("", "<C-U>", "5k")
 vim.keymap.set("", "<C-D>", "5j")
 
--- disable ex mode
+-- disable ex mode (legacy thing from the 80s)
 vim.keymap.set("", "Q", "<NOP>")
 
 -- make :W work like :w, same for :Q, etc (shitty typing skills!)
@@ -114,18 +116,24 @@ vim.keymap.set("", "<Leader>j", "<Cmd>nohlsearch<CR>")
 vim.keymap.set("", "<Leader>w", "<Cmd>set wrap!<CR>")
 
 -- file browser
-vim.keymap.set("", "<Leader>n", "<Cmd>Lexplore<CR>")
--- netrw "sidebar-ish" defaults
-vim.g.netrw_banner = 0 -- hide banner
-vim.g.netrw_liststyle = 3 -- tree view
-vim.g.netrw_winsize = 25 -- sidebar width (%)
--- when opening files from netrw, prefer a split instead of replacing
--- 0 = reuse window, 1 = horizontal, 2 = vertical, 3 = new tab, 4 = open in previous window (so if netrw is in a sidebar, open in main area)
-vim.g.netrw_browse_split = 4
--- make 'o' behave like in nerdtree, i.e. same as Enter in netrw
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = "netrw",
-  callback = function()
-    vim.keymap.set("n", "o", "<CR>", { buffer = true, remap = true })
-  end,
-})
+if not vim.g.vscode then
+	vim.keymap.set("", "<Leader>n", "<Cmd>Lexplore<CR>")
+	-- netrw "sidebar-ish" defaults
+	vim.g.netrw_banner = 0 -- hide banner
+	vim.g.netrw_liststyle = 3 -- tree view
+	vim.g.netrw_winsize = 25 -- sidebar width (%)
+	-- behavior when opening a file from netrw:
+	--   0 = reuse window,
+	--   1 = horizontal,
+	--   2 = vertical,
+	--   3 = new tab,
+	--   4 = open in previous window (so if netrw is in a sidebar, open in main area)
+	vim.g.netrw_browse_split = 4
+	-- make 'o' behave like in nerdtree, i.e. same as Enter in netrw
+	vim.api.nvim_create_autocmd("FileType", {
+		pattern = "netrw",
+		callback = function()
+			vim.keymap.set("n", "o", "<CR>", { buffer = true, remap = true })
+		end,
+	})
+end
