@@ -33,8 +33,8 @@ SAVEHIST=30000  # max entries written to file
 # --------
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' check-for-changes true
-zstyle ':vcs_info:*' formats '%F{magenta}(%b%u%c)%f '
-zstyle ':vcs_info:*' actionformats '%F{magenta}(%b|%a%u%c)%f '
+zstyle ':vcs_info:*' formats '%F{yellow}(%b%u%c)%f '
+zstyle ':vcs_info:*' actionformats '%F{yellow}(%b|%a%u%c)%f '
 zstyle ':vcs_info:*' stagedstr '+'
 zstyle ':vcs_info:*' unstagedstr '*'
 zstyle ':vcs_info:*' enable git
@@ -63,10 +63,23 @@ autoload -Uz edit-command-line
 zle -N edit-command-line
 bindkey -M vicmd 'v' edit-command-line
 
+# detect container environment
+# ----------------------------
+if [[ -f /.dockerenv ]]; then
+	_CONTAINER_TYPE='docker'
+elif [[ -n "$container" ]]; then
+	_CONTAINER_TYPE="$container"
+elif [[ -f /run/.containerenv ]]; then # podman creates this file, but also sets $container (?) so this one is a bit redundant
+	_CONTAINER_TYPE='podman'
+else
+	_CONTAINER_TYPE=''
+fi
+
 # prompt
 # ------
 setopt prompt_subst # allow variable expansion in PS1
 # show [N] when in vi normal mode, nothing in insert mode
+# (clobbers any existing zle-line-init widget but it's fine, we just need this)
 function zle-keymap-select zle-line-init {
 	VI_MODE="${${KEYMAP/vicmd/[N] }/(main|viins)/}"
 	zle reset-prompt
@@ -74,13 +87,18 @@ function zle-keymap-select zle-line-init {
 # register widgets to update vi mode indicator on keymap change and line init
 zle -N zle-keymap-select
 zle -N zle-line-init
-# [N] ↪exit_code [user@host:]path
-# vi mode indicator, exit code in red only if non-zero, user@host only when SSHed in, path in blue
-if [[ -n "$SSH_CONNECTION" ]]; then
-	PS1='${VI_MODE}%(?..%F{red}↪%?%f )${vcs_info_msg_0_}%F{green}%n%f@%F{yellow}%m%f:%B%F{blue}%~%f%b› '
+
+# [N] [↪exit_code] [git_info] [container_type] [user@host:]path
+if [[ -n "$_CONTAINER_TYPE" || -n "$SSH_CONNECTION" ]]; then
+	if [[ -n "$_CONTAINER_TYPE" ]]; then
+		_PS1_CONTEXT="%F{cyan}[${_CONTAINER_TYPE}]%f %F{green}%n%f@%F{yellow}%m%f:"
+	else
+		_PS1_CONTEXT="%F{green}%n%f@%F{yellow}%m%f:"
+	fi
 else
-	PS1='${VI_MODE}%(?..%F{red}↪%?%f )${vcs_info_msg_0_}%B%F{blue}%~%f%b› '
+	_PS1_CONTEXT=''
 fi
+PS1='${VI_MODE}%(?..%F{red}↪%?%f )${vcs_info_msg_0_}${_PS1_CONTEXT}%B%F{blue}%~%f%b❯ '
 
 # other stuff...
 # --------------
@@ -90,9 +108,9 @@ setopt interactivecomments # allow for comments starting with # directly in the 
 
 # ssh-agent
 # ---------
-# only start ssh-agent on local sessions, not when SSHed in (-z tests if a string is zero-length)
-if [[ -z "$SSH_CONNECTION" ]]; then
-	local ssh_agent_env="$HOME/.ssh/environment-$HOST"
+# only start ssh-agent on local non-container sessions (-z tests if a string is zero-length)
+if [[ -z "$SSH_CONNECTION" && -z "$_CONTAINER_TYPE" ]]; then
+	local ssh_agent_env="$HOME/.ssh/environment-$HOST" # local at top level is a no-op (acts as typeset), just for readability
 	function start_ssh_agent() {
 		ssh-agent | sed 's/^echo/#echo/' > ${ssh_agent_env}
 		chmod 600 ${ssh_agent_env}
@@ -102,10 +120,10 @@ if [[ -z "$SSH_CONNECTION" ]]; then
 	if [ -f "${ssh_agent_env}" ]; then
 		. ${ssh_agent_env} > /dev/null
 		ps x | grep ${SSH_AGENT_PID} | grep ssh-agent > /dev/null || {
-			start_ssh_agent;
+			start_ssh_agent
 		}
 	else
-		start_ssh_agent;
+		start_ssh_agent
 	fi
 	unfunction start_ssh_agent
 	unset ssh_agent_env
