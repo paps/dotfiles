@@ -1,3 +1,6 @@
+# This file is ran from the base tty when we start the session with
+# `exec startx`
+
 if [ -f ~/.paps/x/dpi144 ] ; then
 	dpi=144
 else
@@ -27,4 +30,13 @@ export GTK_OVERLAY_SCROLLING=0 # disable gtk3 scrollbar auto hide
 #export GDK_SCALE=2
 #export GDK_DPI_SCALE=0.5
 
-exec dbus-launch --exit-with-session openbox-session
+# When this script is running, we're already in an open login session with systemd running,
+# and a dbus bus, etc, because we already logged in on the base tty. So, at the time, there
+# were no X env vars set.
+# Now that X has started (as this script is running as a result of `exec startx`), we need
+# to propagate the new important env vars to our already existing dbus bus and systemd
+# session, which is what this command does.
+dbus-update-activation-environment --systemd DISPLAY XAUTHORITY
+
+# Start the window manager, which will run openbox/autostart.sh soon after
+exec openbox-session
