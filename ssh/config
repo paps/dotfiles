@@ -6,10 +6,6 @@ Host *
     Compression yes
     ControlPath ~/.ssh/cm_socket_%r@%h:%p
 
-Host box
-    HostName box.martintapia.com
-    User paps
-
 Host meudon
     HostName meudon.martintapia.com
     Port 2222
