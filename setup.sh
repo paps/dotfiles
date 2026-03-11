@@ -49,10 +49,6 @@ echo "Link: ~/.xsession -> ~/.paps/x/xsession"
 rm $rmflags ~/.xsession
 ln -sT ~/.paps/x/xsession ~/.xsession
 
-echo "Link: ~/.xinitrc -> ~/.paps/x/xsession"
-rm $rmflags ~/.xinitrc
-ln -sT ~/.paps/x/xsession ~/.xinitrc
-
 echo "Link: ~/.Xmodmap -> ~/.paps/x/Xmodmap"
 rm $rmflags ~/.Xmodmap
 ln -sT ~/.paps/x/Xmodmap ~/.Xmodmap
