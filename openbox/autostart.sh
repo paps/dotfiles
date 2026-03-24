@@ -2,6 +2,7 @@
 xset s on
 xset s noblank # don't make screensaver shutdown screens, xsecurelock will do it
 xset s 1200 # screensaver at 20min
+xset -dpms
 
 ~/.paps/x/input-config.sh
 xsetroot -solid black

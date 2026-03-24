@@ -3,6 +3,7 @@ set -euo pipefail
 
 # Minimal nice setup for Debian/Ubuntu
 # curl-bash friendly, non-interactive, idempotent
+# Meant to be used on distant hosts, new machines and containers, including dev containers
 
 # Usage: curl -fsSL 'https://raw.githubusercontent.com/paps/dotfiles/refs/heads/master/min-setup-via-curl.sh' | bash
 
@@ -15,7 +16,7 @@ sudo apt-get update
 echo ""
 echo "==> Installing packages..."
 echo "//////////////////////////"
-sudo apt-get install -y zsh htop neovim git trash-cli
+sudo apt-get install -y zsh htop neovim git trash-cli ripgrep
 
 REPO_RAW="https://raw.githubusercontent.com/paps/dotfiles/refs/heads/master"
 
