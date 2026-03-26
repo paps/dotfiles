@@ -18,12 +18,17 @@ echo "==> Installing packages..."
 echo "//////////////////////////"
 sudo apt-get install -y zsh htop neovim git trash-cli ripgrep
 
-REPO_RAW="https://raw.githubusercontent.com/paps/dotfiles/refs/heads/master"
-
 echo ""
 echo "==> Downloading ~/.zshrc..."
 echo "///////////////////////////"
-curl -fsSL "$REPO_RAW/zsh/zshrc" -o ~/.zshrc
+curl -fsSL "https://raw.githubusercontent.com/paps/dotfiles/refs/heads/master/zsh/zshrc" -o ~/.zshrc
+
+echo ""
+echo "==> Configuring git..."
+echo "//////////////////////"
+git config --global alias.st status
+git config --global alias.ci commit
+git config --global alias.co checkout
 
 echo ""
 # Set zsh as default shell for current user
@@ -42,7 +47,7 @@ echo ""
 echo "==> Downloading ~/.config/nvim/init.lua..."
 echo "//////////////////////////////////////////"
 mkdir -p ~/.config/nvim
-curl -fsSL "$REPO_RAW/nvim/init.lua" -o ~/.config/nvim/init.lua
+curl -fsSL "https://raw.githubusercontent.com/paps/dotfiles/refs/heads/master/nvim/init.lua" -o ~/.config/nvim/init.lua
 
 # Tailscale hints
 echo ""
