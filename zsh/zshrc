@@ -1,6 +1,6 @@
 # env
 # ---
-export PATH="$PATH:$HOME/.paps/bin"
+export PATH="$PATH:$HOME/.paps/bin:$HOME/.local/bin"
 export EDITOR='nvim'
 export MANPAGER='nvim +Man!'
 #export LESS='-RiM' # less config: colors, smart-case search, verbose prompt
