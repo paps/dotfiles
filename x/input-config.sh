@@ -24,3 +24,7 @@ setxkbmap -option -option ctrl:swapcaps -option compose:ralt -option compose:rct
 xmodmap ~/.Xmodmap
 
 numlockx on
+
+# ensure Caps Lock is off after remapping
+# xdotool toggles, so only call it when Caps Lock is on
+xset -q | grep -q "Caps Lock:   on" && xdotool key Caps_Lock
