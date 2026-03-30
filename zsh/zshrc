@@ -81,10 +81,13 @@ fi
 # prompt
 # ------
 setopt prompt_subst # allow variable expansion in PS1
-# show [N] when in vi normal mode, nothing in insert mode
+# reverse video on path in vi normal mode, nothing in insert mode
 # (clobbers any existing zle-line-init widget but it's fine, we just need this)
 function zle-keymap-select zle-line-init {
-	VI_MODE="${${KEYMAP/vicmd/[N] }/(main|viins)/}"
+	case $KEYMAP in
+		vicmd) VI_PATH_START='%S'; VI_PATH_END='%s' ;;
+		*)     VI_PATH_START='';   VI_PATH_END=''   ;;
+	esac
 	zle reset-prompt
 }
 # register widgets to update vi mode indicator on keymap change and line init
@@ -101,7 +104,7 @@ if [[ -n "$_CONTAINER_TYPE" || -n "$SSH_CONNECTION" ]]; then
 else
 	_PS1_CONTEXT=''
 fi
-PS1='${VI_MODE}%(?..%F{red}↪%?%f )${vcs_info_msg_0_}${_PS1_CONTEXT}%B%F{blue}%~%f%b❯ '
+PS1='%(?..%F{red}↪%?%f )${vcs_info_msg_0_}${_PS1_CONTEXT}${VI_PATH_START}%B%F{blue}%~%f%b${VI_PATH_END}❯ '
 
 # other stuff...
 # --------------
