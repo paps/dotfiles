@@ -16,7 +16,7 @@ sudo apt-get update
 echo ""
 echo "==> Installing packages..."
 echo "//////////////////////////"
-sudo apt-get install -y zsh htop neovim git trash-cli ripgrep
+sudo apt-get install -y zsh htop neovim git trash-cli ripgrep tree
 
 echo ""
 echo "==> Downloading ~/.zshrc..."
