@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# tailvad - set a Tailscale VPN exit node by country, or turn it off
+# Usage: tailvad <country|off>
+# Called via the 'tailvad' alias in zshrc
+
 set -euo pipefail
 
 if [ $# -ne 1 ]; then

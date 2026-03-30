@@ -3,7 +3,6 @@
 export PATH="$PATH:$HOME/.paps/bin:$HOME/.local/bin"
 export EDITOR='nvim'
 export MANPAGER='nvim +Man!'
-#export LESS='-RiM' # less config: colors, smart-case search, verbose prompt
 
 # aliases
 # -------
@@ -18,8 +17,7 @@ alias grep='grep --color=auto'
 alias vim="echo 'choose between nvim and \\\vim' ; false"
 alias vi="echo 'choose between nvim and \\\vim' ; false"
 alias vimdiff="echo 'choose between nvim -d and \\\vimdiff' ; false"
-alias del='trash-put'
-alias rm="echo 'choose between del (trash-put) and \\\rm' ; false"
+alias del='trash-put' # useful when trash-cli is installed
 alias tailvad="$HOME/.paps/scripts/tailvad.sh"
 
 # history
