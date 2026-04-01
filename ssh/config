@@ -15,3 +15,6 @@ Host vps-d53a2176
     HostName 91.134.139.180
     User ubuntu
 
+Host ubuntu-4gb-sin-1
+    HostName 5.223.89.193
+
