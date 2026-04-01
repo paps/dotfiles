@@ -16,19 +16,24 @@ sudo apt-get update
 echo ""
 echo "==> Installing packages..."
 echo "//////////////////////////"
-sudo apt-get install -y zsh htop neovim git ripgrep tree
+sudo apt-get install -y zsh htop neovim git ripgrep tree tmux
+
+echo ""
+echo "==> Downloading ~/.tmux.conf..."
+echo "///////////////////////////////"
+curl -fsSL "https://raw.githubusercontent.com/paps/dotfiles/refs/heads/master/tmux/tmux.conf" -o ~/.tmux.conf
+
+echo ""
+echo "==> Setting up git aliases..."
+echo "/////////////////////////////"
+git config --global alias.st status
+git config --global alias.ci commit
+git config --global alias.co checkout
 
 echo ""
 echo "==> Downloading ~/.zshrc..."
 echo "///////////////////////////"
 curl -fsSL "https://raw.githubusercontent.com/paps/dotfiles/refs/heads/master/zsh/zshrc" -o ~/.zshrc
-
-echo ""
-echo "==> Configuring git..."
-echo "//////////////////////"
-git config --global alias.st status
-git config --global alias.ci commit
-git config --global alias.co checkout
 
 echo ""
 # Set zsh as default shell for current user
