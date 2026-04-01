@@ -318,7 +318,7 @@
     </keybind>
     <keybind key="C-A-t">
       <action name="Execute">
-        <command>alacritty --command tmux</command>
+        <command>alacritty -e ~/.paps/openbox/tmux-or-zsh-question.sh</command>
       </action>
     </keybind>
     <keybind key="C-A-l">
