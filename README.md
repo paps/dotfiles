@@ -6,8 +6,10 @@ My Debian dotfiles, mostly intended for laptops (and in particular for Asahi mac
 For a super quick minimal install (that's also suitable for Ubuntu, headless setups, servers/VMs, containers, etc), just run:
 
 ```bash
-curl -fsSL 'https://raw.githubusercontent.com/paps/dotfiles/refs/heads/master/min-setup-via-curl.sh' | bash
+curl -fsSL "https://raw.githubusercontent.com/paps/dotfiles/refs/heads/master/min-setup-via-curl.sh?$(date +%s)" | bash
 ```
+
+(the `?$(date +%s)` cache-busts the URL so GitHub's CDN always serves the latest version)
 
 (if at all required, you can later seamlessly upgrade to the full dotiles by following the normal setup below)
 

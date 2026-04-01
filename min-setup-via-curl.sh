@@ -4,8 +4,9 @@ set -euo pipefail
 # Minimal nice setup for Debian/Ubuntu
 # curl-bash friendly, non-interactive, idempotent
 # Meant to be used on distant hosts, new machines and containers, including dev containers
+# All file downloads use cache-busted URLs to ensure fresh content is always fetched from GitHub
 
-# Usage: curl -fsSL 'https://raw.githubusercontent.com/paps/dotfiles/refs/heads/master/min-setup-via-curl.sh' | bash
+# Usage: curl -fsSL "https://raw.githubusercontent.com/paps/dotfiles/refs/heads/master/min-setup-via-curl.sh?$(date +%s)" | bash
 
 export DEBIAN_FRONTEND=noninteractive
 
@@ -21,7 +22,7 @@ sudo apt-get install -y zsh htop neovim git ripgrep tree tmux
 echo ""
 echo "==> Downloading ~/.tmux.conf..."
 echo "///////////////////////////////"
-curl -fsSL "https://raw.githubusercontent.com/paps/dotfiles/refs/heads/master/tmux/tmux.conf" -o ~/.tmux.conf
+curl -fsSL "https://raw.githubusercontent.com/paps/dotfiles/refs/heads/master/tmux/tmux.conf?$(date +%s)" -o ~/.tmux.conf
 
 echo ""
 echo "==> Setting up git aliases..."
@@ -33,7 +34,7 @@ git config --global alias.co checkout
 echo ""
 echo "==> Downloading ~/.zshrc..."
 echo "///////////////////////////"
-curl -fsSL "https://raw.githubusercontent.com/paps/dotfiles/refs/heads/master/zsh/zshrc" -o ~/.zshrc
+curl -fsSL "https://raw.githubusercontent.com/paps/dotfiles/refs/heads/master/zsh/zshrc?$(date +%s)" -o ~/.zshrc
 
 echo ""
 # Set zsh as default shell for current user
@@ -52,7 +53,7 @@ echo ""
 echo "==> Downloading ~/.config/nvim/init.lua..."
 echo "//////////////////////////////////////////"
 mkdir -p ~/.config/nvim
-curl -fsSL "https://raw.githubusercontent.com/paps/dotfiles/refs/heads/master/nvim/init.lua" -o ~/.config/nvim/init.lua
+curl -fsSL "https://raw.githubusercontent.com/paps/dotfiles/refs/heads/master/nvim/init.lua?$(date +%s)" -o ~/.config/nvim/init.lua
 
 # Tailscale hints
 echo ""
