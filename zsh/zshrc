@@ -102,7 +102,7 @@ if [[ -n "$_CONTAINER_TYPE" || -n "$SSH_CONNECTION" ]]; then
 else
 	_PS1_CONTEXT=''
 fi
-PS1='%(?..%F{red}↪%?%f )${vcs_info_msg_0_}${_PS1_CONTEXT}${VI_PATH_START}%B%F{blue}%~%f%b${VI_PATH_END}❯ '
+PS1='%(?..%F{red}↪%?%f )${vcs_info_msg_0_}${VI_PATH_START}${_PS1_CONTEXT}%B%F{blue}%~%f%b${VI_PATH_END}❯ '
 
 # other stuff...
 # --------------
