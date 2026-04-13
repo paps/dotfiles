@@ -60,7 +60,7 @@ while true; do
     then
         # xsecurelock will activate soon, so we notify
         $HOME/.paps/openbox/publish-notification.sh "%{c}Locking in ${timeleft}s"
-        ffplay -nodisp -t 0.11 -autoexit -volume 50 "$HOME/.paps/systemd/floraphonic-minimal-pop-click-ui-1-198301.mp3" || true
+        ffplay -nodisp -t 0.11 -autoexit -volume 25 "$HOME/.paps/systemd/floraphonic-minimal-pop-click-ui-1-198301.mp3" || true
         sleep 5
     else
         # xsecurelock will activate in a long time, so we wait until the last moment to re-check again
