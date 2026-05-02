@@ -11,7 +11,7 @@ curl -fsSL "https://raw.githubusercontent.com/paps/dotfiles/refs/heads/master/mi
 
 (the `?$(date +%s)` cache-busts the URL so GitHub's CDN always serves the latest version)
 
-(if at all required, you can later seamlessly upgrade to the full dotiles by following the normal setup below)
+(if at all required, you can later seamlessly upgrade to the full dotfiles by following the normal setup below)
 
 ### Shortcuts
 
