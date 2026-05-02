@@ -13,11 +13,22 @@ fi
 
 COUNTRY="$1"
 
+is_up() {
+    tailscale status > /dev/null 2>&1
+}
+
 if [ "$COUNTRY" = "off" ]; then
+    if ! is_up; then
+        echo "Tailscale is not running, nothing to do."
+        exit 0
+    fi
     tailscale set --exit-node=
     tailscale down
     tailscale up
 else
+    if ! is_up; then
+        tailscale up
+    fi
     NODES=$(tailscale exit-node list --filter="$COUNTRY" | awk '/^[[:space:]]+[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+/ {print $2}')
 
     NODE_COUNT=$(echo "$NODES" | wc -l)
