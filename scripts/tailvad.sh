@@ -19,7 +19,7 @@ is_up() {
 
 if [ "$COUNTRY" = "off" ]; then
     if ! is_up; then
-        echo "Tailscale is not running, nothing to do."
+        echo "Tailscale is not running, nothing to do"
         exit 0
     fi
     tailscale set --exit-node=
@@ -27,6 +27,7 @@ if [ "$COUNTRY" = "off" ]; then
     tailscale up
 else
     if ! is_up; then
+        echo "Tailscale is not running, starting it"
         tailscale up
     fi
     NODES=$(tailscale exit-node list --filter="$COUNTRY" | awk '/^[[:space:]]+[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+/ {print $2}')
