@@ -843,6 +843,9 @@
     <application class="firefox">
       <decor>no</decor>
     </application>
+    <application class="dev.zed.Zed">
+      <decor>no</decor>
+    </application>
     <application class="obsidian">
       <decor>no</decor>
     </application>
