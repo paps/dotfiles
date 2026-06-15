@@ -49,6 +49,24 @@ import { execFileSync } from "node:child_process";
 const PRIMARY_DESKTOP_NAME = "Primary";
 const SECONDARY_DESKTOP_NAME = "Secondary";
 
+// ── Colors (skipped when not a TTY, or when NO_COLOR is set) ─────────────────
+
+const useColor = process.stdout.isTTY === true && !process.env.NO_COLOR;
+const paint = (code: string) => (s: string) =>
+  useColor ? `\x1b[${code}m${s}\x1b[0m` : s;
+const dim = paint("2");
+const bold = paint("1");
+const red = paint("31");
+const green = paint("32");
+const yellow = paint("33");
+const cyan = paint("36");
+const magenta = paint("35");
+
+/** Shorten a string to at most `n` chars, marking truncation with an ellipsis. */
+function truncate(s: string, n: number): string {
+  return s.length <= n ? s : s.slice(0, n - 1) + "…";
+}
+
 // ── Tiny shell helpers (no shell, no injection) ─────────────────────────────
 
 function run(cmd: string, args: string[]): string {
@@ -71,7 +89,7 @@ function requireBinary(name: string): void {
 }
 
 function fail(msg: string): never {
-  console.error(`monitor-switch: ${msg}`);
+  console.error(`${red("monitor-switch:")} ${msg}`);
   process.exit(1);
 }
 
@@ -96,6 +114,7 @@ interface Win {
   desktop: number; // -1 == sticky/all
   geom: Rect; // FRAME-outer rect in true root coords (decorations included)
   frame: FrameExtents; // _NET_FRAME_EXTENTS captured at read time
+  state: WinState; // _NET_WM_STATE flags we care about (maximized / fullscreen)
   cls: string; // WM_CLASS
   title: string;
 }
@@ -274,6 +293,7 @@ function listWindows(): Win[] {
         h: rh + fe.top + fe.bottom,
       },
       frame: fe,
+      state: windowState(id),
       cls: m[7],
       title: m[9],
     });
@@ -304,6 +324,53 @@ function frameExtents(id: string): FrameExtents {
     top: Number(m[3]),
     bottom: Number(m[4]),
   };
+}
+
+// ── Window state (maximized / fullscreen) ───────────────────────────────────
+
+interface WinState {
+  fullscreen: boolean;
+  maxVert: boolean;
+  maxHorz: boolean;
+}
+
+/** Read the _NET_WM_STATE flags we treat specially when moving a window. */
+function windowState(id: string): WinState {
+  const out = tryRun("xprop", ["-id", id, "_NET_WM_STATE"]);
+  return {
+    fullscreen: /_NET_WM_STATE_FULLSCREEN/.test(out),
+    maxVert: /_NET_WM_STATE_MAXIMIZED_VERT/.test(out),
+    maxHorz: /_NET_WM_STATE_MAXIMIZED_HORZ/.test(out),
+  };
+}
+
+/** Is the window maximized or fullscreen (so its restore geometry needs care)? */
+function isMaximizedOrFull(s: WinState): boolean {
+  return s.fullscreen || s.maxVert || s.maxHorz;
+}
+
+/** A short tag like "fullscreen" / "max" / "fullscreen+max" for logging. */
+function stateTag(s: WinState): string {
+  return [s.fullscreen ? "fullscreen" : "", s.maxVert || s.maxHorz ? "max" : ""]
+    .filter(Boolean)
+    .join("+");
+}
+
+/**
+ * Add or remove a window's maximized/fullscreen states via `wmctrl -b`. We send
+ * the maximized pair in one call and fullscreen in another: `wmctrl -b` accepts
+ * at most two properties per invocation.
+ */
+function applyState(id: string, action: "add" | "remove", s: WinState): void {
+  const max: string[] = [];
+  if (s.maxVert) max.push("maximized_vert");
+  if (s.maxHorz) max.push("maximized_horz");
+  if (max.length) {
+    run("wmctrl", ["-i", "-r", id, "-b", `${action},${max.join(",")}`]);
+  }
+  if (s.fullscreen) {
+    run("wmctrl", ["-i", "-r", id, "-b", `${action},fullscreen`]);
+  }
 }
 
 // ── The core proportional remap ─────────────────────────────────────────────
@@ -340,9 +407,11 @@ function mapFrame(win: Win, from: Rect, to: Rect): Rect {
   const t = remap(win.geom, from, to);
   if (overlaps(t, to)) return t;
   console.log(
-    `  warning: ${win.cls} "${win.title}" would map off-screen to ` +
-      `(${t.x},${t.y} ${t.w}x${t.h}); placing at destination top-left ` +
-      `(${to.x},${to.y}) instead`,
+    yellow(
+      `  warning: ${win.cls} "${win.title}" would map off-screen to ` +
+        `(${t.x},${t.y} ${t.w}x${t.h}); placing at destination top-left ` +
+        `(${to.x},${to.y}) instead`,
+    ),
   );
   return { x: to.x, y: to.y, w: t.w, h: t.h };
 }
@@ -377,20 +446,34 @@ function applyPlan(p: Plan, dryRun: boolean): void {
     // the actual client size written is `${w}x${h}`.
     const g = p.win.geom;
     const t = p.target;
+    const tag = isMaximizedOrFull(p.win.state)
+      ? `${yellow(`[${stateTag(p.win.state)}]`)} `
+      : "";
     console.log(
-      `${dryRun ? "[dry] " : ""}${p.win.cls.padEnd(24)} ` +
-        `(${g.x},${g.y} ${g.w}x${g.h}) d${p.win.desktop}` +
-        `  ->  (${t.x},${t.y} ${t.w}x${t.h}) d${p.toDesktop}` +
-        `  [client ${w}x${h}]   ${p.win.title}`,
+      `${dryRun ? dim("[dry] ") : ""}${bold(p.win.cls.padEnd(24))} ` +
+        dim(`(${g.x},${g.y} ${g.w}x${g.h}) d${p.win.desktop}`) +
+        `  ${green("->")}  ` +
+        `(${t.x},${t.y} ${t.w}x${t.h}) d${p.toDesktop}` +
+        `  ${dim(`[client ${w}x${h}]`)} ${tag}  ${magenta(truncate(p.win.title, 30))}`,
     );
   }
   if (dryRun) return;
+
+  // Maximized/fullscreen windows keep a separate "restore" geometry that a plain
+  // `wmctrl -e` does NOT touch — so on un-maximize/exit-fullscreen they'd snap
+  // back to their old monitor. Dropping the state first makes the geometry we
+  // write become the new restore point; re-adding it leaves the window
+  // maximized/fullscreen on the destination monitor.
+  const maxOrFull = isMaximizedOrFull(p.win.state);
+  if (maxOrFull) applyState(p.win.id, "remove", p.win.state);
 
   // Reposition first (geometry is retained across desktops), then move desktop.
   run("wmctrl", ["-i", "-r", p.win.id, "-e", geomArg]);
   if (p.win.desktop !== p.toDesktop) {
     run("wmctrl", ["-i", "-r", p.win.id, "-t", String(p.toDesktop)]);
   }
+
+  if (maxOrFull) applyState(p.win.id, "add", p.win.state);
 }
 
 // ── Modes ───────────────────────────────────────────────────────────────────
@@ -408,8 +491,12 @@ function goSingle(dryRun: boolean): void {
     if (centreX(win.geom) < layout.ext.x) continue; // already on the laptop
     plans.push({
       win,
-      // usable external region -> usable laptop region (both strut-clipped tops)
-      target: mapFrame(win, layout.extWork, layout.lapWork),
+      // Maximized/fullscreen windows just land on the laptop work area and get
+      // re-maximized there; everyone else is remapped proportionally from the
+      // usable external region into the usable laptop region (strut-clipped tops).
+      target: isMaximizedOrFull(win.state)
+        ? layout.lapWork
+        : mapFrame(win, layout.extWork, layout.lapWork),
       toDesktop: secondary,
     });
   }
@@ -435,8 +522,12 @@ function goDual(dryRun: boolean): void {
     if (win.desktop !== secondary) continue; // bring everything off Secondary
     plans.push({
       win,
-      // usable laptop region -> usable external region; exact inverse of `single`
-      target: mapFrame(win, layout.lapWork, layout.extWork),
+      // Maximized/fullscreen windows just land on the external work area and get
+      // re-maximized there; everyone else is remapped proportionally from the
+      // usable laptop region into the usable external region (inverse of `single`).
+      target: isMaximizedOrFull(win.state)
+        ? layout.extWork
+        : mapFrame(win, layout.lapWork, layout.extWork),
       toDesktop: primary,
     });
   }
@@ -453,11 +544,13 @@ function goDual(dryRun: boolean): void {
 
 function report(what: string, n: number, layout: Layout): void {
   console.log(
-    `${what}: ${n} window(s)  ` +
-      `| laptop ${layout.lap.name} usable ${layout.lapWork.w}x${layout.lapWork.h}` +
-      `@${layout.lapWork.x},${layout.lapWork.y}` +
-      ` | external ${layout.ext.name} usable ${layout.extWork.w}x${layout.extWork.h}` +
-      `@${layout.extWork.x},${layout.extWork.y}`,
+    `${cyan(bold(what))}: ${n} window(s)  ` +
+      dim(
+        `| laptop ${layout.lap.name} usable ${layout.lapWork.w}x${layout.lapWork.h}` +
+          `@${layout.lapWork.x},${layout.lapWork.y}` +
+          ` | external ${layout.ext.name} usable ${layout.extWork.w}x${layout.extWork.h}` +
+          `@${layout.extWork.x},${layout.extWork.y}`,
+      ),
   );
 }
 
