@@ -849,5 +849,21 @@
     <application class="obsidian">
       <decor>no</decor>
     </application>
+    <!-- Terminal that shows monitor-switch.ts output, launched from the "Go single
+         monitor" / "Go dual monitors" entries in menu.xml. Those entries start
+         alacritty with the WM_CLASS "monitor-switch" (the alacritty class flag)
+         specifically so this rule can match it; the class is set there, matched here,
+         and the two must stay in sync.
+
+         Why this rule exists: while the script runs it moves nearly every other
+         window around (between monitors and desktops). Without help, the output
+         terminal would get buried in that shuffle and lose keyboard focus, so you'd
+         miss the logs / errors and couldn't dismiss the "press any key to close"
+         prompt. So we put it on the "above" layer (always on top) and force focus to
+         it. Scoping by class keeps this from affecting your other alacritty windows. -->
+    <application class="monitor-switch">
+      <layer>above</layer>
+      <focus>yes</focus>
+    </application>
   </applications>
 </openbox_config>

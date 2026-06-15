@@ -16,6 +16,27 @@
 			</action>
 		</item>
 		<separator />
+		<!-- Switch between single- and dual-monitor layouts. Each opens a terminal
+		     (sized wide for the logs) that runs monitor-switch.ts, prints its exit
+		     code, and waits for a keypress so you always see the output / any errors.
+
+		     The alacritty "monitor-switch" class is NOT cosmetic: a matching
+		     <application class="monitor-switch"> rule in rc.xml puts this terminal on
+		     the "above" layer and focuses it, so it stays on top and grabs the
+		     close-keystroke while the script is busy moving every other window
+		     around underneath it. Change the class here and you must change it there
+		     too, or the terminal gets lost in the shuffle. -->
+		<item label="Go single monitor">
+			<action name="Execute">
+				<command>alacritty --class monitor-switch,monitor-switch -o window.dimensions.columns=140 -o window.dimensions.lines=20 -e bash -c "npx tsx ~/.paps/openbox/monitor-switch.ts single; rc=$?; echo; echo '--- exit code:' $rc '---'; read -rsn1 -p 'Press any key to close '; echo"</command>
+			</action>
+		</item>
+		<item label="Go dual monitors">
+			<action name="Execute">
+				<command>alacritty --class monitor-switch,monitor-switch -o window.dimensions.columns=140 -o window.dimensions.lines=20 -e bash -c "npx tsx ~/.paps/openbox/monitor-switch.ts dual; rc=$?; echo; echo '--- exit code:' $rc '---'; read -rsn1 -p 'Press any key to close '; echo"</command>
+			</action>
+		</item>
+		<separator />
 		<item label="Reconfigure Openbox">
 			<action name="Execute">
 				<command>
