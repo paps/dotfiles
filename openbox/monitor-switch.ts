@@ -47,7 +47,7 @@ import { execFileSync } from "node:child_process";
 // ── Config ──────────────────────────────────────────────────────────────────
 
 const PRIMARY_DESKTOP_NAME = "Primary";
-const SECONDARY_DESKTOP_NAME = "Secondary";
+const SECONDARY_DESKTOP_NAME = "Parked From External Monitor";
 
 // ── Colors (skipped when not a TTY, or when NO_COLOR is set) ─────────────────
 
@@ -242,6 +242,21 @@ function readDesktops(): Map<string, number> {
     const m = line.match(/^(\d+)\s+.*?\s{2,}(\S.*)$/);
     if (m) map.set(m[2].trim(), Number(m[1]));
   }
+  // wmctrl -d always lists at least one desktop, so an empty map means the line
+  // format changed. Fail rather than silently falling back to indices 0/1 and
+  // filing windows onto the wrong desktops. (A populated map merely missing a
+  // given NAME is fine — desktopIndex() handles that with its fallback.)
+  if (map.size === 0) {
+    fail(
+      "could not parse any desktops from `wmctrl -d`; got:\n" +
+        out
+          .split("\n")
+          .filter(Boolean)
+          .map((l) => `  ${l}`)
+          .join("\n") +
+        "\n  expected lines like `0  * DG: …  Primary`. Has wmctrl's format changed?",
+    );
+  }
   return map;
 }
 
@@ -316,8 +331,21 @@ interface FrameExtents {
 
 function frameExtents(id: string): FrameExtents {
   const out = tryRun("xprop", ["-id", id, "_NET_FRAME_EXTENTS"]);
+  // Property legitimately absent (undecorated or fullscreen windows) or the
+  // window vanished between listing and querying: no decorations to subtract.
+  if (!out.trim() || /not found/i.test(out)) {
+    return { left: 0, right: 0, top: 0, bottom: 0 };
+  }
+  // Present but unparseable -> xprop's format changed. Bail loudly instead of
+  // silently treating the window as undecorated and mispositioning every window.
   const m = out.match(/=\s*(\d+),\s*(\d+),\s*(\d+),\s*(\d+)/);
-  if (!m) return { left: 0, right: 0, top: 0, bottom: 0 };
+  if (!m) {
+    fail(
+      `could not parse _NET_FRAME_EXTENTS for window ${id}; got:\n` +
+        `  ${out.trim()}\n` +
+        "  expected `= left, right, top, bottom`. Has xprop's output format changed?",
+    );
+  }
   return {
     left: Number(m[1]),
     right: Number(m[2]),
@@ -337,6 +365,22 @@ interface WinState {
 /** Read the _NET_WM_STATE flags we treat specially when moving a window. */
 function windowState(id: string): WinState {
   const out = tryRun("xprop", ["-id", id, "_NET_WM_STATE"]);
+  // Property legitimately absent (plain window) or the window vanished: no
+  // states set. An empty state list still prints `... =` and falls through below.
+  if (!out.trim() || /not found/i.test(out)) {
+    return { fullscreen: false, maxVert: false, maxHorz: false };
+  }
+  // Present: it must look like `_NET_WM_STATE(ATOM) = <atoms…>`. With no `=` at
+  // all the format has changed, and the substring tests below would silently
+  // report "no states" — quietly reintroducing the maximized/fullscreen
+  // restore-geometry bug. Fail instead.
+  if (!out.includes("=")) {
+    fail(
+      `unrecognised _NET_WM_STATE output for window ${id}; got:\n` +
+        `  ${out.trim()}\n` +
+        "  expected `_NET_WM_STATE(ATOM) = …`. Has xprop's output format changed?",
+    );
+  }
   return {
     fullscreen: /_NET_WM_STATE_FULLSCREEN/.test(out),
     maxVert: /_NET_WM_STATE_MAXIMIZED_VERT/.test(out),
