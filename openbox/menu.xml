@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openbox_menu xmlns="http://openbox.org/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://openbox.org/                 file:///usr/share/openbox/menu.xsd">
 	<menu id="root-menu" label="Openbox 3">
+	
 		<item label="Calculator (Ctrl-Alt-Y)">
 			<action name="Execute">
 				<command>
@@ -15,7 +16,9 @@
 				</command>
 			</action>
 		</item>
+		
 		<separator />
+		
 		<!-- Switch between single- and dual-monitor layouts. Each opens a terminal
 		     (sized wide for the logs) that runs monitor-switch.ts, prints its exit
 		     code, and waits for a keypress so you always see the output / any errors.
@@ -36,7 +39,9 @@
 				<command>alacritty --class monitor-switch,monitor-switch -o window.dimensions.columns=140 -o window.dimensions.lines=20 -e bash -c "npx tsx ~/.paps/openbox/monitor-switch.ts dual; rc=$?; echo; echo '--- exit code:' $rc '---'; read -rsn1 -p 'Press any key to close '; echo"</command>
 			</action>
 		</item>
+		
 		<separator />
+		
 		<item label="Reconfigure Openbox">
 			<action name="Execute">
 				<command>
@@ -49,7 +54,9 @@
 				<command>~/.paps/x/apply-input-config.sh</command>
 			</action>
 		</item>
+		
 		<separator />
+		
 		<item label="Lock (Ctrl-Alt-L)">
 			<action name="Execute">
 				<command>
@@ -60,5 +67,6 @@
 		<item label="Exit">
 			<action name="Exit"/>
 		</item>
+		
 	</menu>
 </openbox_menu>

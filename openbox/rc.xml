@@ -840,6 +840,7 @@
 
   # end of the example
 -->
+
     <application class="firefox">
       <decor>no</decor>
     </application>
@@ -849,6 +850,7 @@
     <application class="obsidian">
       <decor>no</decor>
     </application>
+    
     <!-- Terminal that shows monitor-switch.ts output, launched from the "Go single
          monitor" / "Go dual monitors" entries in menu.xml. Those entries start
          alacritty with the WM_CLASS "monitor-switch" (the alacritty class flag)
@@ -865,5 +867,6 @@
       <layer>above</layer>
       <focus>yes</focus>
     </application>
+    
   </applications>
 </openbox_config>
