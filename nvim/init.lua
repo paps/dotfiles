@@ -61,6 +61,16 @@ vim.opt.timeoutlen = 3000 -- compose real commands for 3 seconds
 vim.opt.ttimeoutlen = 0 -- don't compose insert mode commands (escape, etc)
 vim.opt.shortmess:append("I") -- don't care about intro text
 
+-- auto-reload files changed outside of nvim (autoread is on by default, but
+-- nothing checks file timestamps unless we ask, so poll with a timer)
+local checktime_timer = vim.uv.new_timer()
+checktime_timer:start(2000, 2000, vim.schedule_wrap(function()
+	-- checktime is not allowed in the cmdline-window or while typing a command
+	if vim.fn.getcmdwintype() == "" and vim.fn.mode() ~= "c" then
+		vim.cmd("silent! checktime")
+	end
+end))
+
 -- yank and paste use system clipboard
 vim.opt.clipboard = "unnamedplus"
 
