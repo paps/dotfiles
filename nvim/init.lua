@@ -144,14 +144,18 @@ if not vim.g.vscode then
 	--   3 = new tab,
 	--   4 = open in previous window (so if netrw is in a sidebar, open in main area)
 	vim.g.netrw_browse_split = 4
-	-- make 'o' behave like in nerdtree, i.e. same as Enter in netrw
-	-- also fix the mouse: netrw opens on single click and maps double-click to
-	-- "go up a directory" (!), so instead make single click only move the cursor
-	-- and double click open like Enter
+	-- customize shortcuts, make it behave a bit like nerdtree
 	vim.api.nvim_create_autocmd("FileType", {
 		pattern = "netrw",
 		callback = function()
+			-- make 'o' behave like in nerdtree, i.e. same as Enter in netrw
 			vim.keymap.set("n", "o", "<CR>", { buffer = true, remap = true })
+			-- 'r' refreshes the listing instead of reversing sort order. :Explore
+			-- re-lists in place; netrw's own refresh (<C-l>) is buggy.
+			vim.keymap.set("n", "r", "<Cmd>Explore<CR>", { buffer = true })
+			-- also fix the mouse: netrw opens on single click and maps double-click to
+			-- "go up a directory" (!), so instead make single click only move the cursor
+			-- and double click open like Enter
 			vim.keymap.set("n", "<LeftMouse>", "<LeftMouse>", { buffer = true })
 			vim.keymap.set("n", "<2-LeftMouse>", "<CR>", { buffer = true, remap = true })
 		end,
