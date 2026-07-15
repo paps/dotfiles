@@ -6,8 +6,42 @@ vim.opt.listchars = { tab = "¦ ", trail = "·" }
 vim.opt.tabstop = 4 -- number of columns a tab counts for (this is the only command affecting text display)
 vim.opt.softtabstop = 4 -- number of columns inserted when hitting tab in insert mode (should be equal to tabstop)
 vim.opt.shiftwidth = 4 -- number of columns removed or inserted when hitting << and >> (should be equal to tabstop)
-vim.opt.preserveindent = true
-vim.opt.copyindent = true
+-- adapt to the indentation style of files from other people: scan the first
+-- lines and follow what the file already uses -- spaces of the smallest
+-- indent seen, or tabs. Files with no indentation keep the settings above.
+-- The detection is scheduled so it runs after ftplugins (which set their own
+-- style, e.g. python), and skips files covered by a project .editorconfig
+-- (built-in support), which knows better
+vim.api.nvim_create_autocmd("BufReadPost", {
+	callback = function(ev)
+		vim.schedule(function()
+			if not vim.api.nvim_buf_is_valid(ev.buf) then return end
+			local ec = vim.b[ev.buf].editorconfig
+			if ec and next(ec) ~= nil then return end
+			local tabs, spaces, unit = 0, 0, 8
+			for _, line in ipairs(vim.api.nvim_buf_get_lines(ev.buf, 0, 500, false)) do
+				if line:find("^\t") then
+					tabs = tabs + 1
+				else
+					local n = #(line:match("^ +") or "")
+					if n >= 2 then -- ignore 1-space indents, usually comment continuations
+						spaces = spaces + 1
+						unit = math.min(unit, n)
+					end
+				end
+			end
+			if spaces > tabs then
+				vim.bo[ev.buf].expandtab = true
+				vim.bo[ev.buf].shiftwidth = unit
+				vim.bo[ev.buf].softtabstop = unit
+			elseif tabs > 0 then
+				vim.bo[ev.buf].expandtab = false
+				vim.bo[ev.buf].shiftwidth = 0 -- 0 = follow tabstop, i.e. indent by whole tabs
+				vim.bo[ev.buf].softtabstop = 0
+			end
+		end)
+	end,
+})
 
 -- search
 vim.opt.ignorecase = true
@@ -38,8 +72,9 @@ if not vim.g.vscode then
 	vim.api.nvim_set_hl(0, "StlModeReplace", { link = "DiffDelete" })
 	vim.api.nvim_set_hl(0, "StlModeCommand", { link = "WarningMsg" })
 	function Statusline()
-		local file = vim.fn.expand("%:f")
+		local file = vim.fn.expand("%")
 		if file == "" then file = "[No Name]" end
+		file = file:gsub("%%", "%%%%") -- the returned string is a statusline format, escape '%' in filenames
 		local modified = vim.bo.modified and " [+]" or ""
 		local readonly = vim.bo.readonly and " [RO]" or ""
 		local ft = vim.bo.filetype ~= "" and vim.bo.filetype or "none"
@@ -103,29 +138,34 @@ vim.keymap.set({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { expr = true })
 vim.keymap.set("", "Q", "<NOP>")
 
 -- make :W work like :w, same for :Q, etc (shitty typing skills!)
-vim.cmd([[
-cnoreabbrev W w
-cnoreabbrev Q q
-cnoreabbrev E e
-cnoreabbrev Qa qa
-cnoreabbrev QA qa
-cnoreabbrev Wqa wqa
-cnoreabbrev WQa wqa
-cnoreabbrev WQA wqa
-cnoreabbrev q1 q!
-cnoreabbrev qa1 qa!
-cnoreabbrev Qa1 qa!
-cnoreabbrev QA1 qa!
-cnoreabbrev w1 w!
-cnoreabbrev W1 w!
-cnoreabbrev wq1 wq!
-cnoreabbrev Wq1 wq!
-cnoreabbrev WQ1 wq!
-cnoreabbrev wqa1 wqa!
-cnoreabbrev Wqa1 wqa!
-cnoreabbrev WQa1 wqa!
-cnoreabbrev WQA1 wqa!
-]])
+-- unlike a plain cnoreabbrev, only expand when it is the whole command typed
+-- at a ':' prompt, so W/Q/etc stay untouched in search patterns and arguments
+local function typo(lhs, rhs)
+	vim.keymap.set("ca", lhs, function()
+		return (vim.fn.getcmdtype() == ":" and vim.fn.getcmdline() == lhs) and rhs or lhs
+	end, { expr = true })
+end
+typo("W", "w")
+typo("Q", "q")
+typo("E", "e")
+typo("Qa", "qa")
+typo("QA", "qa")
+typo("Wqa", "wqa")
+typo("WQa", "wqa")
+typo("WQA", "wqa")
+typo("q1", "q!")
+typo("qa1", "qa!")
+typo("Qa1", "qa!")
+typo("QA1", "qa!")
+typo("w1", "w!")
+typo("W1", "w!")
+typo("wq1", "wq!")
+typo("Wq1", "wq!")
+typo("WQ1", "wq!")
+typo("wqa1", "wqa!")
+typo("Wqa1", "wqa!")
+typo("WQa1", "wqa!")
+typo("WQA1", "wqa!")
 
 -- tab navigation
 -- ctrl-k for next tab, ctrl-j for previous tab
