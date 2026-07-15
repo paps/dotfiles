@@ -11,6 +11,6 @@ Host meudon
     Port 2222
     User pi
 
-Host ubuntu-4gb-sin-1
-    HostName 5.223.89.193
-
+Host vps-2060f69a
+    HostName 15.235.147.27
+    User ubuntu
