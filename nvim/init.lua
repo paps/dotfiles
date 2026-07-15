@@ -86,6 +86,11 @@ end
 vim.keymap.set("", "<C-U>", "5k")
 vim.keymap.set("", "<C-D>", "5j")
 
+-- j/k move by display line when wrapping, except with a count (so 10j still
+-- moves 10 real lines, keeping relative line number jumps accurate)
+vim.keymap.set({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true })
+vim.keymap.set({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { expr = true })
+
 -- disable ex mode (legacy thing from the 80s)
 vim.keymap.set("", "Q", "<NOP>")
 
