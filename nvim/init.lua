@@ -38,16 +38,24 @@ if not vim.g.vscode then
 	vim.api.nvim_set_hl(0, "StlModeReplace", { link = "DiffDelete" })
 	vim.api.nvim_set_hl(0, "StlModeCommand", { link = "WarningMsg" })
 	function Statusline()
-		local m = mode_config[vim.fn.mode()] or { label = vim.fn.mode(), hl = "StlModeNormal" }
 		local file = vim.fn.expand("%:f")
 		if file == "" then file = "[No Name]" end
 		local modified = vim.bo.modified and " [+]" or ""
 		local readonly = vim.bo.readonly and " [RO]" or ""
 		local ft = vim.bo.filetype ~= "" and vim.bo.filetype or "none"
 		local pos = string.format("%d:%d %d%%%%", vim.fn.line("."), vim.fn.col("."), math.floor(vim.fn.line(".") * 100 / math.max(vim.fn.line("$"), 1)))
+		-- inactive windows get the same line without the mode chip (during
+		-- evaluation the "current" window is the one being drawn, and
+		-- g:actual_curwin is the one really focused)
+		if vim.api.nvim_get_current_win() ~= tonumber(vim.g.actual_curwin) then
+			return " " .. file .. modified .. readonly .. "%=" .. ft .. "  " .. pos .. " "
+		end
+		local m = mode_config[vim.fn.mode()] or { label = vim.fn.mode(), hl = "StlModeNormal" }
 		return "%#" .. m.hl .. "# " .. m.label .. " %#StatusLine# " .. file .. modified .. readonly .. "%=" .. ft .. "  " .. pos .. " "
 	end
-	vim.opt.statusline = "%!v:lua.Statusline()"
+	-- %{%...%} (unlike %!...) is evaluated in the context of the window the
+	-- statusline belongs to, so each window shows its own file and position
+	vim.opt.statusline = "%{%v:lua.Statusline()%}"
 end
 
 -- other stuff
