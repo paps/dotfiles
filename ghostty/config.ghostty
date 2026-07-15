@@ -1,0 +1,5 @@
+# Cursor: solid, no blinking
+cursor-style-blink = false
+
+# No titlebar, borders, or menu bars — maximize usable space
+window-decoration = none

@@ -137,6 +137,12 @@ echo "Link: ~/.config/alacritty/alacritty.toml -> ~/.paps/alacritty/alacritty.to
 rm $rmflags ~/.config/alacritty/alacritty.toml
 ln -sT ~/.paps/alacritty/alacritty.toml ~/.config/alacritty/alacritty.toml
 
+# ghostty
+mkdir -v -p ~/.config/ghostty
+echo "Link: ~/.config/ghostty/config.ghostty -> ~/.paps/ghostty/config.ghostty"
+rm $rmflags ~/.config/ghostty/config.ghostty
+ln -sT ~/.paps/ghostty/config.ghostty ~/.config/ghostty/config.ghostty
+
 # zsh
 echo "Link: ~/.zshrc -> ~/.paps/zsh/zshrc"
 rm $rmflags ~/.zshrc
