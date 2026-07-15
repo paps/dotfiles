@@ -102,7 +102,6 @@ vim.opt.cursorline = true -- highlight current line
 vim.opt.equalalways = false -- don't auto-resize windows on split/close
 vim.opt.timeoutlen = 3000 -- compose real commands for 3 seconds
 vim.opt.ttimeoutlen = 0 -- don't compose insert mode commands (escape, etc)
-vim.opt.shortmess:append("I") -- don't care about intro text
 
 -- auto-reload files changed outside of nvim (autoread is on by default, but
 -- nothing checks file timestamps unless we ask, so poll with a timer)
