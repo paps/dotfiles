@@ -84,7 +84,7 @@ echo "Link: ~/.config/QtProject.conf -> ~/.paps/qt/QtProject.conf"
 rm $rmflags ~/.config/QtProject.conf
 ln -sT ~/.paps/qt/QtProject.conf ~/.config/QtProject.conf
 
-# icons
+# "icons" (which is the folder for configuring mouse cursors)
 echo "Link: ~/.icons -> ~/.paps/icons"
 rm $rmflags ~/.icons
 ln -sT ~/.paps/icons ~/.icons
