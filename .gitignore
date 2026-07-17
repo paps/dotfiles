@@ -13,7 +13,3 @@ x/dpi192
 openbox/.notification-string
 .claude
 
-# fonts
-fonts/.uuid
-# this file should be downloaded from https://github.com/samuelngs/apple-emoji-linux/releases
-fonts/AppleColorEmoji.ttf

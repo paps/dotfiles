@@ -89,15 +89,6 @@ echo "Link: ~/.icons -> ~/.paps/icons"
 rm $rmflags ~/.icons
 ln -sT ~/.paps/icons ~/.icons
 
-# fonts
-echo "Link: ~/.fonts.conf -> ~/.paps/fonts/fonts.conf"
-rm $rmflags ~/.fonts.conf
-ln -sT ~/.paps/fonts/fonts.conf ~/.fonts.conf
-
-echo "Link: ~/.fonts -> ~/.paps/fonts"
-rm $rmflags ~/.fonts
-ln -sT ~/.paps/fonts ~/.fonts
-
 # openbox
 mkdir -v -p ~/.config/openbox
 
