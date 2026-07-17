@@ -195,6 +195,9 @@ if not vim.g.vscode then
 	vim.api.nvim_create_autocmd("FileType", {
 		pattern = "netrw",
 		callback = function()
+			-- scrolloff makes no sense in a file listing; keep the cursor free to
+			-- reach the top/bottom entries without the window scrolling.
+			vim.opt_local.scrolloff = 0
 			-- make 'o' behave like in nerdtree, i.e. same as Enter in netrw
 			vim.keymap.set("n", "o", "<CR>", { buffer = true, remap = true })
 			-- 'r' and 'R' both refresh the listing instead of reversing sort order.
