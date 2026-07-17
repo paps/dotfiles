@@ -197,9 +197,10 @@ if not vim.g.vscode then
 		callback = function()
 			-- make 'o' behave like in nerdtree, i.e. same as Enter in netrw
 			vim.keymap.set("n", "o", "<CR>", { buffer = true, remap = true })
-			-- 'r' refreshes the listing instead of reversing sort order. :Explore
-			-- re-lists in place; netrw's own refresh (<C-l>) is buggy.
+			-- 'r' and 'R' both refresh the listing instead of reversing sort order.
+			-- :Explore re-lists in place; netrw's own refresh (<C-l>) is buggy.
 			vim.keymap.set("n", "r", "<Cmd>Explore<CR>", { buffer = true })
+			vim.keymap.set("n", "R", "<Cmd>Explore<CR>", { buffer = true })
 			-- also fix the mouse: netrw opens on single click and maps double-click to
 			-- "go up a directory" (!), so instead make single click only move the cursor
 			-- and double click open like Enter
