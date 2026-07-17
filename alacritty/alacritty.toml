@@ -1,9 +1,9 @@
 [general]
 import = [
-    "~/.paps/alacritty/catppuccin_mocha.toml"
+    "~/.paps/alacritty/ghostty_default.toml"
 ]
 
 [font]
-normal = { family = "Hack Nerd Font Mono", style = "Regular" }
-bold = { family = "Hack Nerd Font Mono", style = "Bold" }
-italic = { family = "Hack Nerd Font Mono", style = "Italic" }
+normal = { family = "JetBrains Mono", style = "Regular" }
+bold = { family = "JetBrains Mono", style = "Bold" }
+italic = { family = "JetBrains Mono", style = "Italic" }

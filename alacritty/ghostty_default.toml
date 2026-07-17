@@ -1,0 +1,25 @@
+# Ghostty Default Theme for Alacritty
+
+[colors.primary]
+background = "#1D1F21"
+foreground = "#C5C8C6"
+
+[colors.normal]
+black   = "#1D1F21"
+red     = "#CC6666"
+green   = "#B5BD68"
+yellow  = "#F0C674"
+blue    = "#81A2BE"
+magenta = "#B294BB"
+cyan    = "#8ABEB7"
+white   = "#C5C8C6"
+
+[colors.bright]
+black   = "#666666"
+red     = "#D54E53"
+green   = "#B9CA4A"
+yellow  = "#E7C547"
+blue    = "#7AA6DA"
+magenta = "#C397D8"
+cyan    = "#70C0B1"
+white   = "#EAEAEA"
