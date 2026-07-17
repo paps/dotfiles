@@ -3,3 +3,23 @@ cursor-style-blink = false
 
 # No titlebar, borders, or menu bars — maximize usable space
 window-decoration = none
+
+
+# Prefer not to use Ghostty for now, for the following reasons:
+
+# Ghostty has different scrolling behaviors between trackpad and mouse
+# but only one setting for multiplier :(
+# mouse-scroll-multiplier = 7.00
+
+# This somehow doesn't work in tmux
+# In tmux you have to hold shift-ctrl to have the links be detected :(
+link-url = true
+
+# There is a weird bug where if you right-click Ghostty sometimes
+# doesn't detect the right button release event and keeps you
+# in a kind of drag and drop state that messes up mouse events
+# everywhere :(
+
+# There is a weird bug where CPU usage shoots up and everything
+# lags in the terminal. Really not sure what it is, I didn't do
+# anything particular :(
