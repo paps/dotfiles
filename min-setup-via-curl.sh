@@ -17,7 +17,7 @@ sudo apt-get update
 echo ""
 echo "==> Installing packages..."
 echo "//////////////////////////"
-sudo apt-get install -y zsh htop neovim git ripgrep tree tmux mosh file gh
+sudo apt-get install -y zsh htop neovim git ripgrep tree tmux mosh file gh lazygit
 
 echo ""
 echo "==> Downloading ~/.tmux.conf..."
