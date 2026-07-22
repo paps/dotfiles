@@ -1,6 +1,6 @@
--- show tabs and trailing spaces
+-- show tabs, trailing spaces, non-breaking spaces and off-screen continuations
 vim.opt.list = true
-vim.opt.listchars = { tab = "¦ ", trail = "·" }
+vim.opt.listchars = { tab = "¦ ", trail = "·", nbsp = "␣", extends = "›", precedes = "‹" }
 
 -- default indentation
 vim.opt.tabstop = 4 -- number of columns a tab counts for (this is the only command affecting text display)
@@ -95,6 +95,7 @@ end
 
 -- other stuff
 vim.opt.wrap = false -- do not wrap long lines initially (use <Space>w to toggle)
+vim.opt.linebreak = true -- when wrapping, break at word boundaries instead of mid-word
 vim.opt.scrolloff = 3 -- offset of 3 lines around the cursor
 vim.opt.undofile = true -- persist undo history to disk so it survives closing and reopening files
 vim.opt.modelines = 0 -- disable modelines (special vim comments in files) to avoid security exploits
