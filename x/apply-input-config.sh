@@ -28,10 +28,15 @@ echo "%{c}Applying input config" > $notification
     # This is meant to make the script work when called from a udev notification
     : "${DISPLAY:=:0}"
     : "${XAUTHORITY:=/home/paps/.Xauthority}"
+    # needed so that the notification sound can reach pulseaudio when
+    # this script is called from a udev notification
+    : "${XDG_RUNTIME_DIR:=/run/user/$(id -u)}"
+    export XDG_RUNTIME_DIR
 
     DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY bash ~/.paps/x/input-config.sh
 
     echo "%{c}Applied input config" > $notification
+    ffplay -nodisp -t 0.11 -autoexit -volume 25 "$HOME/.paps/systemd/floraphonic-minimal-pop-click-ui-1-198301.mp3" || true
 
     rm "$lockfile"
 ) >/dev/null 2>&1 &
