@@ -23,6 +23,8 @@ nm-applet &
 if [ -x "$(command -v blueman-applet)" ]
 then
     blueman-applet &
+    # Work around a startup race that can leave blueman-tray running without displaying its icon
+    (sleep 10; blueman-tray) &
 fi
 
 # Start solaar (Logitech Unifying/bluetooth monitor/controller) if it's installed
