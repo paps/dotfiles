@@ -7,7 +7,8 @@ user_pref("extensions.pocket.enabled", false);
 user_pref("browser.urlbar.trimURLs", false);
 
 // don't sync extension's enabled/disabled status
-user_pref("services.sync.addons.ignoreUserEnabledChanges", true);
+// (disabled because I only use a single laptop)
+//user_pref("services.sync.addons.ignoreUserEnabledChanges", true);
 
 // prevent things from moving all over the place
 // calming the UI
