@@ -213,10 +213,14 @@ sudo systemctl enable systemd-timesyncd
 sudo systemctl start systemd-timesyncd
 ```
 
-### Force default browser
+### Select default browser
 
 * `sudo update-alternatives --config x-www-browser` and select Firefox
 * `xdg-settings set default-web-browser firefox.desktop`
+
+### Select default terminal
+
+* `sudo update-alternatives --config x-terminal-emulator` and select Alacritty
 
 ### IBus input methods
 
