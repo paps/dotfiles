@@ -58,3 +58,12 @@ user_pref("reader.parse-on-load.enabled", false);
 // See https://news.ycombinator.com/item?id=41311479
 // But I think on Linux this is not deployed by Mozilla yet
 user_pref("dom.private-attribution.submission.enabled", false);
+
+// Disable Firefox DNS caching
+// DNS queries will go to the local resolver, which we expect is systemd-resolved with a sane, nice config, a local cache and DNS-over-TLS to a managed Cloudflare Gateway or a similar service
+user_pref("network.dnsCacheEntries", 0);
+user_pref("network.dnsCacheExpiration", 0);
+user_pref("network.dnsCacheExpirationGracePeriod", 0);
+// This disables Firefox's own DNS-over-HTTPS (which would bypass the local resolver, which we don't want because (1) the local resolver is already doing DoT anyway and (2) we want to keep only one place where we control DNS cache, and not have the browser do its own thing)
+user_pref("network.trr.mode", 5);
+

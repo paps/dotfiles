@@ -246,7 +246,7 @@ Get it from https://obsidian.md/ (Asahi: get the AppImage because they don't hav
 
 Other settings to change in 'Appearance': do use 'Native menus', do use 'Native frame'. And in 'Editor': add 'French (France)' to the spellchecker.
 
-### Network and DNS
+### Network, DNS, Tailscale
 
 First of all, replace the contents of `/etc/NetworkManager/NetworkManager.conf` with this:
 ```
@@ -254,11 +254,11 @@ First of all, replace the contents of `/etc/NetworkManager/NetworkManager.conf` 
 plugins=ifupdown,keyfile
 
 # Do not handle DNS, in particular:
-#  - do not update /etc/resolv.conf with servers received via DHCP,
-#  - and do not talk to any local DNS server daemon that might be present (in our case, systemd-resolved)
+#  - do not update /etc/resolv.conf or others with servers received via DHCP,
+#  - and do not influence the config/behavior of any local DNS server daemon that might be present (in our case, systemd-resolved)
 dns=none
 # And just to make sure: don't send DNS information to systemd-resolved
-# (i.e. leave it alone with its own config, meaning NextDNS)
+# (i.e. leave it alone with its own config, meaning the managed gateway (e.g. Cloudflare) we provide)
 systemd-resolved=false
 
 [ifupdown]
@@ -266,29 +266,78 @@ systemd-resolved=false
 managed=true
 ```
 
-Then install `systemd-resolved` and follow the instructions from NextDNS' dashboard to properly configure `/etc/systemd/resolved.conf` (basically add the 4 server lines and 1 line to force DNS over TLS) **AND IMPORTANT: add `Cache=no`** (because we want to use NextDNS' cache and not ours). When done, restart the service.
+Then install `systemd-resolved` and configure `/etc/systemd/resolved.conf` with the following (replace `ENDPOINT` with the unique Cloudflare Gateway location name):
+```
+[Resolve]
+# Cloudflare Gateway DoT endpoints. IPs to Cloudflare's edge, #hostname selects the config's policies.
+# IPv4 first so IPv4-only networks don't time out on AAAA before falling through.
+# The raw IPs were obtained with `dig +short ENDPOINT.cloudflare-gateway.com A` and
+# `dig +short ENDPOINT.cloudflare-gateway.com AAAA`.
+DNS=162.159.36.5#ENDPOINT.cloudflare-gateway.com
+DNS=162.159.36.20#ENDPOINT.cloudflare-gateway.com
+DNS=2606:4700:5c::a29f:2e07#ENDPOINT.cloudflare-gateway.com
+DNS=2606:4700:54::a29f:2407#ENDPOINT.cloudflare-gateway.com
+
+# empty: disables systemd's built-in public resolvers, which would silently bypass our Cloudflare Gateway if the above fail
+FallbackDNS=
+
+# Route all DNS queries here (meaning, the DNS server set above) rather than to per-link DNS.
+# Per-link DNS typically happens when we receive a DNS server via DHCP. This should not happen because we have disabled
+# that behavior in /etc/NetworkManager/NetworkManager.conf, but let's keep this setting here anyway.
+#
+# (This setting only applies when no more specific domain is set. For example we expect Tailscale to set its own ts.net
+# domain there, which will make Tailscale domains work, which is what we want.)
+Domains=~.
+
+# strict TLS, fail rather than fall back to plaintext
+DNSOverTLS=yes
+
+# Cloudflare Gateway already validates upstream, local validation would fights its 0.0.0.0 block responses
+DNSSEC=no
+
+# no local peer-to-peer name resolution (an old Microsoft-related protocol that's being phased out)
+LLMNR=no
+```
+
+Then run `sudo systemctl restart systemd-resolved` to have the configuration take effect.
 
 Then make sure the NetworkManager service is enabled (which is apparently not the case on Debian by default?): run `sudo systemctl enable NetworkManager` (and `sudo systemctl start NetworkManager` the first time). In any case, after the config change, make sure the service is restarted.
 
-(To target NextDNS' configuration on poorly configurable devices (e.g. a Samsung TV) behind the same NAT as a desktop PC, the public IP is bound thanks to a crontab entry similar to this one: `21 */4 * * * curl --fail --silent --show-error 'https://link-ip.nextdns.io/xxxxxx/yyyyyyyyyyyyyyyyy' 2>&1 | logger -t nextdnslinkip`.)
-
 To observe the current DNS configuration, simply run `resolvectl`.
 
-If there is a need to clear the local cache (improbable as we're using `Cache=no`), run `resolvectl flush-caches`.
+**Tailscale**
 
-**Mullvad**
+Make sure Tailscale's "Global nameservers" / "Override DNS servers" setting is disabled (from the account's main admin panel), otherwise it will mess with / compete with the DNS configuration set above.
 
-When using Mullvad, go to Settings > VPN Settings > Use custom DNS server and set `127.0.0.1`.
+Note that this doesn't mean Tailscale's "MagicDNS" has to be disabled. This feature should stay enabled (i.e. `tailscale set --accept-dns=true`) and will work fine, as it only applies to the tailnet.
 
-**Switching off NextDNS**
+**Easy DNS cache flushing**
 
-In some cases (such as wifi portals), it might be necessary to disable NextDNS:
+Add this policy in `/etc/polkit-1/rules.d/49-resolved-flush-cache.rules` (it's a new file) to enable cache flushing as a non-root user (assuming `paps` is the user name):
+```
+polkit.addRule(function(action, subject) {
+	if (action.id == "org.freedesktop.resolve1.flush-caches" &&
+		subject.user == "paps") {
+		return polkit.Result.YES;
+	}
+});
+```
+
+Run `resolvectl flush-caches` to clear the local systemd-resolved DNS cache. But a better alternative is to use the dedicated Openbox menu entry!
+
+**Firefox**
+
+`firefox/user.js` contains settings that prevent Firefox from using its own DNS cache and its own DoH. It will use our local systemd-resolved server instead, which maintains its own cache and exclusively uses DoT, so equivalent, basically. The benefit of this approach is that we control cache flushing from one single place (`resolvectl flush-caches`) and its effective for the browser as well.
+
+**Switching off the DNS setup**
+
+In some cases (such as wifi portals), it might be necessary to disable this great DNS setup:
 1. Comment out `dns=none` and `systemd-resolved=false` in `/etc/NetworkManager/NetworkManager.conf`
-2. Comment out the 4 NextDNS server lines and `DNSOverTLS=yes` in `/etc/systemd/resolved.conf` (but keep `Cache=no`)
+2. Comment out everything in `/etc/systemd/resolved.conf` (`Cache=no` could also be added)
 3. Restart systemd-resolved: `sudo service systemd-resolved restart`
 4. Restart NetworkManager: `sudo service NetworkManager restart`
 
-To go back to using NextDNS, do the reverse.
+To go back to using the DNS setup, do the reverse.
 
 ### Bluetooth
 
@@ -369,8 +418,7 @@ ACTION=="add|change", SUBSYSTEM=="input", ENV{ID_INPUT_KEYBOARD}=="1", RUN+="/us
 ```
 There are ways to make the daemon take this change into account, but a reboot should do the trick.
 
-Power button configuration
-===========================
+### Power button configuration
 
 Run `sudo vim /etc/systemd/logind.conf` and do the following:
 * Find `HandlePowerKey`, uncomment it and set it to `lock` - resulting line: `HandlePowerKey=lock` (thanks to `xss-lock` in `openbox/autostart.sh`, this has the correct intended effect of locking the laptop on key press)
