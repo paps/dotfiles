@@ -54,6 +54,11 @@
 				<command>~/.paps/x/apply-input-config.sh</command>
 			</action>
 		</item>
+		<item label="Flush DNS cache">
+			<action name="Execute">
+				<command>~/.paps/openbox/flush-dns-cache.sh</command>
+			</action>
+		</item>
 		
 		<separator />
 		
