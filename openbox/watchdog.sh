@@ -3,7 +3,7 @@
 # This script is continuously restarted (after a 60s wait) from autostart.sh
 # Its goal is to check and report important system info
 
-# Check that we're still protected by NextDNS
+# Check that we're still protected by Cloudflare DNS Gateway
 advertiser_ip=$(dig +short doubleclick.net | xargs) # xargs is used for trimming
 if [ -z "$advertiser_ip" ]
 then
@@ -24,7 +24,6 @@ else
     if [[ $mullvad != *"You are connected to Mullvad"* ]]
     then
         notify-send "$mullvad"
-        echo 'disabled'
     fi
 fi
 
