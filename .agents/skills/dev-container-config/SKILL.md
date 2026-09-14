@@ -90,9 +90,9 @@ File content:
   "initializeCommand": "touch .devcontainer/.env ; chmod og-rwx .devcontainer/.env",
 
   "runArgs": [
-    // Make the devcontainer join the gluetun's network namespace, the goal
+    // Make the dev container join the gluetun's network namespace, the goal
     // being to force any network traffic through wireguard for analysis
-	// Leaving this commented for now, might use later
+	// Leaving this commented for now, might use later to force traffic through an inspection proxy
     //"--network=container:gluetun",
 
     // Load the vars needed for execution of setup.sh and beyond
@@ -133,7 +133,7 @@ if [[ "${CODESPACES:-}" != "true" ]]; then
 
 	# We're going to use HTTPS with a PAT token (through gh) instead of SSH keys
 	# but we don't want to mess with the already configured repo remote
-	# (which would affect the devcontainer's host).
+	# (which would affect the dev container's host).
 	# So we use the git config trick below:
 	git config --global url."https://github.com/".insteadOf git@github.com:
 	git config --global --add url."https://github.com/".insteadOf ssh://git@github.com/
