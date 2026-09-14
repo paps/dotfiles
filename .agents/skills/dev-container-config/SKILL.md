@@ -92,7 +92,7 @@ File content:
   "runArgs": [
     // Make the dev container join the gluetun's network namespace, the goal
     // being to force any network traffic through wireguard for analysis
-	// Leaving this commented for now, might use later to force traffic through an inspection proxy
+    // Leaving this commented for now, might use later to force traffic through an inspection proxy
     //"--network=container:gluetun",
 
     // Load the vars needed for execution of setup.sh and beyond
