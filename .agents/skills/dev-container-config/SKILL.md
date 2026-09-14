@@ -40,6 +40,8 @@ GH_TOKEN=ghp_xxxxxxxxxxxx
 
 You can check that the token formats are correct. Never modify the token values. If you create this file from scratch, just leave the fields empty and let me know that I have to fill it in.
 
+Make sure this file is chmod 0600 and not committed to git.
+
 ### `.devcontainer/.gitignore`
 
 File content:
@@ -58,8 +60,6 @@ FROM mcr.microsoft.com/devcontainers/base:debian
 RUN echo 'cache bust {X}'
 
 USER vscode
-
-SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 RUN curl -fsSL 'https://raw.githubusercontent.com/paps/dotfiles/refs/heads/master/min-setup-via-curl.sh' | bash
 
@@ -104,7 +104,7 @@ File content:
 }
 ```
 
-Some repos might have custom mounts, etc...
+Some repos might have custom mounts, port fowards, etc...
 
 ### `.devcontainer/setup.sh`
 
