@@ -26,18 +26,3 @@ if [[ "${CODESPACES:-}" != "true" ]]; then
 	git config --global --add url."https://github.com/".insteadOf ssh://git@github.com/
 
 fi
-
-# claude setup
-# ------------
-# Do this just in case (for jq to work). The file typically already exists
-# because it's created by their curl|bash install script
-touch ~/.claude.json
-
-# Vim mode
-jq '.editorMode="vim"' ~/.claude.json > /tmp/c && mv /tmp/c ~/.claude.json
-
-# Claude Code currently has a bug where it won't detect it has an available
-# CLAUDE_CODE_OAUTH_TOKEN unless we set hasCompletedOnboarding.
-if [ -n "${CLAUDE_CODE_OAUTH_TOKEN:-}" ]; then
-	jq '.hasCompletedOnboarding=true' ~/.claude.json > /tmp/c && mv /tmp/c ~/.claude.json
-fi
