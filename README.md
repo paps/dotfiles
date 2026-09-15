@@ -343,6 +343,10 @@ To go back to using the DNS setup, do the reverse.
 
 Install `bluetooth bluez-firmware blueman` and restart. `blueman-applet` will be automatically run on session start by `openbox/autostart.sh`.
 
+**"Fixing" bluetooth on Asahi (sometimes needed after a sleep-wake cycle as of September 2026):**
+
+`scripts/attempt-asahi-bluetooth-fix.sh` is a GPT-6-astra-high generated script that attempts a recovery by completely reloading the driver. It worked at least once! ;)
+
 ### Mouse acceleration
 
 Before `libinput` existed, the `xset m` command found in `x/input-config.sh` had an effect. Now, as I understand it, it's a no-op.
