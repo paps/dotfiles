@@ -25,7 +25,7 @@ If the repository is not mine and/or it already contains a completely different 
 
 I'm very often not running the dev container from an IDE like VSCode. VSCode and others adds management tooling inside the container, do not assume those are present (even though they could). The dev container has to be fully IDE agnostic and work the same outside of an IDE.
 
-For example, `forwardPorts` in `devcontainer.json` doesn't work outside of an IDE that handles it.
+For example, `forwardPorts` in `devcontainer.json` doesn't work outside of an IDE that handles it, to my knowledge.
 
 ## Configuration files
 
@@ -103,7 +103,10 @@ File content:
 
     // Load the vars needed for execution of setup.sh and beyond
     "--env-file",
-    "${localWorkspaceFolder}/.devcontainer/.env"
+    "${localWorkspaceFolder}/.devcontainer/.env",
+
+    // Podman-specific: use the host's timezone in the container.
+    "--tz=local"
   ],
 
   "postCreateCommand": "bash .devcontainer/setup.sh"

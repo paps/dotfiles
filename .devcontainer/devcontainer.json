@@ -14,7 +14,10 @@
 
     // Load the vars needed for execution of setup.sh and beyond
     "--env-file",
-    "${localWorkspaceFolder}/.devcontainer/.env"
+    "${localWorkspaceFolder}/.devcontainer/.env",
+
+    // Podman-specific: use the host's timezone in the container.
+    "--tz=local"
   ],
 
   "postCreateCommand": "bash .devcontainer/setup.sh"
