@@ -21,6 +21,12 @@ When you think your work is done, I like to have a summary of the changes (if an
 
 If the repository is not mine and/or it already contains a completely different dev container configuration that achieves something different than what I have in mind here (i.e. mostly simple AI agent isolation), then say so. Ask me what I want to do. I might want to replace the whole existing thing with my own config? Or maybe not, ask me.
 
+## Do not assume IDE support
+
+I'm very often not running the dev container from an IDE like VSCode. VSCode and others adds management tooling inside the container, do not assume those are present (even though they could). The dev container has to be fully IDE agnostic and work the same outside of an IDE.
+
+For example, `forwardPorts` in `devcontainer.json` doesn't work outside of an IDE that handles it.
+
 ## Configuration files
 
 Below I'm explaining each file and give some instructions. This is an exhaustive list, which means there should not be more or less files (if that is the case, ask me what to do).
