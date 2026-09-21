@@ -348,6 +348,11 @@
         <command>~/.paps/openbox/c-a-1-write-time-and-date.sh</command>
       </action>
     </keybind>
+    <keybind key="C-A-d">
+      <action name="Execute">
+        <command>whisrs toggle</command>
+      </action>
+    </keybind>
     <!-- Keybindings for volume and music control -->
     <keybind key="C-A-bracketleft">
       <action name="Execute">
