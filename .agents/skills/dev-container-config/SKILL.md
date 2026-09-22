@@ -150,6 +150,8 @@ if [[ "${CODESPACES:-}" != "true" ]]; then
 fi
 ```
 
+This file doesn't need to be executable.
+
 ### `.devcontainer/README.md`
 
 File content:
