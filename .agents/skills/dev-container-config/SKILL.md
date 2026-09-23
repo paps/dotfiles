@@ -31,6 +31,21 @@ For example, `forwardPorts` in `devcontainer.json` doesn't work outside of an ID
 
 Below I'm explaining each file and give some instructions. This is an exhaustive list, which means there should not be more or less files (if that is the case, ask me what to do).
 
+### `.devcontainer/.env.example`
+
+File content:
+```
+# Personal Access Token (PAT, classic) from a *different* user, for the agent to use.
+# Typically needs the 'repo' and 'read:org' scopes, and eventually 'workflow' if there
+# are GitHub Actions to manage.
+GH_TOKEN=
+
+# leaving this commented here for now, will use later when I force traffic through an inspection proxy
+#NODE_EXTRA_CA_CERTS=/usr/local/share/ca-certificates/mitm.crt
+```
+
+Commit this file to git, keeping the token values empty.
+
 ### `.devcontainer/.env`
 
 File content:
@@ -44,7 +59,7 @@ GH_TOKEN=ghp_xxxxxxxxxxxx
 #NODE_EXTRA_CA_CERTS=/usr/local/share/ca-certificates/mitm.crt
 ```
 
-You can check that the token formats are correct. Never modify the token values. If you create this file from scratch, just leave the fields empty and let me know that I have to fill it in.
+You can check that the token formats are correct. Never modify the token values. If this file doesn't exist, copy `.env.example` to `.env`, leaving the token values empty, and let me know that I have to fill them in. Never overwrite an existing `.env`.
 
 Make sure this file is chmod 0600 and not committed to git.
 
@@ -151,6 +166,53 @@ fi
 ```
 
 This file doesn't need to be executable.
+
+### `.devcontainer/zsh-in`
+
+File content:
+```
+#!/usr/bin/env bash
+# From the host, open zsh in the running Podman container matching this repo.
+# Refuse to enter if the match is missing or ambiguous.
+set -euo pipefail
+
+die() { printf 'zsh-in: %s\n' "$*" >&2; exit 1; }
+
+(( $# == 0 )) || die 'Usage: .devcontainer/zsh-in (run from inside the repository)'
+if [[ -e /run/.containerenv || -e /.dockerenv || -n ${container:-} ]] ||
+	{ command -v systemd-detect-virt >/dev/null && systemd-detect-virt --container --quiet; }; then
+	die 'Run this on the host, not from inside a container.'
+fi
+[[ -t 0 && -t 1 ]] || die 'An interactive terminal is required.'
+command -v git >/dev/null || die 'git is not installed or is not on PATH.'
+command -v podman >/dev/null || die 'podman is not installed or is not on PATH.'
+
+repo_root=$(git rev-parse --show-toplevel) || die 'Cannot determine the current repository.'
+repo_name=${repo_root##*/}
+[[ -n $repo_name ]] || die 'Cannot determine the repository name.'
+
+# Match literally, like grep -F, but only consider running containers.
+containers=$(podman ps --filter status=running --no-trunc \
+	--format '{{.ID}}\t{{.Image}}\t{{.Names}}\t{{.Command}}') || die 'Cannot list Podman containers.'
+ids=()
+matches=()
+while IFS=$'\t' read -r id details; do
+	if [[ -n $id && $details == *"$repo_name"* ]]; then
+		[[ $id =~ ^[0-9a-f]{64}$ ]] || die 'Podman returned an invalid container ID.'
+		ids+=("$id")
+		matches+=("$id $details")
+	fi
+done <<< "$containers"
+
+case ${#ids[@]} in
+	0) die "No running Podman container matches repository '$repo_name'." ;;
+	1) exec podman exec -it "${ids[0]}" zsh ;;
+	*) printf 'Matching containers:\n%s\n' "${matches[@]}" >&2
+		die "Multiple running containers match '$repo_name'; cannot choose safely." ;;
+esac
+```
+
+Make sure this file is executable (`chmod 0755 .devcontainer/zsh-in`).
 
 ### `.devcontainer/README.md`
 
