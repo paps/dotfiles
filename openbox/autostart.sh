@@ -28,9 +28,14 @@ then
 fi
 
 # Start solaar (Logitech Unifying/bluetooth monitor/controller) if it's installed
+# Auto-restart after exit so that killing solaar also restarts it
 if [ -x "$(command -v solaar)" ]
 then
-    solaar --window hide &
+    while true; do
+        solaar --window hide
+        sleep 5
+        notify-send 'Restarting solaar'
+    done &
 fi
 
 # Generic notification system
