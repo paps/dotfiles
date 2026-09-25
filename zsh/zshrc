@@ -47,6 +47,12 @@ autoload -Uz compinit
 compinit
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' # case-insensitive completion
 zstyle ':completion:*' menu select # highlight the currently selected completion choice
+# Needed for the completion key bindings below
+zmodload -i zsh/complist
+# Shift-Tab moves backward through choices
+bindkey '^[[Z' reverse-menu-complete
+# Escape cancels selection and restores the line
+bindkey -M menuselect '^[' send-break
 unsetopt correct_all
 setopt correct # only correct commands, not arguments
 
