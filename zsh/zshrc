@@ -66,7 +66,9 @@ bindkey -M vicmd 'v' edit-command-line
 
 # detect container environment
 # ----------------------------
-if [[ -f /.dockerenv ]]; then
+if [[ -n ${SANDBOX_ID-} || -n ${SANDBOX_NAME-} ]]; then
+	_CONTAINER_TYPE='sbx'
+elif [[ -f /.dockerenv ]]; then
 	_CONTAINER_TYPE='docker'
 elif [[ -n "$container" ]]; then
 	_CONTAINER_TYPE="$container"
@@ -132,4 +134,3 @@ if [[ -z "$SSH_CONNECTION" && -z "$_CONTAINER_TYPE" ]]; then
 	unfunction start_ssh_agent
 	unset ssh_agent_env
 fi
-
