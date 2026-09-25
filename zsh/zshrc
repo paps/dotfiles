@@ -114,18 +114,21 @@ setopt interactivecomments # allow for comments starting with # directly in the 
 
 # ssh-agent
 # ---------
-# only start ssh-agent on local non-container sessions (-z tests if a string is zero-length)
-if [[ -z "$SSH_CONNECTION" && -z "$_CONTAINER_TYPE" ]]; then
-	local ssh_agent_env="$HOME/.ssh/environment-$HOST" # local at top level is a no-op (acts as typeset), just for readability
+
+# only start ssh-agent on local non-container sessions when the client tools exist
+if [[ -z "$SSH_CONNECTION" && -z "$_CONTAINER_TYPE" ]] &&
+	(( $+commands[ssh-agent] && $+commands[ssh-add] )); then
+	typeset ssh_agent_env="$HOME/.ssh/environment-$HOST"
 	function start_ssh_agent() {
-		ssh-agent | sed 's/^echo/#echo/' > ${ssh_agent_env}
-		chmod 600 ${ssh_agent_env}
-		. ${ssh_agent_env} > /dev/null
+		ssh-agent | sed 's/^echo/#echo/' > "$ssh_agent_env"
+		chmod 600 "$ssh_agent_env"
+		. "$ssh_agent_env" > /dev/null
 		ssh-add
 	}
 	if [ -f "${ssh_agent_env}" ]; then
-		. ${ssh_agent_env} > /dev/null
-		ps x | grep ${SSH_AGENT_PID} | grep ssh-agent > /dev/null || {
+		. "$ssh_agent_env" > /dev/null
+		# Signal 0 checks that the saved agent PID exists without signalling it.
+		kill -0 "${SSH_AGENT_PID:-0}" 2> /dev/null || {
 			start_ssh_agent
 		}
 	else
