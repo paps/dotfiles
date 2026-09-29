@@ -1,97 +1,60 @@
--- show tabs, trailing spaces, non-breaking spaces and off-screen continuations
-vim.opt.list = true
-vim.opt.listchars = { tab = "¦ ", trail = "·", nbsp = "␣", extends = "›", precedes = "‹" }
+-- disable netrw before loading plugins (because using nvim-tree)
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 
--- default indentation
+-- default indentation (putting this before guess-indent just in case)
 vim.opt.tabstop = 4 -- number of columns a tab counts for (this is the only command affecting text display)
 vim.opt.softtabstop = 4 -- number of columns inserted when hitting tab in insert mode (should be equal to tabstop)
 vim.opt.shiftwidth = 4 -- number of columns removed or inserted when hitting << and >> (should be equal to tabstop)
--- adapt to the indentation style of files from other people: scan the first
--- lines and follow what the file already uses -- spaces of the smallest
--- indent seen, or tabs. Files with no indentation keep the settings above.
--- The detection is scheduled so it runs after ftplugins (which set their own
--- style, e.g. python), and skips files covered by a project .editorconfig
--- (built-in support), which knows better
-vim.api.nvim_create_autocmd("BufReadPost", {
-	callback = function(ev)
-		vim.schedule(function()
-			if not vim.api.nvim_buf_is_valid(ev.buf) then return end
-			local ec = vim.b[ev.buf].editorconfig
-			if ec and next(ec) ~= nil then return end
-			local tabs, spaces, unit = 0, 0, 8
-			for _, line in ipairs(vim.api.nvim_buf_get_lines(ev.buf, 0, 500, false)) do
-				if line:find("^\t") then
-					tabs = tabs + 1
-				else
-					local n = #(line:match("^ +") or "")
-					if n >= 2 then -- ignore 1-space indents, usually comment continuations
-						spaces = spaces + 1
-						unit = math.min(unit, n)
-					end
-				end
-			end
-			if spaces > tabs then
-				vim.bo[ev.buf].expandtab = true
-				vim.bo[ev.buf].shiftwidth = unit
-				vim.bo[ev.buf].softtabstop = unit
-			elseif tabs > 0 then
-				vim.bo[ev.buf].expandtab = false
-				vim.bo[ev.buf].shiftwidth = 0 -- 0 = follow tabstop, i.e. indent by whole tabs
-				vim.bo[ev.buf].softtabstop = 0
-			end
-		end)
-	end,
+
+-- plugins
+vim.pack.add({
+	{ src = "https://github.com/nvim-tree/nvim-web-devicons" },
+	{ src = "https://github.com/lewis6991/gitsigns.nvim" },
+	{ src = "https://github.com/nvim-tree/nvim-tree.lua" },
+	{ src = "https://github.com/nvim-lualine/lualine.nvim" },
+	{ src = "https://github.com/NMAC427/guess-indent.nvim" },
+	{ src = "https://github.com/tpope/vim-fugitive" },
 })
+
+-- plugin setup
+require("gitsigns").setup()
+require("nvim-tree").setup({
+	renderer = {
+		icons = {
+			web_devicons = {
+				-- make the file tree less distracting, it's not supposed to be the center of the attention
+				file = { color = false },
+				folder = { color = false },
+			},
+		},
+	},
+})
+require("lualine").setup()
+require("guess-indent").setup()
+
+-- add a bit of color to git changes indicators
+vim.cmd([[
+  highlight! link NvimTreeGitDirtyIcon   DiagnosticOk
+  highlight! link NvimTreeGitNewIcon     DiagnosticInfo
+  highlight! link NvimTreeGitStagedIcon  DiagnosticOk
+  highlight! link NvimTreeGitDeletedIcon DiagnosticError
+  highlight! link NvimTreeGitMergeIcon   DiagnosticError
+  highlight! link NvimTreeGitRenamedIcon DiagnosticInfo
+]])
+
+-- show tabs, trailing spaces, non-breaking spaces and off-screen continuations
+vim.opt.list = true
+vim.opt.listchars = { tab = "¦ ", trail = "·", nbsp = "␣", extends = "›", precedes = "‹" }
 
 -- search
 vim.opt.ignorecase = true
 vim.opt.smartcase = true -- ignore case when searching only in lowercase
 
 -- layout
-vim.opt.number = false -- don't show line numbers (I like being able to copy text with the terminal selection)
+vim.opt.number = true -- don't show line numbers (I like being able to copy text with the terminal selection)
 vim.opt.splitright = true -- open vertical splits to the right
 vim.opt.splitbelow = true -- open horizontal splits below
-
--- statusline
--- Claude-generated minimal imitation of what would have been done by the airline external plugin in the past
-if not vim.g.vscode then
-	local mode_config = {
-		n = { label = "NORMAL",  hl = "StlModeNormal" },
-		i = { label = "INSERT",  hl = "StlModeInsert" },
-		v = { label = "VISUAL",  hl = "StlModeVisual" },
-		V = { label = "V-LINE",  hl = "StlModeVisual" },
-		["\22"] = { label = "V-BLOCK", hl = "StlModeVisual" },
-		R = { label = "REPLACE", hl = "StlModeReplace" },
-		c = { label = "COMMAND", hl = "StlModeCommand" },
-		t = { label = "TERMINAL", hl = "StlModeInsert" },
-	}
-	-- set some 'semantic' colors based on the current theme (not important, it's just to have the mode change color)
-	vim.api.nvim_set_hl(0, "StlModeNormal",  { link = "CurSearch" })
-	vim.api.nvim_set_hl(0, "StlModeInsert",  { link = "DiffAdd" })
-	vim.api.nvim_set_hl(0, "StlModeVisual",  { link = "Visual" })
-	vim.api.nvim_set_hl(0, "StlModeReplace", { link = "DiffDelete" })
-	vim.api.nvim_set_hl(0, "StlModeCommand", { link = "WarningMsg" })
-	function Statusline()
-		local file = vim.fn.expand("%")
-		if file == "" then file = "[No Name]" end
-		file = file:gsub("%%", "%%%%") -- the returned string is a statusline format, escape '%' in filenames
-		local modified = vim.bo.modified and " [+]" or ""
-		local readonly = vim.bo.readonly and " [RO]" or ""
-		local ft = vim.bo.filetype ~= "" and vim.bo.filetype or "none"
-		local pos = string.format("%d:%d %d%%%%", vim.fn.line("."), vim.fn.col("."), math.floor(vim.fn.line(".") * 100 / math.max(vim.fn.line("$"), 1)))
-		-- inactive windows get the same line without the mode chip (during
-		-- evaluation the "current" window is the one being drawn, and
-		-- g:actual_curwin is the one really focused)
-		if vim.api.nvim_get_current_win() ~= tonumber(vim.g.actual_curwin) then
-			return " " .. file .. modified .. readonly .. "%=" .. ft .. "  " .. pos .. " "
-		end
-		local m = mode_config[vim.fn.mode()] or { label = vim.fn.mode(), hl = "StlModeNormal" }
-		return "%#" .. m.hl .. "# " .. m.label .. " %#StatusLine# " .. file .. modified .. readonly .. "%=" .. ft .. "  " .. pos .. " "
-	end
-	-- %{%...%} (unlike %!...) is evaluated in the context of the window the
-	-- statusline belongs to, so each window shows its own file and position
-	vim.opt.statusline = "%{%v:lua.Statusline()%}"
-end
 
 -- other stuff
 vim.opt.wrap = false -- do not wrap long lines initially (use <Space>w to toggle)
@@ -177,39 +140,4 @@ vim.keymap.set("n", "<C-t>", "<Cmd>tabnew<CR>")
 -- some useful <Leader> shortcuts
 vim.keymap.set("", "<Leader>j", "<Cmd>nohlsearch<CR>")
 vim.keymap.set("", "<Leader>w", "<Cmd>set wrap!<CR>")
-
--- file browser
-if not vim.g.vscode then
-	vim.keymap.set("", "<Leader>n", "<Cmd>Lexplore<CR>")
-	-- netrw "sidebar-ish" defaults
-	vim.g.netrw_banner = 0 -- hide banner
-	vim.g.netrw_liststyle = 3 -- tree view
-	vim.g.netrw_winsize = 25 -- sidebar width (%)
-	-- behavior when opening a file from netrw:
-	--   0 = reuse window,
-	--   1 = horizontal,
-	--   2 = vertical,
-	--   3 = new tab,
-	--   4 = open in previous window (so if netrw is in a sidebar, open in main area)
-	vim.g.netrw_browse_split = 4
-	-- customize shortcuts, make it behave a bit like nerdtree
-	vim.api.nvim_create_autocmd("FileType", {
-		pattern = "netrw",
-		callback = function()
-			-- scrolloff makes no sense in a file listing; keep the cursor free to
-			-- reach the top/bottom entries without the window scrolling.
-			vim.opt_local.scrolloff = 0
-			-- make 'o' behave like in nerdtree, i.e. same as Enter in netrw
-			vim.keymap.set("n", "o", "<CR>", { buffer = true, remap = true })
-			-- 'r' and 'R' both refresh the listing instead of reversing sort order.
-			-- :Explore re-lists in place; netrw's own refresh (<C-l>) is buggy.
-			vim.keymap.set("n", "r", "<Cmd>Explore<CR>", { buffer = true })
-			vim.keymap.set("n", "R", "<Cmd>Explore<CR>", { buffer = true })
-			-- also fix the mouse: netrw opens on single click and maps double-click to
-			-- "go up a directory" (!), so instead make single click only move the cursor
-			-- and double click open like Enter
-			vim.keymap.set("n", "<LeftMouse>", "<LeftMouse>", { buffer = true })
-			vim.keymap.set("n", "<2-LeftMouse>", "<CR>", { buffer = true, remap = true })
-		end,
-	})
-end
+vim.keymap.set("", "<Leader>n", "<Cmd>NvimTreeToggle<CR>")
