@@ -1,1 +1,0 @@
-- [ ] Somehow have the apt full-upgrade skill check Asahi communities and the Asahi debian changelogs etc
