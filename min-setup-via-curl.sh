@@ -17,7 +17,15 @@ sudo apt-get update
 echo ""
 echo "==> Installing packages..."
 echo "//////////////////////////"
-sudo apt-get install -y zsh htop neovim git ripgrep tree tmux mosh file gh lazygit dialog
+sudo env DEBIAN_FRONTEND=noninteractive LC_ALL=C apt-get install -y zsh htop neovim git ripgrep tree tmux mosh file gh lazygit dialog locales
+
+echo ""
+echo "==> Configuring locales..."
+echo "//////////////////////////"
+# Enable and generate en_US.UTF-8, preserving existing locales.
+sudo sed -i 's/^# *en_US\.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen
+sudo locale-gen --keep-existing
+sudo update-locale LANG=en_US.UTF-8
 
 echo ""
 echo "==> Downloading ~/.tmux.conf..."
