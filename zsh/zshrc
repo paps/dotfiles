@@ -1,6 +1,6 @@
 # env
 # ---
-export PATH="$PATH:$HOME/.paps/bin:$HOME/.local/bin"
+export PATH="$PATH:/usr/local/sbin:/usr/sbin:/sbin:$HOME/.paps/bin:$HOME/.local/bin"
 export EDITOR='nvim'
 export MANPAGER='nvim +Man!'
 
