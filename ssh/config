@@ -6,11 +6,17 @@ Host *
     Compression yes
     ControlPath ~/.ssh/cm_socket_%r@%h:%p
 
-Host meudon
-    HostName meudon.martintapia.com
-    Port 2222
-    User pi
-
 Host vps-2060f69a
-    HostName 15.235.147.27
     User ubuntu
+
+Host atelier-local-sbx
+    Port 2222
+    User agent
+
+Host atelier-vps-sbx
+    Port 2222
+    User agent
+
+Host life-context-vps-sbx
+    Port 2222
+    User agent
