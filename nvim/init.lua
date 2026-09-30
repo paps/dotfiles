@@ -29,6 +29,12 @@ require("nvim-tree").setup({
 			},
 		},
 	},
+	filters = {
+		-- by default, git ignored files are not shown, which is crazy...
+		git_ignored = false,
+		-- show all dotfiles
+		dotfiles = false,
+	},
 })
 require("lualine").setup()
 require("guess-indent").setup()
