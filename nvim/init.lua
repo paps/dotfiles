@@ -83,6 +83,11 @@ checktime_timer:start(2000, 2000, vim.schedule_wrap(function()
 	end
 end))
 
+-- if running in a docker sandbox in tmux over ssh, use the tmux clipboard
+-- (because in that situation it works to access the host's clipboard)
+if vim.env.SANDBOX_ID and vim.env.SSH_TTY and vim.env.TMUX then
+  vim.g.clipboard = "tmux"
+end
 -- yank and paste use system clipboard
 vim.opt.clipboard = "unnamedplus"
 
