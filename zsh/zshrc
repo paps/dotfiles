@@ -3,6 +3,7 @@
 export PATH="$PATH:/usr/local/sbin:/usr/sbin:/sbin:$HOME/.paps/bin:$HOME/.local/bin"
 export EDITOR='nvim'
 export MANPAGER='nvim +Man!'
+export SBX_NO_TELEMETRY=1 # disable docker sandbox CLI telemetry
 
 # aliases
 # -------
@@ -120,7 +121,6 @@ setopt interactivecomments # allow for comments starting with # directly in the 
 
 # ssh-agent
 # ---------
-
 # only start ssh-agent on local non-container sessions when the client tools exist
 if [[ -z "$SSH_CONNECTION" && -z "$_CONTAINER_TYPE" ]] &&
 	(( $+commands[ssh-agent] && $+commands[ssh-add] )); then
