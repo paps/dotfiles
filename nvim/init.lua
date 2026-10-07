@@ -21,6 +21,11 @@ vim.pack.add({
 -- plugin setup
 require("gitsigns").setup()
 require("nvim-tree").setup({
+	actions = {
+		open_file = {
+			window_picker = { enable = false },
+		},
+	},
 	renderer = {
 		icons = {
 			web_devicons = {
