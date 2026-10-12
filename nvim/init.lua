@@ -170,3 +170,33 @@ vim.keymap.set("", "<Leader>w", "<Cmd>set wrap!<CR>")
 vim.keymap.set("", "<Leader>n", "<Cmd>NvimTreeToggle<CR>")
 vim.keymap.set("n", "<Leader>d", "<Cmd>DiffviewToggle<CR>", { desc = "Toggle diff view" })
 vim.keymap.set("n", "<Leader>D", "<Cmd>DiffviewOpen origin/main...HEAD<CR>", { desc = "Diff branch against origin/main" })
+
+-- have <Leader>c put a file:location string in the copy buffer for sharing with agents
+local function copy_path_with_line_range()
+  local file = vim.fn.expand("%:.") -- Get relative path
+  local mode = vim.fn.mode()
+  local line_str = ""
+  if mode == "v" or mode == "V" or mode == " " then
+    -- Get visual selection range
+    local start_line = vim.fn.line("v")
+    local end_line = vim.fn.line(".")
+    -- Ensure correct ordering if selecting bottom-to-top
+    if start_line > end_line then
+      start_line, end_line = end_line, start_line
+    end
+    if start_line == end_line then
+      line_str = tostring(start_line)
+    else
+      line_str = start_line .. "-" .. end_line
+    end
+    -- Force exit visual mode smoothly
+    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "x", true)
+  else
+    -- Normal mode (single line)
+    line_str = tostring(vim.fn.line("."))
+  end
+  local result = file .. ":" .. line_str
+  vim.fn.setreg("+", result)       -- Copy to system clipboard
+  vim.notify("Copied: " .. result) -- Show a small toast notification
+end
+vim.keymap.set({ "n", "v" }, "<leader>c", copy_path_with_line_range, { desc = "Copy relative path and line range" })
