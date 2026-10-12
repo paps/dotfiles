@@ -44,6 +44,16 @@ require("nvim-tree").setup({
 })
 require("lualine").setup()
 require("guess-indent").setup()
+require("diffview").setup({
+	view = {
+		-- inline diffs; g then Ctrl-x cycles layouts
+		default = { layout = "diff1_inline" },
+		file_history = { layout = "diff1_inline" },
+		inline = {
+			fold_unchanged = true, -- keep 6 lines of context around changes
+		},
+	},
+})
 
 -- add a bit of color to git changes indicators
 vim.cmd([[
@@ -158,3 +168,5 @@ vim.keymap.set("n", "<C-t>", "<Cmd>tabnew<CR>")
 vim.keymap.set("", "<Leader>j", "<Cmd>nohlsearch<CR>")
 vim.keymap.set("", "<Leader>w", "<Cmd>set wrap!<CR>")
 vim.keymap.set("", "<Leader>n", "<Cmd>NvimTreeToggle<CR>")
+vim.keymap.set("n", "<Leader>d", "<Cmd>DiffviewToggle<CR>", { desc = "Toggle diff view" })
+vim.keymap.set("n", "<Leader>D", "<Cmd>DiffviewOpen origin/main...HEAD<CR>", { desc = "Diff branch against origin/main" })
