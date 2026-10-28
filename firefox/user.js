@@ -18,7 +18,7 @@ user_pref("browser.fullscreen.animateUp", 0);
 user_pref("ui.caretBlinkTime", 0);
 user_pref("ui.scrollToClick", 1);
 user_pref("nglayout.enable_drag_images", false);
-user_pref("ui.prefersReducedMotion", 1);
+// user_pref("ui.prefersReducedMotion", 1);
 user_pref("browser.download.animateNotifications", false);
 user_pref("browser.aboutConfig.showWarning", false);
 user_pref("full-screen-api.warning.timeout", 0);
@@ -51,9 +51,9 @@ user_pref("browser.gesture.swipe.right", "cmd_scrollRight");
 user_pref("reader.parse-on-load.enabled", false);
 
 // Unload tabs when memory contention is high
-// (disabled because now that my system uses swap a lot (as it should?),
+// (sometimes disabled because now that my system uses swap a lot (as it should?),
 // this becomes very aggressive and unloads most tabs most of the time)
-//user_pref("browser.tabs.unloadOnLowMemory", true);
+user_pref("browser.tabs.unloadOnLowMemory", true);
 
 // See https://news.ycombinator.com/item?id=41311479
 // But I think on Linux this is not deployed by Mozilla yet
