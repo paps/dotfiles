@@ -2,6 +2,9 @@
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
+-- leader key is space (set before plugin mappings)
+vim.g.mapleader = " "
+
 -- default indentation (putting this before guess-indent just in case)
 vim.opt.tabstop = 4 -- number of columns a tab counts for (this is the only command affecting text display)
 vim.opt.softtabstop = 4 -- number of columns inserted when hitting tab in insert mode (should be equal to tabstop)
@@ -106,9 +109,6 @@ if vim.env.SANDBOX_ID and vim.env.SSH_TTY and vim.env.TMUX then
 end
 -- yank and paste use system clipboard
 vim.opt.clipboard = "unnamedplus"
-
--- leader key is space
-vim.g.mapleader = " "
 
 -- disable arrow keys
 for _, key in ipairs({ "<Up>", "<Down>", "<Left>", "<Right>" }) do
