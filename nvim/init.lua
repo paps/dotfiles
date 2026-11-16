@@ -38,6 +38,10 @@ require("nvim-tree").setup({
 			},
 		},
 	},
+	git = {
+		-- default is 400ms, too short for large repos, which then disables git integration
+		timeout = 2000,
+	},
 	filters = {
 		-- by default, git ignored files are not shown, which is crazy...
 		git_ignored = false,
