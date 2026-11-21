@@ -329,6 +329,22 @@ Run `resolvectl flush-caches` to clear the local systemd-resolved DNS cache. But
 
 `firefox/user.js` contains settings that prevent Firefox from using its own DNS cache and its own DoH. It will use our local systemd-resolved server instead, which maintains its own cache and exclusively uses DoT, so equivalent, basically. The benefit of this approach is that we control cache flushing from one single place (`resolvectl flush-caches`) and its effective for the browser as well.
 
+**Chromium**
+
+Chromium can be quite aggressive in using its own DNS mechanism. Run this:
+
+```bash
+sudo mkdir -p /etc/chromium/policies/managed
+sudo tee /etc/chromium/policies/managed/system-dns.json >/dev/null <<'EOF'
+{
+  "DnsOverHttpsMode": "off",
+  "BuiltInDnsClientEnabled": false
+}
+EOF
+```
+
+And then go into `chrome://policy/` and click 'Reload policies'.
+
 **Switching off the DNS setup**
 
 In some cases (such as wifi portals), it might be necessary to disable this great DNS setup:
