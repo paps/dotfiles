@@ -69,8 +69,8 @@ if ! command -v tailscale &>/dev/null; then
     echo "==> Tailscale is not installed. To install:"
     echo "    curl -fsSL https://tailscale.com/install.sh | sh"
 elif ! tailscale status &>/dev/null; then
-    echo "==> Tailscale is installed but not running. To enable and give SSH access:"
-    echo "    sudo tailscale up --ssh"
+    echo "==> Tailscale is installed but not running. To enable:"
+    echo "    sudo tailscale up"
 else
     echo "==> Tailscale is running (nice!). IP:"
     tailscale ip
