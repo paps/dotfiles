@@ -285,8 +285,8 @@ FallbackDNS=
 # Per-link DNS typically happens when we receive a DNS server via DHCP. This should not happen because we have disabled
 # that behavior in /etc/NetworkManager/NetworkManager.conf, but let's keep this setting here anyway.
 #
-# (This setting only applies when no more specific domain is set. For example we expect Tailscale to set its own ts.net
-# domain there, which will make Tailscale domains work, which is what we want.)
+# (This setting only applies when no more specific domain is set. Tailscale is configured not to touch
+# systemd-resolved (--accept-dns=false, see below), so everything goes to the Gateway.)
 Domains=~.
 
 # strict TLS, fail rather than fall back to plaintext
@@ -309,7 +309,9 @@ To observe the current DNS configuration, simply run `resolvectl`.
 
 Make sure Tailscale's "Global nameservers" / "Override DNS servers" setting is disabled (from the account's main admin panel), otherwise it will mess with / compete with the DNS configuration set above.
 
-Note that this doesn't mean Tailscale's "MagicDNS" has to be disabled. This feature should stay enabled (i.e. `tailscale set --accept-dns=true`) and will work fine, as it only applies to the tailnet.
+Also run `sudo tailscale set --accept-dns=false`. This setting is saved and survives reboots. When an exit node is on (e.g. Mullvad), Tailscale otherwise gives `tailscale0` a catch-all DNS route (`~.`). systemd-resolved then sends each query to both Tailscale and the Gateway and uses whichever answer arrives first, so blocked domains sometimes resolve. Tailscale's encrypted-DNS support only covers a few built-in providers, and Cloudflare Gateway isn't one of them, so Tailscale can't be pointed at the Gateway either.
+
+MagicDNS stays enabled for the tailnet, so other devices are unaffected. On this machine, tailnet names are resolved through Cloudflare Gateway DNS policies with the **Override** action, one per name: `device.tailnet-name.ts.net` → its Tailscale IP (`tailscale ip -4 device`). Full names are needed, because short names like `device` no longer resolve. HTTPS from `tailscale serve` still validates, because its certificate is for that full name.
 
 **Easy DNS cache flushing**
 
